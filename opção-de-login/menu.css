@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #113838;
+}
+
+header {
+    position: fixed;
+    right: 0%;
+    top: 0%;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px 1px 10px;
+    background: #113838;
+}
+
+.logo-nome-fisio {
+    margin-left: 70px;
+    width: 20vw;
+    height: auto;
+}
+
+.navlist {
+    display: flex;
+}
+
+.navlist a {
+    color: aliceblue;
+    margin-left: 60px;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: all .55s ease;
+}
+
+.navlist a:hover {
+    border-bottom: 2px solid white;
+}
+
+#menu-icon {
+    color: aliceblue;
+    font-size: 35px;
+    z-index: 10001;
+    cursor: pointer;
+    display: none;
+}
+
+.oplogin {
+    color: #79e3bc;
+    margin-top: 100px;
+    margin-left: 700px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.row h2 {
+    color: #fff;
+    margin-left: 70px;
+}
+
+.row a {
+    margin-top: 15px;
+    display: inline-block;
+    color: aliceblue;
+    background: #79e3bcc0;
+    padding: 12px 0.1px;
+    line-height: 2;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 15px;
+    text-transform: uppercase;
+    transition: all .55s ease;
+    margin-left: 70px;
+}
+
+.row a:hover {
+    background: transparent;
+    border: 1px solid white;
+    transform: translate(10px);
+    margin-left: 70px;
+}
+
+.row img {
+    width: 450px;
+    height: auto;
+    margin-left: 70px;
+}
+
+.col-sm {
+    flex-basis: 48%;
+    text-align: left;
+    padding: 20px;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fórmulario de Treinos</title>
+  <link rel="stylesheet" href="treino.css">
+  <script src="treino.js" defer></script>
+  <link rel="shortcut icon" href="faviconlogo.png" type="image/x-icon">
+</head>
+
+<body>
+  <h1>Cadastro Treino Alunos</h1>
+  <form id="form" action="treino.php" method="post">
+    <label for="treino"> Treino</label>
+    <input type="text" id="treino" name="treino">
+
+    <label for="series">Séries:</label>
+    <select name="series" id="series">
+      <option value="">Escolha uma Opção</option>
+      <option value="2">2 séries</option>
+      <option value="3">3 Séries</option>
+      <option value="4">4 Séries</option>
+      <option value="5">Personalizado</option>
+    </select>
+
+    <div id="personalizadoField" style="display: none;">
+      <label for="personalizadoInput"></label>
+      <input type="text" id="personalizadoInput">
+    </div>
+
+    <label for="repeticoes">Repetições</label>
+    <input name="repeticoes" type="text" id="repeticoes">
+
+    <label for="interv"> Intervalo: </label>
+    <input type="text" id="interv" name="interv">
+
+    <label for="message">Mensagem (opcional)</label>
+    <textarea name="message" id="message" cols="30" rows="3"></textarea>
+
+    <button type="submit"> Enviar </button>
+  </form>
+</body>
+
+</html>

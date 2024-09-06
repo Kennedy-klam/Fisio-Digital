@@ -1,0 +1,101 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins' , Arial, Helvetica, sans-serif;
+    list-style: none;
+	text-decoration: none;	
+}
+
+body{
+	background-color: #113838;
+}
+
+header{
+	position: fixed;
+	right: 0%;
+	top: 0%;
+	z-index: 1000;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px 50px 1px 10px;
+	background: #113838;
+}
+
+.logo-nome-fisio{
+	width: 20vw;
+	height: auto;
+}
+
+.navlist{
+	display: flex;
+}
+.navlist a{
+	color: aliceblue;
+	margin-left: 60px;
+	font-size: 15px;
+	font-weight: 600;
+	border-bottom: 2px solid transparent;
+	transition: all .55s ease;
+}
+.navlist a:hover{
+	border-bottom: 2px solid white;
+}
+
+#menu-icon{
+	color: aliceblue;
+	font-size: 35px;
+	z-index: 10001;
+	cursor: pointer;
+	display: none;
+}
+
+.texto{
+	height: 100%;
+	width: 100%;
+	min-height: 100vh;
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	align-items: center;
+	gap:3rem;
+}
+section{
+	padding: 0 7%;
+}
+.texto-inicial h2{
+	color: aliceblue;
+}
+.texto-inicial h1{
+	font-size: 45px;
+	font-weight: 700;
+	color: #79e3bd;
+	margin-bottom: 25px;
+}
+.texto-inicial p{
+	color: aliceblue;
+	margin-bottom:25px;
+}
+.fisio-animada-img{
+	width: 500px;
+	height: auto;
+}
+.texto-inicial a{
+	display: inline-block;
+	color: aliceblue;
+	background: #79e3bcc0;
+	padding: 12px 30px;
+	line-height: 1.4;
+	font-size: 14px;
+	font-weight: 500;
+	border-radius: 15px;
+	text-transform: uppercase;
+	transition: all .55s ease;
+}
+.texto-inicial a:hover{
+	background: transparent;
+	border: 1px solid white;
+	transform: translate(10px);
+}

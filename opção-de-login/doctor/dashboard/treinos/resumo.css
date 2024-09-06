@@ -1,0 +1,86 @@
+* {
+  font-family: helvetica;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 1rem;
+  background-color: rgba(87, 241, 193, 0.8);
+}
+
+
+
+h1 {
+  text-align: center;
+  color: rgb(18, 97, 71);
+}
+
+/* Alterar a cor do link */
+a {
+  color: rgb(18, 97, 71);
+  /* Substitua pela cor desejada */
+}
+
+/* Remover o sublinhado do link */
+a {
+  text-decoration: none;
+}
+
+/* Alterar a cor do link quando o mouse passa por cima */
+a:hover {
+  color: #ffffff;
+  /* Substitua pela cor desejada */
+}
+
+/* Adicionar sublinhado quando o mouse passa por cima */
+a:hover {
+  text-decoration: underline;
+}
+
+
+a {
+  font-weight: bold;
+}
+
+a {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+p {
+  column-count: 2;
+  /* Dividir em duas colunas (ajuste conforme necessário) */
+  column-gap: 20px;
+  /* Espaçamento entre as colunas (ajuste conforme necessário) */
+}
+
+footer button {
+  position: fixed;
+  bottom: 1.5rem;
+  /* Ajuste conforme necessário para a margem inferior desejada */
+  left: 1.5rem;
+
+  width: 10rem;
+  height: 3.5rem;
+  border: none;
+  color: #ffffff;
+  background: rgb(18, 97, 71);
+  cursor: pointer;
+  box-shadow: 0px 10px 40px -12px #77ffc0;
+  font-weight: 800;
+  letter-spacing: 3px;
+  border-radius: 8px;
+  outline: none;
+  text-transform: uppercase;
+}
+
+iframe{
+  width: 90vw;
+  height: 1000pc;
+  padding: 0px;
+  border-color: #cdcdcdc7;
+  border-block-end-style: nome;
+  border-right-style: none;
+  border-left-style: none;
+}

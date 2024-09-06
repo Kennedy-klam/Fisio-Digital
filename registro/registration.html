@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="logincliente.css">
+    <title>Registro</title>
+    <link rel="shortcut icon" href="http://localhost/Fisio_Digital/src/images/favicon_32x32.png" type="image/x-icon">
+</head>
+
+<body>
+<form action="processar_registro.php" method="POST">
+    <div class="main-login">
+        <div class="left-login">
+            <h1>Seja bem-vindo a<br>Fisio Digital</h1>
+            <img src="img.cliente/fisioterapia.svg" class="left-login-image" alt="Fisioterapeuta animação">
+        </div>
+
+        <div class="right-login">
+            <div class="card-login">
+                <h1>Registro</h1>
+                <div class="textfield">
+                    <label for="clientname">Nome Completo</label>
+                    <input type="text" name="clientname" placeholder="Nome Completo">
+                </div>
+                <div class="textfield">
+                    <label for="clientemail">E-mail</label>
+                    <input type="email" name="clientemail" placeholder="E-mail">
+                </div>
+                <div class="textfield">
+                    <label for="clientpassword">Senha</label>
+                    <input type="password" name="clientpassword" placeholder="Senha">
+                </div>
+                <div class="textfield">
+                    <label for="confsenha">Confirmar Senha</label>
+                    <input type="password" name="confsenha" placeholder="Confirmar Senha">
+                </div>
+                <button class="btn-login">Registrar</button>
+                <a href="login.html">Já tem um acesso, Faça Login!</a>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
