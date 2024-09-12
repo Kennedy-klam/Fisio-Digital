@@ -1,0 +1,78 @@
+:root{
+/*-----------paletas de cores----------*/
+--cor1: #ccc;
+--cor2: #282c34;
+--cor3: rgba(0, 0, 0, 0.1);/*sombra do formulário*/
+--cor4: #fff;
+}
+
+/* Modelagem das imagens da lateral */
+.container {
+    position: relative;
+    height: 600px; /* Ajuste de altura maior */
+}
+.left {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26%; /* Reduza a largura das imagens */
+}
+.left {
+    left: 0;
+}
+.right {
+    right: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 27.5%; /* Reduza a largura das imagens */
+}
+
+/* Centralizando e estilizando o formulário */
+.form {
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid var(--cor1);
+    max-width: 700px;
+    background-color: var(--cor2); /* Cor de fundo mais escura */
+    color: var(--cor4); /* Cor da fonte em branco */
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px var(--cor3); /* Adicione uma sombra */
+    position: relative; /* Para garantir o posicionamento */
+    z-index: 1;
+}
+.form h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+.form h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+
+/* Estilo dos campos e labels */
+.linha {
+    display: flex;
+    justify-content: flex-start; /* Alinha à esquerda */
+    margin-bottom: 30px;
+}
+.opcoes {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os selects se ajustem conforme necessário */
+    gap: 15px;
+    margin-left: 10px;
+}
+.opcao {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.form-select {
+    width: 40px; /* Aumenta a largura dos selects */
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+}
+
