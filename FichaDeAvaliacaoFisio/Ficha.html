@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Avaliação de Geriatria</title>
+    <link rel="stylesheet" href="Estilos/styles.css">
+</head>
+
+<body>
+    <img src="Imagens/fisio1.png" alt="imagem Esquerda" class="left-image"><!-- imagem lateral esquerda -->
+    <img src="Imagens/fisio2.png" alt="imagem Direita" class="right-image"><!-- imagem lateral direita --> 
+    
+    <div class="container">
+        <div class="center">
+            <div class="form-title">Ficha de Avaliação de Geriatria</div>
+            <form>
+                <!-- Dados Pessoais -->
+                <div>
+                    <h2 class="section-title">Dados Pessoais</h2>
+                    <table class="personal-info">
+                        <tr>
+                            <td><label for="nome">Nome:</label></td>
+                            <td><input type="text" id="nome" name="nome"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="nascimento">Data de Nascimento:</label></td>
+                            <td><input type="date" id="nascimento" name="nascimento"></td>
+                        </tr>
+                        <tr>
+                            <td><label>Sexo:</label></td>
+                            <td>
+                                <input type="radio" id="feminino" name="sexo" value="feminino">
+                                <label for="feminino">F</label>
+                                <input type="radio" id="masculino" name="sexo" value="masculino">
+                                <label for="masculino">M</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="estado_civil">Estado Civil:</label></td>
+                            <td><input type="text" id="estado_civil" name="estado_civil"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="telefone">Telefone:</label></td>
+                            <td><input type="number" id="telefone" name="telefone"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Diagnóstico Clínico -->
+                <h2 class="section-title">Diagnóstico Clínico</h2>
+                <textarea name="diagnostico" id="diagnostico"></textarea>
+
+                <!-- Escolaridade -->
+                <h2 class="section-title">Escolaridade</h2>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="analfabeto" name="escolaridade">
+                    <label for="analfabeto">Analfabeto</label>
+                    <input type="checkbox" id="fundamental" name="escolaridade">
+                    <label for="fundamental">Ensino fundamental</label>
+                    <input type="checkbox" id="medio" name="escolaridade">
+                    <label for="medio">Ensino médio</label>
+                    <input type="checkbox" id="graduacao" name="escolaridade">
+                    <label for="graduacao">Graduação</label>
+                </div>
+
+                <!-- Renda -->
+                <h2 class="section-title">Renda</h2>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="aposentadoria" name="renda">
+                    <label for="aposentadoria">Aposentadoria</label>
+                    <input type="checkbox" id="pensao" name="renda">
+                    <label for="pensao">Pensão</label>
+                    <input type="checkbox" id="trabalho" name="renda">
+                    <label for="trabalho">Trabalho</label>
+                    <input type="checkbox" id="profissao" name="renda">
+                    <label for="profissao">Outros Profissão</label>
+                </div>
+
+                <!-- Local de Residência -->
+                <h2 class="section-title">Local de residência</h2>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="casa_propria" name="residencia">
+                    <label for="casa_propria">Casa própria</label>
+                    <input type="checkbox" id="casa_aluguel" name="residencia">
+                    <label for="casa_aluguel">Casa de aluguel</label>
+                    <input type="checkbox" id="apartamento" name="residencia">
+                    <label for="apartamento">Apartamento</label>
+                    <input type="checkbox" id="outros" name="residencia">
+                    <label for="outros">Outros</label>
+                </div>
+
+                <!-- Mora com -->
+                <h2 class="section-title">Mora com:</h2>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="sozinho" name="mora_com">
+                    <label for="sozinho">Sozinho</label>
+                    <input type="checkbox" id="filhos" name="mora_com">
+                    <label for="filhos">Filhos</label>
+                    <input type="checkbox" id="familiares" name="mora_com">
+                    <label for="familiares">Outros familiares</label>
+                    <input type="checkbox" id="cuidador" name="mora_com">
+                    <label for="cuidador">Cuidador</label>
+                </div>
+
+                <!-- Atividades Físicas -->
+                <h2 class="section-title">Atividades Físicas</h2>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="diariamente" name="atividade_fisica">
+                    <label for="diariamente">Diariamente</label>
+                    <input type="checkbox" id="finais_semana" name="atividade_fisica">
+                    <label for="finais_semana">Finais de semana</label>
+                    <input type="checkbox" id="mensalmente" name="atividade_fisica">
+                    <label for="mensalmente">Mensalmente</label>
+                    <input type="checkbox" id="baixa_frequencia" name="atividade_fisica">
+                    <label for="baixa_frequencia">Baixa Frequência</label>
+                </div>
+
+                <!-- Doenças -->
+                <h2 class="section-title">Doenças</h2>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="hipertensao" name="doencas">
+                    <label for="hipertensao">Hipertensão</label>
+                    <input type="checkbox" id="diabetes" name="doencas">
+                    <label for="diabetes">Diabetes</label>
+                    <input type="checkbox" id="outra_doenca" name="doencas">
+                    <label for="outra_doenca">Outra doença</label>
+                </div>
+
+                <!-- Botão de Envio -->
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+
+</html>
