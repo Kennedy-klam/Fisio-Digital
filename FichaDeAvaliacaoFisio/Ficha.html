@@ -17,7 +17,7 @@
             <div class="form-title">Ficha de Avaliação de Geriatria</div>
             <form>
                 <!-- Dados Pessoais -->
-                <div>
+                <div class="section personal-info-section">
                     <h2 class="section-title">Dados Pessoais</h2>
                     <table class="personal-info">
                         <tr>
@@ -49,87 +49,103 @@
                 </div>
 
                 <!-- Diagnóstico Clínico -->
-                <h2 class="section-title">Diagnóstico Clínico</h2>
-                <textarea name="diagnostico" id="diagnostico"></textarea>
+                <div class="section diagnostico-section">
+                    <h2 class="section-title">Diagnóstico Clínico</h2>
+                    <textarea name="diagnostico" id="diagnostico"></textarea>
+                </div>
 
                 <!-- Escolaridade -->
-                <h2 class="section-title">Escolaridade</h2>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="analfabeto" name="escolaridade">
-                    <label for="analfabeto">Analfabeto</label>
-                    <input type="checkbox" id="fundamental" name="escolaridade">
-                    <label for="fundamental">Ensino fundamental</label>
-                    <input type="checkbox" id="medio" name="escolaridade">
-                    <label for="medio">Ensino médio</label>
-                    <input type="checkbox" id="graduacao" name="escolaridade">
-                    <label for="graduacao">Graduação</label>
+                <div class="section escolaridade-section">
+                    <h2 class="section-title">Escolaridade</h2>
+                    <div class="radio-group">
+                        <input type="radio" id="analfabeto" name="escolaridade" value="analfabeto">
+                        <label for="analfabeto">Analfabeto</label>
+                        <input type="radio" id="fundamental" name="escolaridade" value="fundamental">
+                        <label for="fundamental">Ensino fundamental</label>
+                        <input type="radio" id="medio" name="escolaridade" value="medio">
+                        <label for="medio">Ensino médio</label> 
+                        <input type="radio" id="graduacao" name="escolaridade" value="graduacao">
+                        <label for="graduacao">Graduação</label>
+                    </div>
                 </div>
 
                 <!-- Renda -->
-                <h2 class="section-title">Renda</h2>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="aposentadoria" name="renda">
-                    <label for="aposentadoria">Aposentadoria</label>
-                    <input type="checkbox" id="pensao" name="renda">
-                    <label for="pensao">Pensão</label>
-                    <input type="checkbox" id="trabalho" name="renda">
-                    <label for="trabalho">Trabalho</label>
-                    <input type="checkbox" id="profissao" name="renda">
-                    <label for="profissao">Outros Profissão</label>
+                <div class="section renda-section">
+                    <h2 class="section-title">Renda</h2>
+                    <div class="radio-group">
+                        <input type="radio" id="aposentadoria" name="renda" value="aposentadoria">
+                        <label for="aposentadoria">Aposentadoria</label>
+                        <input type="radio" id="pensao" name="renda" value="pensao">
+                        <label for="pensao">Pensão</label>
+                        <input type="radio" id="trabalho" name="renda" value="trabalho">
+                        <label for="trabalho">Trabalho</label>
+                        <input type="radio" id="profissao" name="renda" value="profissao">
+                        <label for="profissao">Outros Profissão</label>
+                    </div>
                 </div>
 
                 <!-- Local de Residência -->
-                <h2 class="section-title">Local de residência</h2>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="casa_propria" name="residencia">
-                    <label for="casa_propria">Casa própria</label>
-                    <input type="checkbox" id="casa_aluguel" name="residencia">
-                    <label for="casa_aluguel">Casa de aluguel</label>
-                    <input type="checkbox" id="apartamento" name="residencia">
-                    <label for="apartamento">Apartamento</label>
-                    <input type="checkbox" id="outros" name="residencia">
-                    <label for="outros">Outros</label>
+                <div class="section residencia-section">
+                    <h2 class="section-title">Local de residência</h2>
+                    <div class="radio-group">
+                        <input type="radio" id="casa_propria" name="residencia" value="casa_propria">
+                        <label for="casa_propria">Casa própria</label>
+                        <input type="radio" id="casa_aluguel" name="residencia" value="casa_aluguel">
+                        <label for="casa_aluguel">Casa de aluguel</label>
+                        <input type="radio" id="apartamento" name="residencia" value="apartamento">
+                        <label for="apartamento">Apartamento</label>
+                        <input type="radio" id="outros" name="residencia" value="outros">
+                        <label for="outros">Outros</label>
+                    </div>
                 </div>
 
                 <!-- Mora com -->
-                <h2 class="section-title">Mora com:</h2>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="sozinho" name="mora_com">
-                    <label for="sozinho">Sozinho</label>
-                    <input type="checkbox" id="filhos" name="mora_com">
-                    <label for="filhos">Filhos</label>
-                    <input type="checkbox" id="familiares" name="mora_com">
-                    <label for="familiares">Outros familiares</label>
-                    <input type="checkbox" id="cuidador" name="mora_com">
-                    <label for="cuidador">Cuidador</label>
+                <div class="section mora-com-section">
+                    <h2 class="section-title">Mora com:</h2>
+                    <div class="radio-group">
+                        <input type="radio" id="sozinho" name="mora_com" value="sozinho">
+                        <label for="sozinho">Sozinho</label>
+                        <input type="radio" id="filhos" name="mora_com" value="filhos">
+                        <label for="filhos">Filhos</label>
+                        <input type="radio" id="familiares" name="mora_com" value="familiares">
+                        <label for="familiares">Outros familiares</label>
+                        <input type="radio" id="cuidador" name="mora_com" value="cuidador">
+                        <label for="cuidador">Cuidador</label>
+                    </div>
                 </div>
 
                 <!-- Atividades Físicas -->
-                <h2 class="section-title">Atividades Físicas</h2>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="diariamente" name="atividade_fisica">
-                    <label for="diariamente">Diariamente</label>
-                    <input type="checkbox" id="finais_semana" name="atividade_fisica">
-                    <label for="finais_semana">Finais de semana</label>
-                    <input type="checkbox" id="mensalmente" name="atividade_fisica">
-                    <label for="mensalmente">Mensalmente</label>
-                    <input type="checkbox" id="baixa_frequencia" name="atividade_fisica">
-                    <label for="baixa_frequencia">Baixa Frequência</label>
+                <div class="section atividades-fisicas-section">
+                    <h2 class="section-title">Atividades Físicas</h2>
+                    <div class="radio-group">
+                        <input type="radio" id="diariamente" name="atividade_fisica" value="diariamente">
+                        <label for="diariamente">Diariamente</label>
+                        <input type="radio" id="finais_semana" name="atividade_fisica" value="finais_semana">
+                        <label for="finais_semana">Finais de semana</label>
+                        <input type="radio" id="mensalmente" name="atividade_fisica" value="mensalmente">
+                        <label for="mensalmente">Mensalmente</label>
+                        <input type="radio" id="baixa_frequencia" name="atividade_fisica" value="baixa_frequencia">
+                        <label for="baixa_frequencia">Baixa Frequência</label>
+                    </div>
                 </div>
 
                 <!-- Doenças -->
-                <h2 class="section-title">Doenças</h2>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="hipertensao" name="doencas">
-                    <label for="hipertensao">Hipertensão</label>
-                    <input type="checkbox" id="diabetes" name="doencas">
-                    <label for="diabetes">Diabetes</label>
-                    <input type="checkbox" id="outra_doenca" name="doencas">
-                    <label for="outra_doenca">Outra doença</label>
+                <div class="section doencas-section">
+                    <h2 class="section-title">Doenças</h2>
+                    <div class="radio-group">
+                        <input type="radio" id="hipertensao" name="doencas" value="hipertensao">
+                        <label for="hipertensao">Hipertensão</label>
+                        <input type="radio" id="diabetes" name="doencas" value="diabetes">
+                        <label for="diabetes">Diabetes</label>
+                        <input type="radio" id="outra_doenca" name="doencas" value="outra_doenca">
+                        <label for="outra_doenca">Outra doença</label>
+                    </div>
                 </div>
 
                 <!-- Botão de Envio -->
-                <button type="submit">Enviar</button>
+                <div class="submit-button">
+                    <button type="submit">Enviar</button>
+                </div>
             </form>
         </div>
     </div>
