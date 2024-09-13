@@ -19,32 +19,31 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1440px;
     padding: 20px;
-    /*Cor onde fica a ficha, só mudar de acordo se*/
     background-color: #113838;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .center {
-    width: 90%;
+    width: 100%;
+    max-width: 1440px;
     padding: 20px;
-    /*Cor da ficha que está branca no momento*/
-    background-color: white;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Alinhamento centralizado */
 }
 
 .form-title {
     text-align: center;
-    color: #113838;
+    color: white;
     margin-bottom: 20px;
     font-size: 24px;
 }
 
 .section-title {
-    color: #113838;
+    color: white;
     margin-top: 20px;
     font-size: 20px;
 }
@@ -67,6 +66,8 @@ table textarea {
     width: 100%;
     padding: 8px;
     font-size: 16px;
+    color: black; /* Texto */
+    background-color: white; /* Fundo branco para os campos de input */
 }
 
 textarea {
@@ -109,27 +110,59 @@ h2 {
     color: white;
 }
 
+/*Em relação as imagens*/
 .left-image {
-    position: absolute;
+    position: fixed;
     left: 0;
-    top: 100px;
-    width: 650px; /* Ajustar */
+    top: 300px;
+    width: 220px; /* Ajustar */
 }
 
 .right-image {
-    position: absolute;
+    position: fixed;
     right: 0;
-    top: 50px;
-    width: 650px; /* Ajustar */
+    top: 300px;
+    width: 220px; /* Ajustar */
 }
 
+
+/*Tem alguns estilos que são um pouco desnecessários porque usei alguns prontos, porém tenho que ver um por um após o código do html estiver 99%*/
 .container {
     margin: 0 auto;
-    max-width: 800px; /* Defina a largura do container */
+    max-width: 1440px; /* Defina a largura do container */
     padding: 20px;
     position: relative; /* Para evitar sobreposição de elementos */
 }
 
 .center {
     text-align: center;
+}
+
+/* Adiciona cor branca para o texto em toda a página */
+body, .form-title, .section-title, label, h2 {
+    color: white;
+    font-size: 19px;
+}
+
+
+/* Estilo para o textarea */
+textarea {
+    width: 80%; /* Preenche a largura do contêiner pai */
+    height: 90px; /* Altura padrão, pode ajustar conforme necessário */
+    padding: 10px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda com cor padrão */
+    border-radius: 4px; /* Bordas arredondadas */
+    font-size: 16px; /* Tamanho da fonte */
+    line-height: 1.5; /* Altura da linha */
+    resize: vertical; /* Permite redimensionar verticalmente apenas */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    background-color: #f9f9f9; /* Cor de fundo clara */
+    color: #333; /* Cor do texto */
+}
+
+/* Estilo para o textarea quando focado */
+textarea:focus {
+    border-color: #007bff; /* Cor da borda quando em foco */
+    outline: none; /* Remove o contorno padrão */
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5); /* Sombra mais pronunciada em foco */
 }

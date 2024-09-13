@@ -2,6 +2,8 @@
 <html lang="pt-BR">
 
 <head>
+    <!-- Versão 0.8.3-->
+     <!--no processo de otimizar-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ficha de Avaliação de Geriatria</title>
@@ -9,12 +11,12 @@
 </head>
 
 <body>
-    <img src="Imagens/fisio1.png" alt="imagem Esquerda" class="left-image"><!-- imagem lateral esquerda -->
-    <img src="Imagens/fisio2.png" alt="imagem Direita" class="right-image"><!-- imagem lateral direita --> 
+    <img src="Imagens/fisio1.png" alt="Imagem Esquerda" class="left-image">
+    <img src="Imagens/fisio2.png" alt="Imagem Direita" class="right-image">
     
     <div class="container">
         <div class="center">
-            <div class="form-title">Ficha de Avaliação de Geriatria</div>
+            
             <form>
                 <!-- Dados Pessoais -->
                 <div class="section personal-info-section">
@@ -43,7 +45,7 @@
                         </tr>
                         <tr>
                             <td><label for="telefone">Telefone:</label></td>
-                            <td><input type="number" id="telefone" name="telefone"></td>
+                            <td><input type="tel" id="telefone" name="telefone"></td>
                         </tr>
                     </table>
                 </div>
@@ -51,19 +53,20 @@
                 <!-- Diagnóstico Clínico -->
                 <div class="section diagnostico-section">
                     <h2 class="section-title">Diagnóstico Clínico</h2>
+                    <br>
                     <textarea name="diagnostico" id="diagnostico"></textarea>
                 </div>
 
                 <!-- Escolaridade -->
                 <div class="section escolaridade-section">
-                    <h2 class="section-title">Escolaridade</h2>
+                    <h2 class="section-title">Escolaridade:</h2>
                     <div class="radio-group">
                         <input type="radio" id="analfabeto" name="escolaridade" value="analfabeto">
                         <label for="analfabeto">Analfabeto</label>
                         <input type="radio" id="fundamental" name="escolaridade" value="fundamental">
                         <label for="fundamental">Ensino fundamental</label>
                         <input type="radio" id="medio" name="escolaridade" value="medio">
-                        <label for="medio">Ensino médio</label> 
+                        <label for="medio">Ensino médio</label>
                         <input type="radio" id="graduacao" name="escolaridade" value="graduacao">
                         <label for="graduacao">Graduação</label>
                     </div>
@@ -71,7 +74,7 @@
 
                 <!-- Renda -->
                 <div class="section renda-section">
-                    <h2 class="section-title">Renda</h2>
+                    <h2 class="section-title">Renda:</h2>
                     <div class="radio-group">
                         <input type="radio" id="aposentadoria" name="renda" value="aposentadoria">
                         <label for="aposentadoria">Aposentadoria</label>
@@ -86,7 +89,7 @@
 
                 <!-- Local de Residência -->
                 <div class="section residencia-section">
-                    <h2 class="section-title">Local de residência</h2>
+                    <h2 class="section-title">Local de Residência:</h2>
                     <div class="radio-group">
                         <input type="radio" id="casa_propria" name="residencia" value="casa_propria">
                         <label for="casa_propria">Casa própria</label>
@@ -111,12 +114,14 @@
                         <label for="familiares">Outros familiares</label>
                         <input type="radio" id="cuidador" name="mora_com" value="cuidador">
                         <label for="cuidador">Cuidador</label>
+                        <input type="radio" id="outros" name="mora_com" value="outros">
+                        <label for="cuidador">Outros</label>
                     </div>
                 </div>
 
-                <!-- Atividades Físicas -->
+                <!-- Atividades Físicas era para ser fisicas, vou ter que alterar depois porque agora que vi 22:52 que era uma pergunta para cada -->
                 <div class="section atividades-fisicas-section">
-                    <h2 class="section-title">Atividades Físicas</h2>
+                    <h2 class="section-title">Atividades Físicas:</h2>
                     <div class="radio-group">
                         <input type="radio" id="diariamente" name="atividade_fisica" value="diariamente">
                         <label for="diariamente">Diariamente</label>
@@ -131,25 +136,162 @@
 
                 <!-- Doenças -->
                 <div class="section doencas-section">
-                    <h2 class="section-title">Doenças</h2>
+                    <h2 class="section-title">Doenças:</h2>
                     <div class="radio-group">
                         <input type="radio" id="hipertensao" name="doencas" value="hipertensao">
-                        <label for="hipertensao">Hipertensão</label>
+                        <label for="hipertensao">Hipertenso</label>
                         <input type="radio" id="diabetes" name="doencas" value="diabetes">
-                        <label for="diabetes">Diabetes</label>
+                        <label for="diabetes">Diabético</label>
                         <input type="radio" id="outra_doenca" name="doencas" value="outra_doenca">
-                        <label for="outra_doenca">Outra doença</label>
+                        <label for="outra_doenca">Depressão</label>
                     </div>
                 </div>
 
-                <!-- Botão de Envio -->
-                <div class="submit-button">
-                    <button type="submit">Enviar</button>
+                <!--Tabela dos medicamentos-->
+
+                <h3 class="section-title">Medicamentos</h2>
+                
+                <table border="1">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Como usa</th>
+                        <th>Tempo de uso</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="nome1"></td>
+                        <td><input type="text" name="comousa1"></td>
+                        <td><input type="text" name="tempodeuso1"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="nome2"></td>
+                        <td><input type="text" name="comousa2"></td>
+                        <td><input type="text" name="tempodeuso2"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="nome3"></td>
+                        <td><input type="text" name="comousa3"></td>
+                        <td><input type="text" name="tempodeuso3"></td>
+                    </tr>
+                    <tr></tr>
+                        <td><input type="text" name="nome4"></td>
+                        <td><input type="text" name="comousa4"></td>
+                        <td><input type="text" name="tempodeuso4"></td>
+                    </tr>
+                </table>
+
+                <!-- Outras: Queixa principal / HMP -->
+                <div class="section outras-section">
+                    <h2 class="section-title">Outras: Queixa Principal / HMP</h2>
+                    <br>
+                    <textarea name="outras" id="outras"></textarea>
+                    <div class="radio-group">
+                        <h2 class="section-title">Visão</h2>Visão:</h2>
+                        <input type="radio" id="visao_normal" name="visao" value="normal">
+                        <label for="visao_normal">Normal</label>
+                        <input type="radio" id="visao_deficit" name="visao" value="deficit">
+                        <label for="visao_deficit">Déficit c/ uso de corretor</label>
+                        <input type="radio" id="visao_deficit_sem" name="visao" value="dificil">
+                        <label for="visao_deficit_sem">Déficit s/ uso de corretor</label>
+                        <input type="radio" id="visao_parcial" name="visao" value="dificil">
+                        <label for="visao_parcial">Perda parcial</label>
+                        <input type="radio" id="visao_total" name="visao" value="dificil">
+                        <label for="visao_total">Perda Total</label>
+                    </div>
+
+                    <div class="radio-group">
+                        <h2 class="section-title">Audição:</h2>
+                        <input type="radio" id="audicao_normal" name="audicao" value="normal">
+                        <label for="audicao_normal">Normal</label>
+                        <input type="radio" id="audicao_deficit" name="audicao" value="deficit">
+                        <label for="audicao_deficit">Déficit c/ uso de corretor</label>
+                        <input type="radio" id="audicao_deficit_sem" name="audicao" value="dificil">
+                        <label for="audicao_deficit_sem">Déficit s/ uso de corretor</label>
+                        <input type="radio" id="audicao_parcial" name="audicao" value="dificil">
+                        <label for="audicao_parcial">Perda parcial</label>
+                        <input type="radio" id="audicao_total" name="audicao" value="dificil">
+                        <label for="audicao_total">Perda Total</label>
+                    </div>
+
+                    <div class="radio-group">
+                        <h2 class="section-title">Continência Urinária:</h2>
+                        <input type="radio" id="cuidador" name="mora_com" value="cuidador">
+                        <label for="cuidador">Sim</label>
+                        <input type="radio" id="cuidador" name="mora_com" value="cuidador">
+                        <label for="cuidador">Não</label>
+                        <input type="radio" id="cuidador" name="mora_com" value="cuidador">
+                        <label for="cuidador">Data:</label>
+                        <input type="date" id="nascimento" name="nascimento">
+
+                    </div>
+
+                    <div class="radio-group"></div>
+                        <h2 class="section-title">Continência Fecal:</h2>
+                        <input type="radio" id="cuidador" name="mora_com" value="cuidador">
+                        <label for="cuidador">Sim</label>
+                        <input type="radio" id="cuidador" name="mora_com" value="cuidador">
+                        <label for="cuidador">Não</label>
+                        <input type="radio" id="cuidador" name="mora_com" value="cuidador">
+                        <label for="cuidador">Data:</label>
+                        <input type="date" id="nascimento" name="nascimento">
+                    </div>
+
+                    <div class="radio-group">
+                        <h2 class="section-title"> Sono:</h2>
+                        <input type="radio" id ="sono" name="descanso" value="sono"> 
+                        <label for="sono">Normal</label>
+                        <input type="radio" id ="sono" name="descanso" value="sono"> 
+                        <label for="sono">Distúrbios</label>
+                    </div>
+
+                    <div class="radio-group">
+                        <h2 class="section-title"> Uso de órtese:</h2>
+                        <input type="radio" id ="sono" name="descanso" value="sono"> 
+                        <label for="sono">Sim</label>
+                        <input type="radio" id ="sono" name="descanso" value="sono"> 
+                        <label for="sono">Não</label>
+                    </div>
+
+                    <div class="radio-group">
+                        <h2 class="section-title"> Uso de Prótese:</h2>
+                        <input type="radio" id ="sono" name="descanso" value="sono"> 
+                        <label for="sono">Sim</label>
+                        <input type="radio" id ="sono" name="descanso" value="sono"> 
+                        <label for="sono">Não</label>
+                    </div>
+
+                    <div class="radio-group">
+                        <h2 class="section-title">Queda nos últimos 12 meses?:</h2>
+                        <input type="radio" id="audicao_normal" name="audicao" value="normal">
+                        <label for="audicao_normal">Sim</label>
+                        <input type="radio" id="audicao_deficit" name="audicao" value="deficit">
+                        <label for="audicao_deficit">Não</label>
+                        <input type="radio" id="audicao_deficit_sem" name="audicao" value="dificil">
+                        <label for="audicao_deficit_sem">Quantas</label> 
+                        <input type="number" id="nascimento" name="nascimento">
+                    </div>
+
+                    <div class="radio-group">
+                        <h2 class="section-title">Fumante:</h2>
+                        <input type="radio" id="audicao_normal" name="audicao" value="normal">
+                        <label for="audicao_normal">Não fumante</label>
+                        <input type="radio" id="audicao_deficit" name="audicao" value="deficit">
+                        <label for="audicao_deficit">Se parou há quanto tempo?</label>
+                        <input type="number" id="nascimento" name="nascimento">
+                    </div>
+
+                    <div class="radio-group">
+                        <h2 class="section-title">Estilista:</h2>
+                        <input type="radio" id="audicao_normal" name="audicao" value="normal">
+                        <label for="audicao_normal">Não bebe</label>
+                        <input type="radio" id="audicao_deficit" name="audicao" value="deficit">
+                        <label for="audicao_deficit">Se parou há quanto tempo?</label>
+                        <input type="number" id="nascimento" name="nascimento">
+                    </div>
                 </div>
+
             </form>
         </div>
     </div>
-    
 </body>
 
 </html>
