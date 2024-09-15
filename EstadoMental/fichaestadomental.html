@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style/normalize_estdomental.css">
+    <link rel="stylesheet" href="/EstadoMental/style/normalize_estdomental.css">
     <title>Estado mental</title>
 </head>
+
 <body>
     <div class="container">
         <!-- Imagens laterais -->
-        <img src="/imagens/idosa_no_hospital.jpeg" alt="Imagem ilustrativa" class="right">
-        <img src="/imagens/idosos_no_parque.jpeg" alt="Imagem ilustrativa" class="left">
-        
+        <img src="/EstadoMental/imagens/idosos_no_parque.jpeg" alt="Imagem ilustrativa" class="right">
+        <img src="/EstadoMental/imagens/idosa_no_hospital.jpeg" alt="Imagem ilustrativa" class="left">
+
         <div class="form">
             <h1>Ficha de Avaliação Fitoterápica</h1>
             <section>
@@ -20,123 +22,71 @@
                     <h4>Orientação espacial (0-5 pontos):</h4>
                     <!--Primeira linha do formulário-->
                     <div class="linha">
-                        <span>Tempo:</span>
+                        <p>TEMPO:</p>
                         <div class="opcoes">
                             <div class="opcao">
-                                <span>Mês</span>
-                                <select class="form-select">
-                                    <option selected></option>
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="5">5</option>
-                                </select>
+                                <input class="form-check-input" type="checkbox" id="mes">
+                                <label class="form-check-label" for="mes">Mês</label>
                             </div>
                             <div class="opcao">
-                                <span>Dia</span>
-                                <select class="form-select">
-                                    <option selected></option>
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="5">5</option>
-                                </select>
+                                <input class="form-check-input" type="checkbox" id="dia">
+                                <label class="form-check-label" for="dia">Dia</label>
                             </div>
                             <div class="opcao">
-                                <span>Ano</span>
-                                <select class="form-select">
-                                    <option selected></option>
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="5">5</option>
-                                </select>
+                                <input class="form-check-input" type="checkbox" id="ano">
+                                <label class="form-check-label" for="ano">Ano</label>
                             </div>
                             <div class="opcao">
-                                <span>Dia da semana</span>
-                                <select class="form-select">
-                                    <option selected></option>
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="5">5</option>
-                                </select>
+                                <input class="form-check-input" type="checkbox" id="dia-semana">
+                                <label class="form-check-label" for="dia-semana">Dia da semana</label>
                             </div>
                             <div class="opcao">
-                                <span>Que horas são aprox.</span>
-                                <select class="form-select">
-                                    <option selected></option>
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="5">5</option>
-                                </select>
+                                <input class="form-check-input" type="checkbox" id="hora-aprox">
+                                <label class="form-check-label" for="hora-aprox">Que horas são aprox.</label>
                             </div>
                         </div>
                     </div>
-                    <!--Segunda linha do fomulário-->
+                    <!--Segunda lina do formulário-->
                     <div class="linha">
-                        <span>Local:</span>
+                        <p>LUGAR:</p>
                         <div class="opcoes">
                             <div class="opcao">
-                                <span>Estado</span>
-                                <select class="form-select">
-                                    <option selected></option>
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="5">5</option>
-                                </select>
+                                <input class="form-check-input" type="checkbox" id="estado">
+                                <label class="form-check-label" for="estado">Estado</label>
                             </div>
                             <div class="opcao">
-                                <span>Cidade</span>
-                                <select class="form-select">
-                                    <option selected></option>
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="5">5</option>
-                                </select>
+                                <input class="form-check-input" type="checkbox" id="cidade">
+                                <label class="form-check-label" for="cidade">Cidade</label>
                             </div>
                             <div class="opcao">
-                                <span>Bairro</span>
-                                <select class="form-select">
-                                    <option selected></option>
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="5">5</option>
-                                </select>
+                                <input class="form-check-input" type="checkbox" id="bairro">
+                                <label class="form-check-label" for="bairro">Bairro</label>
                             </div>
                             <div class="opcao">
-                                <span>Local</span>
-                                <select class="form-select">
-                                    <option selected></option>
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="5">5</option>
-                                </select>
+                                <input class="form-check-input" type="checkbox" id="local">
+                                <label class="form-check-label" for="local">Local</label>
                             </div>
                             <div class="opcao">
-                                <span>País</span>
-                                <select class="form-select">
-                                    <option selected></option>
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="5">5</option>
-                                </select>
+                                <input class="form-check-input" type="checkbox" id="pais">
+                                <label class="form-check-label" for="pais">País</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Terceira linha do formulario-->
+                    <div class="linha">
+                        <p>REPITA AS PALAVRAS:</p>
+                        <div class="opcoes">
+                            <div class="opcao">
+                                <input class="form-check-input" type="checkbox" id="carro">
+                                <label class="form-check-label" for="carro">Carro</label>
+                            </div>
+                            <div class="opcao">
+                                <input class="form-check-input" type="checkbox" id="vaso">
+                                <label class="form-check-label" for="vaso">Vaso</label>
+                            </div>
+                            <div class="opcao">
+                                <input class="form-check-input" type="checkbox" id="tijolo">
+                                <label class="form-check-label" for="tijolo">Tijolo</label>
                             </div>
                         </div>
                     </div>
@@ -145,4 +95,5 @@
         </div>
     </div>
 </body>
+
 </html>
