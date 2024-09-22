@@ -8,7 +8,6 @@ if($result) {
     $data = mysqli_fetch_assoc($result);
     $admnome = $data['admnome'];
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -19,6 +18,35 @@ if($result) {
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        /* Custom CSS for visual improvements */
+        .table-adjusted th, .table-adjusted td {
+            padding: 10px 15px;
+            text-align: center;
+        }
+        .appt {
+            margin: 20px 0;
+        }
+        .appt .title h3 {
+            padding: 10px 0;
+            background-color: #f0f0f0;
+        }
+        .table-adjusted {
+            width: 95%;
+            margin: 0 auto;
+        }
+        .table-adjusted tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .table-adjusted th {
+            background-color: #113838;
+            color: white;
+        }
+        .no-appointments {
+            margin-top: 15px;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
 <div class="container-fluid pt-2 pb-2" style="background-color: #113838;">
@@ -27,7 +55,7 @@ if($result) {
             <img width="200" class="ml-0 mt-2 mb-2" src="../../../../imagens/default_transparent.png">
         </div>
         <div class="col-sm-2">
-        <h3 class="mr-0 text-white">Olá, <?php echo $admnome; ?>!</h3>
+            <h3 class="mr-0 text-white">Olá, <?php echo $admnome; ?>!</h3>
             <a href="../dashboard.php" class="btn btn-outline-light">Voltar para Tela Inicial</a>
         </div>
     </div>
@@ -39,25 +67,110 @@ if($result) {
     </div>
 </div>
 
-<div class="container">
-    <div class="app">
-        <div class="today">
-            <div class="title table-title">
-                <h3 class='text-center'>HOJE</h3>
-            </div>
-            <div class="appt">
-            <?php
-            $tdt = date("Y-m-d");
-            $sql = "SELECT a.*, c.clientname, d.doctorname FROM appointment a
-                    JOIN loginc c ON a.clientid = c.clientid
-                    JOIN logind d ON a.doctorid = d.doctorid
-                    WHERE a.date = '$tdt'";
-            $res = mysqli_query($con, $sql);
-            
-            if ($res) {   
-                if (mysqli_num_rows($res)) {
-                    echo "<table class='table table-hover'>  
-                    <thead>
+<div class="app">
+    <div class="today">
+        <div class="title">
+            <h3 class='text-center'>HOJE</h3>
+        </div>
+        <div class="appt">
+        <?php
+        $tdt = date("Y-m-d");
+        $sql = "SELECT a.*, c.clientname, d.doctorname FROM appointment a
+                JOIN loginc c ON a.clientid = c.clientid
+                JOIN logind d ON a.doctorid = d.doctorid
+                WHERE a.date = '$tdt'";
+        $res = mysqli_query($con, $sql);
+        
+        if ($res) {   
+            if (mysqli_num_rows($res)) {
+                echo "<table class='table table-hover table-adjusted'>  
+                <thead>
+                <tr>
+                    <th>DATA</th>
+                    <th>HORÁRIO</th>
+                    <th>DESCRIÇÃO</th>
+                    <th>PACIENTE</th>
+                    <th>DOUTOR</th>
+                </tr>
+                </thead>";
+                while ($row = mysqli_fetch_assoc($res)) {
+                    $formattedDate = date('d/m/Y', strtotime($row["date"]));
+                    echo "<tr>
+                        <td>" . $formattedDate . "</td>
+                        <td>" . $row["timeslot"] . "</td>
+                        <td>" . $row["description"] . "</td>
+                        <td>" . $row["clientname"] . "</td>
+                        <td>" . $row["doctorname"] . "</td>
+                    </tr>";
+                }
+                echo "</table>";
+            } else {
+                echo "<div class='text-center no-appointments'>Sem consultas para hoje</div>";
+            }
+        }
+        ?>
+        </div>
+    </div>
+    <br><br>
+    <div class="future">
+        <div class="title">
+            <h3 class='text-center'>FUTURO</h3>
+        </div>
+        <div class="appt">
+        <?php
+        $sql = "SELECT a.*, c.clientname, d.doctorname FROM appointment a
+                JOIN loginc c ON a.clientid = c.clientid
+                JOIN logind d ON a.doctorid = d.doctorid
+                WHERE a.date > '$tdt'";
+        $res = mysqli_query($con, $sql);
+
+        if ($res) {
+            if (mysqli_num_rows($res)) {
+                echo "<table class='table table-hover table-adjusted'>
+                        <thead>
+                            <tr>
+                                <th>DATA</th>
+                                <th>HORÁRIO</th>
+                                <th>DESCRIÇÃO</th>
+                                <th>PACIENTE</th>
+                                <th>DOUTOR</th>
+                            </tr>
+                        </thead>";
+                while ($row = mysqli_fetch_assoc($res)) {
+                    $formattedDate = date('d/m/Y', strtotime($row["date"]));
+                    echo "<tr>
+                            <td>" . $formattedDate . "</td>
+                            <td>" . $row["timeslot"] . "</td>
+                            <td>" . $row["description"] . "</td>
+                            <td>" . $row["clientname"] . "</td>
+                            <td>" . $row["doctorname"] . "</td>
+                          </tr>";
+                }
+                echo "</table>";
+            } else {
+                echo "<div class='text-center no-appointments'>Sem consultas futuras</div>";
+            }
+        }
+        ?>
+        </div>
+    </div>
+    <br><br>
+    <div class="past">
+        <div class="title">
+            <h3 class='text-center'>PASSADO</h3>
+        </div>
+        <div class="appt">
+        <?php
+        $sql = "SELECT a.*, c.clientname, d.doctorname FROM appointment a
+                JOIN loginc c ON a.clientid = c.clientid
+                JOIN logind d ON a.doctorid = d.doctorid
+                WHERE a.date < '$tdt'";
+        $res = mysqli_query($con, $sql);
+        
+        if ($res) {   
+            if (mysqli_num_rows($res)) {
+                echo "<table class='table table-hover table-adjusted'>  
+                <thead>
                     <tr>
                         <th>DATA</th>
                         <th>HORÁRIO</th>
@@ -65,110 +178,23 @@ if($result) {
                         <th>PACIENTE</th>
                         <th>DOUTOR</th>
                     </tr>
-                    </thead>";
-                    while ($row = mysqli_fetch_assoc($res)) {
-                        $formattedDate = date('d/m/Y', strtotime($row["date"]));
-                        echo "<tr>
-                            <td>" . $formattedDate . "</td>
-                            <td>" . $row["timeslot"] . "</td>
-                            <td>" . $row["description"] . "</td>
-                            <td>" . $row["clientname"] . "</td>
-                            <td>" . $row["doctorname"] . "</td>
-                        </tr>";
-                    }
-                    echo "</table>";
-                } else {
-                    echo "<div class='text-center'>Sem consultas para hoje</div>";
+                </thead>";
+                while ($row = mysqli_fetch_assoc($res)) {
+                    $formattedDate = date('d/m/Y', strtotime($row["date"]));
+                    echo "<tr>
+                        <td>" . $formattedDate . "</td>
+                        <td>" . $row["timeslot"] . "</td>
+                        <td>" . $row["description"] . "</td>
+                        <td>" . $row["clientname"] . "</td>
+                        <td>" . $row["doctorname"] . "</td>
+                    </tr>";
                 }
+                echo "</table>";
+            } else {
+                echo "<div class='text-center no-appointments'>Sem atendimentos passados</div>";
             }
-            ?>
-            </div>
-        </div>
-
-        <div class="future">
-            <div class="title table-title">
-                <h3 class='text-center'>FUTURO</h3>
-            </div>
-            <div class="appt">
-            <?php
-            $sql = "SELECT a.*, c.clientname, d.doctorname FROM appointment a
-                    JOIN loginc c ON a.clientid = c.clientid
-                    JOIN logind d ON a.doctorid = d.doctorid
-                    WHERE a.date > '$tdt'";
-            $res = mysqli_query($con, $sql);
-
-            if ($res) {
-                if (mysqli_num_rows($res)) {
-                    echo "<table class='table table-hover'>
-                            <thead>
-                                <tr>
-                                    <th>DATA</th>
-                                    <th>HORÁRIO</th>
-                                    <th>DESCRIÇÃO</th>
-                                    <th>PACIENTE</th>
-                                    <th>DOUTOR</th>
-                                </tr>
-                            </thead>";
-                    while ($row = mysqli_fetch_assoc($res)) {
-                        $formattedDate = date('d/m/Y', strtotime($row["date"]));
-                        echo "<tr>
-                                <td>" . $formattedDate . "</td>
-                                <td>" . $row["timeslot"] . "</td>
-                                <td>" . $row["description"] . "</td>
-                                <td>" . $row["clientname"] . "</td>
-                                <td>" . $row["doctorname"] . "</td>
-                              </tr>";
-                    }
-                    echo "</table>";
-                } else {
-                    echo "<div class='text-center'>Sem consultas futuras</div>";
-                }
-            }
-            ?>
-            </div>
-        </div>
-
-        <div class="past">
-            <div class="title table-title">
-                <h3 class='text-center'>PASSADO</h3>
-            </div>
-            <div class="appt">
-            <?php
-            $sql = "SELECT a.*, c.clientname, d.doctorname FROM appointment a
-                    JOIN loginc c ON a.clientid = c.clientid
-                    JOIN logind d ON a.doctorid = d.doctorid
-                    WHERE a.date < '$tdt'";
-            $res = mysqli_query($con, $sql);
-            
-            if ($res) {   
-                if (mysqli_num_rows($res)) {
-                    echo "<table class='table table-hover'>  
-                    <thead>
-                        <tr>
-                            <th>DATA</th>
-                            <th>HORÁRIO</th>
-                            <th>DESCRIÇÃO</th>
-                            <th>PACIENTE</th>
-                            <th>DOUTOR</th>
-                        </tr>
-                    </thead>";
-                    while ($row = mysqli_fetch_assoc($res)) {
-                        $formattedDate = date('d/m/Y', strtotime($row["date"]));
-                        echo "<tr>
-                            <td>" . $formattedDate . "</td>
-                            <td>" . $row["timeslot"] . "</td>
-                            <td>" . $row["description"] . "</td>
-                            <td>" . $row["clientname"] . "</td>
-                            <td>" . $row["doctorname"] . "</td>
-                        </tr>";
-                    }
-                    echo "</table>";
-                } else {
-                    echo "<div class='text-center'>Sem atendimentos passados</div>";
-                }
-            }
-            ?>
-            </div>
+        }
+        ?>
         </div>
     </div>
 </div>

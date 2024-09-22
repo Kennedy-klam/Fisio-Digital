@@ -39,13 +39,9 @@ include('../conexões/protect.php');
                     <i class="uil uil-estate"></i>
                     <span class="link-name">Tela Inicial</span>
                 </a></li>
-                <li><a href="perfil/perfil.php">
+                <li><a href="registro/registro.php">
                     <i class="uil uil-user"></i>
-                    <span class="link-name">Editar Perfil</span>
-                </a></li>
-                <li><a href="https://wa.me/5561998149548">
-                    <i class="uil uil-comments"></i>
-                    <span class="link-name">Chat</span>
+                    <span class="link-name">Registrar Paciente</span>
                 </a></li>
                 <li><a href="nova-consulta/book1.php">
                     <i class="uil uil-calender"></i>
@@ -54,6 +50,10 @@ include('../conexões/protect.php');
                 <li><a href="consultas-marcadas/viewappointment.php">
                     <i class="uil uil-schedule"></i>
                     <span class="link-name">Consultas Marcadas</span>
+                </a></li>
+                <li><a href="https://wa.me/5561998149548">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">Chat</span>
                 </a></li>
             </ul>
             
