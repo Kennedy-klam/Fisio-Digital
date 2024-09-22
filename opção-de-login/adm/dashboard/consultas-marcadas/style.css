@@ -1,0 +1,57 @@
+/* Definir uma largura fixa para as colunas de descrição */
+.table-adjusted td:nth-child(3), 
+.table-adjusted th:nth-child(3) {
+    width: 30%; /* Ajuste conforme necessário */
+    word-wrap: break-word; /* Garante que o texto será quebrado se for longo demais */
+}
+
+/* Ajuste para espaçamento e margens */
+.table-adjusted th, .table-adjusted td {
+    padding: 10px 15px; /* Adiciona um espaçamento uniforme nos tópicos */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Tabelas */
+table {
+    width: 95%; /* Mantém a largura de 95% para as margens laterais */
+    border-collapse: collapse;
+    margin: 0 auto; /* Centraliza a tabela */
+}
+
+th, td {
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #113838;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #585858;
+}
+
+/* Títulos das sessões */
+.table-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+/* Ajustar o espaçamento das seções de consultas */
+.appt {
+    margin: 10px 0;
+}
+
+/* Ajustes globais de container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px; /* Adiciona uma leve margem lateral */
+}
