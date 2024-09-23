@@ -1,207 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-Br">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/TAF/style.css">
     <title>TAF</title>
 </head>
 <body>
     <div class="container">
-        <section class="image-section">
-            <img src="/TAF/imagens/fisio1.png" alt="imagem Esquerda" class="left-image"><!-- imagem 1-->
-            <section class="central-section">
-                <h1>TIMED UP AND GO TEST(TUGT)</h1>
-                <p class="large-text">
-                    Instruções: <br>
-                    o paciente ou indivíduo que irá participar do teste de início deve estar sentado em uma cadeira sem braços com as costas reforçadas, usando seus calçados de uso habitual (seu dispositivo auxiliar de marcha caso utilize), Após o comando “VÀ ou VAI”, ele deve se levantar da cadeira e andar em um percurso linear de 3 metros, com passos seguros (pode se acrescentar uma linha ou um objeto como, por exemplo, um cone) para que o idoso o contorne e em seguida retorne em direção à cadeira sentar e novamente, o tempo deste percurso será cronometrado a partir do comando verbal de “vá” e avaliado em seguida quando o paciente retornar à sua posição de início.
-                </p><br>
-                <div class="container">
-                    <p><strong>TEMPO GASTO NA TAREFA:</strong></p>
-                    <input type="text" name="texto" id="texto" placeholder="digite aqui"> <strong> SEGUNDOS</strong>
-                </div> <br>
-                <table class="tabela">
-                    <thead>
-                        <tr>
-                            <th>tempo</th>
-                            <th>Descrição</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Até 10''</td>
-                            <td>desempenho normal para adultos saudáveis. <br> baixo risco </td>
-                        </tr>
-                        <tr>
-                            <td>10,01''-20''</td>
-                            <td>Normal para idosos fréageis ou com deficiência, mas que são independentes para a maioria das atividades de vida diária (AVD`s). <br>baixo risco de queda.</td>
-                        </tr>
-                        <tr>
-                            <td>21''-29''</td>
-                            <td> Avaliação funcional obrigátoria. Abordagem específica para prevenção de queda.<br>riscos de queda moderado</td>
-                        </tr>
-                        <tr>
-                            <td>= 30,00''</td>
-                            <td>30 segundos ou mais, alto risco para quedas</td>
-                        </tr>
-                    </tbody>
-                </table><br>
-                <h1>TAF - teste de alcance Funcional</h1>
-                <p class="large-text">
-                    Procedimentos: <br><!-- texto sobre os procedimentos-->
-                    O paciente em posição ortostática, membros inferiores levemente abduzidos, descalço, coluna a mais ereta possível, olhar para o horizonte, braços em extensão a 90 graus e hemicorpo direito próximo à parede, A partir dessa posição, solicitava-se ao avaliado esticar-se o máximo possível para frente. A excursão do braço desde o início até o final é medida por uma fita métrica fixada na parede no sentido horizontal ao lado do paciente, na altura do acrônimo. Para a aferição, a extremidade do terceiro metacarpo pode ser utilizada como marcação de partida até o alcance máximo. 
-                </p> <br>
-                <p>Valores normativos do TAF:</p><!--tabela de valores normativos -->
-                <table class="tabela">
-                    <tbody>
-                        <tr>
-                            <td><strong>Faixa etária de 20 a 40anos:</strong> <br> homens (cm) / mulheres (cm).<br> 42,41 / 37,08</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Faixa etária de 41 a 68 anos: </strong><br> homens (cm) / mulheres (cm).<br> 37,84 / 35,05</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Faixa etária de 70 a 87 anos:</strong> <br> homens (cm) / mulheres (cm). <br> 33,52 / 29,03 </td>
-                        </tr>
-                    </tbody>
-                </table><br>
-
-                <h1>Teste de caminhada de 6 minutos</h1>
-                <table class="tabela">
-                    <tbody>
-                        <tr>
-                            <th></th>
-                            <th> <strong>0 minutos</strong></th>
-                            <th><strong>3 minutos</strong></th>
-                            <th><strong>6 minutos</strong></th>
-                        </tr>
-                        <tr>
-                            <td><strong>PA</strong></td>
-                            <td><input type="text" name="PA-0"></td>
-                            <td><input type="text" name="PA-3"></td>
-                            <td><input type="text" name="PA-6"></td>
-                        </tr>
-                        <tr>
-                            <td><strong>FC</strong></td>
-                            <td><input type="text" name="FC-0"></td>
-                            <td><input type="text" name="FC-3"></td>
-                            <td><input type="text" name="FC-6"></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Sat o2</strong></td>
-                            <td><input type="text" name="sat-0"></td>
-                            <td><input type="text" name="sat-3"></td>
-                            <td><input type="text" name="sat-6"></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Fr</strong></td>
-                            <td><input type="text" name="Fr-0"></td>
-                            <td><input type="text" name="Fr-3"></td>
-                            <td><input type="text" name="Fr-6"></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Borg</strong></td>
-                            <td><input type="text" name="Borg-0"></td>
-                            <td><input type="text" name="Borg-3"></td>
-                            <td><input type="text" name="Borg-6"></td>
-                        </tr>
-                    </tbody>
-                </table><br><br>
-                <div class="container">
-                    <p><strong>Distância percorrida:</strong></p>
-                    <input type="text" id="texto" placeholder="digite aqui">   
-                </div><br>
-                <div class="container">
-                    <p><strong>Distância predita:</strong></p>
-                    <input type="text" id="texto" placeholder="digite aqui"><br>
-                </div><br>
-                <table class="tabela">
-                    <tbody>
-                        <tr>
-                            <td><strong>Sexo masculino:</strong><br>(7,57 x Altura em cm) - (5,02 x idade) - (1,76 x peso em kg) - 309.
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Sexo feminino:</strong><br>(2,11 x altura em cm) - (5,78 x idade) - (2,29 x peso em kg) + 667.
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p>Fórmula de acordo com Enright e Sherril(1998)</p><br><br>
-                <h1>TESTE DE SENTAR E LEVANTAR (30 segundos)</h1>
-                <p class="large-text">
-                    O teste inicia com o idoso sentado em uma cadeira, com as costas encostadas e os pés afastados à largura dos ombros e totalmente apoiados no solo. Os membros superiores devem estar cruzados ao nível dos punhos e contra o peito.
-                </p><br>
-                <div class="container">
-                    <table class="tabela">
-                        <tbody>
-                            <thead>
-                                <tr>
-                                    <th><strong>SENTAR:</strong></th>
-                                </tr>
-                            </thead>
-                            
-                            <tr>
-                                <td>5 - sem apoios</td>
-                            </tr>
-                            <tr>
-                                <td>4 - com 1 apoio</td>
-                            </tr>
-                            <tr>
-                                <td>3 - com 2 apoios</td>
-                            </tr>
-                            <tr>
-                                <td>2 - com 3 apoios</td>
-                            </tr>
-                            <tr>
-                                <td>1 - com 4 apoios </td>
-                            </tr>
-                            <tr>
-                                <td>0 - com mais de 4 apoios</td>
-                            </tr>
-                            <tr>
-                                <td><strong>havendo desequilíbrio:</strong><br><br> subtrai-se 0,5 ponto -4,5;3,5;2,5;1,5;0,5.
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="tabela">
-                        <thead>
-                            <tr>
-                                <th><strong>LEVANTAR:</strong></th>
-                            </tr>
-                            <tr>
-                                <td>5 - sem apoios</td>
-                            </tr>
-                            <tr>
-                                <td>4 - com 1 apoio</td>
-                            </tr>
-                            <tr>
-                                <td>3 - com 2 apoios</td>
-                            </tr>
-                            <tr>
-                                <td>2 - com 3 apoios</td>
-                            </tr>
-                            <tr>
-                                <td>1 - com 4 apoios</td>
-                            </tr>
-                            <tr>
-                                <td>0 - com mais de 4 apoios ou com ajuda externa</td>
-                            </tr>
-                            <tr>
-                                <td><strong>havendo desequilíbrio:</strong><br><br> subtrai-se 0,5 ponto -4,5;3,5;2,5;1,5;0,5.
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-                </div><br>        
-            </section>
-            <img src="/TAF/imagens/fisio2.png" alt="imagem Direita" class="right-image"><!-- imagem 2-->
-        </section>
-        
+        <h1>Timed Up and Go test (TUG)</h1>
+        <div class="instrucoes">
+            <p><strong>Intruçoes:</strong>o paciente ou indivíduo que irá participar do teste de início deve estar sentado em uma cadeira sem braços com as costas reforçadas, usando seus calçados de uso habitual (seu dispositivo auxiliar de marcha caso utilize), Após o comando “VÀ ou VAI”, ele deve se levantar da cadeira e andar em um percurso linear de 3 metros, com passos seguros (pode se acrescentar uma linha ou um objeto como, por exemplo, um cone) para que o idoso o contorne e em seguida retorne em direção à cadeira sentar e novamente, o tempo deste percurso será cronometrado a partir do comando verbal de “vá” e avaliado em seguida quando o paciente retornar à sua posição de início.
+            </p>
+        </div>
+        <div class="timer">
+            <img src="" alt="">
+            <label id="tempo">00:00</label>
+            <button onclick="startTimer()">INICIAR</button>
+            <button onclick="stopTimer()">FINALIZAR</button>
+        </div>
+        <div class="resultado">
+            <p><strong>Resultado:</strong>Normal para idosos frágeis ou com deficiência mas que são independentes para a maioria das atividades de vida diária (AVD’s). Baixo risco de queda.</p>
+        </div>
     </div>
+    <script src="/TAF/script.js"></script>
 </body>
 </html>
-
-
-
