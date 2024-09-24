@@ -1,8 +1,11 @@
 body {
+  font-size: 15pt;
+  color: #113838;
   font-family: Arial, sans-serif;
-  margin: 20px;
+  margin: 30px;
   padding: 0;
   background: #f4f4f4;
+  
 }
 
 .container {
@@ -10,10 +13,13 @@ body {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+  
+  }
+
 
 h1 {
-  color: #333;
+  color: #113838;
+
 }
 
 .instrucoes, .resultado {
@@ -31,18 +37,48 @@ h1 {
 button {
   padding: 10px 20px;
   border: none;
-  background-color: #2a8686;
-  color: white;
+  background-color: #DEF7E5;
+  color: #113838;
   border-radius: 5px;
   cursor: pointer;
+  
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color:  #DEF7E5 ;
 }
-
-label {
-  font-size: 2em;
-  min-width: 80px;
+table{
+  border-collapse: collapse;
+  width: 70%;
+}
+th, td{
   text-align: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+tr:nth-child(even){
+  background-color:white;
+  
+}
+th{
+  background-color: #DEF7E5;
+  ;
+  color: black;
+}
+input[type="number"]{ /*estilização dos inputs dentro da tabela*/
+  width:100%;
+  height: 40px;
+  border: none;
+  box-sizing: 0;
+  font-size: 30px;
+  color: #113838;
+}
+input[type="text"]{
+  width: 10%;
+  height: 45px;
+  border: 20%;
+  box-sizing: 0;
+  font-size: 30px;
+  color: #113838;
+  
 }

@@ -10,19 +10,94 @@
     <div class="container">
         <h1>Timed Up and Go test (TUG)</h1>
         <div class="instrucoes">
-            <p><strong>Intruçoes:</strong>o paciente ou indivíduo que irá participar do teste de início deve estar sentado em uma cadeira sem braços com as costas reforçadas, usando seus calçados de uso habitual (seu dispositivo auxiliar de marcha caso utilize), Após o comando “VÀ ou VAI”, ele deve se levantar da cadeira e andar em um percurso linear de 3 metros, com passos seguros (pode se acrescentar uma linha ou um objeto como, por exemplo, um cone) para que o idoso o contorne e em seguida retorne em direção à cadeira sentar e novamente, o tempo deste percurso será cronometrado a partir do comando verbal de “vá” e avaliado em seguida quando o paciente retornar à sua posição de início.
+            <p><strong>Intruções:</strong> O paciente ou indivíduo que irá participar do teste de início deve estar sentado em uma cadeira sem braços com as costas reforçadas, usando seus calçados de uso habitual (seu dispositivo auxiliar de marcha caso utilize), Após o comando “VÀ ou VAI”, ele deve se levantar da cadeira e andar em um percurso linear de 3 metros, com passos seguros (pode se acrescentar uma linha ou um objeto como, por exemplo, um cone) para que o idoso o contorne e em seguida retorne em direção à cadeira sentar e novamente, o tempo deste percurso será cronometrado a partir do comando verbal de “vá” e avaliado em seguida quando o paciente retornar à sua posição de início.
             </p>
         </div>
+        <h1>CRONÔMETRO:</h1>
         <div class="timer">
-            <img src="" alt="">
             <label id="tempo">00:00</label>
-            <button onclick="startTimer()">INICIAR</button>
-            <button onclick="stopTimer()">FINALIZAR</button>
+            <button onclick="comecar()">INICIAR</button>
+            <button onclick="parar()">FINALIZAR</button>
         </div>
         <div class="resultado">
-            <p><strong>Resultado:</strong>Normal para idosos frágeis ou com deficiência mas que são independentes para a maioria das atividades de vida diária (AVD’s). Baixo risco de queda.</p>
+            <p><strong>Resultado:</strong> Normal para idosos frágeis ou com deficiência mas que são independentes para a maioria das atividades de vida diária (AVD’s). Baixo risco de queda.</p>
+        </div><br>
+        <h1>TAF(teste de alcance funcional)</h1>
+        <div class="TAF">
+            <p><strong>Procedimentos:</strong>O paciente em posição ortostática, membros inferiores levemente abduzidos, descalço, coluna a mais ereta possível, olhar para o horizonte, braços em extensão a 90° e hemicorpo direito próximo à parede. A partir dessa posição, solicitava-se ao avaliado esticar-se o máximo possível para frente. A excursão do braço desde o inicio até o final é medida por uma fita métrica fixada na parede no sentido horizontal ao lado do paciente, na altura do acrômio. Para a aferição, a extremidade do terceiro metacarpo pode ser utilizada como marcação de partida até o alcance máximo. </p>
         </div>
-    </div>
+        <h1>Valores normativos do TAF</h1><br>
+        <table>
+            <tr>
+              <th>Faixa Etária</th>
+              <th>Homens (cm)</th>
+              <th>Mulheres (cm)</th>
+            </tr>
+            <tr>
+              <td>20 - 40 anos</td>
+              <td>42,41</td>
+              <td>37,08</td>
+            </tr>
+            <tr>
+              <td>41 - 69 anos</td>
+              <td>37,84</td>
+              <td>35,05</td>
+            </tr>
+            <tr>
+              <td>70 - 87 anos</td>
+              <td>33,52</td>
+              <td>26,63</td>
+            </tr>
+          </table>
+          <h1>Teste de caminhada de 6 minutos</h1>
+          <div class="tabela">
+            <table class="tabela">
+                <tr>
+                    <th></th>
+                    <th>0 minutos</th>
+                    <th>3 minutos</th>
+                    <th>6 minutos</th>
+                </tr>
+                <tr>
+                    <td>PA</td>
+                    <td><input type="number" name="PA-0"></td>
+                    <td><input type="number" name="PA-03"></td>
+                    <td><input type="number" name="PA-06"></td>
+                </tr>
+                <tr>
+                    <td>FC</td>
+                    <td><input type="number" name="FC-0"></td>
+                    <td><input type="number" name="FC-03"></td>
+                    <td><input type="number" name="FC-06"></td>
+                </tr>
+                <tr>
+                    <td>Sat o2</td>
+                    <td><input type="number" name="Sat-0"></td>
+                    <td><input type="number" name="Sat-03"></td>
+                    <td><input type="number" name="Sat-06"></td>
+                </tr>
+                <tr>
+                    <td>Fr</td>
+                    <td><input type="number" name="Fr-0"></td>
+                    <td><input type="number" name="Fr"></td>
+                    <td><input type="number" name="Fr-06"></td>
+                </tr>
+                <tr>
+                    <td>Borg</td>
+                    <td><input type="number" name="Borg-0"></td>
+                    <td><input type="number" name="Borg-03"></td>
+                    <td><input type="number" name="Borg-06"></td>
+                </tr>
+              </table><br>
+          </div>
+          <div>
+            <label for="distanciaPercorrida">Distância percorrida:</label>
+            <input type="text" id="distanciaPercorrida" name="distanciaPercorrida"><br><br>
+            <label for="distanciaPrevista">Distância prevista:</label>
+            <input type="text" id="distanciaPrevista" name="distanciaPrevista"> 
+          </div> 
+               
+        </div>
     <script src="/TAF/script.js"></script>
 </body>
 </html>
