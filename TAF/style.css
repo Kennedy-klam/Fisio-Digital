@@ -82,3 +82,101 @@ input[type="text"]{
   color: #113838;
   
 }
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+
+}
+/* Agrupamento das colunas */
+.column-group {
+  display: flex;
+  gap: 20px;
+  background-color: #DEF7E5;
+}
+
+/* Colunas flexíveis */
+.column {
+  flex: 1;
+}
+
+/* Estilo para Fieldset */
+.section {
+  padding: 15px;
+  margin-bottom: 20px;
+
+}
+
+/* Organização em linha */
+.horizontal-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.horizontal-group div {
+  flex: 1;
+}
+
+/* Caixa de notas */
+.notes {
+  display: flex;
+  justify-content: flex-start; /* Alinha a nota à esquerda */
+  align-items: center;
+}
+
+.notes label {
+  margin-right: 10px;
+}
+
+.notes-input {
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid #000;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: auto;
+}
+
+/* Checkbox e radio */
+input{
+  margin-right: 8px;
+}
+
+a{
+  color: #b3dca8;
+  text-decoration: none;
+}
+input[type="checkbox" ],input[type="radio"] {
+  appearance: none; /* Remove o estilo padrão do checkbox */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+  border-radius: 50%; /* Faz o checkbox ficar redondo */
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Estilo para o estado marcado do checkbox */
+input[type="checkbox" ]:checked,input[type="radio"]:checked {
+  background-color: #DEF7E5;
+  border: 2px solid #113838;
+}
+
+input[type="checkbox"]:checked::after,input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 10px;
+  height: 10px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+}
