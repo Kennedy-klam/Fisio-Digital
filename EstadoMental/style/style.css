@@ -1,0 +1,116 @@
+/* Estilos gerais */
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+
+.container {
+    margin: 20px auto;
+    background-color: #e9f7d9;
+    border-radius: 10px;
+    border: 1px solid #dbf1e2;
+    padding: 20px;
+}
+
+
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+
+}
+/* Agrupamento das colunas */
+.column-group {
+    display: flex;
+    gap: 20px;
+}
+
+/* Colunas flexíveis */
+.column {
+    flex: 1;
+}
+
+/* Estilo para Fieldset */
+.section {
+    padding: 15px;
+    margin-bottom: 20px;
+
+}
+
+/* Organização em linha */
+.horizontal-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.horizontal-group div {
+    flex: 1;
+}
+
+/* Caixa de notas */
+.notes {
+    display: flex;
+    justify-content: flex-end; /* Alinha a nota à direita */
+    align-items: center;
+    margin-left: auto; /* Garante que as notas fiquem no extremo direito */
+}
+
+.notes label {
+    margin-right: 10px;
+}
+
+.notes-input {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #000;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: auto;
+}
+
+/* Checkbox e radio */
+input{
+    margin-right: 8px;
+}
+
+a{
+    color: #b3dca8;
+    text-decoration: none;
+}
+input[type="checkbox" ],input[type="radio"] {
+    appearance: none; /* Remove o estilo padrão do checkbox */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 50%; /* Faz o checkbox ficar redondo */
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Estilo para o estado marcado do checkbox */
+input[type="checkbox" ]:checked,input[type="radio"]:checked {
+    background-color: #4CAF50;
+    border: 2px solid #4CAF50;
+}
+
+input[type="checkbox"]:checked::after,input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+}
