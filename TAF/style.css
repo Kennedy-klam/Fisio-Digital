@@ -5,43 +5,47 @@ body {
   margin: 30px;
   padding: 0;
   background: #f4f4f4;
-  
-}
 
+}
 .container {
   background: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  align-items: end;
   
   }
 
-
 h1 {
   color: #113838;
-
 }
 
 .instrucoes, .resultado {
   margin-bottom: 20px;
 }
-
 .timer {
   display: flex;
   align-items: center;
-  gap: 10px;
-
-  
+  gap: 10px; 
+}
+.tempo{
+  font-size: 50pt;
 }
 
 button {
-  padding: 10px 20px;
+  padding: 15px 35px;
   border: none;
   background-color: #DEF7E5;
   color: #113838;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16pt;
+}
+.iniciar, .terminar{/* botões do timer*/
   
+}
+.finalizar{/*botão finalizar*/
+  position: sticky;
 }
 
 button:hover {
@@ -179,4 +183,14 @@ input[type="checkbox"]:checked::after,input[type="radio"]:checked::after {
   height: 10px;
   background-color: #4CAF50;
   border-radius: 50%;
+}
+.diagnostico, .objetivo {
+  width: 765px;
+  height: 209px;
+  top: 1703px;
+  left: 2761px;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 18pt;
+  resize: none;
 }

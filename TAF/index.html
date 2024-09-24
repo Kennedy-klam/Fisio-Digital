@@ -15,9 +15,9 @@
         </div>
         <h1>CRONÔMETRO:</h1>
         <div class="timer">
-            <label id="tempo">00:00</label>
-            <button onclick="comecar()">INICIAR</button>
-            <button onclick="parar()">FINALIZAR</button>
+            <label id="tempo" class="tempo">00:00</label>
+            <button class="iniciar" onclick="comecar()">INICIAR</button>
+            <button class="terminar" onclick="parar()">FINALIZAR</button>
         </div>
         <div class="resultado">
             <p><strong>Resultado:</strong> Normal para idosos frágeis ou com deficiência mas que são independentes para a maioria das atividades de vida diária (AVD’s). Baixo risco de queda.</p>
@@ -138,8 +138,16 @@
             </div>
         </div>
         </div>
-            
-            
+        <!--campos de diagnóstico e objetivos-->
+        <div>
+            <h2>diagnóstico fisioterápeutico:</h2>
+            <textarea class="diagnostico" id="diagnostico" placeholder="Digite aqui:" ></textarea>
+        </div>
+        <div>
+            <h2>objetivo:</h2>
+            <textarea class="objetivo" id="objetivo" placeholder="Digite aqui:"></textarea>     
+        </div><br>
+        <button class="finalizar">Finalizar Teste</button>
         </div>
     <script src="/TAF/script.js"></script>
 </body>
