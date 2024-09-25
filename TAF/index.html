@@ -97,47 +97,31 @@
             <label for="distanciaPrevista">Distância prevista:</label>
             <input type="text" id="distanciaPrevista" name="distanciaPrevista"> 
         </div>
-        <!-- TESTE SENTAR E LEVANTAR-->
-        <br><div class="section-title">TESTE SENTAR E LEVANTAR (30 segundos)
-            <p>O teste inicia com o idoso sentado em uma cadeira, com as costas encostadas e os pés afastados à largura dos ombros e totalmente apoiados no solo. Os membros superiores devem estar cruzados ao nível dos punhos e contra o peito.</p>
-        <div class="column-group">
-            <!--primeira coluna-->
-            <div class="column">
-                <div class="section">
-                    <legend><strong>SENTAR:</strong></legend>
-                    <div>
-                        <label for="apoios-sentar">Apoios:</label>
-                        <select id="apoios-sentar">
-                            <option value="sim">Sim</option>
-                            <option value="nao">Não</option>
-                        </select>
-                    </div><br>
-                    <label><input type="checkbox">Houve desequilíbrio</label><br><br>
-                    <div class="notes">
-                        Nota:
-                        <input type="text" class="notes-input">
-                    </div>
-                </div>
+        <div class="teste-sentar-levantar">
+            <h2>TESTE SENTAR E LEVANTAR (30 segundos):</h2>
+            <p>O teste inicia com o idoso sentado em uma cadeira, com as costas encostadas e os pés afastados à largura dos ombros e totalmente apoiados no solo. Os membros superiores devem estar cruzados ao nível dos punhos e contra o peito.</p>   
+            <div>
+              <label for=""><strong>SENTAR:</strong></label>
+              <label for="apoios-sentar">APOIOS</label>
+              <select id="apoios-sentar">
+                <option value="sim">Sim</option>
+                 <option value="nao">Não</option>
+              </select>
+              <label for=""><strong>LEVANTAR:</strong></label>
+              <label for="">APOIOS</label>
+              <select>
+                <option value="sim">Sim</option>
+                <option value="nao">não</option>
+              </select>
             </div>
-            <div class="column">
-                <div class="section">
-                    <legend><strong>LEVANTAR:</strong></legend>
-                </div>
-                <div>
-                    <label for="apoios-levantar">Apoios:</label>
-                    <select id="apoios-levantar">
-                        <option value="sim">Sim</option>
-                        <option value="nao">Não</option>
-                    </select>
-                </div>
-                <label><input type="checkbox">Houve desequilíbrio</label><br><br>
-                <div class="notes">
-                    Nota:
-                    <input type="text" class="notes-input">
-                </div>
+            <div>
+              <label><input type="radio" name="desequilibrio"> Houve desequilíbrio</label>
+              <label><input type="radio" name="desequilibrio"> Houve desequilíbrio</label>
             </div>
-        </div>
-        </div>
+            <label>Nota:</label>
+            <input type="text">
+          </div>
+          
         <!--campos de diagnóstico e objetivos-->
         <div>
             <h2>diagnóstico fisioterápeutico:</h2>
