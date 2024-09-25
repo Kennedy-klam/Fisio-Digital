@@ -12,7 +12,7 @@ include('../conexões/protect.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!----======== CSS ======== -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
      
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -39,7 +39,7 @@ include('../conexões/protect.php');
                     <i class="uil uil-estate"></i>
                     <span class="link-name">Tela Inicial</span>
                 </a></li>
-                <li><a href="registro/registro.php">
+                <li><a href="registro/registro.html">
                     <i class="uil uil-user"></i>
                     <span class="link-name">Registrar Paciente</span>
                 </a></li>
@@ -87,7 +87,7 @@ include('../conexões/protect.php');
                 </div>
 
                 <div class="boxes">
-                    <a href="registro/registro.php" class="box box1">
+                    <a href="registro/registro.html" class="box box1">
                         <i class="fas fa-thumbs-up"></i>
                         <span class="text">Registrar Paciente</span>
                     </a>

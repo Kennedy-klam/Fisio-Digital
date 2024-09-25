@@ -1,0 +1,146 @@
+/* Definir estilo global */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #113838;
+    margin: 0;
+    padding: 0;
+    height: 130vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container geral da página */
+.container {
+    width: 100%;
+    max-width: 90%;
+    background-color: #e9f5ee;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabeçalho */
+.container h1 {
+    text-align: center;
+    color: #2e6f50;
+    margin-bottom: 20px;
+}
+
+/* Organizar os campos em grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form-grid.full-width {
+    grid-template-columns: 1fr;
+}
+
+/* Organizar as linhas individualmente */
+.full-width {
+    grid-column: span 3;
+}
+
+/* Labels e inputs */
+.textfield label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #2e6f50;
+    margin-bottom: 5px;
+}
+
+.textfield input, .textfield select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Área de Saída do Paciente e Desistência */
+.saida-paciente,
+.desistencia {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinhando ao topo */
+    align-items: flex-start; /* Alinhando à esquerda */
+}
+
+.saida-paciente {
+    margin-left: 250px; /* Ajuste para mover a saída para a esquerda */
+}
+
+.desistencia {
+    margin-right: 20px; /* Ajuste para mover a desistência */
+}
+
+/* Estilo para as seções */
+.desistencia h3, .saida-paciente h3 {
+    color: #2e6f50;
+    margin-bottom: 10px;
+}
+
+/* Estilo para os checkboxes */
+.desistencia label, .saida-paciente label {
+    margin-bottom: 10px;
+}
+
+/* Botões */
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Botão de envio */
+.btn-submit, .btn-back {
+    padding: 15px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: white;
+    background-color: #2e6f50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-submit:hover, .btn-back:hover {
+    background-color: #24603d;
+}
+
+/* Estilo personalizado para input de arquivo */
+input[type="file"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #e9f5ee;
+    color: #2e6f50;
+    cursor: pointer;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .saida-paciente, .desistencia {
+        width: 100%;
+        align-items: center;
+    }
+
+    .saida-paciente, .desistencia {
+        margin: 0; /* Remover margens em telas menores */
+    }
+}
