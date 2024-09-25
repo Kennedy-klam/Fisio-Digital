@@ -6,163 +6,173 @@
 
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    overflow-y: auto;
     padding: 20px;
+    color: #000;
+}
+
+h1 {
+    text-align: center;
+    color: #2F4F4F;
 }
 
 .container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.data-estagiario {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 1440px;
-    padding: 20px;
-    background-color: #113838;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.center {
-    width: 100%;
-    max-width: 1440px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Alinhamento centralizado */
-}
-
-.form-title {
-    text-align: center;
-    color: white;
+    justify-content: space-between;
     margin-bottom: 20px;
-    font-size: 24px;
 }
 
-.section-title {
-    color: white;
-    margin-top: 20px;
-    font-size: 20px;
+.dados-pessoais {
+    background-color: #DEF7E5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.dados-pessoais h2 {
+    margin-bottom: 10px;
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.campo input, 
+.campo textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.informacoes-adicionais {
+    display: flex;
+    justify-content: space-between;
+}
+
+.coluna-esq, .coluna-dir, .coluna-central {
+    width: 30%;
+}
+
+textarea {
+    resize: none;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+.queixa {
+     
+    border: 2px solid#686868; 
+    height: 150px; /* Altura maior para o campo */
+    width: 100%; /* Preencher a largura completa */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 8px; /* Cantos arredondados */
+    font-size: 16px; /* Tamanho da fonte */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    resize: vertical; /* Permitir redimensionamento apenas vertical */
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #DEF7E5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.form-container input[type=text] , [type=date] , [type=number] , [type=radio]{
+    background-color: #DEF7E5;
+    
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group input[type="radio"] {
+    margin-right: 5px;
 }
 
 table {
     width: 100%;
-    margin-top: 10px;
-    margin-bottom: 20px;
     border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 15px;
 }
 
-table td {
-    padding: 10px;
-}
-
-table input[type="text"],
-table input[type="date"],
-table input[type="tel"],
-table textarea {
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
-    color: black; /* Texto */
-    background-color: white; /* Fundo branco para os campos de input */
-}
-
-textarea {
-    height: 100px;
-    resize: none;
-}
-
-.checkbox-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.checkbox-group input {
-    margin-right: 5px;
-}
-
-.medications th,
-.medications td {
-    border: 1px solid black;
+th, td {
+    border: 1px solid #ccc;
     padding: 10px;
     text-align: left;
 }
 
-.medications th {
-    background-color: #f2f2f2;
+th {
+    font-weight: bold;
 }
 
-.medications td {
-    background-color: #e0e0e0;
+.input-style {
+    background-color: #DEF7E5;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-input[type="radio"],
-input[type="checkbox"] {
-    margin-right: 5px;
-}
-
-h2 {
-    color: white;
-}
-
-/*Em relação as imagens*/
-.left-image {
-    position: fixed;
-    left: 0;
-    top: 300px;
-    width: 220px; /* Ajustar */
-}
-
-.right-image {
-    position: fixed;
-    right: 0;
-    top: 300px;
-    width: 220px; /* Ajustar */
+.input-date {
+    background-color: #DEF7E5;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 8%;
+  
+    color: black; 
 }
 
 
-/*Tem alguns estilos que são um pouco desnecessários porque usei alguns prontos, porém tenho que ver um por um após o código do html estiver 99%*/
-.container {
-    margin: 0 auto;
-    max-width: 1440px; /* Defina a largura do container */
-    padding: 20px;
-    position: relative; /* Para evitar sobreposição de elementos */
+.input-date::-webkit-calendar-picker-indicator {
+    opacity: 0; 
 }
 
-.center {
-    text-align: center;
+.input-date:focus {
+    color: black; 
+}
+.styled-button {
+    background-color: #DEF7E5; 
+    color: #4A7C4A; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* Adiciona cor branca para o texto em toda a página */
-body, .form-title, .section-title, label, h2 {
-    color: white;
-    font-size: 19px;
-}
-
-
-/* Estilo para o textarea */
-textarea {
-    width: 80%; /* Preenche a largura do contêiner pai */
-    height: 90px; /* Altura padrão, pode ajustar conforme necessário */
-    padding: 10px; /* Espaçamento interno */
-    border: 1px solid #ccc; /* Borda com cor padrão */
-    border-radius: 4px; /* Bordas arredondadas */
-    font-size: 16px; /* Tamanho da fonte */
-    line-height: 1.5; /* Altura da linha */
-    resize: vertical; /* Permite redimensionar verticalmente apenas */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    background-color: #f9f9f9; /* Cor de fundo clara */
-    color: #333; /* Cor do texto */
-}
-
-/* Estilo para o textarea quando focado */
-textarea:focus {
-    border-color: #007bff; /* Cor da borda quando em foco */
-    outline: none; /* Remove o contorno padrão */
-    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5); /* Sombra mais pronunciada em foco */
+.styled-button:hover {
+    background-color: #D3E9D3; 
+    color: #3A6B3A;
+    position: center;
 }
