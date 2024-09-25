@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de Medicamentos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="text"], select {
+            padding: 5px;
+            margin: 5px 0;
+            width: 100%;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Inserir Dados na Tabela</h2>
+<form id="dataForm">
+    <label for="medName">Nome:</label>
+    <input type="text" id="name" name="name" required>
+    
+    <label for="medName">Nome do Medicamento:</label>
+    <input type="text" id="medName" name="medName" required>
+
+    <label for="therapeuticClass">Classe Terapêutica:</label>
+    <select id="therapeuticClass" name="therapeuticClass" required>
+        <option value="">Selecione uma classe</option>
+        <option value="Analgésico">Analgésico</option>
+        <option value="Antibiótico">Antibiótico</option>
+        <option value="Antiinflamatório">Antiinflamatório</option>
+        <option value="Antidepressivo">Antidepressivo</option>
+        <option value="Anti-hipertensivo">Anti-hipertensivo</option>
+        <option value="Antialérgico">Antialérgico</option>
+    </select>
+    
+    <button type="button" onclick="addData()">Adicionar</button>
+</form>
+
+<h2>Tabela de Medicamentos</h2>
+<table id="dataTable">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Nome do Medicamento</th>
+            <th>Classe Terapêutica</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<script>
+    function addData() {
+        // Obtendo os valores dos inputs
+        const name = document.getElementById("name").value;
+        const medName = document.getElementById("medName").value;
+        const therapeuticClass = document.getElementById("therapeuticClass").value;
+
+        // Verificando se os campos não estão vazios
+        if (name === "" || medName === "" || therapeuticClass === "") {
+            alert("Por favor, preencha todos os campos.");
+            return;
+        }
+
+        // Criando uma nova linha na tabela
+        const table = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
+        const newRow = table.insertRow();
+
+        // Inserindo as células na nova linha
+        const nameCell = newRow.insertCell(0);
+        const medNameCell = newRow.insertCell(1);
+        const therapeuticClassCell = newRow.insertCell(2);
+
+        // Adicionando o conteúdo nas células
+        nameCell.textContent = name;
+        medNameCell.textContent = medName;
+        therapeuticClassCell.textContent = therapeuticClass;
+
+        // Limpando os inputs do formulário
+        document.getElementById("dataForm").reset();
+    }
+</script>
+
+</body>
+</html>
