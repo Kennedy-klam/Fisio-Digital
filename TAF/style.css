@@ -23,6 +23,7 @@ h1  {
 .tittle{
   text-align: center;
   font-size: 17pt;
+  margin-right: 8%;
 }
 .instrucoes, .resultado {
   margin-bottom: 20px;
