@@ -1,5 +1,5 @@
 body {
-  font-size: 15pt;
+  font-size: 19pt;
   color: #113838;
   font-family: Arial, sans-serif;
   margin: 30px;
@@ -15,20 +15,27 @@ body {
   
   }
 
-h1 {
+h1  {
   color: #113838;
+  margin-left: 2%;
+  
 }
-
+.tittle{
+  text-align: center;
+  font-size: 17pt;
+}
 .instrucoes, .resultado {
   margin-bottom: 20px;
+  
 }
 .timer {
   display: flex;
   align-items: center;
-  gap: 10px; 
+  gap: 8%; 
+  font-weight: bold;
 }
 .tempo{
-  font-size: 50pt;
+  font-size: 60pt;
 }
 
 button {
@@ -41,10 +48,20 @@ button {
   font-size: 16pt;
 }
 .iniciar, .terminar{/* botões do timer*/
-  
+  padding: 30px 40px;
+}
+.image{
+  width: 117px;
+  height: 117px;
+  top: -40px;
+  left: 2770px;
 }
 .finalizar{/*botão finalizar*/
-
+  margin-left: 85%;
+  border-radius: 5px;
+  font-size: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 35px;
 }
 
 button:hover {/*interatividade nos botões*/
@@ -54,6 +71,7 @@ button:hover {/*interatividade nos botões*/
 table{
   border-collapse: collapse;
   width: 70%;
+  margin-left: 12%;
 }
 th, td{
   text-align: center;
@@ -85,60 +103,8 @@ input[type="text"]{
   color: #113838;
   
 }
-/* Agrupamento das colunas */
-.teste-sentar-levantar {
-  gap: 20px;
-  background-color: #DEF7E5;
-}
-
-/* Estilo para Fieldset */
-.section {
-  padding: 15px;
-  margin-bottom: 20px;
-
-}
-
-/* Organização em linha */
-.horizontal-group {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-}
-
-.horizontal-group div {
-  flex: 1;
-}
-
-/* Caixa de notas */
-.notes {
-  display: flex;
-  justify-content: flex-start; /* Alinha a nota à esquerda */
-  align-items: center;
-}
-
-.notes label {
-  margin-right: 10px;
-}
-
-.notes-input {
-  width: 50px;
-  height: 30px;
-  text-align: center;
-  border: 1px solid #000;
-  font-weight: bold;
-  border-radius: 5px;
-  background-color: auto;
-}
-
-/* Checkbox e radio */
-input{
+input{ /* Checkbox e radio */
   margin-right: 8px;
-}
-
-a{
-  color: #b3dca8;
-  text-decoration: none;
 }
 input[type="checkbox" ],input[type="radio"] {
   appearance: none; /* Remove o estilo padrão do checkbox */
@@ -152,24 +118,24 @@ input[type="checkbox" ],input[type="radio"] {
   cursor: pointer;
   position: relative;
 }
-
 /* Estilo para o estado marcado do checkbox */
 input[type="checkbox" ]:checked,input[type="radio"]:checked {
   background-color: #DEF7E5;
   border: 2px solid #113838;
+  
 }
-
 input[type="checkbox"]:checked::after,input[type="radio"]:checked::after {
   content: '';
   position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 10px;
-  height: 10px;
+  top: 1px;
+  left: 1px;
+  width: 16px;
+  height: 16px;
   background-color: #113838;
   border-radius: 50%;
 }
 .diagnostico, .objetivo {
+  margin-left: 12%;
   width: 765px;
   height: 209px;
   top: 1703px;
@@ -179,3 +145,41 @@ input[type="checkbox"]:checked::after,input[type="radio"]:checked::after {
   font-size: 18pt;
   resize: none;
 }
+.apoios-sentar, .apoios-levantar{
+  margin-left: 2%;
+  padding: 10px 0%;
+  border: none;
+  background-color: white;
+  color: #113838;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13pt;
+}
+.sentar, .levantar{
+  margin-left: 7%;
+}
+.teste-sentar-levantar{
+  padding: 1%;
+  border-radius: 5px;
+  background-color: #DEF7E5;
+  gap: 5%;
+}
+.desequilibrio-levantar{
+  margin-left: 22%;
+}
+.desequilibrio-sentar{
+  margin-left: 7%;
+}
+.nota1{
+margin-left: 7%;
+}
+.nota2{
+ margin-left: 22%; 
+}
+.nota-teste, .distancia-prevista, .distancia-percorrida{
+  font-size: 5pt;
+  padding: 1px; 
+  border: 1px solid #113838;
+  border-radius: 5px;
+}
+
