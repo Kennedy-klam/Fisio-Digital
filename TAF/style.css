@@ -1,85 +1,186 @@
-* {
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  
-  body {
-    font-family: Arial, sans-serif;
-    height: auto;
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    background-color: white; 
-    overflow-y: auto;
+body {
+  font-size: 19pt;
+  color: #113838;
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  padding: 0;
+  background: #f4f4f4;
 
-  }
-  /* estilização usada para primeira tabela (TUGT) parâmetros de teste e segunda tabela de valores normativos do TAF */
-  .tabela table{
-    width: 100%;
-    border-collapse: collapse;
-
-  }
-  .tabela th, .tabela td{
-    border: 1px solid black;
-    padding: 10px;
-    text-align: left;
-    color: black;
-  }
-  .tabela th{
-    background-color: #f2f2f2;
-  }
-  .tabela td{
-    background-color: #e0e0e0;
-  } /* fim da estilização da tabela*/
-
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%; 
-    
-      input[type="text"]{
-        
-        padding: 5px;
-        width: 200px;
-        font-size: 16px;
-      }
-  }
+}
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   
-  .image-section {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     width: 100%;
-     max-width: 1000%;
-     padding: 10px;
-  }
-  .left-image, .right-image{
-    width: 300px;
-    height: auto;
-  }
-  
-  .central-section {
-    background-color: #113838; 
-    padding: 20px; 
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
-    color: white; 
-    width: 1440px;
-    max-width: 100vw; 
-  }
-  
-  .central-section h1 {
-    text-align: center; 
-    margin-bottom: 20px;
-  }
-  
-  .central-section p {
-    text-align: justify; 
-    line-height: 1.6; 
-    font-size: 19px; 
   }
 
+h1  {
+  color: #113838;
+  margin-left: 2%;
   
+}
+.tittle{
+  text-align: center;
+  font-size: 17pt;
+  margin-right: 8%;
+}
+.instrucoes, .resultado {
+  margin-bottom: 20px;
+  
+}
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 8%; 
+  font-weight: bold;
+}
+.tempo{
+  font-size: 60pt;
+}
+
+button {
+  padding: 15px 35px;
+  border: none;
+  background-color: #DEF7E5;
+  color: #113838;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16pt;
+}
+.iniciar, .terminar{/* botões do timer*/
+  padding: 30px 40px;
+}
+.image{
+  width: 117px;
+  height: 117px;
+  top: -40px;
+  left: 2770px;
+}
+.finalizar{/*botão finalizar*/
+  margin-left: 85%;
+  border-radius: 5px;
+  font-size: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 35px;
+}
+
+button:hover {/*interatividade nos botões*/
+  background-color:  #DEF7E5 ;
+  box-shadow: 0px 5px 10px #113838;
+}
+table{
+  border-collapse: collapse;
+  width: 70%;
+  margin-left: 12%;
+}
+th, td{
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+tr:nth-child(even){
+  background-color:white; 
+}
+th{
+  background-color: #DEF7E5;
+  ;
+  color: black;
+}
+input[type="number"]{ /*estilização dos inputs dentro da tabela*/
+  width:100%;
+  height: 40px;
+  border: none;
+  box-sizing: 0;
+  font-size: 30px;
+  color: #113838;
+}
+input[type="text"]{
+  width: 10%;
+  height: 45px;
+  border: 20%;
+  box-sizing: 0;
+  font-size: 30px;
+  color: #113838;
+  
+}
+input{ /* Checkbox e radio */
+  margin-right: 8px;
+}
+input[type="checkbox" ],input[type="radio"] {
+  appearance: none; /* Remove o estilo padrão do checkbox */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+  border-radius: 50%; /* Faz o checkbox ficar redondo */
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+/* Estilo para o estado marcado do checkbox */
+input[type="checkbox" ]:checked,input[type="radio"]:checked {
+  background-color: #DEF7E5;
+  border: 2px solid #113838;
+  
+}
+input[type="checkbox"]:checked::after,input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 16px;
+  height: 16px;
+  background-color: #113838;
+  border-radius: 50%;
+}
+.diagnostico, .objetivo {
+  margin-left: 12%;
+  width: 765px;
+  height: 209px;
+  top: 1703px;
+  left: 2761px;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 18pt;
+  resize: none;
+}
+.apoios-sentar, .apoios-levantar{
+  margin-left: 2%;
+  padding: 10px 0%;
+  border: none;
+  background-color: white;
+  color: #113838;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13pt;
+}
+.sentar, .levantar{
+  margin-left: 7%;
+}
+.teste-sentar-levantar{
+  padding: 1%;
+  border-radius: 5px;
+  background-color: #DEF7E5;
+  gap: 5%;
+}
+.desequilibrio-levantar{
+  margin-left: 22%;
+}
+.desequilibrio-sentar{
+  margin-left: 7%;
+}
+.nota1{
+margin-left: 7%;
+}
+.nota2{
+ margin-left: 22%; 
+}
+.nota-teste, .distancia-prevista, .distancia-percorrida{
+  font-size: 5pt;
+  padding: 1px; 
+  border: 1px solid #113838;
+  border-radius: 5px;
+}
+
