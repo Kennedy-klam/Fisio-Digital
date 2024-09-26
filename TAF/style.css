@@ -48,7 +48,7 @@ button {
   cursor: pointer;
   font-size: 16pt;
 }
-.iniciar, .terminar{/* botões do timer*/
+.resetar, .iniciar, .terminar{/* botões do timer*/
   padding: 30px 40px;
 }
 .image{

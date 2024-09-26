@@ -1,3 +1,4 @@
+let minutos = 0;
 let tempo = 0;
 let intervalo;
 
@@ -9,7 +10,6 @@ function comecar() {
     document.getElementById('tempo').textContent = `${minutos}:${segundos}`;
   }, 1000);
 }
-
 function parar() {
   clearInterval(intervalo);
 }
