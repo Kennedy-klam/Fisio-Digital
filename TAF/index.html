@@ -16,14 +16,16 @@
         <div class="tittle">
           <h1>CRONÔMETRO:</h1>
         </div>
-        <div class="timer">
+        <div class="timer" id="timer">
           <img src="/TAF/imagens/cronometro.png" alt="cronometro" class="image">
             <label id="tempo" class="tempo">00:00</label>
             <button class="iniciar" onclick="comecar()">INICIAR</button>
             <button class="terminar" onclick="parar()">FINALIZAR</button>
-        </div>
-        <div class="resultado">
-            <p><strong>Resultado:</strong> Normal para idosos frágeis ou com deficiência mas que são independentes para a maioria das atividades de vida diária (AVD’s). Baixo risco de queda.</p>
+            <button class="resetar" onclick="resetar()">REINICIAR</button>
+        </div><br>
+        <div class="resultado" id="res">
+          <label for=""><strong>Resultado:</strong></label>
+          <p id="descricao"></p>    
         </div><br>
         <h1>TAF(teste de alcance funcional)</h1>
         <div class="TAF">
