@@ -140,6 +140,8 @@ th {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 15%;
+    max-width:25%;
 }
 
 .input-date {
@@ -147,7 +149,8 @@ th {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 8%;
+    width: 15%;
+    max-width: 20%;
   
     color: black; 
 }
@@ -176,3 +179,31 @@ th {
     color: #3A6B3A;
     position: center;
 }
+
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+.form-container select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #DEF7E5; 
+}
+
+.idadeSe {
+    background-color: #DEF7E5; 
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    width: 5%;
+    max-width: 15%; 
+}
+

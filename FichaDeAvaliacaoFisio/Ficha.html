@@ -1,250 +1,413 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ficha de Avaliação de Fisioterapia Geriátrica</title>
-    <link rel="stylesheet" href="styles.css">
-    <!--versão 0.9.1-->
-    <script src="Script/script.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Ficha de Avaliação de Fisioterapia Geriátrica</h1>
-        
-        <div class="data-estagiario">
-            <div>
-                <label for="data">Data:</label>
-                <input type="text" id="data" name="data">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ficha de Avaliação de Fisioterapia Geriátrica</title>
+        <link rel="stylesheet" href="Estilos/styles.css">
+        <!--versão 0.9.7 Mudanças de interação e Estilo-->
+    </head>
+    <body>
+        <div class="container">
+            <h1>Ficha de Avaliação de Fisioterapia Geriátrica</h1>
+            <br>
+            <div class="data-estagiario">
+                <div>
+                    <label for="data">Data:</label>
+                    <input type="text" id="data" name="data">
+                </div>
+                <div>
+                    <label for="estagiario">Estagiário:</label>
+                    <input type="text" id="estagiario" name="estagiario">
+                </div>
             </div>
-            <div>
-                <label for="estagiario">Estagiário:</label>
-                <input type="text" id="estagiario" name="estagiario">
+
+            <!--Parte dos Dados Pessoais-->
+            <div class="dados-pessoais">
+                <h2>Dados Pessoais</h2>
+                <br>
+                <div>
+                    <label for="nome">Nome:</label>
+                    <input type="text" class="input-style">
+                    <label for="dataNascimento">Data de Nascimento:</label>
+                    <input type="date" class="input-date" id="dataNascimento">
+                </div>
+                <br>
+                <div>
+                    <label for="idade">Idade:</label>
+                    <input type="number" class="idadeSe">
+
+                    <label for="Sexo">Sexo:</label>
+                    <input type="text" class="idadeSe">
+
+                    <label for="estadoCivil">Estado Civil:</label>
+                    <input type="text" class="input-style">
+
+                    <label for="telefone">Telefone:</label>
+                    <input type="text" class="input-style">
+                </div>
+
+            </div>
+
+            <div class="informacoes-adicionais">
+
+                <div class="coluna-esq">
+
+                    <div class="campo">
+                        <label for="escolaridade">Escolaridade:</label>
+                        <select id="escolaridade" name="escolaridade">
+                            <option value disabled
+                                selected>Selecione...</option>
+                            <option value="analfabeto">Analfabeto</option>
+                            <option value="ensino_fundamental">Ensino
+                                Fundamental</option>
+                            <option value="ensino_medio">Ensino Médio</option>
+                            <option value="graduacao">Graduação</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="renda">Renda:</label>
+                        <select id="renda" name="renda"
+                            onchange="mostrarProfissao()">
+                            <option value disabled
+                                selected>Selecione...</option>
+                            <option value="aposentadoria">Aposentadoria</option>
+                            <option value="pensa">Pensão</option>
+                            <option value="trabalho">Trabalho</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+
+                    <div class="campo" id="profissaoCampo"
+                        style="display: none;">
+                        <label for="profissao">Profissão</label>
+                        <input type="text" id="profissao" name="profissao">
+                    </div>
+
+                    <div class="campo">
+                        <label for="local-residencia">Local de
+                            Residência:</label>
+                        <select id="local-residencia" name="local-residencia">
+                            <option value disabled
+                                selected>Selecione...</option>
+                            <option value="casa_terrea">Casa térrea</option>
+                            <option value="casa_duplex">Casa duplex</option>
+                            <option value="apartamento">Apartamento</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="mora-com">Mora com:</label>
+                        <select id="mora-com" name="mora-com">
+                            <option value disabled
+                                selected>Selecione...</option>
+                            <option value="sozinho">Sozinho</option>
+                            <option value="filhos">Filhos</option>
+                            <option value="outros_familiares">Outros
+                                familiares</option>
+                            <option value="cuidador">Cuidador</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="coluna-central">
+                    <div class="campo">
+                        <label>Atividades Físicas:</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="atividade-sim" name="atividade"
+                            value="sim">
+                        <label for="fuma-sim">Sim</label>
+                        <br>
+                        <input type="radio" id="atividade-nao" name="atividade"
+                            value="nao">
+                        <label for="fuma-nao">Não</label>
+                    </div> <br>
+                    <div class="campo">
+                        <label for="quantos-dias">Se sim, quantos dias na
+                            semana:</label>
+                        <input type="text" id="quantos-dias"
+                            name="quantos-dias">
+                    </div>
+
+                    <div class="campo">
+                        <label>Frequência para sair de casa:</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="diariamente" name="frequencia"
+                            value="diariamente">
+                        <label for="diariamente">Diariamente</label>
+                        <br>
+                        <input type="radio" id="pouca-frequencia"
+                            name="frequencia" value="pouca-frequencia">
+                        <label for="pouca-frequencia">Pouca frequência</label>
+                    </div>
+                    <br>
+
+                    <div class="campo">
+                        <label for="atividade-social">Atividade social:</label>
+                        <select id="atividade-social" name="atividade-social">
+                            <option value="" disabled selected>Selecione...</option>
+                            <option value="finais_de_semana">Finais de semana</option>
+                            <option value="mensalmente">Mensalmente</option>
+                            <option value="baixa_frequencia">Baixa Frequência</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>  
+                </div>
+
+                <div class="coluna-dir">
+
+                    <div class="campo">
+                        <label for="doencas">Doenças:</label>
+                        <select id="doencas" name="doencas">
+                            <option value="" disabled selected>Selecione...</option>
+                            <option value="hipertenso">Hipertenso</option>
+                            <option value="diabetico">Diabético</option>
+                            <option value="cardiopatias">Cardiopatias</option>
+                            <option value="depressao">Depressão</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                    
+                    <div class="campo">
+                        <label for="outras-doencas">Outras doenças:</label>
+                        <textarea id="outras-doencas" name="outras-doencas"
+                            rows="17">Digite aqui...</textarea>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="queixa-principal">Queixa-Principal/HMP:</label>
+                <textarea class="queixa" id="queixa-principal"
+                    name="queixa-principal"></textarea>
             </div>
         </div>
-
-        <div class="dados-pessoais">
-            <h2>Dados Pessoais</h2>
         <br>
+
+        <!--Tabela-->
         <div>
-            <label for="nome">Nome:</label>
-            <input type="text" class="input-style"> 
-            <label for="dataNascimento">Data de Nascimento:</label>
-            <input type="date" class="input-date" id="dataNascimento">
-        </div>
-        <br>
-        <div>
-            <label for="idade">Idade:</label>
-            <input type="number" class="input-style">
-            
-            <label for="Sexo">Sexo:</label>
-            <input type="text" class="input-style">
-            
-            <label for="estadoCivil">Estado Civil:</label>
-            <input type="text" class="input-style">
-            
-            <label for="telefone">Telefone:</label>
-            <input type="number" class="input-style">
+            <h2>Medicamentos</h2>
+            <br>
+            <form id="medicamento-form">
+
+                <div class="campo">
+                    <br>
+                    <label for="medicamentos">Medicamentos:</label>
+                    <input type="text" id="medicamentos" name="medicamentos"
+                        placeholder="Digite aqui...">
+                </div>
+
+                <div class="campo">
+                    <br>
+                    <label for="como-usa">Como usa:</label>
+                    <input type="text" id="como-usa" name="como-usa"
+                        placeholder="Digite aqui...">
+                </div>
+
+                <div class="campo">
+                    <br>
+                    <label for="tempo-uso">Tempo de Uso:</label>
+                    <input type="text" id="tempo-uso" name="tempo-uso"
+                        placeholder="Digite aqui...">
+                </div>
+
+                <br>
+                <div>
+                    <button class="styled-button" type="button"
+                        id="adicionar-btn">Adicionar </button>
+                </div>
+            </form>
+            <br>
+
+            <h2>Tabela de Medicamentos</h3>
+            <table id="tabela-medicamentos">
+                <thead>
+                    <tr>
+                        <th>Medicamento</th>
+                        <th>Como Usa</th>
+                        <th>Tempo de Uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As linhas serão adicionadas dinamicamente aqui -->
+                </tbody>
+            </table>
         </div>
 
-        </div>
+        <br> <br>
 
-        <div class="informacoes-adicionais">
+        <!--Parte de Baixo-->
+        <div class="form-container">
+
             <div class="coluna-esq">
                 <div class="campo">
-                    <label for="escolaridade">Escolaridade:</label>
-                    <input type="text" id="escolaridade" name="escolaridade">
+                    <label for="visao">Visão:</label>
+                    <select id="visao" name="visao">
+                        <option value="" disabled selected>Selecione...</option>
+                        <option value="normal">Normal</option>
+                        <option value="deficit_com_corretor">Déficit c/ uso de corretor</option>
+                        <option value="deficit_sem_corretor">Déficit s/ uso de corretor</option>
+                        <option value="perda_parcial">Perda parcial</option>
+                        <option value="perda_total">Perda total</option>
+                    </select>
                 </div>
-                <div class="campo">
-                    <label for="renda">Renda:</label>
-                    <input type="text" id="renda" name="renda">
-                </div>
-                <div class="campo">
-                    <label for="local-residencia">Local de Residência:</label>
-                    <input type="text" id="local-residencia" name="local-residencia">
-                </div>
-                <div class="campo">
-                    <label for="mora-com">Mora com:</label>
-                    <input type="text" id="mora-com" name="mora-com">
-                </div>
-            </div>
-            <div class="coluna-dir">
-                <div class="campo">
-                    <label>Atividades Físicas:</label>
-                    <label for="atividade-sim">Sim</label>
-                    <input type="radio" id="atividade-sim" name="atividade" value="sim">
-                    <label for="atividade-nao">Não</label>
-                    <input type="radio" id="atividade-nao" name="atividade" value="nao">
-                    
-                </div>
-                <div class="campo">
-                    <label for="quantos-dias">Se sim, quantos dias na semana:</label>
-                    <input type="text" id="quantos-dias" name="quantos-dias">
-                </div>
-                <div class="campo">
-                    <label>Frequência para sair de casa:</label>
-                    <label for="diariamente">Diariamente</label>
-                    <input type="radio" id="diariamente" name="frequencia" value="diariamente">
-                    <label for="pouca-frequencia">Pouca frequência</label>
-                    <input type="radio" id="pouca-frequencia" name="frequencia" value="pouca-frequencia">
-                    
-                </div>
-                <div class="campo">
-                    <label for="atividade-social">Atividade social:</label>
-                    <input type="text" id="atividade-social" name="atividade-social">
-                </div>
-            </div>
-            <div class="coluna-central">
                 
                 <div class="campo">
-                    <label for="doencas">Doenças:</label>
-                    <input type="text" id="doencas" name="doencas">
+                    <label for="audicao">Audição:</label>
+                    <select id="audicao" name="audicao">
+                        <option value="" disabled selected>Selecione...</option>
+                        <option value="normal">Normal</option>
+                        <option value="deficit_com_corretor">Déficit c/ uso de corretor</option>
+                        <option value="deficit_sem_corretor">Déficit s/ uso de corretor</option>
+                        <option value="perda_parcial">Perda parcial</option>
+                        <option value="perda_total">Perda total</option>
+                    </select>
+                </div>
+                
+                <div class="campo">
+                    <label for="urinária">Continência urinária:</label>
+                </div>
+                <div>
+                    <input type="radio" id="continencia-sim" name="continencia-urinaria" value="sim" onclick="mostrarData()">
+                    <label for="continencia-sim">Sim</label>
+                    <br><br>
+                    <input type="radio" id="continencia-nao" name="continencia-urinaria" value="nao" onclick="mostrarData()">
+                    <label for="continencia-nao">Não</label>
+                </div>
+                <br>
+                <div id="data-container" style="display: none;">
+                    <label for="data">Data:</label>
+                    <input type="date" id="data" name="data">
+                </div>
+                
+                
+                <div class="campo">
                 </div>
                 <div class="campo">
-                    <label for="outras-doencas">Outras doenças:</label>
-                    <textarea id="outras-doencas" name="outras-doencas" rows="17">Digite aqui...</textarea>
+                    <label for="urinária">Continência fecal:</label>
                 </div>
+                <div>
+                    <input type="radio" id="continencia-fecal-sim" name="continencia-fecal" value="sim" onclick="mostrarDataF()">
+                    <label for="continencia-fecal-sim">Sim</label>
+                    <br><br>
+                    <input type="radio" id="continencia-fecal-nao" name="continencia-fecal" value="nao" onclick="mostrarDataF()">
+                    <label for="continencia-fecal-nao">Não</label>
+                </div>
+                <br>
+                <div id="data-fecal-container" style="display: none;">
+                    <label for="data-fecal">Data:</label>
+                    <input type="date" id="data-fecal" name="data-fecal">
+                </div>
+                
+                
+                
             </div>
-        </div>
-        <div class="form-group">
-            <label for="queixa-principal">Queixa-Principal/HMP:</label>
-            <textarea class="queixa" id="queixa-principal" name="queixa-principal"></textarea>
-        </div>    
-    </div>
-    <br>
-    <div class="">
-        <h2>Medicamentos</h2>
-        <br>
-        <form id="medicamento-form">
 
-            <div class="campo">
-                <br>
-                <label for="medicamentos">Medicamentos:</label>
-                <input type="text" id="medicamentos" name="medicamentos" placeholder="Digite aqui...">
-            </div>
-            
-            <div class="campo">
-                <br>
-                <label for="como-usa">Como usa:</label>
-                <input type="text" id="como-usa" name="como-usa" placeholder="Digite aqui...">
-            </div>
-            
-            <div class="campo">
-                <br>
-                <label for="tempo-uso">Tempo de Uso:</label>
-                <input type="text" id="tempo-uso" name="tempo-uso" placeholder="Digite aqui...">
-            </div>
-            
-            <br>
-            <div>
-                <button class="styled-button" type="button" id="adicionar-btn" >Adicionar </button>
-            </div>
-        </form>
-        <br>
+            <div class="coluna-central">
 
-        <h2>Tabela de Medicamentos</h3>
-        <table id="tabela-medicamentos">
-            <thead>
-                <tr>
-                    <th>Medicamento</th>
-                    <th>Como Usa</th>
-                    <th>Tempo de Uso</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- As linhas serão adicionadas dinamicamente aqui -->
-            </tbody>
-        </table>
-    </div>
-    <!--A ser retirado :( desse html após alguns testes-->
-    
-    <br> <br>
-     <div class="form-container">
-        <div class="coluna-esq">
-            <div class="campo">
-                <label for="visao">Visão:</label>
-                <input type="text" id="escolaridade" name="escolaridade">
-            </div>
-            <div class="campo">
-                <label for="Audição">Audição:</label>
-                <input type="text" id="Audição" name="Audição">
-            </div>
-            <div class="campo">
-                <label for="urinária">Continência urinária:</label>
-                <input type="text" id="urinária" name="urinária">
-            </div>
-            <div class="">
-                <label for="data">Data:</label>
-                <input type="date" id="data" name="data"><br>
-            </div>
-            <div class="campo">
-            </div>
-            <div class="campo">
-                <label for="urinária">Continência fecal:</label>
-                <input type="text" id="fecal" name="fecal">
-            </div>
-            <div class="">
-                <label for="data">Data:</label>
-                <input type="date" id="data" name="data"><br>
-            </div>
-        </div>
-        <div class="coluna-dir">
-            <div class="campo">
-                <label>Sono:</label>
-                <label for="normal">Normal</label>
-                <input type="radio" id="atividade-sim" name="atividade" value="sim">
-                <label for="atividade-nao">Distúrbios</label>
-                <input type="radio" id="atividade-nao" name="atividade" value="nao">
-                <input type="text">
-            </div>
-            <div class="campo">
-                <label for="ortese">Uso de órtese:</label>
-                <input type="text" id="ortese" name="ortese">
-                <label for="prótese">Uso de prótese:</label>
+                <div class="campo">
+                    <label>Sono:</label>
+                </div>
+                <div>
+                    <input type="radio" id="sono-normal" name="sono" value="NormalS" onclick="mostrarTexto()">
+                    <label for="sono-normal">Normal</label>
+                    <br><br>
+                    <input type="radio" id="sono-naolegal" name="sono" value="Distúrbios" onclick="mostrarTexto()">
+                    <label for="sono-naolegal">Distúrbios</label>
+                </div>
                 <br>
-                <input type="text" id="prótese" name="prótese">
+                <div id="texto-disturbios-container" style="display: none;" class="campo">
+                    <label for="texto-disturbios">Descreva os distúrbios:</label>
+                    <input type="text" id="texto-disturbios" name="texto-disturbios">
+                </div>
+                
+                <br>
+                <div class="campo">
+                    <label for="ortese">Uso de órtese:</label>
+                    <select id="ortese" name="ortese">
+                        <option value="">Selecione</option>
+                        <option value="sim">Sim</option>
+                        <option value="nao">Não</option>
+                    </select>
+                    <br><br>
+                    
+                    <label for="proteste">Uso de prótese:</label>
+                    <select id="proteste" name="proteste">
+                        <option value="">Selecione</option>
+                        <option value="sim">Sim</option>
+                        <option value="nao">Não</option>
+                    </select>
+                </div>
+                
+                <div class="campo">
+                    <label for="queda">Queda nos últimos 12 meses:</label>
+                    <select id="queda" name="queda" onchange="mostrarQuedaQuantas()">
+                        <option value="">Selecione</option>
+                        <option value="sim">Sim</option>
+                        <option value="nao">Não</option>
+                    </select>
+                </div>
+                
+                <div class="campo" id="queda-quantas-container" style="display: none;">
+                    <label for="queda-quantas">Quantas:</label>
+                    <input type="number" id="queda-quantas" name="queda-quantas">
+                </div>
+                
             </div>
-            <div class="campo">
-                <label for="Queda">Queda nos últimos 12 meses:</label>
-                <input type="text" id="Queda" name="Queda">
-            </div>
-            <div class="campo">
-                <label for="queda-quantas">Quantas:</label>
-                <input type="number" id="queda-quantas" name="queda-quantas">
-            </div>
-        </div>
-        <div class="coluna-central">
-            
+            <div class="coluna-dir">
+
                 <div class="campo">
                     <label>Fuma:</label>
                 </div>
                 <div>
-                    <input type="radio" id="fuma-sim" name="atividade" value="sim">
+                    <input type="radio" id="fuma-sim" name="Fuma" value="sim" onclick="mostrarTempoFumar()">
                     <label for="fuma-sim">Sim</label>
                     <br>
-                    <input type="radio" id="fuma-nao" name="fuma-nao" value="nao">
-                    <label for="fuma-nao">Não</label>   
-                </div> <br>
-                <div class="campo">
-                    <label for="parou" id="parou" name="parou">Se parou, há quanto tempo?</label>
-                    <input type="text">
+                    <input type="radio" id="fuma-nao" name="Fuma" value="nao" onclick="mostrarTempoFumar()">
+                    <label for="fuma-nao">Não</label>
+                    <br>
+                    <input type="radio" id="parou-fumar" name="Fuma" value="parou" onclick="mostrarTempoFumar()">
+                    <label for="parou-fumar">Parei de fumar</label>
                 </div>
+                <br>
+                <div class="campo" id="tempo-fumar-container" style="display: none;">
+                    <label for="tempo-fumar">Se parou, há quanto tempo?</label>
+                    <input type="text" id="tempo-fumar" name="tempo-fumar">
+                </div>
+                
                 <div class="campo">
-                    <label for="estilista">Estilista:</label>
+                    <label for="etilista">Etilista:</label>
                 </div>
                 <div>
-                    <input type="radio" id="estilista-sim" name="estilista" value="sim">
-                    <label for="estilista-sim">Sim</label>
+                    <input type="radio" id="etilista-sim" name="etilista" value="sim" onclick="mostrarTempoEtilista()">
+                    <label for="etilista-sim">Sim</label>
                     <br>
-                    <input type="radio" id="estilista-nao" name="estilista-nao" value="nao">
-                    <label for="fuma-nao">Não</label>   
-                </div> <br>
-                <div class="campo">
-                    <label for="parou" id="parou-est" name="parou-est">Se parou, há quanto tempo?</label>
-                    <input type="text">
+                    <input type="radio" id="etilista-nao" name="etilista" value="nao" onclick="mostrarTempoEtilista()">
+                    <label for="etilista-nao">Não</label>
+                    <br>
+                    <input type="radio" id="parou-etilista" name="etilista" value="parou" onclick="mostrarTempoEtilista()">
+                    <label for="parou-etilista">Parei de usar</label>
                 </div>
-      
+                <br>
+                <div class="campo" id="tempo-etilista-container" style="display: none;">
+                    <label for="tempo-etilista">Se parou, há quanto tempo?</label>
+                    <input type="text" id="tempo-etilista" name="tempo-etilista">
+                </div>
+
+            </div>
         </div>
-    </div>
-</body>
+        <!--Botão-->
+        <div style="text-align: right;">
+            <button class="styled-button" type="button">Próxima página</button>
+        </div>
+        
+        <!--O script ficou aqui porque não estava sendo carregado-->
+        <script src="Script/script.js"></script>
+    </body>
 </html>
