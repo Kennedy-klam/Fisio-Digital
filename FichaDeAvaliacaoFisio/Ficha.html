@@ -14,7 +14,7 @@
             <div class="data-estagiario">
                 <div>
                     <label for="data">Data:</label>
-                    <input type="text" id="data" name="data">
+                    <input type="date" id="data" name="data">
                 </div>
                 <div>
                     <label for="estagiario">Estagiário:</label>
@@ -164,7 +164,7 @@
 
                     <div class="campo">
                         <label for="doencas">Doenças:</label>
-                        <select id="doencas" name="doencas">
+                        <select id="doencas" name="doencas" onchange="adicionarDoenca()">
                             <option value="" disabled selected>Selecione...</option>
                             <option value="hipertenso">Hipertenso</option>
                             <option value="diabetico">Diabético</option>
@@ -173,6 +173,10 @@
                             <option value="outros">Outros</option>
                         </select>
                     </div>
+                    
+                    <div id="doencas-selecionadas"></div>
+                    <br>
+                    
                     
                     <div class="campo">
                         <label for="outras-doencas">Outras doenças:</label>
@@ -373,7 +377,7 @@
                     <label for="fuma-nao">Não</label>
                     <br>
                     <input type="radio" id="parou-fumar" name="Fuma" value="parou" onclick="mostrarTempoFumar()">
-                    <label for="parou-fumar">Parei de fumar</label>
+                    <label for="parou-fumar">Parou de fumar</label>
                 </div>
                 <br>
                 <div class="campo" id="tempo-fumar-container" style="display: none;">
@@ -392,7 +396,7 @@
                     <label for="etilista-nao">Não</label>
                     <br>
                     <input type="radio" id="parou-etilista" name="etilista" value="parou" onclick="mostrarTempoEtilista()">
-                    <label for="parou-etilista">Parei de usar</label>
+                    <label for="parou-etilista">Parou de usar</label>
                 </div>
                 <br>
                 <div class="campo" id="tempo-etilista-container" style="display: none;">
@@ -402,8 +406,10 @@
 
             </div>
         </div>
-        <!--Botão-->
-        <div style="text-align: right;">
+        <!--Botoes-->
+        
+        <div class="button-container">
+            <button class="styled-button" type="button">Tela Inicial</button>
             <button class="styled-button" type="button">Próxima página</button>
         </div>
         

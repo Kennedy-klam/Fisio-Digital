@@ -95,7 +95,7 @@ function mostrarData() {
         const fumou = document.querySelector('input[name="Fuma"]:checked');
 
         if (fumou && fumou.value === 'parou') {
-            tempoFumarContainer.style.display = 'block'; // Mostrar campo de texto se "Parei de fumar" for selecionado
+            tempoFumarContainer.style.display = 'block'; // Mostrar campo de texto se "Parou" for selecionado
         } else {
             tempoFumarContainer.style.display = 'none'; // Ocultar campo de texto se "Sim" ou "Não" forem selecionados
         }
@@ -106,8 +106,46 @@ function mostrarData() {
         const etilista = document.querySelector('input[name="etilista"]:checked');
 
         if (etilista && etilista.value === 'parou') {
-            tempoEtilistaContainer.style.display = 'block'; // Mostrar campo de texto se "Parei de fumar" for selecionado
+            tempoEtilistaContainer.style.display = 'block'; // Mostrar campo de texto se "Parou de fumar" for selecionado
         } else {
             tempoEtilistaContainer.style.display = 'none'; // Ocultar campo de texto se "Sim" ou "Não" forem selecionados
         }
     }
+
+    function adicionarDoenca() {
+        const select = document.getElementById('doencas');
+        const doencaSelecionada = select.value;
+        const doencaTexto = select.options[select.selectedIndex].text;
+    
+        // Evita adicionar a opção "Outros"
+        if (doencaSelecionada === "outros") {
+            return; // Não faz nada quando outros é selecionado
+        }
+    
+        // Verifica se a doença já foi adicionada
+        if (!document.getElementById(doencaSelecionada)) {
+           
+            const doencaDiv = document.createElement('div');
+            doencaDiv.classList.add('doenca-selecionada');
+            doencaDiv.id = doencaSelecionada;
+    
+            // Adiciona o texto da doença
+            const doencaSpan = document.createElement('span');
+            doencaSpan.textContent = doencaTexto;
+            doencaDiv.appendChild(doencaSpan);
+    
+            // Botão de remover
+            const removeBtn = document.createElement('button');
+            removeBtn.classList.add('remove-btn');
+            removeBtn.innerHTML = '&times;'; // O "x"
+            removeBtn.onclick = function() {
+                doencaDiv.remove(); // Remove o próprio div da doença
+            };
+            doencaDiv.appendChild(removeBtn);
+    
+            // Adiciona a doença 
+            document.getElementById('doencas-selecionadas').appendChild(doencaDiv);
+        }
+    }
+    
+    

@@ -22,9 +22,31 @@ h1 {
 
 .data-estagiario {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Mantém os elementos distribuídos, com a data à direita */
+    align-items: center;
     margin-bottom: 20px;
 }
+
+.data-estagiario input[type="date"] , input[type="text"]{
+    background-color: transparent; /* Remove a cor de fundo */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    color: #000;
+    font-size: 14px;
+    width: auto; /* Ajusta a largura automaticamente */
+    max-width: 200px; /* Limita a largura máxima do campo */
+}
+
+.data-estagiario input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.7); /* Estiliza o ícone do calendário */
+}
+
+.data-estagiario input[type="date"]:focus {
+    border-color: #4CAF50; /* Muda a cor da borda ao focar */
+    outline: none; /* Remove a borda azul padrão */
+}
+
 
 .dados-pessoais {
     background-color: #DEF7E5;
@@ -73,7 +95,7 @@ input[type="radio"] {
 
 .queixa {
      
-    border: 2px solid#686868; 
+    border: 1px solid#686868; 
     height: 150px; /* Altura maior para o campo */
     width: 100%; /* Preencher a largura completa */
     padding: 10px; /* Espaçamento interno */
@@ -140,8 +162,8 @@ th {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 15%;
-    max-width:25%;
+    width: 10%;
+    max-width:23%;
 }
 
 .input-date {
@@ -162,22 +184,6 @@ th {
 
 .input-date:focus {
     color: black; 
-}
-.styled-button {
-    background-color: #DEF7E5; 
-    color: #4A7C4A; 
-    padding: 10px 20px; 
-    border: none; 
-    border-radius: 4px; 
-    cursor: pointer; 
-    font-size: 16px; 
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.styled-button:hover {
-    background-color: #D3E9D3; 
-    color: #3A6B3A;
-    position: center;
 }
 
 select {
@@ -207,3 +213,58 @@ select {
     max-width: 15%; 
 }
 
+.doenca-selecionada {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    background-color: #DEF7E5;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+}
+
+.doenca-selecionada span {
+    flex-grow: 1;
+}
+
+.remove-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.remove-btn:hover {
+    background-color: darkred;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.styled-button {
+    background-color: #DEF7E5; 
+    color: #4A7C4A; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.styled-button:hover {
+    background-color: #D3E9D3; 
+    color: #3A6B3A;
+}

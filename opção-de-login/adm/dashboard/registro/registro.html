@@ -6,6 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="registro.css?v=1.1">
     <title>Cadastro de Paciente</title>
+    <script>
+        function calcularIdade() {
+            const dob = document.getElementById("dob").value;
+            const idadeInput = document.getElementById("idade");
+
+            if (dob) {
+                const hoje = new Date();
+                const nascimento = new Date(dob);
+                let idade = hoje.getFullYear() - nascimento.getFullYear();
+                const mes = hoje.getMonth() - nascimento.getMonth();
+
+                if (mes < 0 || (mes === 0 && hoje.getDate() < nascimento.getDate())) {
+                    idade--;
+                }
+
+                idadeInput.value = idade;  // Preenche o campo de idade
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -13,29 +32,29 @@
     <h1>Cadastro de Paciente</h1>
 
     <!-- Troca o nome do arquivo php aqui -->
-    <form action="processar_registro.php" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
         
         <!-- Nome (Linha completa) -->
         <div class="form-grid full-width">
             <div class="textfield">
                 <label for="name">Nome Completo</label>
-                <input type="text" name="name" id="name" placeholder="Nome Completo">
+                <input type="text" name="name" id="name" placeholder="Nome Completo" required>
             </div>
         </div>
         
         <!-- Idade, Data de Nascimento e Naturalidade -->
         <div class="form-grid">
             <div class="textfield">
-                <label for="idade">Idade</label>
-                <input type="number" name="idade" id="idade" placeholder="Idade">
+                <label for="dob">Data de Nascimento:</label>
+                <input type="date" id="dob" name="dob" required onchange="calcularIdade()">
             </div>
             <div class="textfield">
-                <label for="dob">Data de Nascimento</label>
-                <input type="date" name="dob" id="dob">
+                <label for="idade">Idade:</label>
+                <input type="number" id="idade" name="idade" readonly>
             </div>
             <div class="textfield">
                 <label for="naturalidade">Naturalidade</label>
-                <input type="text" name="naturalidade" id="naturalidade" placeholder="Naturalidade">
+                <input type="text" name="naturalidade" id="naturalidade" placeholder="Naturalidade" required>
             </div>
         </div>
 
@@ -43,15 +62,15 @@
         <div class="form-grid">
             <div class="textfield">
                 <label for="cpf">CPF</label>
-                <input type="text" name="cpf" id="cpf" placeholder="CPF">
+                <input type="text" name="cpf" id="cpf" placeholder="CPF" required>
             </div>
             <div class="textfield">
                 <label for="rg">RG</label>
-                <input type="text" name="rg" id="rg" placeholder="RG">
+                <input type="text" name="rg" id="rg" placeholder="RG" required>
             </div>
             <div class="textfield">
                 <label for="cor">Cor</label>
-                <input type="text" name="cor" id="cor" placeholder="Cor">
+                <input type="text" name="cor" id="cor" placeholder="Cor" required>
             </div>
         </div>
 
@@ -68,14 +87,14 @@
             </div>
             <div class="textfield">
                 <label for="sexo">Sexo</label>
-                <select name="sexo" id="sexo">
+                <select name="sexo" id="sexo" required>
                     <option value="masculino">Masculino</option>
                     <option value="feminino">Feminino</option>
                 </select>
             </div>
             <div class="textfield">
                 <label for="altura">Altura</label>
-                <input type="text" name="altura" id="altura" placeholder="Altura">
+                <input type="text" name="altura" id="altura" placeholder="Altura" required>
             </div>
         </div>
 
@@ -83,14 +102,14 @@
         <div class="form-grid full-width">
             <div class="textfield">
                 <label for="pai">Filiação: Pai</label>
-                <input type="text" name="pai" id="pai" placeholder="Nome do Pai">
+                <input type="text" name="pai" id="pai" placeholder="Nome do Pai" required>
             </div>
         </div>
 
         <div class="form-grid full-width">
             <div class="textfield">
                 <label for="mae">Filiação: Mãe</label>
-                <input type="text" name="mae" id="mae" placeholder="Nome da Mãe">
+                <input type="text" name="mae" id="mae" placeholder="Nome da Mãe" required>
             </div>
         </div>
 
@@ -98,15 +117,15 @@
         <div class="form-grid">
             <div class="textfield">
                 <label for="profissao">Profissão</label>
-                <input type="text" name="profissao" id="profissao" placeholder="Profissão">
+                <input type="text" name="profissao" id="profissao" placeholder="Profissão" required>
             </div>
             <div class="textfield">
                 <label for="endereco">Endereço</label>
-                <input type="text" name="endereco" id="endereco" placeholder="Endereço Completo">
+                <input type="text" name="endereco" id="endereco" placeholder="Endereço Completo" required>
             </div>
             <div class="textfield">
                 <label for="cidade">Cidade</label>
-                <input type="text" name="cidade" id="cidade" placeholder="Cidade">
+                <input type="text" name="cidade" id="cidade" placeholder="Cidade" required>
             </div>
         </div>
 
@@ -114,11 +133,11 @@
         <div class="form-grid">
             <div class="textfield">
                 <label for="estado">Estado</label>
-                <input type="text" name="estado" id="estado" placeholder="Estado">
+                <input type="text" name="estado" id="estado" placeholder="Estado" required>
             </div>
             <div class="textfield">
                 <label for="celular">Celular</label>
-                <input type="text" name="celular" id="celular" placeholder="Celular">
+                <input type="text" name="celular" id="celular" placeholder="Celular" required>
             </div>
             <div class="textfield">
                 <label for="fixo">Telefone Fixo</label>
@@ -134,7 +153,7 @@
             </div>
             <div class="textfield">
                 <label for="data-admissao">Data de Admissão</label>
-                <input type="date" name="data-admissao" id="data-admissao">
+                <input type="date" name="data-admissao" id="data-admissao" required>
             </div>
             <div class="textfield">
                 <label for="data-saida">Data de Saída</label>
