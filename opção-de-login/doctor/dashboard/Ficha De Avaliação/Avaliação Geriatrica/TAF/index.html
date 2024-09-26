@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/TAF/style.css">
+    <link rel="stylesheet" href="style.css?v=1.1">
     <title>TAF</title>
+    <script>
+      function redirecionar(url) {
+          window.location.href = url;
+      }
+  </script>
 </head>
 <body>
     <div class="container">
@@ -17,7 +22,7 @@
           <h1>CRONÔMETRO:</h1>
         </div>
         <div class="timer" id="timer">
-          <img src="/TAF/imagens/cronometro.png" alt="cronometro" class="image">
+          <img src="imagens/cronometro.png" alt="cronometro" class="image">
             <label id="tempo" class="tempo">00:00</label>
             <button class="iniciar" onclick="comecar()">INICIAR</button>
             <button class="terminar" onclick="parar()">FINALIZAR</button>
@@ -147,8 +152,8 @@
             <h2>objetivo:</h2>
             <textarea class="objetivo" id="objetivo" placeholder="Digite aqui:"></textarea>     
         </div><br>
-        <button class="finalizar" id="prox-pag">Finalizar Teste</button>
+        <button class="finalizar" type="button" onclick="redirecionar('../../../dashboard.php')">Finalizar</button>
       </div>
-    <script src="/TAF/script.js"></script>
+    <script src="script.js"></script>
  </body>
 </html>
