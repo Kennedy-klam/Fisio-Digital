@@ -26,11 +26,9 @@ function resetar() {
     document.getElementById("tempo").innerText = "00:00"
     document.getElementById("descricao").innerText = ""
 }
-
 function mostrarResultado(segundos) {
     const minutos = segundos / 60;
     let descricao = "";
-
     if (minutos <= 10 / 60) {
         descricao = "Desempenho normal para adultos saudáveis. BAIXO RISCO DE QUEDA."
     } else if (minutos <= 20 / 60) {
@@ -38,8 +36,13 @@ function mostrarResultado(segundos) {
     } else if (minutos <= 29 / 60) {
         descricao = "Avaliação funcional obrigatória. Abordagem específica para prevenção de queda. RISCO DE QUEDAS MODERADO."
     } else if (minutos >= 30 / 60) {
-        descricao = "30 segundos ou mais. ALTO RISCO DE QUEDAS.";
+        descricao = "30 segundos ou mais. ALTO RISCO DE QUEDAS."
     }
-
-    document.getElementById("descricao").innerText = descricao;
+    document.getElementById("descricao").innerText = descricao
 }
+
+const botao = document.getElementById('prox-pag')
+botao.addEventListener("click", function(){
+    window.alert('Formulário Salvo!')
+    window.location.href = "O LINK VAI AQUI"
+})
