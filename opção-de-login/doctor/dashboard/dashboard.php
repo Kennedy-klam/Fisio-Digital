@@ -49,9 +49,9 @@ include('../conexões/db.php');
                     <i class="uil uil-schedule"></i>
                     <span class="link-name">Consultas Marcadas</span>
                 </a></li>
-                <li><a href="treinos/treino.html">
+                <li><a href="FichaDeAvaliacaoFisio/Ficha.html">
                     <i class="uil uil-book-medical"></i>
-                    <span class="link-name">Adicionar Treinos</span>
+                    <span class="link-name">Ficha de Avaliação</span>
                 </a></li>
             </ul>
             
@@ -93,9 +93,9 @@ include('../conexões/db.php');
                         <i class="fas fa-comments"></i>
                         <span class="text">Consultas Marcadas</span>
                     </a>
-                    <a href="treinos/treino.html" class="box box3">
+                    <a href="FichaDeAvaliacaoFisio/Ficha.html" class="box box3">
                         <i class="fas fa-share"></i>
-                        <span class="text">Adicionar Treinos</span>
+                        <span class="text">Ficha de Avaliação</span>
                     </a>
                 </div>
                 

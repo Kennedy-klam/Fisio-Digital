@@ -6,6 +6,11 @@
         <title>Ficha de Avaliação de Fisioterapia Geriátrica</title>
         <link rel="stylesheet" href="Estilos/styles.css">
         <!--versão 0.9.7 Mudanças de interação e Estilo-->
+        <script>
+            function redirecionar(url) {
+                window.location.href = url;
+            }
+        </script>
     </head>
     <body>
         <div class="container">
@@ -409,10 +414,10 @@
         <!--Botoes-->
         
         <div class="button-container">
-            <button class="styled-button" type="button">Tela Inicial</button>
-            <button class="styled-button" type="button">Próxima página</button>
+            <button class="styled-button" type="button" onclick="redirecionar('../dashboard.php')">Tela Inicial</button>
+            <button class="styled-button" type="button" onclick="redirecionar('proxima_pagina.php')">Próxima página</button>
         </div>
-        
+
         <!--O script ficou aqui porque não estava sendo carregado-->
         <script src="Script/script.js"></script>
     </body>
