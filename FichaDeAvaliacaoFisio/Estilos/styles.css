@@ -162,8 +162,8 @@ th {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 15%;
-    max-width:25%;
+    width: 10%;
+    max-width:23%;
 }
 
 .input-date {
@@ -184,22 +184,6 @@ th {
 
 .input-date:focus {
     color: black; 
-}
-.styled-button {
-    background-color: #DEF7E5; 
-    color: #4A7C4A; 
-    padding: 10px 20px; 
-    border: none; 
-    border-radius: 4px; 
-    cursor: pointer; 
-    font-size: 16px; 
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.styled-button:hover {
-    background-color: #D3E9D3; 
-    color: #3A6B3A;
-    position: center;
 }
 
 select {
@@ -260,4 +244,27 @@ select {
 
 .remove-btn:hover {
     background-color: darkred;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.styled-button {
+    background-color: #DEF7E5; 
+    color: #4A7C4A; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.styled-button:hover {
+    background-color: #D3E9D3; 
+    color: #3A6B3A;
 }
