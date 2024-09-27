@@ -18,6 +18,36 @@ $clientname = $data['clientname'];
     <title>Consultas Marcadas</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <style>
+        /* Custom CSS for visual improvements */
+        .table-adjusted th, .table-adjusted td {
+            padding: 10px 15px;
+            text-align: center;
+        }
+        .appt {
+            margin: 20px 0;
+        }
+        .appt .title h3 {
+            padding: 10px 0;
+            background-color: #f0f0f0;
+        }
+        .table-adjusted {
+            width: 95%;
+            margin: 0 auto;
+        }
+        .table-adjusted tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .table-adjusted th {
+            background-color: #113838;
+            color: white;
+        }
+        .no-appointments {
+            margin-top: 15px;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
 <div class="container-fluid pt-2 pb-2" style="background-color: #113838;">
@@ -26,8 +56,8 @@ $clientname = $data['clientname'];
             <img  width="200" class="ml-0 mt-2 mb-2" src="../../../../imagens/default_transparent.png">
         </div>
         <div class="col-sm-2">
-            <h3 class="mr-0">Olá, <?php echo $clientname; ?>!</h3>
-            <a href="../dashboard.php" class="btn btn-primary ">Voltar para Tela Inicial</a>
+            <h3 class="mr-0 text-white">Olá, <?php echo $clientname; ?>!</h3>
+            <a href="../dashboard.php" class="btn btn-outline-light">Voltar para Tela Inicial</a>
         </div>
     </div>
 </div>
