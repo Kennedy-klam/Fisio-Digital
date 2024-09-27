@@ -9,8 +9,36 @@
     <title>Dashboard - Client area</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-	<link href="css/dashboard.css" rel="stylesheet">
-    
+	<link href="style.css" rel="stylesheet">
+	<style>
+        /* Custom CSS for visual improvements */
+        .table-adjusted th, .table-adjusted td {
+            padding: 10px 15px;
+            text-align: center;
+        }
+        .appt {
+            margin: 20px 0;
+        }
+        .appt .title h3 {
+            padding: 10px 0;
+            background-color: #f0f0f0;
+        }
+        .table-adjusted {
+            width: 95%;
+            margin: 0 auto;
+        }
+        .table-adjusted tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .table-adjusted th {
+            background-color: #113838;
+            color: white;
+        }
+        .no-appointments {
+            margin-top: 15px;
+            font-size: 1.2em;
+        }
+    </style> 
 </head>
 
 <?php

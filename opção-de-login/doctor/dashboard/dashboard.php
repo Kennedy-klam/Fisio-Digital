@@ -49,7 +49,7 @@ include('../conexões/db.php');
                     <i class="uil uil-schedule"></i>
                     <span class="link-name">Consultas Marcadas</span>
                 </a></li>
-                <li><a href="FichaDeAvaliacaoFisio/Ficha.html">
+                <li><a href="Ficha De Avaliação/Avaliação Geriatrica/Tela1/Ficha.html">
                     <i class="uil uil-book-medical"></i>
                     <span class="link-name">Ficha de Avaliação</span>
                 </a></li>
@@ -93,7 +93,7 @@ include('../conexões/db.php');
                         <i class="fas fa-comments"></i>
                         <span class="text">Consultas Marcadas</span>
                     </a>
-                    <a href="FichaDeAvaliacaoFisio/Ficha.html" class="box box3">
+                    <a href="Ficha De Avaliação/Avaliação Geriatrica/Tela1/Ficha.html" class="box box3">
                         <i class="fas fa-share"></i>
                         <span class="text">Ficha de Avaliação</span>
                     </a>

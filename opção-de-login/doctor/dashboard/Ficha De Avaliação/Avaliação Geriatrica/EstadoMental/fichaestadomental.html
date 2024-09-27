@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estado Mental</title>
-    <link rel="stylesheet" href="/EstadoMental/style/style.css">
+    <link rel="stylesheet" href="style/style.css">
     <script src="/EstadoMental/script/script.js" defer></script>
+    <script>
+        function redirecionar(url) {
+            window.location.href = url;
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -662,7 +667,7 @@
     </tbody>
 </table>
 <div class="legend"><h4>Resultado: dependência leve, 94 pontos.</h4></div>
-<button type="button">Próxima página &rarr;</button>
+<button class="styled-button" type="button" onclick="redirecionar('../TAF/index.html')">Próxima página</button>
 
 </div>
     
