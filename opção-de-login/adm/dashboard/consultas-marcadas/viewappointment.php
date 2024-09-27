@@ -81,31 +81,31 @@ if($result) {
                 WHERE a.date = '$tdt'";
         $res = mysqli_query($con, $sql);
         
-        if ($res) {   
+        if ($res) {
             if (mysqli_num_rows($res)) {
-                echo "<table class='table table-hover table-adjusted'>  
-                <thead>
-                <tr>
-                    <th>DATA</th>
-                    <th>HORÁRIO</th>
-                    <th>DESCRIÇÃO</th>
-                    <th>PACIENTE</th>
-                    <th>DOUTOR</th>
-                </tr>
-                </thead>";
+                echo "<table class='table table-hover table-adjusted'>
+                        <thead>
+                            <tr>
+                                <th>DATA</th>
+                                <th>HORÁRIO</th>
+                                <th>DESCRIÇÃO</th>
+                                <th>PACIENTE</th>
+                                <th>DOUTOR</th>
+                            </tr>
+                        </thead>";
                 while ($row = mysqli_fetch_assoc($res)) {
                     $formattedDate = date('d/m/Y', strtotime($row["date"]));
                     echo "<tr>
-                        <td>" . $formattedDate . "</td>
-                        <td>" . $row["timeslot"] . "</td>
-                        <td>" . $row["description"] . "</td>
-                        <td>" . $row["clientname"] . "</td>
-                        <td>" . $row["doctorname"] . "</td>
-                    </tr>";
+                            <td>" . $formattedDate . "</td>
+                            <td>" . $row["timeslot"] . "</td>
+                            <td>" . $row["description"] . "</td>
+                            <td>" . $row["clientname"] . "</td>
+                            <td>" . $row["doctorname"] . "</td>
+                          </tr>";
                 }
                 echo "</table>";
             } else {
-                echo "<div class='text-center no-appointments'>Sem consultas para hoje</div>";
+                echo "<div class='text-center no-appointments'>Sem consultas futuras</div>";
             }
         }
         ?>
