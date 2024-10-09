@@ -1,3 +1,47 @@
+<?php
+// Conectando ao banco de dados
+$host = 'localhost';
+$user = 'root';
+$pass = '';
+$banco = 'fisio-digital-v2.0';
+
+// Criando conexão
+$conn = new mysqli($host, $user, $pass, $banco);
+
+// Verificando a conexão
+if ($conn->connect_error){
+    die("Conexão falhou: " . $conn->connect_error);
+}
+
+
+// ID do paciente que queremos buscar
+$paciente_id = 2;  // Exemplo estático, sera dinâmico
+
+// Buscando os dados do usuário
+$sql = "SELECT nome, nascimento, sexo, estaCivil, celular FROM paciente WHERE idPaciente = $paciente_id";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Os dados do usuário existem, pegamos a linha
+    $row = $result->fetch_assoc();
+    $nome = $row["nome"];
+    $dataNascimento = $row["nascimento"];
+    $sexo = $row["sexo"];
+    $estadoCivil = $row["estaCivil"];
+    $telefone = $row["celular"];
+
+    // Calculando a idade
+    $hoje = new DateTime();
+    $nascimento = new DateTime($dataNascimento);
+    $idade = $hoje->diff($nascimento)->y;
+} else {
+    echo "Nenhum dado encontrado para esse usuário.";
+    exit();
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
@@ -33,23 +77,24 @@
                 <br>
                 <div>
                     <label for="nome">Nome:</label>
-                    <input type="text" class="input-style">
+                    <input type="text" class="input-style" id="nome" name="nome" value="<?php echo $nome; ?>" readonly>
+
                     <label for="dataNascimento">Data de Nascimento:</label>
-                    <input type="date" class="input-date" id="dataNascimento">
+                    <input type="date" class="input-date" id="dataNascimento" name="dataNascimento" value="<?php echo $dataNascimento; ?>" readonly>
                 </div>
                 <br>
                 <div>
                     <label for="idade">Idade:</label>
-                    <input type="number" class="idadeSe">
+                    <input type="number" class="idadeSe" id="idade" name="idade" value="<?php echo $idade; ?>" readonly>
 
                     <label for="Sexo">Sexo:</label>
-                    <input type="text" class="idadeSe">
+                    <input type="text" class="idadeSe" id="sexo" name="sexo" value="<?php echo $sexo; ?>" readonly>
 
                     <label for="estadoCivil">Estado Civil:</label>
-                    <input type="text" class="input-style">
+                    <input type="text" class="input-style" id="estadoCivil" name="estadoCivil" value="<?php echo $estadoCivil; ?>" readonly>
 
                     <label for="telefone">Telefone:</label>
-                    <input type="text" class="input-style">
+                    <input type="text" class="input-style" id="telefone" name="telefone" value="<?php echo $telefone; ?>" readonly>
                 </div>
 
             </div>
