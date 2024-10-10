@@ -10,14 +10,15 @@
 }
 
 /* Estilos gerais */
-html, body {
+body {
+    font-size: 19px;
+    color: #113838;
     font-family: Arial, sans-serif;
-    background-color: var(--cor1);
-    color: var(--cor2);
-}
-div{
-    gap: 0;
-}
+    margin: 30px;
+    padding: 0;
+    background: #f4f4f4;
+}  
+
 .container {
     margin: 20px auto;
     background-color: var(--cor3);
