@@ -63,7 +63,7 @@ if ($result->num_rows > 0) {
             <div class="data-estagiario">
                 <div>
                     <label for="data">Data:</label>
-                    <input type="date" id="data" name="data">
+                    <input type="date" id="dataAtual" name="dataAtual" value="<?php echo date('Y-m-d'); ?>" readonly>
                 </div>
                 <div>
                     <label for="estagiario">Estagiário:</label>
@@ -129,8 +129,7 @@ if ($result->num_rows > 0) {
                         </select>
                     </div>
 
-                    <div class="campo" id="profissaoCampo"
-                        style="display: none;">
+                    <div class="campo" id="profissaoCampo">
                         <label for="profissao">Profissão</label>
                         <input type="text" id="profissao" name="profissao">
                     </div>
