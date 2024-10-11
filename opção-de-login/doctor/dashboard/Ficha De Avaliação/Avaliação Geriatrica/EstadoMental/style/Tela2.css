@@ -5,45 +5,60 @@
 --cor4:#dbf1e2;
 --cor5:#b3dca8;
 --cor6:#000;
---cor7:#4CAF50;
+--cor7:#99e39c;
 
 }
 
 /* Estilos gerais */
-html, body {
-    height: 100%;
+body {
+    font-size: 19px;
+    color: #113838;
     font-family: Arial, sans-serif;
-    background-color: var(--cor1);
-    color: var(--cor2);
-}
+    margin: 30px;
+    padding: 0;
+    background: #f4f4f4;
+}  
 
 .container {
     margin: 20px auto;
     background-color: var(--cor3);
     border-radius: 10px;
     border: 1px solid var(--cor4);
-    padding: 35px;
+    gap: 38px;
+}
+p{
+    size: 20px;
+    color: #113838;
+    margin-bottom: none;
 }
 
 .section-title {
     font-size: 24px;
     font-weight: bold;
-    padding: 35px;
+    padding: 20px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    color: #113838;
 
+}
+legend{
+    font-family: Roboto;
+    size: 20px;
+    line-height: 22px;
+    color: #113838;
 }
 /* Agrupamento das colunas */
 .column-group {
     display: flex;
-    gap: 20px;
 }
 
 /* Colunas flexíveis */
 .column {
     flex: 1;
+    padding: 20px;
+    margin-top: none;
 }
-.column h4{
+.column > h4{
     padding: 35px;
 }
 
@@ -56,17 +71,37 @@ html, body {
     padding: 35px;
 }
 
+.section legend {
+    margin-bottom: 10px; /* Espaçamento abaixo do título */
+}
+
+.section > div {
+    display: flex;
+}
+
+.section > div > label {
+    display: flex; /* Alinha checkbox e texto horizontalmente */
+    align-items: center; /* Alinha verticalmente */
+    margin-bottom: 8px; /* Espaçamento entre as labels */
+}
+
 
 /* Organização em linha */
 .horizontal-group {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start; /* Alinha as colunas no topo */
     gap: 10px;
 }
 
 .horizontal-group div {
     flex: 1;
+}
+
+.horizontal-group label {
+    display: flex;
+    align-items: center; /* Alinha o checkbox e o texto verticalmente */
+    margin-bottom: 2px; /* Espaço entre cada linha de checkbox */
 }
 
 /* Caixa de notas */
@@ -88,7 +123,6 @@ html, body {
     border: 1px solid var(--cor6);
     font-weight: bold;
     border-radius: 5px;
-    background-color: auto;
 }
 
 .notes-table{
@@ -98,7 +132,6 @@ html, body {
     border: 1px solid var(--cor6);
     font-weight: bold;
     border-radius: 5px;
-    background-color: auto;
 
 }
 
@@ -113,15 +146,12 @@ a{
 }
 input[type="checkbox" ],input[type="radio"] {
     appearance: none; /* Remove o estilo padrão do checkbox */
-    -webkit-appearance: none;
-    -moz-appearance: none;
     width: 20px;
     height: 20px;
     border: 2px solid var(--cor2);
     border-radius: 50%; /* Faz o checkbox ficar redondo */
-    outline: none;
-    cursor: pointer;
-    position: relative;
+    display:inline-block ;
+
 }
 
 /* Estilo para o estado marcado do checkbox */
