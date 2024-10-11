@@ -1,22 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Seção de "Sim" e "Não" para mostrar/ocultar partes do formulário
     const calcSim = document.getElementById('calc-sim');
     const calcNao = document.getElementById('calc-nao');
     const radioButtons = document.querySelectorAll('input[name="calc"]');
 
-    // Mostra/oculta as seções de cálculo com base na seleção "Sim" ou "Não"
     radioButtons.forEach(radio => {
         radio.addEventListener('change', () => {
             if (radio.value === 'sim') {
-                calcSim.style.display = 'block'; 
-                calcNao.style.display = 'none';  
+                calcSim.style.display = 'block';
+                calcNao.style.display = 'none';
             } else if (radio.value === 'não') {
-                calcSim.style.display = 'none';  
-                calcNao.style.display = 'block'; 
+                calcSim.style.display = 'none';
+                calcNao.style.display = 'block';
             }
         });
     });
 
-    // Adiciona eventos a todas as checkboxes para calcular a pontuação automaticamente
+    // Função para calcular pontuação com base em checkboxes (outra funcionalidade)
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
@@ -24,12 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Função para atualizar a pontuação em cada seção
     function updateNotes(section) {
         const checkboxes = section.querySelectorAll('input[type="checkbox"]');
         const notesField = section.querySelector('.notes-input');
 
-        // Conta quantas checkboxes estão selecionadas
         let score = 0;
         checkboxes.forEach(checkbox => {
             if (checkbox.checked) {
@@ -37,13 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Atualiza o campo de nota com a pontuação calculada
         if (notesField) {
             notesField.value = score;
         }
     }
 
-    // Atualiza a pontuação total sempre que qualquer checkbox é alterada ou um campo de nota é preenchido manualmente
+    // Atualiza a pontuação total de todas as seções não relacionadas ao Teste de Força
     const notesInputs = document.querySelectorAll('.notes-input');
     notesInputs.forEach(input => {
         input.addEventListener('input', updateTotalScore);
@@ -52,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateTotalScore() {
         let totalScore = 0;
 
-        // Soma as notas de todas as seções
         notesInputs.forEach(input => {
             const value = parseInt(input.value, 10);
             if (!isNaN(value)) {
@@ -60,7 +56,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Atualiza o resultado final
         document.getElementById('resultado').textContent = `RESULTADO: ${totalScore} pontos.`;
     }
+});
+
+
+// Seleciona todos os elementos select da tabela
+const selects = document.querySelectorAll('.notes-table');
+
+// Adiciona um listener para cada select
+selects.forEach(select => {
+    select.addEventListener('change', function() {
+        // Encontra a célula SCORE na mesma linha do select
+         const scoreCell = this.parentElement.nextElementSibling;
+
+        // Insere o valor do select na célula SCORE
+        scoreCell.textContent = this.value;
+    });
 });
