@@ -15,7 +15,7 @@ if ($conn->connect_error){
 
 
 // ID do paciente que queremos buscar
-$paciente_id = 2;  // Exemplo estático, sera dinâmico
+$paciente_id = 1;  // Exemplo estático, sera dinâmico
 
 // Buscando os dados do usuário
 $sql = "SELECT nome, nascimento, sexo, estaCivil, celular FROM paciente WHERE idPaciente = $paciente_id";

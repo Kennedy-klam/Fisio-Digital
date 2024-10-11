@@ -46,3 +46,32 @@ botao.addEventListener("click", function(){
     window.alert('Formulário Salvo!')
     window.location.href = "O LINK VAI AQUI"
 })
+
+function calcularNota(){
+    let sentar = document.getElementById('sentar').value
+    let levantar = document.getElementById('levantar').value
+    let desequilibrioSentar = document.getElementById('desequilibrioSentar').checked
+    let desequilibrioLevantar = document.getElementById('desequilibrioLevantar').checked
+    let notaSentar = parseFloat(sentar)
+    let notaLevantar = parseFloat(levantar)
+
+    if(isNaN(notaSentar)){
+        notaSentar = 0
+    }
+
+    if(isNaN(notaLevantar)){
+        notaLevantar = 0
+    }
+    //subtrair se houver desequilibrio em sentar
+    if(desequilibrioSentar){
+        notaSentar -= 0.5
+    }
+    //subtrair se houver desequilibrio em levantar
+    if(desequilibrioLevantar){
+        notaLevantar -= 0.5
+    }
+
+    document.getElementById('notaSentar').value = notaSentar.toFixed(1)
+    document.getElementById('notaLevantar').value = notaLevantar.toFixed(1)
+
+}
