@@ -8,7 +8,7 @@ function formatarTempo(segundos) {
 }
 
 function comecar() {
-    parar();
+    parar(); 
     cronometro = setInterval(() => {
         totalSegundos++
         document.getElementById("tempo").innerText = formatarTempo(totalSegundos)
@@ -42,12 +42,12 @@ function mostrarResultado(segundos) {
 }
 
 const botao = document.getElementById('prox-pag')
-botao.addEventListener("click", function () {
+botao.addEventListener("click", function(){
     window.alert('Formulário Salvo!')
     window.location.href = "O LINK VAI AQUI"
 })
 
-function calcularNota() {
+function calcularNota(){
     let sentar = document.getElementById('sentar').value
     let levantar = document.getElementById('levantar').value
     let desequilibrioSentar = document.getElementById('desequilibrioSentar').checked
@@ -55,19 +55,19 @@ function calcularNota() {
     let notaSentar = parseFloat(sentar)
     let notaLevantar = parseFloat(levantar)
 
-    if (isNaN(notaSentar)) {
+    if(isNaN(notaSentar)){
         notaSentar = 0
     }
 
-    if (isNaN(notaLevantar)) {
+    if(isNaN(notaLevantar)){
         notaLevantar = 0
     }
     //subtrair se houver desequilibrio em sentar
-    if (desequilibrioSentar) {
+    if(desequilibrioSentar){
         notaSentar -= 0.5
     }
     //subtrair se houver desequilibrio em levantar
-    if (desequilibrioLevantar) {
+    if(desequilibrioLevantar){
         notaLevantar -= 0.5
     }
 
