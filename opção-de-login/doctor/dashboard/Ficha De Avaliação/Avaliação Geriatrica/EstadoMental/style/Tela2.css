@@ -1,14 +1,3 @@
-:root{
---cor1:#fff;
---cor2:#333;
---cor3:#DEF7E5;
---cor4:#dbf1e2;
---cor5:#b3dca8;
---cor6:#000;
---cor7:#99e39c;
-
-}
-
 /* Estilos gerais */
 body {
     font-size: 16px;
@@ -45,7 +34,7 @@ input[type="checkbox"]:checked::after,input[type="radio"]:checked::after {
     left: 3px;
     width: 10px;
     height: auto;
-    background-color: 99e39c;
+    background-color: #99e39c;
     border-radius: 50%;
 }
 p{
@@ -134,7 +123,7 @@ legend{
     height: 30px;
     margin-right: 60px ;
     text-align: center;
-    border: 1px solid var(--cor6);
+    border: 1px solid #000;
     font-weight: bold;
     border-radius: 5px;
 }
@@ -151,7 +140,7 @@ input{
     margin-right: 8px;
 }
 a{
-    color: var(--cor5);
+    color: #6DAA7F;
     text-decoration: none;
     display: inline-block;
     padding: 0;
