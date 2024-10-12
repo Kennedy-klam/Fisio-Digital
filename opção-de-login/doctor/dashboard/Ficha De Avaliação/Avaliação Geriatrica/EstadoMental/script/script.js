@@ -39,8 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
             notesField.value = score;
         }
     }
-
-    // Atualiza a pontuação total de todas as seções não relacionadas ao Teste de Força
     const notesInputs = document.querySelectorAll('.notes-input');
     notesInputs.forEach(input => {
         input.addEventListener('input', updateTotalScore);
@@ -60,17 +58,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Função para atualizar o valor do "score-cell" e somar o total
+function atualizarScore(selectElement) {
+    // Obtém o valor selecionado no <select>
+    let valorSelecionado = parseInt(selectElement.value) || 0; // Converte o valor para número, ou 0 se for inválido
+    
+    // Localiza a célula da tabela com a classe 'score-cell' na mesma linha
+    let celulaScore = selectElement.closest('tr').querySelector('.score-cell');
+    
+    // Atualiza a célula 'score-cell' com o valor selecionado
+    celulaScore.textContent = valorSelecionado;
 
-// Seleciona todos os elementos select da tabela
-const selects = document.querySelectorAll('.notes-table');
+    // Atualiza o total geral
+    atualizarTotal();
+}
 
-// Adiciona um listener para cada select
-selects.forEach(select => {
+// Função para calcular o total e atualizar o elemento com id="resultado2"
+function atualizarTotal() {
+    let total = 0;
+
+    // Itera sobre todas as células com a classe 'score-cell' e soma os valores
+    document.querySelectorAll('.score-cell').forEach(function(celula) {
+        let valor = parseInt(celula.textContent) || 0;
+        total += valor;
+    });
+
+    // Atualiza o elemento com id "resultado2" com o valor total
+    document.getElementById('resultado2').textContent = `RESULTADO: ${total} pontos.`;
+}
+
+// Adiciona o evento de 'change' (mudança) em todos os elementos <select>
+document.querySelectorAll('select').forEach(function(select) {
     select.addEventListener('change', function() {
-        // Encontra a célula SCORE na mesma linha do select
-         const scoreCell = this.parentElement.nextElementSibling;
-
-        // Insere o valor do select na célula SCORE
-        scoreCell.textContent = this.value;
+        atualizarScore(this);
     });
 });
