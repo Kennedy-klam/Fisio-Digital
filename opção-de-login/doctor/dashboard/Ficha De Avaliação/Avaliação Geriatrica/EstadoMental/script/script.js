@@ -16,11 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Função para calcular pontuação com base em checkboxes (outra funcionalidade)
+    // Função para calcular pontuação com base em checkboxes
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
             updateNotes(checkbox.closest('.section'));
+            updateTotalScore(); // Atualiza a pontuação total ao marcar/desmarcar checkboxes
         });
     });
 
@@ -36,9 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (notesField) {
-            notesField.value = score;
+            notesField.value = score; // Atualiza a nota da seção com base nas checkboxes
         }
     }
+
     const notesInputs = document.querySelectorAll('.notes-input');
     notesInputs.forEach(input => {
         input.addEventListener('input', updateTotalScore);
@@ -47,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateTotalScore() {
         let totalScore = 0;
 
+        // Soma as pontuações dos campos de notas (calculadas pela função updateNotes)
         notesInputs.forEach(input => {
             const value = parseInt(input.value, 10);
             if (!isNaN(value)) {
@@ -54,7 +57,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        document.getElementById('resultado').textContent = `RESULTADO: ${totalScore} pontos.`;
+        const resultado = avaliarResultado(totalScore);
+        document.getElementById('resultado').textContent = `RESULTADO: ${totalScore} pontos. Avaliação: ${resultado}`;
+    }
+
+    function avaliarResultado(totalScore) {
+        let resultado = '';
+
+        if (totalScore > 27) {
+            resultado = "Normal";
+        } else if (totalScore <= 24) {
+            resultado = "Estado cognitivo alterado";
+        }
+
+        // Avaliações de depressão
+        if (totalScore >= 25.1) {
+            resultado += ", Escore médio para Depressão não-complicada";
+        } else if (totalScore <= 19) {
+            resultado += ", Prejuízo cognitivo por depressão";
+        }
+
+        return resultado;
     }
 });
 

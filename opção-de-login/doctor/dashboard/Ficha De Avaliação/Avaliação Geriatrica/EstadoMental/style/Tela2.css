@@ -19,15 +19,15 @@ body {
 
 .container {
     margin: 20px auto;
-    background-color: var(--cor3);
+    background-color: #DEF7E5;
     border-radius: 10px;
-    border: 1px solid var(--cor4);
+    border: 1px solid #dbf1e2;
 }
 input[type="checkbox" ],input[type="radio"] {
     appearance: none; /* Remove o estilo padrão do checkbox */
     width: 20px;
     height: 20px;
-    border: 2px solid var(--cor2);
+    border: 2px solid #333;
     border-radius: 50%; /* Faz o checkbox ficar redondo */
     display:inline-block ;
 
@@ -35,8 +35,8 @@ input[type="checkbox" ],input[type="radio"] {
 
 /* Estilo para o estado marcado do checkbox */
 input[type="checkbox" ]:checked,input[type="radio"]:checked {
-    background-color: var(--cor7);
-    border: 2px solid var(--cor7);
+    background-color: #99e39c;
+    border: 2px solid #99e39c;
 }
 input[type="checkbox"]:checked::after,input[type="radio"]:checked::after {
     content: '';
@@ -45,7 +45,7 @@ input[type="checkbox"]:checked::after,input[type="radio"]:checked::after {
     left: 3px;
     width: 10px;
     height: auto;
-    background-color: var(--cor7);
+    background-color: 99e39c;
     border-radius: 50%;
 }
 p{
