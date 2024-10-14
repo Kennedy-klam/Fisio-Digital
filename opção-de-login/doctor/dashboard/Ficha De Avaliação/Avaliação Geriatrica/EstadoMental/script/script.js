@@ -94,7 +94,7 @@ function calcularNota() {
 
     // Determina a descrição da dependência
     let dependencia;
-    if (total === 100) {
+    if (total >= 100) {
         dependencia = 'Totalmente independente';
     } else if (total >= 76) {
         dependencia = 'Dependência leve';
