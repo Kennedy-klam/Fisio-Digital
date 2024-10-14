@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const resultado = avaliarResultado(totalScore);
-        document.getElementById('resultado').textContent = `RESULTADO: ${totalScore} pontos. Avaliação: ${resultado}`;
+        document.getElementById('resultado').textContent = `RESULTADO: ${totalScore} pontos - ${resultado}`;
     }
 
     function avaliarResultado(totalScore) {
@@ -80,39 +80,53 @@ document.addEventListener('DOMContentLoaded', () => {
         return resultado;
     }
 });
-
-// Função para atualizar o valor do "score-cell" e somar o total
-function atualizarScore(selectElement) {
-    // Obtém o valor selecionado no <select>
-    let valorSelecionado = parseInt(selectElement.value) || 0; // Converte o valor para número, ou 0 se for inválido
-    
-    // Localiza a célula da tabela com a classe 'score-cell' na mesma linha
-    let celulaScore = selectElement.closest('tr').querySelector('.score-cell');
-    
-    // Atualiza a célula 'score-cell' com o valor selecionado
-    celulaScore.textContent = valorSelecionado;
-
-    // Atualiza o total geral
-    atualizarTotal();
-}
-
-// Função para calcular o total e atualizar o elemento com id="resultado2"
-function atualizarTotal() {
+// Função para calcular a nota
+function calcularNota() {
     let total = 0;
 
-    // Itera sobre todas as células com a classe 'score-cell' e soma os valores
-    document.querySelectorAll('.score-cell').forEach(function(celula) {
-        let valor = parseInt(celula.textContent) || 0;
-        total += valor;
+    // Seleciona todas as checkboxes marcadas
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+
+    // Soma os valores das checkboxes selecionadas
+    checkboxes.forEach(checkbox => {
+        total += parseInt(checkbox.value);
     });
 
-    // Atualiza o elemento com id "resultado2" com o valor total
-    document.getElementById('resultado2').textContent = `RESULTADO: ${total} pontos.`;
+    // Determina a descrição da dependência
+    let dependencia;
+    if (total === 100) {
+        dependencia = 'Totalmente independente';
+    } else if (total >= 76) {
+        dependencia = 'Dependência leve';
+    } else if (total >= 51) {
+        dependencia = 'Dependência moderada';
+    } else if (total >= 26) {
+        dependencia = 'Dependência severa';
+    } else {
+        dependencia = 'Dependência total';
+    }
+
+    // Exibe o total e a dependência no elemento de resultado
+    document.getElementById('resultado2').innerText = `RESULTADO: ${total} pontos - ${dependencia}.`;
 }
 
-// Adiciona o evento de 'change' (mudança) em todos os elementos <select>
-document.querySelectorAll('select').forEach(function(select) {
-    select.addEventListener('change', function() {
-        atualizarScore(this);
+// Função para garantir que apenas uma checkbox por linha seja selecionada
+function selecionarCheckboxesPorLinha(event) {
+    const checkboxesNaLinha = event.target.closest('tr').querySelectorAll('input[type="checkbox"]');
+
+    checkboxesNaLinha.forEach(checkbox => {
+        if (checkbox !== event.target) {
+            checkbox.checked = false; // Desmarca as outras checkboxes na mesma linha
+        }
     });
-});
+
+    calcularNota(); // Recalcula a nota após a seleção
+}
+
+// Função para adicionar o evento 'change' após o carregamento da página
+window.onload = function() {
+    // Adiciona o evento 'change' a todas as checkboxes
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', selecionarCheckboxesPorLinha);
+    });
+};

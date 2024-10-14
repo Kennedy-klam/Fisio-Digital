@@ -24,8 +24,8 @@ input[type="checkbox" ],input[type="radio"] {
 
 /* Estilo para o estado marcado do checkbox */
 input[type="checkbox" ]:checked,input[type="radio"]:checked {
-    background-color: #99e39c;
-    border: 2px solid #99e39c;
+    background-color: #113838;
+    border: 2px solid #113838;
 }
 input[type="checkbox"]:checked::after,input[type="radio"]:checked::after {
     content: '';
@@ -76,13 +76,14 @@ legend{
 .column > h4{
     padding: 15px;
 }
+a{
+    color: #6DAA7F;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0;
+}
 .legend{
     margin-left: 5px;
-}
-#resultado{
-    font-size: 19px;
-    color: #113838;
-    font-family: Arial, sans-serif;
 }
 /* Estilo para Fieldset */
 .section {
@@ -127,24 +128,11 @@ legend{
     font-weight: bold;
     border-radius: 5px;
 }
-.notes-table{
-    width: 100%;
-    font-size: 22px;
-    font-family: sans-serif;
-    color: #113838;
-    text-align: center;
-    border: none;
-}
 /* Checkbox e radio */
 input{
     margin-right: 8px;
 }
-a{
-    color: #6DAA7F;
-    text-decoration: none;
-    display: inline-block;
-    padding: 0;
-}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -153,16 +141,14 @@ table {
     padding: 35px;
     border: #828282;
 }
+th{
+    background-color: #DEF7E5;
+}
 th, td {
     padding: 5px; /* Adiciona padding às células */
     border: 1px solid #828282; /* Bordas para as células */
     font-size: 22px;
     color: #113838;
-}
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 button{
     width: 170px;
