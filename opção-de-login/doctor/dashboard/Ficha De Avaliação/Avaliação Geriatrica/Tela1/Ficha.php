@@ -49,7 +49,7 @@ if ($result->num_rows > 0) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ficha de Avaliação de Fisioterapia Geriátrica</title>
         <link rel="stylesheet" href="Estilos/styles.css">
-        <!--versão 0.9.7 Mudanças de interação e Estilo-->
+        <!--versão 1.0-->
         <script>
             function redirecionar(url) {
                 window.location.href = url;
@@ -164,23 +164,21 @@ if ($result->num_rows > 0) {
                 </div>
 
                 <div class="coluna-central">
+                    
                     <div class="campo">
                         <label>Atividades Físicas:</label>
                     </div>
                     <div>
-                        <input type="radio" id="atividade-sim" name="atividade"
-                            value="sim">
-                        <label for="fuma-sim">Sim</label>
+                        <input type="radio" id="atividade-sim" name="atividade" value="sim" onclick="mostrarCampoAF()">
+                        <label for="atividade-sim">Sim</label>
                         <br>
-                        <input type="radio" id="atividade-nao" name="atividade"
-                            value="nao">
-                        <label for="fuma-nao">Não</label>
-                    </div> <br>
-                    <div class="campo">
-                        <label for="quantos-dias">Se sim, quantos dias na
-                            semana:</label>
-                        <input type="text" id="quantos-dias"
-                            name="quantos-dias">
+                        <input type="radio" id="atividade-nao" name="atividade" value="nao" onclick="mostrarCampoAF()">
+                        <label for="atividade-nao">Não</label>
+                    </div> 
+                    <br>
+                    <div class="campo" id="campo-quantos-dias" style="display: none;">
+                        <label for="quantos-dias">Se sim, quantos dias na semana:</label>
+                        <input type="text" id="quantos-dias" name="quantos-dias">
                     </div>
 
                     <div class="campo">
@@ -278,7 +276,7 @@ if ($result->num_rows > 0) {
             </form>
             <br>
 
-            <h2>Tabela de Medicamentos</h3>
+            <h2>Tabela de Medicamentos</h2>
             <table id="tabela-medicamentos">
                 <thead>
                     <tr>

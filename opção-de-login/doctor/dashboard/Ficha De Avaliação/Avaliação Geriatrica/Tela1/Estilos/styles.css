@@ -27,7 +27,8 @@ h1 {
     margin-bottom: 20px;
 }
 
-.data-estagiario input[type="date"] , input[type="text"]{
+.data-estagiario input[type="date"], 
+.data-estagiario input[type="text"] {
     background-color: transparent; /* Remove a cor de fundo */
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -38,14 +39,6 @@ h1 {
     max-width: 200px; /* Limita a largura máxima do campo */
 }
 
-.data-estagiario input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(0.7); /* Estiliza o ícone do calendário */
-}
-
-.data-estagiario input[type="date"]:focus {
-    border-color: #4CAF50; /* Muda a cor da borda ao focar */
-    outline: none; /* Remove a borda azul padrão */
-}
 
 
 .dados-pessoais {
@@ -162,7 +155,7 @@ th {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 10%;
+    width: 20%;
     max-width:23%;
 }
 
@@ -171,8 +164,8 @@ th {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 15%;
-    max-width: 20%;
+    width: 10%;
+    max-width: 200px;
   
     color: black; 
 }
@@ -209,8 +202,8 @@ select {
     padding: 8px; 
     border: 1px solid #ccc; 
     border-radius: 4px; 
-    width: 5%;
-    max-width: 15%; 
+    width: 7%;
+    max-width: 23%; 
 }
 
 .doenca-selecionada {
@@ -226,6 +219,20 @@ select {
 
 .doenca-selecionada span {
     flex-grow: 1;
+}
+
+.remove-btn1 {
+    background-color: lightcoral; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.remove-btn1:hover {
+    background-color: red;
 }
 
 .remove-btn {

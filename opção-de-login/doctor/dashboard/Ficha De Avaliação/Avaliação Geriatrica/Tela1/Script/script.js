@@ -18,11 +18,25 @@ function addMed() {
     const celulaMedicamento = novaLinha.insertCell(0);
     const celulaComoUsa = novaLinha.insertCell(1);
     const celulaTempoUso = novaLinha.insertCell(2);
+    const celulaBotao = novaLinha.insertCell(3);
 
     // Adicionando o conteúdo nas células
     celulaMedicamento.textContent = medicamento;
     celulaComoUsa.textContent = comoUsa;
     celulaTempoUso.textContent = tempoUso;
+
+    // Criando botão de remover com o estilo
+    const botaoRemover = document.createElement('button');
+    botaoRemover.textContent = 'Remover';
+    botaoRemover.classList.add('botao-remover' , 'remove-btn1');
+
+    // Adicionando um evento de clique ao botão
+    botaoRemover.addEventListener('click', function() {
+        novaLinha.remove();
+    });
+
+    // Adicionando o botão à célula
+    celulaBotao.appendChild(botaoRemover);
 
     // Limpando os inputs do formulário
     document.getElementById('medicamento-form').reset();
@@ -145,6 +159,18 @@ function mostrarData() {
     
             // Adiciona a doença 
             document.getElementById('doencas-selecionadas').appendChild(doencaDiv);
+        }
+    }
+
+    function mostrarCampoAF() {
+        var sim = document.getElementById("atividade-sim");
+        var campo = document.getElementById("campo-quantos-dias");
+
+        // Exibe o campo apenas se a opção "Sim" estiver selecionada
+        if (sim.checked) {
+            campo.style.display = "block";
+        } else {
+            campo.style.display = "none";
         }
     }
     
