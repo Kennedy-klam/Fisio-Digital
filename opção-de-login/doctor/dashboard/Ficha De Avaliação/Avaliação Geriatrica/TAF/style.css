@@ -68,12 +68,20 @@ button {
   /* botões do timer*/
   padding: 30px 40px;
 }
-
+@keyframes girar{ /* animação para a imagem do cronômetro*/
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
 .image {
   width: 117px;
   height: 117px;
   top: -40px;
   left: 2770px;
+  animation: girar 3s linear infinite;
 }
 
 .finalizar {
@@ -136,7 +144,9 @@ input[type="text"] {
 
 input {
   /* Checkbox e radio */
-  margin-right: 8px;
+  margin-right: 5px; 
+  top: 6px;
+  left: 4px;
 }
 
 input[type="checkbox"],
@@ -161,6 +171,7 @@ input[type="radio"]:checked {
   background-color: #DEF7E5;
   border: 2px solid #113838;
 
+
 }
 
 input[type="checkbox"]:checked::after,
@@ -184,7 +195,7 @@ input[type="radio"]:checked::after {
   left: 2761px;
   border-radius: 5px;
   font-family: Arial, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   resize: none;
 }
 
@@ -217,11 +228,11 @@ input[type="radio"]:checked::after {
 }
 
 .desequilibrio-sentar {
-  margin-left: 7%;
+  margin-left: 8%;
 }
 
 .nota1 {
-  margin-left: 7%;
+  margin-left: 8%;
 }
 
 .nota2 {
@@ -232,7 +243,8 @@ input[type="radio"]:checked::after {
 .distancia-prevista,
 .distancia-percorrida {
   font-size: 4px;
-  padding: 1px;
   border: 1px solid #113838;
   border-radius: 5px;
+  text-align: center;
+ 
 }
