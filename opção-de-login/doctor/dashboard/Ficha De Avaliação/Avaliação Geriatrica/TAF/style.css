@@ -68,14 +68,16 @@ button {
   /* botões do timer*/
   padding: 30px 40px;
 }
-@keyframes girar{ /* animação para a imagem do cronômetro*/
+
+/* @keyframes girar{ animação para a imagem do cronômetro
   from{
     transform: rotate(0deg);
   }
   to{
     transform: rotate(360deg);
   }
-}
+} */
+
 .image {
   width: 117px;
   height: 117px;
@@ -247,4 +249,10 @@ input[type="radio"]:checked::after {
   border-radius: 5px;
   text-align: center;
  
+}
+
+
+
+label[for="distanciaPrevista"]{
+  margin-right: 16px;
 }
