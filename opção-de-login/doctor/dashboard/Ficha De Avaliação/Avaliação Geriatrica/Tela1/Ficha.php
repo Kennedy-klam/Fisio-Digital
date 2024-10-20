@@ -283,6 +283,7 @@ if ($result->num_rows > 0) {
                         <th>Medicamento</th>
                         <th>Como Usa</th>
                         <th>Tempo de Uso</th>
+                        <th>Remover Medicamento</th>
                     </tr>
                 </thead>
                 <tbody>
