@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escala de Dor Interativa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .scale-container {
+            width: 800px;
+            margin: 0 auto;
+            position: relative;
+            user-select: none;
+        }
+
+        .scale {
+            display: flex;
+            width: 100%;
+            height: 100px;
+            position: relative;
+            border-radius: 10px;
+            background: linear-gradient(to right, blue, green, yellow, red);
+            margin-top: 20px;
+        }
+
+        /* Adicionar os números acima da escala */
+        .scale-numbers {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: absolute;
+            top: -40px; /* Posicionar os números acima da escala */
+            color: black;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .scale-numbers span {
+            flex: 1;
+            text-align: center;
+        }
+
+        .marker {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 25px;
+            left: 0;
+            transform: translateX(-50%);
+            cursor: grab;
+        }
+
+        .marker img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .labels div {
+            font-weight: bold;
+            font-size: 18px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .sections {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: -70px; /* Posicionar as seções (LEVE, MODERADA, INTENSA) acima dos números */
+            width: 100%;
+            color: black;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .sections div {
+            flex: 1;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Escala de Dor Interativa</h1>
+
+    <div class="scale-container">
+
+        <!-- Labels acima da escala (LEVE, MODERADA, INTENSA) -->
+        <div class="sections">
+            <div>LEVE</div>
+            <div>MODERADA</div>
+            <div>INTENSA</div>
+        </div>
+
+        <!-- Números da escala -->
+        <div class="scale-numbers">
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+        </div>
+
+        <!-- Barra de cores -->
+        <div class="scale">
+            <!-- Marcador de rosto -->
+            <div id="marker" class="marker">
+                <img src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/slightly-smiling-face_1f642.png" alt="Rosto">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const marker = document.getElementById('marker');
+        const scale = document.querySelector('.scale');
+        let isDragging = false;
+
+        // Atualiza a posição do marcador
+        function updateMarkerPosition(event) {
+            const rect = scale.getBoundingClientRect();
+            let x = event.clientX - rect.left; // Calcula a posição x dentro da escala
+            const maxX = rect.width - marker.offsetWidth / 2; // Limita ao tamanho da escala
+            const minX = -marker.offsetWidth / 2; // Limite para o início da escala
+
+            if (x < minX) x = minX;
+            if (x > maxX) x = maxX;
+
+            marker.style.left = `${x}px`;
+
+            // Calcular o valor atual com base na posição
+            const percent = (x + marker.offsetWidth / 2) / rect.width;
+            const value = Math.round(percent * 10); // Escala de 0 a 10
+            updateMarkerEmoji(value);
+        }
+
+        // Atualiza o emoji de acordo com o valor
+        function updateMarkerEmoji(value) {
+            const emojiURLs = [
+                "https://emojipedia-us.s3.amazonaws.com/source/skype/289/smiling-face_263a.png",  // 0
+                "https://emojipedia-us.s3.amazonaws.com/source/skype/289/slightly-smiling-face_1f642.png", // 1-2
+                "https://emojipedia-us.s3.amazonaws.com/source/skype/289/neutral-face_1f610.png", // 3-4
+                "https://emojipedia-us.s3.amazonaws.com/source/skype/289/frowning-face-with-open-mouth_1f626.png", // 5-6
+                "https://emojipedia-us.s3.amazonaws.com/source/skype/289/crying-face_1f622.png", // 7-8
+                "https://emojipedia-us.s3.amazonaws.com/source/skype/289/loudly-crying-face_1f62d.png"  // 9-10
+            ];
+
+            let emojiIndex = Math.min(Math.floor(value / 2), emojiURLs.length - 1);
+            marker.querySelector('img').src = emojiURLs[emojiIndex];
+        }
+
+        // Eventos para arrastar o marcador
+        marker.addEventListener('mousedown', function() {
+            isDragging = true;
+            marker.style.cursor = 'grabbing';
+        });
+
+        window.addEventListener('mouseup', function() {
+            isDragging = false;
+            marker.style.cursor = 'grab';
+        });
+
+        window.addEventListener('mousemove', function(event) {
+            if (isDragging) {
+                updateMarkerPosition(event);
+            }
+        });
+    </script>
+
+</body>
+</html>
