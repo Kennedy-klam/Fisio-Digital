@@ -1,41 +1,41 @@
 <?php 
 session_start();
-
 include('conexões/conexao.php');
 
-if(isset($_POST['clientname']) || isset($_POST['clientpassword'])) {
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-    if(strlen($_POST['clientname']) == 0){
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    var_dump($_POST); // Exibir dados enviados para depuração
+
+    if (empty(trim($_POST['clientname']))) {
         echo "Preencha seu usuário";
-    } else if(strlen($_POST['clientpassword']) == 0) {
+    } else if (empty(trim($_POST['clientpassword']))) {
         echo "Preencha sua senha";
     } else {
+        $usuario = $mysqli->real_escape_string(trim($_POST['clientname']));
+        $senha = trim($_POST['clientpassword']); // Remover espaços da senha
 
-        $usuario = $mysqli->real_escape_string($_POST['clientname']);
-        $senha = $mysqli->real_escape_string($_POST['clientpassword']);
-
-        $sql_code = "SELECT * FROM loginc WHERE clientname ='$usuario' AND clientpassword = '$senha'";
+        $sql_code = "SELECT * FROM paciente WHERE nome ='$usuario'";
         $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 
-        $quantidade = $sql_query->num_rows;
-
-        if($quantidade == 1) {
+        if ($sql_query->num_rows > 0) {
             $login = $sql_query->fetch_assoc();
+            var_dump($login); // Para verificar o que está sendo retornado
 
-            if(!isset($_SESSION)) {
-                session_start();
+            // Comparação direta da senha
+            if ($senha === $login['senha']) { 
+                $_SESSION['id'] = $login['idPaciente'];
+                $_SESSION['nome'] = $login['nome'];
+                header("Location: dashboard/dashboard.php");
+                exit();
+            } else {
+                echo "Falha ao logar! Usuário ou senha incorretos.";
             }
-
-            $_SESSION['id'] = $login['clientid'];
-            $_SESSION['nome'] = $login['clientname'];
-            $_SESSION['senha'] = $login['clientpassword'];
-
-            header("Location: dashboard/dashboard.php");
-
-        } else{
+        } else {
             echo "Falha ao logar! Usuário ou senha incorretos.";
         }  
     }
 }
-
 ?>

@@ -109,14 +109,14 @@ include('../conexões/protect.php');
             </div>
 <?php
     include("../conexões/db.php");
-    $clientid = $_SESSION['id'];
+    $idPaciente = $_SESSION['id'];
 
-    $query    = "SELECT * FROM `loginc` WHERE clientid=$clientid;";
+    $query    = "SELECT * FROM `paciente` WHERE idPaciente=$idPaciente;";
     $result = mysqli_query($con, $query) or die(mysqli_error($con));
     if($result)
     {
     $data = mysqli_fetch_assoc($result);
-    $clientname = $data['clientname'];
+    $clientname = $data['nome'];
     }
 ?>
             <div class="activity">

@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="logincliente.css">
     <title>Login</title>
-    <link rel="shortcut icon" href="./src/images/favicon_32x32.png " type="image/x-icon">
+    <link rel="shortcut icon" href="./src/images/favicon_32x32.png" type="image/x-icon">
 </head>
-
 <body>
     <form action="login.php" method="POST">
         <div class="main-login">
@@ -22,13 +20,13 @@
                 <div class="card-login">
                     <h1>LOGIN DO PACIENTE</h1>
                     <div class="textfield">
-                        <label for="clientname">Usuário</label> <!-- Alterado para corresponder ao nome do campo no formulário de registro -->
-                        <input type="text" name="clientname" placeholder="Usuário"> <!-- Alterado para corresponder ao nome do campo no formulário de registro -->
+                        <label for="clientname">Usuário</label>
+                        <input type="text" name="clientname" placeholder="Usuário" required>
                     </div>
 
                     <div class="textfield">
-                        <label for="clientpassword">Senha</label> <!-- Alterado para corresponder ao nome do campo no formulário de registro -->
-                        <input type="password" name="clientpassword" placeholder="Senha"> <!-- Alterado para corresponder ao nome do campo no formulário de registro -->
+                        <label for="clientpassword">Senha</label>
+                        <input type="password" name="clientpassword" placeholder="Senha" required>
                     </div>
 
                     <button class="btn-login">Login</button>
