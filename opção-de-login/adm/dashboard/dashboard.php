@@ -102,18 +102,30 @@ include('../conexões/protect.php');
                 </div>
                 
             </div>
-<?php
+            <?php
     include("../conexões/db.php");
-    $admid = $_SESSION['id'];
 
-    $query    = "SELECT * FROM `loginadm` WHERE admid=$admid;";
-    $result = mysqli_query($con, $query) or die(mysqli_error($con));
-    if($result)
-    {
-    $data = mysqli_fetch_assoc($result);
-    $admnome = $data['admnome'];
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+
+    if (isset($_SESSION['id'])) {
+        $idAdministrador = $_SESSION['id'];  // Corrigido para usar a variável correta
+
+        $query = "SELECT * FROM `administrador` WHERE idAdministrador = $idAdministrador;";
+        $result = mysqli_query($con, $query) or die(mysqli_error($con));
+
+        if ($result) {
+            $data = mysqli_fetch_assoc($result);
+            $admnome = $data['nome'];  // Nome do administrador
+        } else {
+            echo "Erro ao buscar dados do administrador.";
+        }
+    } else {
+        echo "ID do administrador não encontrado na sessão.";
     }
 ?>
+
             <div class="activity">
                 <div class="title">
                     <i class="uil uil-clock-three"></i>

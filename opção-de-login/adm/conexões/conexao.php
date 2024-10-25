@@ -1,7 +1,7 @@
 <?php 
 
 $host = "localhost";
-$bancodedados = "fisio digital";
+$bancodedados = "fisio digital 2.0";
 $usuario = "root";
 $senha = "";
 

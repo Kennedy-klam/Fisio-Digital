@@ -5,7 +5,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$banco = 'fisio-digital-v2.0';
+$banco = 'fisio digital 2.0';
 
 $conn = new mysqli($host, $user, $pass, $banco);
 
