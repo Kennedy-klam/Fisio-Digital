@@ -103,14 +103,14 @@ include('../conexões/db.php');
 <?php
 
     include('../conexões/db.php');
-    $doctorid = $_SESSION['id'];
+    $idDoutor = $_SESSION['id'];
 
-    $query    = "SELECT * FROM `logind` WHERE doctorid=$doctorid;";
+    $query    = "SELECT * FROM `doutor` WHERE idDoutor=$idDoutor;";
     $result = mysqli_query($con, $query) or die(mysqli_error($con));
     if($result)
 {
 	$data = mysqli_fetch_assoc($result);
-	$doctorname = $data['doctorname'];
+	$doctorname = $data['nome'];
 }
 ?>
             <div class="activity">

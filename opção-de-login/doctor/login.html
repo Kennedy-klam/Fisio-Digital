@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="logindoutor.css">
     <title>Login</title>
-    <link rel="shortcut icon" href="./src/images/favicon_32x32.png " type="image/x-icon">
+    <link rel="shortcut icon" href="./src/images/favicon_32x32.png" type="image/x-icon">
 </head>
 
 <body>
@@ -23,18 +23,19 @@
                     <h1>LOGIN DO DOUTOR</h1>
                     <div class="textfield">
                         <label for="usuario">Usuário</label>
-                        <input type="text" name="usuario" placeholder="Usuário">
+                        <input type="text" name="usuario" placeholder="Usuário" required>
                     </div>
 
                     <div class="textfield">
                         <label for="senha">Senha</label>
-                        <input type="password" name="senha" placeholder="Senha">
+                        <input type="password" name="senha" placeholder="Senha" required>
                     </div>
 
-                    <button class="btn-login">Login</button>
+                    <button type="submit" class="btn-login">Login</button> <!-- Fechado corretamente dentro do form -->
+                </div>
+            </div>
+        </div>
     </form>
-    </div>
-    </div>
-    </div>
 </body>
+
 </html>

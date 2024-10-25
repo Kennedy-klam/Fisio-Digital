@@ -2,23 +2,22 @@
 include('../../conexões/db.php');
 include("../../conexões/protect.php");
 $id=$_SESSION['id'];
-$sql = "SELECT * FROM `loginc` WHERE `clientid`= $id;";
+$sql = "SELECT * FROM `paciente` WHERE `idPaciente`= $id;";
 $execute1 = mysqli_query($con,$sql);
 		if($execute1)
 		{
 			$data = mysqli_fetch_assoc($execute1);
-			$clientname=$data['clientname'];
-			$clientemail=$data['clientemail'];
-			$phoneno=$data['phoneno'];
-			$dob=$data['dob'];
-			$bg=$data['bloodgroup'];
-			$address=$data['address'];
-			$age=$data['age'];
-			$sex=$data['sex'];
+			$clientname=$data['nome'];
+			$clientemail=$data['recado'];
+			$phoneno=$data['celular'];
+			$dob=$data['nascimento'];
+			$bg=$data['sanguineo'];
+			$address=$data['endereço'];
+			$age=$data['idade'];
+			$sex=$data['sexo'];
 		}
 		else
 		{
-			
 			echo "error in getting details from database";
 		}
 //session and database string	

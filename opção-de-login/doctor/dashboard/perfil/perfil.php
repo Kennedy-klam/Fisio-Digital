@@ -2,18 +2,18 @@
 include('../../conexões/db.php');
 include("../../conexões/protect.php");
 $id=$_SESSION['id'];
-$sql = "SELECT * FROM `logind` WHERE `doctorid`= $id;";
+$sql = "SELECT * FROM `doutor` WHERE `idDoutor`= $id;";
 $execute1 = mysqli_query($con,$sql);
 		if($execute1)
 		{
 			$data = mysqli_fetch_assoc($execute1);
-			$doctorname=$data['doctorname'];
-			$doctoremail=$data['doctoremail'];
-			$phoneno=$data['phoneno'];
-			$speciality=$data['speciality'];
-			$experience=$data['experience'];
-			$age=$data['age'];
-			$sex=$data['sex'];
+			$doctorname=$data['nome'];
+			$doctoremail=$data['email'];
+			$phoneno=$data['celular'];
+			$speciality=$data['especialidade'];
+			$experience=$data['CPF'];
+			$age=$data['idade'];
+			$sex=$data['sexo'];
 		}
 		else
 		{
