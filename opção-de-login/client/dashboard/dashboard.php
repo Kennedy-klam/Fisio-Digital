@@ -48,17 +48,9 @@ include('../conexões/protect.php');
                     <i class="uil uil-comments"></i>
                     <span class="link-name">Chat</span>
                 </a></li>
-                <li><a href="nova-consulta/book1.php">
-                    <i class="uil uil-calender"></i>
-                    <span class="link-name">Nova Consulta</span>
-                </a></li>
                 <li><a href="consultas-marcadas/viewappointment.php">
                     <i class="uil uil-schedule"></i>
                     <span class="link-name">Consultas Marcadas</span>
-                </a></li>
-                <li><a href="treinos/resumo_treino.html">
-                    <i class="uil uil-book-medical"></i>
-                    <span class="link-name">Ver Treinos</span>
                 </a></li>
             </ul>
             
@@ -92,17 +84,17 @@ include('../conexões/protect.php');
                 </div>
 
                 <div class="boxes">
-                    <a href="nova-consulta/book1.php" class="box box1">
+                    <a href="perfil/perfil.php" class="box box1">
                         <i class="fas fa-thumbs-up"></i>
-                        <span class="text">Nova Consulta</span>
+                        <span class="text">Editar Perfil</span>
                     </a>
                     <a href="consultas-marcadas/viewappointment.php" class="box box2">
                         <i class="fas fa-comments"></i>
                         <span class="text">Consultas Marcadas</span>
                     </a>
-                    <a href="treinos/resumo_treino.html" class="box box3">
+                    <a href="" class="box box3">
                         <i class="fas fa-share"></i>
-                        <span class="text">Ver Treinos</span>
+                        <span class="text">Nada por enquanto</span>
                     </a>
                 </div>
                 
@@ -131,9 +123,7 @@ include('../conexões/protect.php');
                         <span class="data-list">Tela inicial</span>
                         <span class="data-list">Editar Perfil</span>
                         <span class="data-list">Chat</span>
-                        <span class="data-list">Nova Consulta</span>
                         <span class="data-list">Consultas Marcadas</span>
-                        <span class="data-list">Ver Treinos</span>
                         <span class="data-list">Logout</span>
                     </div>
                     <div class="data email">
@@ -141,10 +131,8 @@ include('../conexões/protect.php');
                         <span class="data-list">Te redireciona para a tela inicial da fisio digital.</span>
                         <span class="data-list">Permite que você altere suas informações pessoais.</span>
                         <span class="data-list">Possibilita o contato direto com a secretária.</span>
-                        <span class="data-list">Página onde será possivel a marcação de consultas.</span>
                         <span class="data-list">Todas as consultas, futuras, passadas e as do dia atual.</span>
-                        <span class="data-list">Permite que o paciente veja os treinos cadastrados pelo Fisioterapeuta.</span>
-                        <span class="data-list">Te redireciona para a tela de login do doutor e do paciente.</span>
+                        <span class="data-list">Te redireciona para a tela de login do doutor, admnistrador e paciente.</span>
                     </div>
                 </div>
             </div>
