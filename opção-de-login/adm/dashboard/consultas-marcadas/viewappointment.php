@@ -2,11 +2,11 @@
 session_start();
 require("../../conexões/db.php");
 $admid = $_SESSION['id'];
-$query    = "SELECT * FROM `loginadm` WHERE admid=$admid;";
+$query    = "SELECT * FROM `administrador` WHERE idAdministrador=$admid;";
 $result = mysqli_query($con, $query) or die(mysqli_error($con));
 if($result) {
     $data = mysqli_fetch_assoc($result);
-    $admnome = $data['admnome'];
+    $admnome = $data['nome'];
 }
 ?>
 <!DOCTYPE html>
@@ -75,124 +75,123 @@ if($result) {
         <div class="appt">
         <?php
         $tdt = date("Y-m-d");
-        $sql = "SELECT a.*, c.clientname, d.doctorname FROM appointment a
-                JOIN loginc c ON a.clientid = c.clientid
-                JOIN logind d ON a.doctorid = d.doctorid
-                WHERE a.date = '$tdt'";
+        $sql = "SELECT a.*, c.nome AS paciente_nome, d.nome AS doutor_nome 
+                FROM consultas a
+                JOIN paciente c ON a.Paciente_idPaciente = c.idPaciente
+                JOIN doutor d ON a.Doutor_idDoutor = d.idDoutor
+                WHERE a.data = '$tdt'";
         $res = mysqli_query($con, $sql);
         
-        if ($res) {
-            if (mysqli_num_rows($res)) {
-                echo "<table class='table table-hover table-adjusted'>
-                        <thead>
-                            <tr>
-                                <th>DATA</th>
-                                <th>HORÁRIO</th>
-                                <th>DESCRIÇÃO</th>
-                                <th>PACIENTE</th>
-                                <th>DOUTOR</th>
-                            </tr>
-                        </thead>";
-                while ($row = mysqli_fetch_assoc($res)) {
-                    $formattedDate = date('d/m/Y', strtotime($row["date"]));
-                    echo "<tr>
-                            <td>" . $formattedDate . "</td>
-                            <td>" . $row["timeslot"] . "</td>
-                            <td>" . $row["description"] . "</td>
-                            <td>" . $row["clientname"] . "</td>
-                            <td>" . $row["doctorname"] . "</td>
-                          </tr>";
-                }
-                echo "</table>";
-            } else {
-                echo "<div class='text-center no-appointments'>Sem consultas futuras</div>";
+        if ($res && mysqli_num_rows($res) > 0) {
+            echo "<table class='table table-hover table-adjusted'>
+                    <thead>
+                        <tr>
+                            <th>DATA</th>
+                            <th>HORÁRIO</th>
+                            <th>DESCRIÇÃO</th>
+                            <th>PACIENTE</th>
+                            <th>DOUTOR</th>
+                        </tr>
+                    </thead>";
+            while ($row = mysqli_fetch_assoc($res)) {
+                $formattedDate = date('d/m/Y', strtotime($row["data"]));
+                echo "<tr>
+                        <td>" . $formattedDate . "</td>
+                        <td>" . $row["horario"] . "</td>
+                        <td>" . $row["descrição"] . "</td>
+                        <td>" . $row["paciente_nome"] . "</td>
+                        <td>" . $row["doutor_nome"] . "</td>
+                    </tr>";
             }
+            echo "</table>";
+        } else {
+            echo "<div class='text-center no-appointments'>Sem consultas hoje</div>";
         }
         ?>
         </div>
     </div>
-    <br><br>
+    
+    <!-- Consultas Futuras -->
     <div class="future">
         <div class="title">
             <h3 class='text-center'>FUTURO</h3>
         </div>
         <div class="appt">
         <?php
-        $sql = "SELECT a.*, c.clientname, d.doctorname FROM appointment a
-                JOIN loginc c ON a.clientid = c.clientid
-                JOIN logind d ON a.doctorid = d.doctorid
-                WHERE a.date > '$tdt'";
+        $sql = "SELECT a.*, c.nome AS paciente_nome, d.nome AS doutor_nome 
+                FROM consultas a
+                JOIN paciente c ON a.Paciente_idPaciente = c.idPaciente
+                JOIN doutor d ON a.Doutor_idDoutor = d.idDoutor
+                WHERE a.data > '$tdt'";
         $res = mysqli_query($con, $sql);
 
-        if ($res) {
-            if (mysqli_num_rows($res)) {
-                echo "<table class='table table-hover table-adjusted'>
-                        <thead>
-                            <tr>
-                                <th>DATA</th>
-                                <th>HORÁRIO</th>
-                                <th>DESCRIÇÃO</th>
-                                <th>PACIENTE</th>
-                                <th>DOUTOR</th>
-                            </tr>
-                        </thead>";
-                while ($row = mysqli_fetch_assoc($res)) {
-                    $formattedDate = date('d/m/Y', strtotime($row["date"]));
-                    echo "<tr>
-                            <td>" . $formattedDate . "</td>
-                            <td>" . $row["timeslot"] . "</td>
-                            <td>" . $row["description"] . "</td>
-                            <td>" . $row["clientname"] . "</td>
-                            <td>" . $row["doctorname"] . "</td>
-                          </tr>";
-                }
-                echo "</table>";
-            } else {
-                echo "<div class='text-center no-appointments'>Sem consultas futuras</div>";
+        if ($res && mysqli_num_rows($res) > 0) {
+            echo "<table class='table table-hover table-adjusted'>
+                    <thead>
+                        <tr>
+                            <th>DATA</th>
+                            <th>HORÁRIO</th>
+                            <th>DESCRIÇÃO</th>
+                            <th>PACIENTE</th>
+                            <th>DOUTOR</th>
+                        </tr>
+                    </thead>";
+            while ($row = mysqli_fetch_assoc($res)) {
+                $formattedDate = date('d/m/Y', strtotime($row["data"]));
+                echo "<tr>
+                        <td>" . $formattedDate . "</td>
+                        <td>" . $row["horario"] . "</td>
+                        <td>" . $row["descrição"] . "</td>
+                        <td>" . $row["paciente_nome"] . "</td>
+                        <td>" . $row["doutor_nome"] . "</td>
+                    </tr>";
             }
+            echo "</table>";
+        } else {
+            echo "<div class='text-center no-appointments'>Sem consultas futuras</div>";
         }
         ?>
         </div>
     </div>
-    <br><br>
+    
+    <!-- Consultas Passadas -->
     <div class="past">
         <div class="title">
             <h3 class='text-center'>PASSADO</h3>
         </div>
         <div class="appt">
         <?php
-        $sql = "SELECT a.*, c.clientname, d.doctorname FROM appointment a
-                JOIN loginc c ON a.clientid = c.clientid
-                JOIN logind d ON a.doctorid = d.doctorid
-                WHERE a.date < '$tdt'";
+        $sql = "SELECT a.*, c.nome AS paciente_nome, d.nome AS doutor_nome 
+                FROM consultas a
+                JOIN paciente c ON a.Paciente_idPaciente = c.idPaciente
+                JOIN doutor d ON a.Doutor_idDoutor = d.idDoutor
+                WHERE a.data < '$tdt'";
         $res = mysqli_query($con, $sql);
         
-        if ($res) {   
-            if (mysqli_num_rows($res)) {
-                echo "<table class='table table-hover table-adjusted'>  
-                <thead>
-                    <tr>
-                        <th>DATA</th>
-                        <th>HORÁRIO</th>
-                        <th>DESCRIÇÃO</th>
-                        <th>PACIENTE</th>
-                        <th>DOUTOR</th>
-                    </tr>
-                </thead>";
-                while ($row = mysqli_fetch_assoc($res)) {
-                    $formattedDate = date('d/m/Y', strtotime($row["date"]));
-                    echo "<tr>
+        if ($res && mysqli_num_rows($res) > 0) {
+            echo "<table class='table table-hover table-adjusted'>  
+            <thead>
+                <tr>
+                    <th>DATA</th>
+                    <th>HORÁRIO</th>
+                    <th>DESCRIÇÃO</th>
+                    <th>PACIENTE</th>
+                    <th>DOUTOR</th>
+                </tr>
+            </thead>";
+            while ($row = mysqli_fetch_assoc($res)) {
+                $formattedDate = date('d/m/Y', strtotime($row["data"]));
+                echo "<tr>
                         <td>" . $formattedDate . "</td>
-                        <td>" . $row["timeslot"] . "</td>
-                        <td>" . $row["description"] . "</td>
-                        <td>" . $row["clientname"] . "</td>
-                        <td>" . $row["doctorname"] . "</td>
+                        <td>" . $row["horario"] . "</td>
+                        <td>" . $row["descrição"] . "</td>
+                        <td>" . $row["paciente_nome"] . "</td>
+                        <td>" . $row["doutor_nome"] . "</td>
                     </tr>";
-                }
-                echo "</table>";
-            } else {
-                echo "<div class='text-center no-appointments'>Sem atendimentos passados</div>";
             }
+            echo "</table>";
+        } else {
+            echo "<div class='text-center no-appointments'>Sem atendimentos passados</div>";
         }
         ?>
         </div>

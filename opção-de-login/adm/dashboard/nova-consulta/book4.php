@@ -3,59 +3,59 @@ session_start();
 include("../../conexões/db.php");
 
 $di=$_SESSION["docid"];
-$sql="SELECT * FROM `logind` WHERE doctorid='$di'";
+$sql="SELECT * FROM `doutor` WHERE idDoutor='$di'";
 $res = mysqli_query($con, $sql);
     if($res)
     {   
         if (mysqli_num_rows($res)) {
                 while($row = mysqli_fetch_assoc($res)) {
-                    $d=$row["doctorname"];
-                    $f=$row["fee"];
-                    $sp=$row["speciality"];
-                    $deg=$row["degree"];
-                    $exp=$row["experience"];
+                    $d=$row["nome"];
+                    $f=$row["email"];
+                    $sp=$row["especialidade"];
+                    $deg=$row["celular"];
+                    $exp=$row["sexo"];
                 }
         }
     }
-    $u=$_SESSION["clientname"];
-    $sql="SELECT * FROM `loginc` WHERE clientname='$u'";
+    $u=$_SESSION["nome"];
+    $sql="SELECT * FROM `paciente` WHERE nome='$u'";
     $res = mysqli_query($con, $sql);
     if($res)
     {   
         if (mysqli_num_rows($res)) {
             while($row = mysqli_fetch_assoc($res)) {
-                $uid=$row["clientid"];
+                $uid=$row["idPaciente"];
                 
             }
         }
     }
-    $_SESSION["clientid"]= $uid;
+    $_SESSION["idPaciente"]= $uid;
 
-    $ci=$_SESSION["clinicid"];
-    $sql="SELECT * FROM `cliniclogin` WHERE clinicid='$ci'";
+    $ci=$_SESSION["idClinica"];
+    $sql="SELECT * FROM `clinica` WHERE idClinica='$ci'";
     $res = mysqli_query($con, $sql);
     if($res)
     {   
         if (mysqli_num_rows($res)) {
             while($row = mysqli_fetch_assoc($res)) {
-                $cname=$row["clinicname"];
-                $ph=$row["phoneno"];
-                $cadd=$row["address"];
+                $cname=$row["nome"];
+                $ph=$row["telefone"];
+                $cadd=$row["endereço"];
             }
         }
     }
 
-$mysqli = new mysqli('localhost', 'root', '', 'fisio digital');
+$mysqli = new mysqli('localhost', 'root', '', 'fisio digital 2.0');
 if(isset($_GET['date'])){
     $date = $_GET['date'];
-    $stmt = $mysqli->prepare("select * from appointment where date = ?");
+    $stmt = $mysqli->prepare("select * from consultas where data = ?");
     $stmt->bind_param('s',$date);
     $bookings = array();
     if($stmt->execute()){
         $result = $stmt->get_result();
         if($result->num_rows>0){
             while($row = $result->fetch_assoc()){
-                $bookings[] = $row['timeslot'];
+                $bookings[] = $row['horario'];
             }
             $stmt->close();
         } 
@@ -68,7 +68,7 @@ if(isset($_POST['submit'])){
     $descp=$_POST["decription"];
     global $uid,$di;
     echo $timeslot."".$descp."".$uid."".$di;
-    $stmt = $mysqli->prepare("SELECT * FROM `appointment` WHERE date=? AND timeslot=?");
+    $stmt = $mysqli->prepare("SELECT * FROM `consultas` WHERE data=? AND horario=?");
     $stmt->bind_param('ss',$date,$timeslot);
     //$bookings = array();
     if($stmt->execute())
@@ -77,8 +77,8 @@ if(isset($_POST['submit'])){
         if ($result->num_rows > 0) {
           $msg = "<div class='alert alert-danger'>Indisponível</div>"; 
       } else {
-          $stmt = $mysqli->prepare("INSERT INTO appointment (date, timeslot, description, clientid, doctorid) VALUES (?, ?, ?, ?, ?)");
-          $stmt->bind_param('sssii', $date, $timeslot, $descp, $uid, $di);
+          $stmt = $mysqli->prepare("INSERT INTO consultas (data, horario, descrição, Paciente_idPaciente, Doutor_idDoutor, Clinica_idClinica) VALUES (?, ?, ?, ?, ?, ?)");
+          $stmt->bind_param('sssiii', $date, $timeslot, $descp, $uid, $di, $ci);
           $stmt->execute();
           $msg = "<div class='alert alert-success'>Consulta Agendada!</div>";
           $bookings[] = $timeslot;

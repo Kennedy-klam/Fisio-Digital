@@ -35,7 +35,7 @@ if (isset($_GET["selectclinic"])) {
     <div class="container-fluid pt-2 pb-2" style="background-color: #113838">
         <div class="row">
             <div class="col-sm-10">
-                <img width="200" class="ml-0 mt-2 mb-2" src="../consultas-marcadas/default_transparent.png" alt="Logo">
+                <img width="200" class="ml-0 mt-2 mb-2" src="../../../../imagens/default_transparent.png" alt="Logo">
             </div>
             <div class="col-sm-2">
                 <h3 class="text-white">Olá, <?= $_SESSION['nome'] ?>!</h3>
