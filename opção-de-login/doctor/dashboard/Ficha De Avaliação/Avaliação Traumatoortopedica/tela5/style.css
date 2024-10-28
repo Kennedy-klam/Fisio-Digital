@@ -28,6 +28,12 @@ h1 {
     margin-right: 3%;
 }
 
+.tabelas {
+    text-align: center;
+    margin-left: 1%;
+    margin-right: 3%;
+}
+
 .avaliacao {
     text-align: start;
 }
@@ -42,14 +48,15 @@ h1 {
     color: #113838;
 }
 
-ul { 
+ul {
     list-style-type: none;
     color: #113838;
 
 }
 
-.divider { /* linha q separa cada row*/
-    border-top: 1px solid #AEF7C3; 
+.divider {
+    /* linha q separa cada row*/
+    border-top: 1px solid #AEF7C3;
     padding-top: 10px;
 }
 
@@ -66,3 +73,42 @@ ul {
     resize: none;
     border-radius: 8px;
 }
+
+.descricao {
+    font-size: 15px;
+    border: 0.5px solid #113838;
+    border-radius: 10px;
+}
+
+table {
+    border-collapse: separate;
+    width: 70%;
+    margin-left: 14%;
+    color:#113838;
+    border: 1px solid;
+    border-radius: 9px;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+th,
+td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #113838;
+    
+}
+
+tr{
+    background-color: #DEF7E5;
+}
+input[class="textoTabela" ] {
+    width: 90%;
+    height: 40px;
+    border: none;
+    box-sizing: 0;
+    font-size: 30px;
+    color: #113838;
+    outline: none;
+    background-color: #DEF7E5;
+  }
