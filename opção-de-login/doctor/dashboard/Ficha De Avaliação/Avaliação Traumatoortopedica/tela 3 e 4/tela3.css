@@ -1,8 +1,17 @@
 body {
+    font-size: 20px;
     color: #113838;
-    font-family: sans-serif;
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    padding: 0;
+    background: #f4f4f4;
 }
-
+.fundo{
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px #113838(0, 0, 0, 0.1);
+}
 h1 {
     margin-top: 25px;
     display: inline-block;
@@ -57,6 +66,7 @@ input::-webkit-inner-spin-button {
     margin-left: 7.5px;
     margin-right: 1px ;
     text-align:left;
+
 }
 .coluna2{
     margin-right: 7.5px;
@@ -64,37 +74,44 @@ input::-webkit-inner-spin-button {
 .coluna1 p, .coluna2 p {
     display: inline-block;
     margin: 5px 0; /* Espaçamento vertical entre os parágrafos */
-    font-size: 19px;
+    font-size: 17px;
     height: 100%;
 }
 .final{
     margin-left: auto;
     margin-right: auto;
-    width: 850px;
+    width: 700px;
+}
+.d-flex{
+    border: 0.5px solid #AEF7C3 ;
 }
 .descricao{
     font-size: 15px;
     border: 0.5px solid #113838;
     border-radius: 10px;
 }
-
-hr{
+.separacao-musculos{
+    width: 100%;
     border: 1px solid #AEF7C3;
-    width: 85%;
-    margin-top: 0;
-    
 }
-.d-flex{
-    height: 115px;
-    border: 1.5px solid #AEF7C3;
-    border-radius: 15px;
-    margin-bottom: 0;
-    
-}
-.littlespace{
-    font-size: 21;
+hr{
+    border: 0.5px solid #AEF7C3;
+    width: 95%;
 }
 br{
     font-size: 22px;
 }
+button{
+    width: 170px;
+    height: 47px;
+    margin-top: 50px;
+    margin-left: 85%;
+    border-radius: 8px;
+    border: 1px solid black;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:#DEF7E5;
+    text-align: center;
+}
+
 
