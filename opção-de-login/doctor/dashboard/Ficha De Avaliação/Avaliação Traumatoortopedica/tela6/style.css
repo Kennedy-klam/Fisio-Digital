@@ -1,0 +1,112 @@
+body {
+    font-size: 17px;
+    color: #113838;
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    padding: 0;
+    background: #f4f4f4;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px #113838(0, 0, 0, 0.1);
+}
+
+h1 {
+    /*text-align: center;*/
+    color: #113838;
+    margin-left: 1%;
+    margin-right: 3%;
+}
+
+table {
+    border-collapse: separate;
+    width: 70%;
+    margin-left: 14%;
+    color: #113838;
+    border: 1px solid;
+    border-radius: 7px;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+th,
+td {
+    text-align: center;
+    padding: 4px;
+    border: 1px solid #113838;
+
+}
+
+tr {
+    background-color: #DEF7E5;
+}
+
+.tabelas {
+
+    text-align: center;
+    margin-left: 1%;
+    margin-right: 3%;
+
+}
+
+input[class="textoTabela"] {
+    width: 90%;
+    height: 40px;
+    border: none;
+    box-sizing: 0;
+    font-size: 30px;
+    color: #113838;
+    outline: none;
+    background-color: #DEF7E5;
+}
+
+label {
+    font-size: 23px;
+}
+
+.testeFuncional {
+    width: 800px;
+    height: 90px;
+    border-radius: 8px;
+    resize: none;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    gap: 8px;
+    color: #113838;
+    padding: 9px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ExameCompl,
+.obs,
+.Diagnostico,
+.obj,
+.Condutas {
+    width: 800px;
+    height: 210px;
+    top: 1703px;
+    left: 2761px;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    resize: none;
+    border-radius: 8px;
+    padding: 9px;
+    color: #113838;
+}
+
+button {
+    width: 170px;
+    height: 47px;
+    margin-top: 50px;
+    margin-left: 85%;
+    border-radius: 8px;
+    border: 1px solid black;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #DEF7E5;
+    text-align: center;
+}
