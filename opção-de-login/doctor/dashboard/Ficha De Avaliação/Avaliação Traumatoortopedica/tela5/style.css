@@ -1,5 +1,5 @@
 body {
-    font-size: 20px;
+    font-size: 17px;
     color: #113838;
     font-family: Arial, sans-serif;
     margin: 30px;
@@ -12,14 +12,19 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px #113838(0, 0, 0, 0.1);
+   
 }
 
-.row {
+
+.row{
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     justify-content: space-between;
-
+   
+    
 }
+
+
 
 h1 {
     text-align: center;
@@ -40,12 +45,28 @@ h1 {
 
 
 .column {
-    flex: 1;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    gap: 20px;
+   
+}
+.column1,.column2{
+    flex: 1 ; 
+    display: flex;
+    flex-direction:column; 
+}
+.column1{
+    margin-left: 7.5px;
+    margin-right: 1px ;
+}
+.column2{
+    margin-right: 7.5px;
 }
 
 .column p {
     color: #113838;
+    
 }
 
 ul {
