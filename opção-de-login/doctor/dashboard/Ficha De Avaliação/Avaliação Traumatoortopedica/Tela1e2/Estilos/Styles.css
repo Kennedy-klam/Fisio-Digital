@@ -154,6 +154,15 @@ th {
     max-width:23%;
 }
 
+.input-style1 {
+    background-color: #DEF7E5;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 70%;
+    max-width:70%;
+}
+
 .input-date {
     background-color: #DEF7E5;
     padding: 8px;
@@ -181,7 +190,13 @@ select {
     border-radius: 4px;
     box-sizing: border-box;
 }
-
+.select1 {
+    width: 50%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
 
 .form-container select {
     width: 100%;
