@@ -104,3 +104,54 @@ button {
     background-color: #DEF7E5;
     text-align: center;
 }
+
+/*Style do começao da tela (continuação da tela anterior)*/
+.sub-titulo {
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 0%;
+}
+.box-musculo {
+    display: flex; 
+    margin-top: 20px;
+    padding-top: 0;
+    padding: 20px;
+    margin-top: 1%;
+}
+.coluna1, .coluna2 {
+    flex: 1 ; 
+    display: flex;
+    flex-direction:column; 
+}
+.coluna1{
+    margin-left: 7.5px;
+    margin-right: 1px ;
+    text-align:left;
+
+}
+.coluna2{
+    margin-right: 7.5px;
+}
+.coluna1 p, .coluna2 p {
+    display: inline-block;
+    margin: 5px 0; /* Espaçamento vertical entre os parágrafos */
+    font-size: 17px;
+    height: 100%;
+}
+.final{
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+}
+.d-flex{
+    border: 0.5px solid #AEF7C3 ;
+}
+.separacao-musculos{
+    width: 100%;
+    border: 1px solid #AEF7C3;
+}
+hr{
+    border: 0.5px solid #AEF7C3;
+    width: 95%;
+}
