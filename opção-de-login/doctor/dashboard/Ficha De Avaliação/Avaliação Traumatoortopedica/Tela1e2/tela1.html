@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ficha de Avaliação de Fisioterapia Geriátrica</title>
+        <link rel="stylesheet" href="Estilos/Styles.css">
+
+    </head>
+    <body>
+        <div class="container">
+            <h1>Ficha de Avaliação de Fisioterapia</h1>
+            <h1>Traumato-Ortopédica e Reumatológica</h1>
+            <br>
+
+            <div class="data-estagiario">
+                <div>
+                    <label for="data">Data da avaliação:</label>
+                    <input type="date" id="data" name="data"
+                        class="classe1-input">
+                </div>
+            </div>
+
+            <!--Parte dos Dados Pessoais-->
+            <div class="dados-pessoais">
+
+                <h2>Identificação</h2>
+                <br>
+                <div>
+                    <label for="nome">Nome:</label>
+                    <input type="text" class="input-style"> &nbsp &nbsp &nbsp
+                    <label for="dataNascimento">Data de Nascimento:</label>
+                    <input type="date" class="input-date" id="dataNascimento">
+                </div>
+                <br>
+                <div>
+                    <label for="telefone">Telefone:</label>
+                    <input type="text" class="input-style">&nbsp&nbsp&nbsp
+
+                    <label for="telefone">Profissão:</label>
+                    <input type="text" class="input-style">&nbsp &nbsp
+
+                    <label for="telefone">Endereço Residencial:</label>
+                    <input type="text" class="input-style">
+
+                </div>
+                <br>
+
+                <div>
+                    <label for="nome">Naturalidade:</label>
+                    <input type="text" class="input-style"> &nbsp &nbsp
+                    <label for="dataNascimento">Estado Civil</label>
+                    <input type="text" class="input-style">
+                    <label for="nome">Sexo:</label>
+                    <input type="text" class="input-style">
+
+                </div>
+
+            </div>
+
+            <div>
+                <label for="queixa-principal">Diagnóstico Clinico:</label>
+                <br><br>
+                <textarea class="queixa" id="queixa-principal"
+                    name="queixa-principal"
+                    placeholder="Digite aqui..."></textarea>
+            </div>
+
+        </div>
+        <br>
+        <label for="estagiario">Avaliador (es):</label>
+        <input type="text" id="estagiario" name="estagiario"
+            class="custom-input">
+        <br><br>
+
+        <h2>ANAMNESE:</h2>
+        <br>
+
+        <div>
+            <label for="queixa-principal">Queixa Principal:</label> <br><br>
+            <textarea class="queixa" id="queixa-principal"
+                name="queixa-principal" placeholder="Digite aqui..."></textarea>
+        </div><br>
+
+        <div>
+            <label for="queixa-principal">História da doença atual:</label>
+            <br><br>
+            <textarea class="queixa" id="queixa-principal"
+                name="queixa-principal" placeholder="Digite aqui..."></textarea>
+        </div><br>
+
+        <div>
+            <label for="queixa-principal">Histórico Patológico / Doenças
+                associadas:</label> <br><br>
+            <textarea class="queixa" id="queixa-principal"
+                name="queixa-principal" placeholder="Digite aqui..."></textarea>
+        </div><br>
+
+        <div>
+            <label for="queixa-principal">História familiar:</label> <br><br>
+            <textarea class="queixa" id="queixa-principal"
+                name="queixa-principal" placeholder="Digite aqui..."></textarea>
+        </div><br>
+
+        <div>
+            <label for="queixa-principal">História pessoal e social:</label>
+            <br><br>
+            <textarea class="queixa" id="queixa-principal"
+                name="queixa-principal" placeholder="Digite aqui..."></textarea>
+        </div>
+        <br>
+        <!-- tabela aqui-->
+        <h2>MEDICAMENTOS EM USO</h2>
+        <br>
+
+        <div>
+            <form id="form-medicamentos">
+
+
+                <div class="div-esquerda">
+                    <label for="medicamentos" style="font-weight: bold">Nome do Medicamento:</label>
+                    <input type="text" id="medicamentos" name="medicamentos" class="custom-input1" placeholder="Digite aqui..." required>
+                    <br><br>&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
+                    <button class="styled-button" type="button" id="remover-btn">Remover</button>
+                </div>
+                
+                <div class="div-direita">
+                    <label for="como-usa" style="font-weight: bold" >Classe Terapêutica:</label>
+                    <input type="text" id="como-usa" name="como-usa" class="custom-input1" placeholder="Digite aqui..." required>
+                    <br><br>&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
+                    <button class="styled-button" type="button" id="adicionar-btn">Adicionar</button>
+                </div>
+    
+            
+                <div>
+                    
+                    
+                </div>
+            </form>
+            
+            <br>
+            <h2>Tabela de Medicamentos em uso</h2>
+            <table id="tabela-medicamentos" class="tableC" border="1">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Classe Terapêutica</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As linhas serão adicionadas dinamicamente aqui -->
+                </tbody>
+            </table>
+            
+        </div>
+        <!-- tabelaa terminaa aqui-->
+
+        <br><br><br>
+        <h2>EXAME FÍSICO-FUNCIONAL:</h2>
+        <br>
+
+        <h3>Sinais Vitais</h3>
+        <br>
+
+        <div>
+            <label for="temperatura">T:</label>
+            <input type="text" id="temperatura" name="temperatura"
+                class="custom-input">
+
+            <label for="frequencia-cardiaca">FC:</label>
+            <input type="text" id="frequencia-cardiaca"
+                name="frequencia-cardiaca" class="custom-input">
+
+            <label for="frequencia-respiratoria">FR:</label>
+            <input type="text" id="frequencia-respiratoria"
+                name="frequencia-respiratoria" class="custom-input">
+
+            <label for="pressao-arterial">PA:</label>
+            <input type="text" id="pressao-arterial" name="pressao-arterial"
+                class="custom-input">
+        </div>
+        <br>
+
+        <div>
+            <h3>Inspeção:</h3><br>
+            <textarea class="queixa" id="queixa-inspecao" name="queixa-inspecao"
+                placeholder="Digite aqui..."></textarea>
+        </div>
+        <br>
+
+        <div>
+            <h3>Palpação:</h3><br>
+            <textarea class="queixa" id="queixa-palpacao" name="queixa-palpacao"
+                placeholder="Digite aqui..."></textarea>
+        </div>
+        <br>
+
+        <div>
+            <h3>Sensibilidade:</h3><br>
+            <textarea class="queixa" id="queixa-sensibilidade"
+                name="queixa-sensibilidade"
+                placeholder="Digite aqui..."></textarea>
+        </div>
+        <br>
+
+        <div>
+            
+    
+
+        <br> <br>
+
+        <h3>Reflexos Tendinos Profundos:</h3>
+        <br>
+
+        <table border="1" class="tableS">
+            <thead>
+                <tr>
+                    <th>Reflexo</th>
+                    <th>Arreflexia</th>
+                    <th>Hiporreflexia</th>
+                    <th>Normal</th>
+                    <th>Hiperreflexia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Esquerdo</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Bicipital</td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                </tr>
+                <tr>
+                    <td>Tricipital</td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                </tr>
+                <tr>
+                    <td>Patelar</td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                </tr>
+                <tr>
+                    <td>Calcâneo</td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                </tr>
+                <tr>
+                    <th>Direito</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Bicipital</td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                </tr>
+                <tr>
+                    <td>Tricipital</td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                </tr>
+                <tr>
+                    <td>Patelar</td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                </tr>
+                <tr>
+                    <td>Calcâneo</td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                    <td onclick="toggleX(this);" style="cursor:pointer;"></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+
+        <h3>Avaliação da Dor:</h3>
+        <br>
+        <!--Imagem depois com scrip DEPOIS-->
+        <div class="image-container">
+            <img src="Imagens/ImagemDor.png" alt="Imagem que mostra a dor em uma escala de 0 a 10" class="central-image">
+        </div>
+        
+
+        <br><br>
+        <form id="form-dor1">
+            <div class="div-esquerda">
+                <label for="dor1" style="font-weight: bold">Local da Dor:</label>
+                <input type="text" id="dor1" name="dor" class="custom-input1" placeholder="Digite aqui..." required>
+                <br><br>&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
+                <button class="styled-button" type="button" id="remover-btn1">Remover</button>
+            </div>
+            
+            <div class="div-direita">
+                <label for="eva1" style="font-weight: bold">EVA:</label>
+                <input type="text" id="eva1" name="eva" class="custom-input1" placeholder="Digite aqui..." required>
+                <br><br>&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
+                <button class="styled-button" type="button" id="adicionar-btn1">Adicionar</button>
+            </div>
+        </form>
+        
+        <br>
+        
+        <table id="tabela-dor1" class="tableC" border="1">
+            <thead>
+                <tr>
+                    <th>Local da Dor</th>
+                    <th>EVA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- As linhas serão adicionadas dinamicamente aqui -->
+            </tbody>
+        </table>
+
+    <br><br>
+    <form id="form-caracteristicas-dor">
+        <div class="estilodemarcar">
+            <label class="label-bold">História da Dor:</label>
+            <div class="opcoes-dor">
+                <label><input type="radio" name="historia-dor1" value="Aguda"> Aguda</label>&nbsp
+                <label><input type="radio" name="historia-dor1" value="Crônica"> Crônica</label>
+            </div>&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
+
+            <label class="label-bold">Frequência:</label>
+            <div class="opcoes-dor">
+                <label><input type="radio" name="frequencia1" value="Constante"> Constante</label>&nbsp
+                <label><input type="radio" name="frequencia1" value="Intermitente"> Intermitente</label>
+            </div>
+        </div>
+        <div class="estilodemarcar">
+            <label class="label-bold">Característica:</label>
+            <div class="opcoes-dor">
+                <label><input type="radio" name="caracteristica1" value="Localizada"> Localizada</label>&nbsp
+                <label><input type="radio" name="caracteristica1" value="Irradiada"> Irradiada</label>&nbsp
+                <label><input type="radio" name="caracteristica1" value="Difusa"> Difusa</label>&nbsp
+            </div>
+        </div>
+    </form>
+
+
+
+    <br><br>
+        <h3>Movimentos que exarcebam a:</h3>
+        <br><br>
+        <div>
+            <h4>Dor:</h4><br>
+            <textarea class="queixa" id="queixa-sensibilidade"
+                name="queixa-sensibilidade"
+                placeholder="Digite aqui..."></textarea>
+        </div>
+        <br>
+
+        <div>
+            <h4>Fatores agravantes:</h4><br>
+            <textarea class="queixa" id="queixa-sensibilidade"
+                name="queixa-sensibilidade"
+                placeholder="Digite aqui..."></textarea>
+        </div>
+        <br>
+
+        <div>
+            <h4>Fatores atenuantes:</h4><br>
+            <textarea class="queixa" id="queixa-sensibilidade"
+                name="queixa-sensibilidade"
+                placeholder="Digite aqui..."></textarea>
+        </div>
+        <br>
+
+        
+
+        <div style="text-align: right;">
+            <button class="styled-button" type="button">Próxima página  -></button>
+        </div>
+
+        
+
+    <script src="Script/Script.js"></script>
+
+    </body>
+</html>
