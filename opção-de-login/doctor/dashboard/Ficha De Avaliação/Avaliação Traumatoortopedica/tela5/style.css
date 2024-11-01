@@ -2,7 +2,7 @@ body {
     font-size: 17px;
     color: #113838;
     font-family: Arial, sans-serif;
-    margin: 30px;
+    margin: 29px;
     padding: 0;
     background: #f4f4f4;
 }
@@ -42,8 +42,8 @@ h1 {
 .posterior,
 .lateraldireito,
 .lateralesquerdo {
-    width: 765px;
-    height: 209px;
+    width: 100%;
+    height: 205px;
     top: 1703px;
     left: 2761px;
     font-family: Arial, sans-serif;
@@ -61,7 +61,7 @@ h1 {
 table {
     border-collapse: separate;
     width: 70%;
-    margin-left: 14%;
+    margin: auto;
     color: #113838;
     border: 1px solid;
     border-radius: 7px;
@@ -96,7 +96,8 @@ button {
     width: 170px;
     height: 47px;
     margin-top: 50px;
-    margin-left: 85%;
+    margin-right: 30%;
+    margin-left: 75%;
     border-radius: 8px;
     border: 1px solid black;
     font-size: 16px;
@@ -112,46 +113,58 @@ button {
     width: 100%;
     margin-bottom: 0%;
 }
+
 .box-musculo {
-    display: flex; 
+    display: flex;
     margin-top: 20px;
     padding-top: 0;
     padding: 20px;
     margin-top: 1%;
 }
-.coluna1, .coluna2 {
-    flex: 1 ; 
+
+.coluna1,
+.coluna2 {
+    flex: 1;
     display: flex;
-    flex-direction:column; 
+    flex-direction: column;
 }
-.coluna1{
+
+.coluna1 {
     margin-left: 7.5px;
-    margin-right: 1px ;
-    text-align:left;
+    margin-right: 1px;
+    text-align: left;
 
 }
-.coluna2{
+
+.coluna2 {
     margin-right: 7.5px;
 }
-.coluna1 p, .coluna2 p {
+
+.coluna1 p,
+.coluna2 p {
     display: inline-block;
-    margin: 5px 0; /* Espaçamento vertical entre os parágrafos */
+    margin: 5px 0;
+    /* Espaçamento vertical entre os parágrafos */
     font-size: 17px;
     height: 100%;
 }
-.final{
+
+.final {
     margin-left: auto;
     margin-right: auto;
     width: 700px;
 }
-.d-flex{
-    border: 0.5px solid #AEF7C3 ;
+
+.d-flex {
+    border: 0.5px solid #AEF7C3;
 }
-.separacao-musculos{
+
+.separacao-musculos {
     width: 100%;
     border: 1px solid #AEF7C3;
 }
-hr{
+
+hr {
     border: 0.5px solid #AEF7C3;
     width: 95%;
 }

@@ -24,7 +24,7 @@ h1 {
 table {
     border-collapse: separate;
     width: 70%;
-    margin-left: 14%;
+    margin: auto;
     color: #113838;
     border: 1px solid;
     border-radius: 7px;
@@ -50,6 +50,7 @@ tr {
     margin-left: 1%;
     margin-right: 3%;
 
+
 }
 
 input[class="textoTabela"] {
@@ -68,17 +69,19 @@ label {
 }
 
 .testeFuncional {
-    width: 800px;
-    height: 90px;
+    width: 100%;
+    /*comentando para caso precise mudar (width: 800px)*/
+    height: 205px;
+    /*comentando para caso precise mudar (height: 90px)*/
     border-radius: 8px;
     resize: none;
     font-family: Arial, sans-serif;
     font-size: 20px;
     gap: 8px;
     color: #113838;
-    padding: 9px;
     display: flex;
     flex-direction: column;
+
 }
 
 .ExameCompl,
@@ -86,8 +89,10 @@ label {
 .Diagnostico,
 .obj,
 .Condutas {
-    width: 800px;
-    height: 210px;
+    width: 100%;
+    /* comentando para caso precise mudar (width: 800px;)*/
+    height: 205px;
+    /* comentando para caso precise mudar (height: 210px;)*/
     top: 1703px;
     left: 2761px;
     font-family: Arial, sans-serif;
@@ -102,7 +107,8 @@ button {
     width: 170px;
     height: 47px;
     margin-top: 50px;
-    margin-left: 85%;
+    margin-right: 30%;
+    margin-left: 75%;
     border-radius: 8px;
     border: 1px solid black;
     font-size: 16px;
