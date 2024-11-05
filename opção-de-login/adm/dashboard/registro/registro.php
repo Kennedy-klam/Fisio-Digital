@@ -1,17 +1,6 @@
 <?php
 
-// include("../../../../database/dbConect.php");
-
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$banco = 'fisio digital 2.0';
-
-$conn = new mysqli($host, $user, $pass, $banco);
-
-if ($conn->connect_error){
-    die("Conexão falhou: " . $conn->connect_error);
-}
+include("../../../../database/dbConect.php");
 
 // Pegando os dados do formulário via POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

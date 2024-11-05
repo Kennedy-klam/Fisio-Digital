@@ -1,7 +1,7 @@
 <?php
 
-// include("../../../../database/dbConect.php");
-/*
+/* include("../../../../database/dbConect.php");
+
 $host = 'localhost';
 $user = 'root';
 $pass = '';
@@ -49,11 +49,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-*/
 
-?>
 
-<?php
+?> 
+
+<?php*/
 
 
 // Conexão com o banco de dados
@@ -112,8 +112,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 Escolaridade, Renda, profissao, Residencia, moraCom, AtividadeFisica,
                 quantos_dias, FrequenciaSaida, AtivSocial, Doenças, outras_doencas, 
                 QueixaPrincipal, /*medicamentos, como_usa, tempo_uso,*/ visao, audicao, contUrin,
-                dataUrin, contFecal, dataFecal, sono, /*texto_disturbios,*/ ortese, proteste,
-                queda, quedaQuantas, fuma, tempoFuma, etilista, tempo_etilista
+                dataUrin, contFecal, dataFecal, sono, /*texto_disturbios,*/ ortese, protese,
+                queda, quedaQuantas, fuma, tempoFuma, etilista, tempoEtilista
             ) VALUES (
                 ?, ?, ?, ?, ?, ?, ?, ?, /*?, ?, ?,*/ ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
             )";
@@ -121,10 +121,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Preparando a consulta
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
-        "ssssssssssssssssssssssssssssss", 
+        "sssssssssssssssssssssssssss", 
         $escolaridade, $renda, $profissao, $local_residencia, $mora_com, $atividade_fisica, 
         $quantos_dias, $frequencia_sair, $atividade_social, $doencas, $outras_doencas, 
-        $queixa_principal, $medicamentos, $como_usa, $tempo_uso, $visao, $audicao, 
+        $queixa_principal, /* $medicamentos, $como_usa, $tempo_uso, */ $visao, $audicao, 
         $continencia_urinaria, $data_urinaria, $continencia_fecal, $data_fecal, 
         $sono, $texto_disturbios, $ortese, $proteste, $queda, $queda_quantas, 
         $fuma, $tempo_fumar, $etilista, $tempo_etilista
