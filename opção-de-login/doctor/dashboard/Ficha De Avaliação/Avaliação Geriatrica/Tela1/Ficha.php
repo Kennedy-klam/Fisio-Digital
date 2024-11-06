@@ -1,15 +1,12 @@
 <?php
 // Conectando ao banco de dados
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$banco = 'fisio-digital-v2.0';
+include("../../../../../../database/dbConect.php");
 
 // Criando conexão
 $conn = new mysqli($host, $user, $pass, $banco);
 
 // Verificando a conexão
-if ($conn->connect_error){
+if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
@@ -44,19 +41,22 @@ if ($result->num_rows > 0) {
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ficha de Avaliação de Fisioterapia Geriátrica</title>
-        <link rel="stylesheet" href="Estilos/styles.css">
-        <!--versão 1.0-->
-        <script>
-            function redirecionar(url) {
-                window.location.href = url;
-            }
-        </script>
-    </head>
-    <body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Avaliação de Fisioterapia Geriátrica</title>
+    <link rel="stylesheet" href="Estilos/styles.css">
+    <!--versão 1.0-->
+    <script>
+        function redirecionar(url) {
+            window.location.href = url;
+        }
+    </script>
+</head>
+
+<body>
+    <form action="database/T1Registro.php" method="post">
         <div class="container">
             <h1>Ficha de Avaliação de Fisioterapia Geriátrica</h1>
             <br>
@@ -72,6 +72,7 @@ if ($result->num_rows > 0) {
             </div>
 
             <!--Parte dos Dados Pessoais-->
+
             <div class="dados-pessoais">
                 <h2>Dados Pessoais</h2>
                 <br>
@@ -164,7 +165,7 @@ if ($result->num_rows > 0) {
                 </div>
 
                 <div class="coluna-central">
-                    
+
                     <div class="campo">
                         <label>Atividades Físicas:</label>
                     </div>
@@ -174,7 +175,7 @@ if ($result->num_rows > 0) {
                         <br>
                         <input type="radio" id="atividade-nao" name="atividade" value="nao" onclick="mostrarCampoAF()">
                         <label for="atividade-nao">Não</label>
-                    </div> 
+                    </div>
                     <br>
                     <div class="campo" id="campo-quantos-dias" style="display: none;">
                         <label for="quantos-dias">Se sim, quantos dias na semana:</label>
@@ -204,7 +205,7 @@ if ($result->num_rows > 0) {
                             <option value="baixa_frequencia">Baixa Frequência</option>
                             <option value="outros">Outros</option>
                         </select>
-                    </div>  
+                    </div>
                 </div>
 
                 <div class="coluna-dir">
@@ -220,17 +221,17 @@ if ($result->num_rows > 0) {
                             <option value="outros">Outros</option>
                         </select>
                     </div>
-                    
+
                     <div id="doencas-selecionadas"></div>
                     <br>
-                    
-                    
+
+
                     <div class="campo">
                         <label for="outras-doencas">Outras doenças:</label>
                         <textarea id="outras-doencas" name="outras-doencas"
                             rows="17">Digite aqui...</textarea>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="form-group">
@@ -245,7 +246,7 @@ if ($result->num_rows > 0) {
         <div>
             <h2>Medicamentos</h2>
             <br>
-            <form id="medicamento-form">
+            <div id="medicamento-form">
 
                 <div class="campo">
                     <br>
@@ -273,7 +274,7 @@ if ($result->num_rows > 0) {
                     <button class="styled-button" type="button"
                         id="adicionar-btn">Adicionar </button>
                 </div>
-            </form>
+            </div>
             <br>
 
             <h2>Tabela de Medicamentos</h2>
@@ -309,7 +310,7 @@ if ($result->num_rows > 0) {
                         <option value="perda_total">Perda total</option>
                     </select>
                 </div>
-                
+
                 <div class="campo">
                     <label for="audicao">Audição:</label>
                     <select id="audicao" name="audicao">
@@ -321,7 +322,7 @@ if ($result->num_rows > 0) {
                         <option value="perda_total">Perda total</option>
                     </select>
                 </div>
-                
+
                 <div class="campo">
                     <label for="urinária">Continência urinária:</label>
                 </div>
@@ -337,8 +338,8 @@ if ($result->num_rows > 0) {
                     <label for="data">Data:</label>
                     <input type="date" id="data" name="data">
                 </div>
-                
-                
+
+
                 <div class="campo">
                 </div>
                 <div class="campo">
@@ -356,9 +357,9 @@ if ($result->num_rows > 0) {
                     <label for="data-fecal">Data:</label>
                     <input type="date" id="data-fecal" name="data-fecal">
                 </div>
-                
-                
-                
+
+
+
             </div>
 
             <div class="coluna-central">
@@ -378,7 +379,7 @@ if ($result->num_rows > 0) {
                     <label for="texto-disturbios">Descreva os distúrbios:</label>
                     <input type="text" id="texto-disturbios" name="texto-disturbios">
                 </div>
-                
+
                 <br>
                 <div class="campo">
                     <label for="ortese">Uso de órtese:</label>
@@ -388,7 +389,7 @@ if ($result->num_rows > 0) {
                         <option value="nao">Não</option>
                     </select>
                     <br><br>
-                    
+
                     <label for="proteste">Uso de prótese:</label>
                     <select id="proteste" name="proteste">
                         <option value="">Selecione</option>
@@ -396,7 +397,7 @@ if ($result->num_rows > 0) {
                         <option value="nao">Não</option>
                     </select>
                 </div>
-                
+
                 <div class="campo">
                     <label for="queda">Queda nos últimos 12 meses:</label>
                     <select id="queda" name="queda" onchange="mostrarQuedaQuantas()">
@@ -405,12 +406,12 @@ if ($result->num_rows > 0) {
                         <option value="nao">Não</option>
                     </select>
                 </div>
-                
+
                 <div class="campo" id="queda-quantas-container" style="display: none;">
                     <label for="queda-quantas">Quantas:</label>
                     <input type="number" id="queda-quantas" name="queda-quantas">
                 </div>
-                
+
             </div>
             <div class="coluna-dir">
 
@@ -432,7 +433,7 @@ if ($result->num_rows > 0) {
                     <label for="tempo-fumar">Se parou, há quanto tempo?</label>
                     <input type="text" id="tempo-fumar" name="tempo-fumar">
                 </div>
-                
+
                 <div class="campo">
                     <label for="etilista">Etilista:</label>
                 </div>
@@ -455,13 +456,15 @@ if ($result->num_rows > 0) {
             </div>
         </div>
         <!--Botoes-->
-        
+
         <div class="button-container">
             <button class="styled-button" type="button" onclick="redirecionar('../../../dashboard.php')">Tela Inicial</button>
-            <button class="styled-button" type="button" onclick="redirecionar('../EstadoMental/fichaestadomental.html')">Próxima página</button>
+            <button class="styled-button" type="submit">Próxima página</button>
         </div>
+    </form>
 
-        <!--O script ficou aqui porque não estava sendo carregado-->
-        <script src="Script/script.js"></script>
-    </body>
+    <!--O script ficou aqui porque não estava sendo carregado-->
+    <script src="Script/script.js"></script>
+</body>
+
 </html>

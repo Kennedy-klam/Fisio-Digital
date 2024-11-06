@@ -6,7 +6,6 @@ include("../../../../../../../database/dbConect.php");
 // Verificando se o formulário foi submetido
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Capturando os valores do formulário
-    $Consultas_idConsultas = 1; // Valor estático
     $escolaridade = $_POST['escolaridade'];
     $renda = $_POST['renda'];
     $profissao = $_POST['profissao'];
@@ -19,6 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $doencas = $_POST['doencas'];
     $outras_doencas = $_POST['outras-doencas'];
     $queixa_principal = $_POST['queixa-principal'];
+
+    /*$medicamentos = $_POST['medicamentos'];
+    $como_usa = $_POST['como-usa'];
+    $tempo_uso = $_POST['tempo-uso'];*/
+    
     $visao = $_POST['visao'];
     $audicao = $_POST['audicao'];
     $continencia_urinaria = $_POST['continencia-urinaria'];
@@ -38,54 +42,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Prepara a query SQL para inserir ou atualizar os dados
     $sql = "INSERT INTO FichaAvaliaçãoGeriatrica (
-        Consultas_idConsultas, Escolaridade, Renda, profissao, Residencia, moraCom, AtividadeFisica,
-        quantos_dias, FrequenciaSaida, AtivSocial, Doenças, outras_doencas, 
-        QueixaPrincipal, visao, audicao, contUrin,
-        dataUrin, contFecal, dataFecal, sono, texto_disturbios, ortese, protese,
-        queda, quedaQuantas, fuma, tempoFuma, etilista, tempoEtilista
-    ) VALUES (
-        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
-    )";
-
+                Escolaridade, Renda, profissao, Residencia, moraCom, AtividadeFisica,
+                quantos_dias, FrequenciaSaida, AtivSocial, Doenças, outras_doencas, 
+                QueixaPrincipal, /*medicamentos, como_usa, tempo_uso,*/ visao, audicao, contUrin,
+                dataUrin, contFecal, dataFecal, sono, /*texto_disturbios,*/ ortese, protese,
+                queda, quedaQuantas, fuma, tempoFuma, etilista, tempoEtilista
+            ) VALUES (
+                ?, ?, ?, ?, ?, ?, ?, ?, /*?, ?, ?,*/ ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+            )";
+    
+    // Preparando a consulta
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
-        "issssssssssssssssssssssssss",
-        $Consultas_idConsultas,
-        $escolaridade,
-        $renda,
-        $profissao,
-        $local_residencia,
-        $mora_com,
-        $atividade_fisica,
-        $quantos_dias,
-        $frequencia_sair,
-        $atividade_social,
-        $doencas,
-        $outras_doencas,
-        $queixa_principal,
-        $visao,
-        $audicao,
-        $continencia_urinaria,
-        $data_urinaria,
-        $continencia_fecal,
-        $data_fecal,
-        $sono,
-        $texto_disturbios,
-        $ortese,
-        $proteste,
-        $queda,
-        $queda_quantas,
-        $fuma,
-        $tempo_fumar,
-        $etilista,
-        $tempo_etilista
+        "sssssssssssssssssssssssssss", 
+        $escolaridade, $renda, $profissao, $local_residencia, $mora_com, $atividade_fisica, 
+        $quantos_dias, $frequencia_sair, $atividade_social, $doencas, $outras_doencas, 
+        $queixa_principal, /* $medicamentos, $como_usa, $tempo_uso, */ $visao, $audicao, 
+        $continencia_urinaria, $data_urinaria, $continencia_fecal, $data_fecal, 
+        $sono, $texto_disturbios, $ortese, $proteste, $queda, $queda_quantas, 
+        $fuma, $tempo_fumar, $etilista, $tempo_etilista
     );
 
     // Executando a consulta
     if ($stmt->execute()) {
         echo "Dados inseridos com sucesso!";
     } else {
-        echo "Erro ao inserir os dados: " . $stmt->error;
+        echo "Erro ao inserir os dados: " . $conn->error;
     }
 
     $stmt->close();
@@ -93,4 +75,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
-    
