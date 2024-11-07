@@ -26,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $continencia_fecal = $_POST['continencia-fecal'];
     $data_fecal = $_POST['data-fecal'];
     $sono = $_POST['sono'];
-    $texto_disturbios = $_POST['texto-disturbios'];
     $ortese = $_POST['ortese'];
     $proteste = $_POST['proteste'];
     $queda = $_POST['queda'];
@@ -36,12 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $etilista = $_POST['etilista'];
     $tempo_etilista = $_POST['tempo-etilista'];
 
-    // Prepara a query SQL para inserir ou atualizar os dados
-    $sql = "INSERT INTO FichaAvaliaçãoGeriatrica (
+    // Prepara a query SQL para inserir os dados
+    $sql = "INSERT INTO fichaavaliaçãogeriatrica (
         Consultas_idConsultas, Escolaridade, Renda, profissao, Residencia, moraCom, AtividadeFisica,
         quantos_dias, FrequenciaSaida, AtivSocial, Doenças, outras_doencas, 
         QueixaPrincipal, visao, audicao, contUrin,
-        dataUrin, contFecal, dataFecal, sono, texto_disturbios, ortese, protese,
+        dataUrin, contFecal, dataFecal, sono, ortese, protese,
         queda, quedaQuantas, fuma, tempoFuma, etilista, tempoEtilista
     ) VALUES (
         ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
@@ -49,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
-        "issssssssssssssssssssssssss",
+        "isssssssssssssssssssssssssss",
         $Consultas_idConsultas,
         $escolaridade,
         $renda,
@@ -70,7 +69,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $continencia_fecal,
         $data_fecal,
         $sono,
-        $texto_disturbios,
         $ortese,
         $proteste,
         $queda,
@@ -93,4 +91,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
-    
