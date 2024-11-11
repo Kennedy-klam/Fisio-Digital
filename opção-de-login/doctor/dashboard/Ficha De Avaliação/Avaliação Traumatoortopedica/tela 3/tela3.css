@@ -13,6 +13,7 @@ body {
     box-shadow: 0 2px 4px #113838(0, 0, 0, 0.1);
 }
 h1 {
+    font-size: 30px;
     margin-top: 25px;
     display: inline-block;
 }
@@ -56,6 +57,12 @@ input::-webkit-inner-spin-button {
     padding-top: 0;
     padding: 20px;
     margin-top: 1%;
+}
+.hiperbato{
+    background-color: #DEF7E5;
+}
+.blank{
+    border: 0.5px solid #ffffff;
 }
 .coluna1, .coluna2 {
     flex: 1 ; 
