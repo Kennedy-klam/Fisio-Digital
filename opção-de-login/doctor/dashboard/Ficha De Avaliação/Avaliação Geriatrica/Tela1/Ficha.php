@@ -56,7 +56,7 @@ if ($result->num_rows > 0) {
 </head>
 
 <body>
-    <form action="database/T1Registro.php" method="post">
+    <form action="../database/T1Registro.php" method="post">
         <div class="container">
             <h1>Ficha de Avaliação de Fisioterapia Geriátrica</h1>
             <br>
@@ -107,8 +107,7 @@ if ($result->num_rows > 0) {
                     <div class="campo">
                         <label for="escolaridade">Escolaridade:</label>
                         <select id="escolaridade" name="escolaridade">
-                            <option value disabled
-                                selected>Selecione...</option>
+                            <option value disabled selected>Selecione...</option>
                             <option value="analfabeto">Analfabeto</option>
                             <option value="ensino_fundamental">Ensino
                                 Fundamental</option>
