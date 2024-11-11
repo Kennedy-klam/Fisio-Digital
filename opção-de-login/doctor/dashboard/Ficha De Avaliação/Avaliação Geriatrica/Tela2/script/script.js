@@ -64,14 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function avaliarResultado(totalScore) {
         let resultado = '';
 
-        if (totalScore > 27) {
+        if (totalScore >= 27) {
             resultado = "Normal";
-        } else if (totalScore <= 24) {
+        } else if (totalScore <= 24 || totalScore === 26) {
             resultado = "Estado cognitivo alterado";
         }
 
         // Avaliações de depressão
-        if (totalScore >= 25.1) {
+        if (totalScore <= 25.1 ) {
             resultado += ", Escore médio para Depressão não-complicada";
         } else if (totalScore <= 19) {
             resultado += ", Prejuízo cognitivo por depressão";
