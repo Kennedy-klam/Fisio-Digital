@@ -66,15 +66,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (totalScore >= 27) {
             resultado = "Normal";
-        } else if (totalScore <= 24 || totalScore === 26) {
+        } else if (totalScore > 19 && (totalScore <= 24 || totalScore === 26)) {
             resultado = "Estado cognitivo alterado";
         }
 
         // Avaliações de depressão
-        if (totalScore <= 25.1 ) {
+        if (totalScore <= 25.1 && totalScore >= 20) {
             resultado += ", Escore médio para Depressão não-complicada";
         } else if (totalScore <= 19) {
-            resultado += ", Prejuízo cognitivo por depressão";
+            resultado = "Prejuízo cognitivo por depressão";
         }
 
         return resultado;
