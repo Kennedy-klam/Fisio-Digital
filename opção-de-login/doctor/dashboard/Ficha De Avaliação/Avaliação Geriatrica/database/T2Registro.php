@@ -17,22 +17,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $linguagem_leitura = $_POST['lerOrdem'];
     $linguagem_escrita = $_POST['escrevFase'];
     $linguagem_copiar = $_POST['copDesenho'];
+    $abombrod = $_POST['abombrod'];
+    $abombroe = $_POST['abombroe'];
+    $flexcotovelod = $_POST['flexcotovelod'];
+    $flexcotoveloe = $_POST['flexcotoveloe'];
+    $extpunhod = $_POST['extpunhod'];
+    $extpunhoe = $_POST['extpunhoe'];
+    $flexquadrild = $_POST['flexquadrild'];
+    $flexquadrile = $_POST['flexquadrile'];
+    $extjoelhod = $_POST['extjoelhod'];
+    $extjoelhoe = $_POST['extjoelhoe'];
+    $dflextornozelod = $_POST['dflextornozelod'];
+    $dflextornozeloe = $_POST['dflextornozeloe'];
 
-    /* // Calcular o total de pontos
-    $resultado_total = $orientacao_temporal + $orientacao_local + $repita_palavras + $calculo +
+    // Calcular o total de pontos
+    /* $resultado_total = $orientacao_temporal + $orientacao_local + $repita_palavras + $calculo +
         $memorizacao + $linguagem_objetos + $linguagem_frase +
-        $linguagem_instrucoes + $linguagem_leitura + $linguagem_escrita + $linguagem_copiar;
- */
+        $linguagem_instrucoes + $linguagem_leitura + $linguagem_escrita + $linguagem_copiar; */
+
     // Inserir os dados no banco de dados
     $sql = "INSERT INTO fichaavaliaçãogeriatrica (
             Consultas_idConsultas, espacial, local, reptPalav, calculo, 
             memoria, nomObj, reptFrase, ordem,
-            lerOrdem, escrevFrase, copDesenho
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            lerOrdem, escrevFrase, copDesenho,
+            abombrod, abombroe, flexcotovelod, flexcotoveloe,
+            extpunhod, extpunhoe, flexquadrild, flexquadrile,
+            extjoelhod, extjoelhoe, dflextornozelod, dflextornozeloe
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
-        "isssssssssss",
+        "isssssssssssssssssssssss",
         $Consultas_idConsultas,
         $orientacao_temporal,
         $orientacao_local,
@@ -44,7 +59,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $linguagem_instrucoes,
         $linguagem_leitura,
         $linguagem_escrita,
-        $linguagem_copiar
+        $linguagem_copiar,
+        $abombrod, 
+        $abombroe, 
+        $flexcotovelod, 
+        $flexcotoveloe,
+        $extpunhod, 
+        $extpunhoe, 
+        $flexquadrild, 
+        $flexquadrile,
+        $extjoelhod, 
+        $extjoelhoe, 
+        $dflextornozelod, 
+        $dflextornozeloe
     );
 
     if ($stmt->execute()) {
