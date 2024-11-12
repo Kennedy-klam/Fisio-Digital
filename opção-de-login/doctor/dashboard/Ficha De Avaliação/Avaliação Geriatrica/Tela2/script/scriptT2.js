@@ -107,7 +107,7 @@ function calcularNota() {
     }
 
     // Exibe o total e a dependência no elemento de resultado
-    document.getElementById('resultado2').innerText = `RESULTADO: ${total} pontos - ${dependencia}.`;
+    document.getElementById('resultado2').innerText = `${total} pontos - ${dependencia}.`;
 }
 
 // Função para garantir que apenas uma checkbox por linha seja selecionada

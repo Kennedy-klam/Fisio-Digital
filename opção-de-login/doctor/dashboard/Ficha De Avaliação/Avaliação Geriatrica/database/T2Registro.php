@@ -29,6 +29,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $extjoelhoe = $_POST['extjoelhoe'];
     $dflextornozelod = $_POST['dflextornozelod'];
     $dflextornozeloe = $_POST['dflextornozeloe'];
+    $alimentacao = $_POST['alimentacao'];
+    $banho = $_POST['banho'];
+    $atividade_diaria = $_POST['atividade'];
+    $vestir = $_POST['vestir'];
+    $intestino = $_POST['intestino'];
+    $sistema_urinario = $_POST['urina'];
+    $uso_banheiro = $_POST['banheiro'];
+    $transferencia = $_POST['transferencia'];
+    $mobilidade = $_POST['deambulacao'];
+    $escadas = $_POST['escadas'];
 
     // Calcular o total de pontos
     /* $resultado_total = $orientacao_temporal + $orientacao_local + $repita_palavras + $calculo +
@@ -42,12 +52,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             lerOrdem, escrevFrase, copDesenho,
             abombrod, abombroe, flexcotovelod, flexcotoveloe,
             extpunhod, extpunhoe, flexquadrild, flexquadrile,
-            extjoelhod, extjoelhoe, dflextornozelod, dflextornozeloe
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            extjoelhod, extjoelhoe, dflextornozelod, dflextornozeloe,
+            alimentacao, banho, atividade_diaria, vestir, intestino, sistema_urinario, uso_banheiro, transferencia, mobilidade, escadas
+
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
-        "isssssssssssssssssssssss",
+        "isssssssssssssssssssssssiiiiiiiiii",
         $Consultas_idConsultas,
         $orientacao_temporal,
         $orientacao_local,
@@ -71,7 +83,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $extjoelhod, 
         $extjoelhoe, 
         $dflextornozelod, 
-        $dflextornozeloe
+        $dflextornozeloe,
+        $alimentacao, 
+        $banho, 
+        $atividade_diaria, 
+        $vestir, 
+        $intestino, 
+        $sistema_urinario, 
+        $uso_banheiro, 
+        $transferencia, 
+        $mobilidade, 
+        $escadas
+
     );
 
     if ($stmt->execute()) {
