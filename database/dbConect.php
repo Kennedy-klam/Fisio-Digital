@@ -2,7 +2,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$banco = 'fisio-digital-v3.2';
+$banco = 'fisio-digital-v3.3';
 
 $conn = new mysqli($host, $user, $pass, $banco);
 
