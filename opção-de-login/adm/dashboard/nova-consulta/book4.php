@@ -2,7 +2,7 @@
 session_start();
 include("../../conexões/db.php");
 
-$di=$_SESSION["docid"];
+$di=$_SESSION["idDoutor"];
 $sql="SELECT * FROM `doutor` WHERE idDoutor='$di'";
 $res = mysqli_query($con, $sql);
     if($res)
