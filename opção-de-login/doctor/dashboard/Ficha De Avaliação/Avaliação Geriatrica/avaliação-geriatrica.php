@@ -3,7 +3,7 @@
 include("../../../../../database/dbConect.php");
 
 // ID do paciente que queremos buscar
-$paciente_id = 1;  // Exemplo estático, sera dinâmico
+$paciente_id = 2;  // Exemplo estático, sera dinâmico
 
 // Buscando os dados do usuário
 $sql = "SELECT nome, nascimento, sexo, estaCivil, celular FROM paciente WHERE idPaciente = $paciente_id";
@@ -37,14 +37,14 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ficha de Avaliação de Fisioterapia Geriátrica</title>
+    <script src="scripts/gerenciar-telas.js" defer></script>
 </head>
 
 <body>
     <form action="database/T1Registro.php" method="post">
 
-    <!-- ------------------------------------------Tela 1------------------------------------------- -->
+        <!-- ------------------------------------------Tela 1------------------------------------------- -->
         <div class="etapa" id="etapa1">
-            <link rel="stylesheet" href="styles/tela1.css">
             <div class="container">
                 <h1>Ficha de Avaliação de Fisioterapia Geriátrica</h1>
                 <br>
@@ -447,14 +447,14 @@ if ($result->num_rows > 0) {
 
             <div class="button-container">
                 <button class="styled-button" type="button" onclick="redirecionar('../../../dashboard.php')">Tela Inicial</button>
-                <button class="styled-button" type="submit">Próxima página</button>
+                <button type="button" id="proximaEtapa1" class="styled-button">Próxima página</button>
             </div>
         </div>
         <!-- -----------------------------------------Tela 1------------------------------------------ -->
-        
+
         <!-- -----------------------------------------Tela 2------------------------------------------ -->
 
-        <div class="etapa" id="etapa2">
+        <div class="etapa" id="etapa2" style="display:none;">
             <div class="container">
                 <div class="section-title">Estado Mental</div>
                 <div class="column-group">
@@ -976,7 +976,7 @@ if ($result->num_rows > 0) {
                         <td><input type="checkbox" name="intestino" value="5"></td>
                         <td><input type="checkbox" name="intestino" value="10"></td>
                     </tr>
-                    
+
                     <tr>
                         <td>Sistema Urinario</td>
                         <td><input type="checkbox" name="urina" value="0"></td>
@@ -1015,15 +1015,14 @@ if ($result->num_rows > 0) {
                 <h2>Resultado:</h2>
                 <h3 id="resultado2"></h3>
             </div>
-            <button class="styled-button" type="submit">Próxima página</button>       
+
+            <div class="button-container">
+                <button class="styled-button" type="button" id="voltarEtapa1">Voltar</button>
+                <button type="button" id="proximaEtapa1" class="styled-button">Próxima página</button>
+            </div>
         </div>
-<!-- -----------------------------------------Tela 2------------------------------------------ -->
-
-        
+        <!-- -----------------------------------------Tela 2------------------------------------------ -->
     </form>
-
-    <!--O script ficou aqui porque não estava sendo carregado    TELA 1-->
-    <script src="Script/script.js"></script>
 </body>
 
 </html>
