@@ -1,0 +1,163 @@
+/* Estilos gerais */
+body {
+    font-size: 16px;
+    color: #113838;
+    font-family: Arial, sans-serif;
+    background: #fff;
+}  
+
+.container {
+    margin: 20px auto;
+    background-color: #DEF7E5;
+    border-radius: 10px;
+    border: 1px solid #dbf1e2;
+}
+input[type="checkbox" ],input[type="radio"] {
+    appearance: none; /* Remove o estilo padrão do checkbox */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 50%; /* Faz o checkbox ficar redondo */
+    display:inline-block ;
+
+}
+
+/* Estilo para o estado marcado do checkbox */
+input[type="checkbox" ]:checked,input[type="radio"]:checked {
+    background-color: #113838;
+    border: 2px solid #113838;
+}
+input[type="checkbox"]:checked::after,input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: auto;
+    background-color: #99e39c;
+    border-radius: 50%;
+}
+p{
+    size: 16px;
+    color: #113838;
+    margin-bottom: none;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    margin-bottom: 0;
+    color: #113838;
+
+}
+.subtitle{
+    size: 20px;
+    line-height: 22px;
+    color: #113838;
+    margin-bottom: 15px;
+
+}
+legend{
+    color: #113838;
+}
+/* Agrupamento das colunas */
+.column-group {
+    display: flex;
+    margin-top: 0;
+}
+/* Colunas flexíveis */
+.column {
+    flex: 1;
+    padding: 15px;
+    margin-top: 0;
+
+}
+.column > h4{
+    padding: 15px;
+}
+a{
+    color: #6DAA7F;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0;
+}
+.legend{
+    margin-left: 5px;
+}
+/* Estilo para Fieldset */
+.section {
+    padding: 10px;
+}
+.section > div {
+    display: flex;
+    margin: 1px 0px 0px 2px;
+}
+.section > div > label {
+    display: flex; /* Alinha checkbox e texto horizontalmente */
+    align-items: center; /* Alinha verticalmente */
+    margin-bottom: 8px; /* Espaçamento entre as labels */
+}
+/* Organização em linha */
+.horizontal-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alinha as colunas no topo */
+    gap: 10px;
+}
+.horizontal-group div {
+    flex: 1;
+}
+.horizontal-group label {
+    display: flex;
+    align-items: center; /* Alinha o checkbox e o texto verticalmente */
+}
+/* Caixa de notas */
+.notes {
+    display: inline-flex;
+    justify-content: flex-end; /* Alinha a nota à direita */
+    align-items: center;
+    color: #113838;
+}
+.notes-input1, .notes-input  {
+    width: 50px;
+    height: 30px;
+    margin-right: 60px ;
+    text-align: center;
+    border: 1px solid #000;
+    font-weight: bold;
+    border-radius: 5px;
+}
+/* Checkbox e radio */
+input{
+    margin-right: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+    text-align: center;
+    padding: 35px;
+    border: #828282;
+}
+th{
+    background-color: #DEF7E5;
+}
+th, td {
+    padding: 5px; /* Adiciona padding às células */
+    border: 1px solid #828282; /* Bordas para as células */
+    font-size: 22px;
+    color: #113838;
+}
+button{
+    width: 170px;
+    height: 47px;
+    margin-left: 85%;
+    border-radius: 8px;
+    border: 1px solid black;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:#DEF7E5;
+    text-align: center;
+}

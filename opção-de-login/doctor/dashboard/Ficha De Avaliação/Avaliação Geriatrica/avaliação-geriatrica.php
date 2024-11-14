@@ -1,15 +1,6 @@
 <?php
 // Conectando ao banco de dados
-include("../../../../../../database/dbConect.php");
-
-// Criando conexão
-$conn = new mysqli($host, $user, $pass, $banco);
-
-// Verificando a conexão
-if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
-}
-
+include("../../../../../database/dbConect.php");
 
 // ID do paciente que queremos buscar
 $paciente_id = 1;  // Exemplo estático, sera dinâmico
@@ -46,13 +37,6 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ficha de Avaliação de Fisioterapia Geriátrica</title>
-    <link rel="stylesheet" href="Estilos/styles.css">
-    <!--versão 1.0-->
-    <script>
-        function redirecionar(url) {
-            window.location.href = url;
-        }
-    </script>
 </head>
 
 <body>
@@ -60,6 +44,7 @@ if ($result->num_rows > 0) {
 
     <!-- ------------------------------------------Tela 1------------------------------------------- -->
         <div class="etapa" id="etapa1">
+            <link rel="stylesheet" href="styles/tela1.css">
             <div class="container">
                 <h1>Ficha de Avaliação de Fisioterapia Geriátrica</h1>
                 <br>
@@ -466,15 +451,578 @@ if ($result->num_rows > 0) {
             </div>
         </div>
         <!-- -----------------------------------------Tela 1------------------------------------------ -->
+        
+        <!-- -----------------------------------------Tela 2------------------------------------------ -->
 
         <div class="etapa" id="etapa2">
-            
+            <div class="container">
+                <div class="section-title">Estado Mental</div>
+                <div class="column-group">
+                    <!-- Primeira Coluna -->
+                    <div class="column">
+                        <!-- Orientação espacial -->
+                        <div class="section">
+                            <div class="subtitle">Orientação espacial:</div>
+                            <legend>Tempo (0-5)</legend>
+                            <div class="horizontal-group">
+                                <div>
+                                    <label><input type="checkbox"> Mês</label><br>
+                                    <label><input type="checkbox"> Dia</label><br>
+                                    <label><input type="checkbox"> Ano</label><br>
+                                    <label><input type="checkbox"> Dia da Semana</label><br>
+                                    <label><input type="checkbox"> Que horas são aproximadamente?</label>
+                                </div>
+                                <div class="notes">
+                                    Nota:
+                                    <input type="number" class="notes-input" name="tempo">
+                                </div>
+                            </div>
+                        </div>
 
+                        <!-- Localização -->
+                        <div class="section">
+                            <legend>Local (0-5):</legend>
+                            <div class="horizontal-group">
+                                <div>
+                                    <label><input type="checkbox"> Estado</label><br>
+                                    <label><input type="checkbox"> Cidade</label><br>
+                                    <label><input type="checkbox"> Bairro</label><br>
+                                    <label><input type="checkbox"> Local</label><br>
+                                    <label><input type="checkbox"> País</label>
+                                </div>
+                                <div class="notes">
+                                    Nota:
+                                    <input type="number" class="notes-input" name="local">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Segunda Coluna -->
+                    <div class="column">
+                        <!-- Repita as palavras -->
+                        <div class="section">
+                            <legend>Repita as palavras (0-3):</legend>
+                            <div class="horizontal-group">
+                                <div>
+                                    <label><input type="checkbox"> Carro</label><br>
+                                    <label><input type="checkbox"> Vaso</label><br>
+                                    <label><input type="checkbox"> Tijolo</label>
+                                </div>
+                                <div class="notes">
+                                    Nota:
+                                    <input type="number" class="notes-input" name="reptPalav">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cálculo -->
+                        <div class="section">
+                            <legend>Cálculo (0-5): O senhor faz cálculos?</legend>
+                            <div>
+                                <label><input type="radio" name="calc" value="sim"> Sim &nbsp; &nbsp;</label>
+                                <label><input type="radio" name="calc" value="não"> Não</label>
+                            </div>
+                            <div id="calc-sim" style="display:none;">
+                                <p>Quanto é :</p>
+                                <label><input type="checkbox">100 - 7?</label><br>
+                                <label><input type="checkbox"> 93 - 7?</label><br>
+                                <label><input type="checkbox"> 86 - 7?</label><br>
+                                <label><input type="checkbox"> 79 - 7?</label><br>
+                                <label><input type="checkbox"> 72 - 7?</label>
+                            </div>
+                            <div id="calc-nao" style="display:none;">
+                                <p>Soletre a palavra MUNDO de trás para frente: <strong>O D N U M</strong></p>
+                            </div>
+                            <div class="notes">
+                                Nota:
+                                <input type="number" class="notes-input" name="calculo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+
+                <div class="column-group">
+                    <!-- Primeira Coluna -->
+                    <div class="column">
+                        <!-- Memorização -->
+                        <div class="section">
+                            <legend>Memorização (0-3):</legend>
+                            <div>
+                                Peça para o entrevistado repetir as palavras ditas há pouco. (Carro, vaso e tijolo)
+                            </div>
+                            <div class="notes">
+                                Nota:
+                                <select class="notes-input" name="memoria" aria-label="Default select example">
+                                    <option selected></option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Linguagem (exemplo de uso com objetos) -->
+                        <div class="section">
+                            <legend>Linguagem (0-2):</legend>
+                            <div>
+                                Mostre dois objetos para o entrevistado e peça para nomeá-los.
+                            </div>
+                            <div class="notes">
+                                Nota:
+                                <select class="notes-input" name="nomObj" aria-label="Default select example">
+                                    <option selected></option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Linguagem - repetição de frase -->
+                        <div class="section">
+                            <legend>Linguagem (1 ponto):</legend>
+                            <div>
+                                Solicite ao entrevistado que repita a frase: NEM AQUI, NEM ALI, NEM LÁ.
+                            </div>
+                            <div class="notes">
+                                Nota:
+                                <select class="notes-input" name="reptFase" aria-label="Default select example">
+                                    <option selected></option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Linguagem (0-3 pontos) -->
+                        <div class="section">
+                            <legend>Linguagem (0-3 ponto):</legend>
+                            <div>
+                                Siga uma ordem e 3 estágios: Pegue esse papel com a mão direita; dobre-o no meio e
+                                coloque-o no
+                                chão.
+                            </div>
+                            <div class="notes">
+                                Nota:
+                                <select class="notes-input" name="ordem" aria-label="Default select example">
+                                    <option selected></option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Segunda Coluna -->
+                    <div class="column">
+                        <!-- Linguagem (1 ponto) - Instrução -->
+                        <div class="section">
+                            <legend>Linguagem (1 ponto):</legend>
+                            <div>
+                                Clique <a href="instrucao.html" target="_blank">&nbsp;AQUI &nbsp;</a> e peça ao
+                                entrevistado ler
+                                a ordem e executá-la.
+                            </div>
+                            <div class="notes">
+                                Nota:
+                                <select class="notes-input" name="lerOrdem" aria-label="Default select example">
+                                    <option selected></option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Linguagem (1 ponto) - Escreva uma frase -->
+                        <div class="section">
+                            <legend>Linguagem (1 ponto):</legend>
+                            <div>
+                                Peça para o entrevistado escrever uma frase completa. A frase deve ter um sujeito e um
+                                objeto e
+                                deve ter sentido. Ignore a ortografia.
+                            </div>
+                            <div class="notes">
+                                Nota:
+                                <select class="notes-input" name="escrevFase" aria-label="Default select example">
+                                    <option selected></option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Linguagem (1 ponto) - Copiar um desenho -->
+                        <div class="section">
+                            <legend>Linguagem (1 ponto):</legend>
+                            <div>
+                                Peça ao entrevistado para copiar o seguinte desenho.
+                                Verifique se todos os lados estão preservados e se os lados de intersecção foram um
+                                quadrilátero.
+                                Tremor e rotação podem ser ignorados.
+                            </div>
+                            <p></p>
+                            <a href="imagens/desenho.jpeg" target="_blank">Clique aqui para ver o desenho</a>
+                            <div class="notes">
+                                Nota:
+                                <select class="notes-input" name="copDesenho" aria-label="Default select example">
+                                    <option selected></option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="legend">
+                    <h3 id="resultado">RESULTADO: 0 pontos.</h3>
+                </div>
+
+            </div>
+
+            <!--------------------------------------TESTE DE FORÇA------------------------------------------------------------>
+            <div class="section-title">Teste de Força (MRC)</div>
+            <div class="column-group">
+                <!-- Primeira Coluna -->
+                <div class="column">
+                    <h4>Membros superiores</h4>
+                    <!--OMBRO-->
+                    <div class="section">
+                        <div>
+                            Abdução do ombro direto
+                        </div>
+                        <div class="notes">
+                            Nota:
+                            <select class="notes-input1" name="abombrod">
+                                <option selected></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div>
+                            Abdução do ombro esquerdo
+                        </div>
+                        <div class="notes">
+                            Nota:
+                            <select class="notes-input1" name="abombroe">
+                                <option selected></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!--COTOVELO-->
+                    <div class="section">
+                        <div>
+                            Flexão do cotovelo direito
+                        </div>
+                        <div class="notes">
+                            Nota:
+                            <select class="notes-input1" name="flexcotovelod">
+                                <option selected></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div>
+                            Flexão do cotovelo esquerdo
+                        </div>
+                        <div class="notes">
+                            Nota:
+                            <select class="notes-input" name="flexcotoveloe">
+                                <option selected></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!--PUNHO-->
+                    <div class="section">
+                        <div>
+                            Extensão do punho direito
+                        </div>
+                        <div class="notes">
+                            Nota:
+                            <select class="notes-input" name="extpunhod">
+                                <option selected></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div>
+                            Extensão do punho esquerdo
+                        </div>
+                        <div class="notes">
+                            Nota:
+                            <select class="notes-input1" name="extpunhoe">
+                                <option selected></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Segunda Coluna -->
+                <div class="column">
+                    <h4>Membros inferiores</h4>
+                    <!--QUADRIL-->
+                    <div class="section">
+                        <div>
+                            Flexão quadril direito
+                        </div>
+                        <div class="notes">
+                            Nota:
+                            <select class="notes-input1" name="flexquadrild">
+                                <option selected></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div>
+                            Flexão quadril esquerdo
+                        </div>
+                        <div class="notes">
+                            Nota:
+                            <select class="notes-input1" name="flexquadrile">
+                                <option selected></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!--JOELHO-->
+                    <div class="section">
+                        <div>
+                            Extensão do joelho direito
+                        </div>
+                        <div class="notes">
+                            Nota:
+                            <select class="notes-input1" name="extjoelhod">
+                                <option selected></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div>
+                            Extensão do joelho esquerdo
+                        </div>
+                        <div class="notes">
+                            Nota:
+                            <select class="notes-input1" name="extjoelhoe">
+                                <option selected></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!--TORNOZELO-->
+                    <div class="section">
+                        <div>
+                            Dorsiflexão do tornozelo direito
+                        </div>
+                        <div class="notes">
+                            Nota:
+                            <select class="notes-input1" name="dflextornozelod">
+                                <option selected></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div>
+                            Dorsiflexão do tornozelo esquerdo
+                        </div>
+                        <div class="notes">
+                            Nota:
+                            <select class="notes-input1" name="dflextornozeloe">
+                                <option selected></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--LEGENDA DO TESE DE FORÇA-->
+            <div class="legend">
+                <p>A força do paciente é classificada em uma escala de 0 - 5:</p>
+                <p><b>Grau 5:</b> Força muscular normal contra a resistência total.</p>
+                <p><b>Grau 4:</b> A força muscular é reduzida, mas há contração muscular contra a resistência.</p>
+                <p><b>Grau 3:</b> A articulação pode ser movimentada apenas contra gravidade sem resistência do
+                    examinador.</p>
+                <p><b>Grau 2:</b> Há força muscular e movimentação articular somente se a resistência da gravidade for
+                    removida.
+                </p>
+                <p><b>Grau 1:</b> Apenas um esboço de movimento é visto, sentido ou fasciculações são observadas no
+                    músculo.</p>
+                <p><b>Grau 0:</b> Nenhum movimento é observado ou sentido.</p>
+            </div>
+
+            <div class="legend section-title">Escala de Barthel:</div>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th><b>DESCRIÇÃO</b></th>
+                        <th><b>DEPENDENTE (0)</b></th>
+                        <th><b>ASSISTIDO (5)</b></th>
+                        <th><b>INDEPENDENTE (10/15)</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Alimentação</td>
+                        <td><input type="checkbox" name="alimentacao" value="0"></td>
+                        <td><input type="checkbox" name="alimentacao" value="5"></td>
+                        <td><input type="checkbox" name="alimentacao" value="10"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Banho</td>
+                        <td><input type="checkbox" name="banho" value="0"></td>
+                        <td><input type="checkbox" name="banho" value="5"></td>
+                        <td><input type="checkbox" name="banho" value="10"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Atividade Diarias</td>
+                        <td><input type="checkbox" name="atividade" value="0"></td>
+                        <td><input type="checkbox" name="atividade" value="5"></td>
+                        <td><input type="checkbox" name="atividade" value="10"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Vestir-se</td>
+                        <td><input type="checkbox" name="vestir" value="0"></td>
+                        <td><input type="checkbox" name="vestir" value="5"></td>
+                        <td><input type="checkbox" name="vestir" value="10"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Intestino</td>
+                        <td><input type="checkbox" name="intestino" value="0"></td>
+                        <td><input type="checkbox" name="intestino" value="5"></td>
+                        <td><input type="checkbox" name="intestino" value="10"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Sistema Urinario</td>
+                        <td><input type="checkbox" name="urina" value="0"></td>
+                        <td><input type="checkbox" name="urina" value="5"></td>
+                        <td><input type="checkbox" name="urina" value="10"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Uso do Banheiro</td>
+                        <td><input type="checkbox" name="banheiro" value="0"></td>
+                        <td><input type="checkbox" name="banheiro" value="5"></td>
+                        <td><input type="checkbox" name="banheiro" value="10"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Transferência (cama-cadeira)</td>
+                        <td><input type="checkbox" name="transferencia" value="0"></td>
+                        <td><input type="checkbox" name="transferencia" value="5"></td>
+                        <td><input type="checkbox" name="transferencia" value="15"></td>
+                    </tr>
+
+                    <td>Mobilidade em superfícies Planas</td>
+                    <td><input type="checkbox" name="deambulacao" value="0"></td>
+                    <td><input type="checkbox" name="deambulacao" value="5"></td>
+                    <td><input type="checkbox" name="deambulacao" value="15"></td>
+
+                    <tr>
+                        <td>Escadas</td>
+                        <td><input type="checkbox" name="escadas" value="0"></td>
+                        <td><input type="checkbox" name="escadas" value="5"></td>
+                        <td><input type="checkbox" name="escadas" value="10"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="legend">
+                <h2>Resultado:</h2>
+                <h3 id="resultado2"></h3>
+            </div>
+            <button class="styled-button" type="submit">Próxima página</button>       
         </div>
+<!-- -----------------------------------------Tela 2------------------------------------------ -->
+
         
     </form>
 
-    <!--O script ficou aqui porque não estava sendo carregado-->
+    <!--O script ficou aqui porque não estava sendo carregado    TELA 1-->
     <script src="Script/script.js"></script>
 </body>
 

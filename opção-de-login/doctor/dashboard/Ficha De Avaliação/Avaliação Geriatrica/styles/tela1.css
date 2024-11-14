@@ -1,0 +1,278 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    color: #000;
+}
+
+h1 {
+    text-align: center;
+    color: #2F4F4F;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.data-estagiario {
+    display: flex;
+    justify-content: space-between; /* Mantém os elementos distribuídos, com a data à direita */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.data-estagiario input[type="date"], 
+.data-estagiario input[type="text"] {
+    background-color: transparent; /* Remove a cor de fundo */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    color: #000;
+    font-size: 14px;
+    width: auto; /* Ajusta a largura automaticamente */
+    max-width: 200px; /* Limita a largura máxima do campo */
+}
+
+
+
+.dados-pessoais {
+    background-color: #DEF7E5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.dados-pessoais h2 {
+    margin-bottom: 10px;
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.campo input, 
+.campo textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.informacoes-adicionais {
+    display: flex;
+    justify-content: space-between;
+}
+
+.coluna-esq, .coluna-dir, .coluna-central {
+    width: 30%;
+}
+
+textarea {
+    resize: none;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+.queixa {
+     
+    border: 1px solid#686868; 
+    height: 150px; /* Altura maior para o campo */
+    width: 100%; /* Preencher a largura completa */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 8px; /* Cantos arredondados */
+    font-size: 16px; /* Tamanho da fonte */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    resize: vertical; /* Permitir redimensionamento apenas vertical */
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #DEF7E5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.form-container input[type=text] , [type=date] , [type=number] , [type=radio]{
+    background-color: #DEF7E5;
+    
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    font-weight: bold;
+}
+
+.input-style {
+    background-color: #DEF7E5;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 20%;
+    max-width:23%;
+}
+
+.input-date {
+    background-color: #DEF7E5;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 10%;
+    max-width: 200px;
+  
+    color: black; 
+}
+
+
+.input-date::-webkit-calendar-picker-indicator {
+    opacity: 0; 
+}
+
+.input-date:focus {
+    color: black; 
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+.form-container select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #DEF7E5; 
+}
+
+.idadeSe {
+    background-color: #DEF7E5; 
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    width: 7%;
+    max-width: 23%; 
+}
+
+.doenca-selecionada {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    background-color: #DEF7E5;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+}
+
+.doenca-selecionada span {
+    flex-grow: 1;
+}
+
+.remove-btn1 {
+    background-color: lightcoral; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.remove-btn1:hover {
+    background-color: red;
+}
+
+.remove-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.remove-btn:hover {
+    background-color: darkred;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.styled-button {
+    background-color: #DEF7E5; 
+    color: #4A7C4A; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.styled-button:hover {
+    background-color: #D3E9D3; 
+    color: #3A6B3A;
+}
+
