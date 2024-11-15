@@ -1,127 +1,117 @@
 console.log('O script da tela 2 está carregado!');
 
-// Função para inicializar toda a lógica da Etapa 2
+// Função para inicializar toda a lógica da Etapa 2 (ACLC)
 function inicializarParte2() {
-    console.log('Inicializando Parte 2...');
-    
-    // Configuração dos eventos de "Sim" e "Não"
-    const calcSim = document.getElementById('calc-sim');
-    const calcNao = document.getElementById('calc-nao');
+    console.log("Inicializando Parte 2...");
+
+    // Configuração de eventos para as seções de cálculo
     const radioButtons = document.querySelectorAll('input[name="calc"]');
+    const calcSim = document.getElementById("calc-sim");
+    const calcNao = document.getElementById("calc-nao");
 
-    radioButtons.forEach(radio => {
-        radio.addEventListener('change', () => {
-            if (radio.value === 'sim') {
-                calcSim.style.display = 'block';
-                calcNao.style.display = 'none';
-            } else if (radio.value === 'não') {
-                calcSim.style.display = 'none';
-                calcNao.style.display = 'block';
+    // Gerenciar exibição de cálculos ou soletração
+    radioButtons.forEach((radio) => {
+        radio.addEventListener("change", () => {
+            if (radio.value === "sim") {
+                calcSim.style.display = "block";
+                calcNao.style.display = "none";
+            } else {
+                calcSim.style.display = "none";
+                calcNao.style.display = "block";
             }
         });
     });
 
-    // Configuração para calcular pontuação com base nos checkboxes
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-            updateNotes(checkbox.closest('.section'));
-            updateTotalScore(); // Atualiza a pontuação total ao marcar/desmarcar checkboxes
-        });
-    });
-
-    const notesInputs = document.querySelectorAll('.notes-input');
-    notesInputs.forEach(input => {
-        input.addEventListener('input', updateTotalScore);
-    });
-
-    // Funções auxiliares
-    function updateNotes(section) {
-        const checkboxes = section.querySelectorAll('input[type="checkbox"]');
-        const notesField = section.querySelector('.notes-input');
-
-        let score = 0;
-        checkboxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                score++;
-            }
-        });
-
-        if (notesField) {
-            notesField.value = score; // Atualiza a nota da seção com base nas checkboxes
-        }
-    }
-
-    function updateTotalScore() {
+    // Função para calcular pontuação total na Etapa 2
+    function updateTotalScoreCognitiva() {
         let totalScore = 0;
-
-        notesInputs.forEach(input => {
+        const notesInputs = document.querySelectorAll(".notes-input");
+        notesInputs.forEach((input) => {
             const value = parseInt(input.value, 10);
             if (!isNaN(value)) {
                 totalScore += value;
             }
         });
 
-        const resultado = avaliarResultado(totalScore);
-        document.getElementById('resultado').textContent = `RESULTADO: ${totalScore} pontos - ${resultado}`;
+        const resultadoCognitivo = document.getElementById("resultado");
+        resultadoCognitivo.textContent = `RESULTADO: ${totalScore} pontos.`;
     }
 
-    function avaliarResultado(totalScore) {
-        let resultado = '';
+    // Eventos para os checkboxes e inputs numéricos
+    const checkboxes = document.querySelectorAll(".section input[type='checkbox']");
+    checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", () => {
+            const section = checkbox.closest(".section");
+            if (section) {
+                updateSectionNotes(section);
+            }
+            updateTotalScoreCognitiva();
+        });
+    });
 
-        if (totalScore >= 27) {
-            resultado = "Normal";
-        } else if (totalScore > 19 && (totalScore <= 24 || totalScore === 26)) {
-            resultado = "Estado cognitivo alterado";
+    const notesInputs = document.querySelectorAll(".notes-input");
+    notesInputs.forEach((input) => {
+        input.addEventListener("input", updateTotalScoreCognitiva);
+    });
+
+    // Atualiza a nota de uma seção específica
+    function updateSectionNotes(section) {
+        const sectionCheckboxes = section.querySelectorAll("input[type='checkbox']");
+        const notesField = section.querySelector(".notes-input");
+
+        let sectionScore = 0;
+        sectionCheckboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+                sectionScore++;
+            }
+        });
+
+        if (notesField) {
+            notesField.value = sectionScore;
         }
-
-        if (totalScore <= 25.1 && totalScore >= 20) {
-            resultado += ", Escore médio para Depressão não-complicada";
-        } else if (totalScore <= 19) {
-            resultado = "Prejuízo cognitivo por depressão";
-        }
-
-        return resultado;
     }
 }
-
-// Chama a função manualmente assim que o script é carregado
+// Inicializa a lógica da Etapa 2
 inicializarParte2();
 
-
- // Função para calcular a pontuação total
- function calcularBarthel() {
-    const radios = document.querySelectorAll('input[type="radio"]');
+// Função para calcular o índice de Barthel
+function calcularBarthel() {
+    const radios = document.querySelectorAll('#barthelTable input[type="radio"]');
     let total = 0;
 
-    // Itera sobre os radio buttons e soma os valores selecionados
+    // Soma os valores dos radio buttons selecionados
     radios.forEach(radio => {
         if (radio.checked) {
-            total += parseInt(radio.value);
+            total += parseInt(radio.value, 10);
         }
     });
 
-    // Determina a descrição da dependência
-    let dependencia;
-    if (total >= 100) {
-        dependencia = 'Totalmente independente';
-    } else if (total >= 76) {
-        dependencia = 'Dependência leve';
-    } else if (total >= 51) {
-        dependencia = 'Dependência moderada';
-    } else if (total >= 26) {
-        dependencia = 'Dependência severa';
-    } else {
-        dependencia = 'Dependência total';
-    }
+    // Determina o grau de dependência com base na pontuação
+    const dependencia = determinarDependencia(total);
 
-    // Exibe o resultado no parágrafo
-    document.getElementById("resultadoBarthel").innerText = total + " pontos, " + dependencia;
+    // Exibe o resultado no elemento com ID "resultadoBarthel"
+    const resultadoBarthelEl = document.getElementById('resultadoBarthel');
+    if (resultadoBarthelEl) {
+        resultadoBarthelEl.innerText = `RESULTADO: ${total} pontos - ${dependencia}`;
+    }
 }
 
-// Adiciona o evento de mudança em cada radio button
-const radios = document.querySelectorAll('input[type="radio"]');
-radios.forEach(radio => {
+// Função para determinar o grau de dependência
+function determinarDependencia(total) {
+    if (total >= 100) {
+        return 'Totalmente independente';
+    } else if (total >= 76) {
+        return 'Dependência leve';
+    } else if (total >= 51) {
+        return 'Dependência moderada';
+    } else if (total >= 26) {
+        return 'Dependência severa';
+    } else {
+        return 'Dependência total';
+    }
+}
+
+// Adiciona o evento de mudança para cada radio button
+document.querySelectorAll('#barthelTable input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', calcularBarthel);
 });
-

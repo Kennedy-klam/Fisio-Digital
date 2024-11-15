@@ -1033,7 +1033,7 @@ if ($result->num_rows > 0) {
 
             <div class="button-container">
                 <button class="styled-button" type="button" id="voltarEtapa1">Voltar</button>
-                <button type="button" id="proximaEtapa1" class="styled-button">Próxima página</button>
+                <button class="styled-button"type="button" id="proximaEtapa1" >Próxima página</button>
             </div>
         </div>
         <!-- -----------------------------------------Tela 2------------------------------------------ -->
