@@ -7,6 +7,7 @@ function carregarCss(cssFile, id) {
     link.rel = "stylesheet";
     link.href = cssFile;
     document.head.appendChild(link);
+    console.log('css carregado');
 }
 
 // Função para remover um CSS específico
@@ -14,29 +15,31 @@ function removerCss(id) {
     let link = document.getElementById(id);
     if (link) {
         link.remove();
+        console.log('css removido')
     }
 }
 
  // Função para carregar um arquivo JS
  function carregarScript(src, id) {
-    const script = document.createElement("script");
+    let script = document.createElement("script");
     script.src = src;
     script.id = id;  // Damos um ID para que seja fácil remover depois
     script.defer = true; // Adiciona o atributo defer
     document.head.appendChild(script);
+    console.log('js carregado');
 }
 
 // Função para remover um arquivo JS
 function removerScript(id) {
-    const script = document.getElementById(id);
+    let script = document.getElementById(id);
     if (script) {
         script.remove();
-        console.log('Script Removido');
+        console.log('js removido');
     }
 }
 
 
-// Carrega o CSS da Etapa 1 ao iniciar
+// Carrega o CSS e js da Etapa 1 ao iniciar
 window.onload = function () {
     carregarCss("styles/tela1.css", "cssEtapa1");
 
@@ -47,14 +50,14 @@ window.onload = function () {
 document.getElementById('proximaEtapa1').addEventListener('click', function () {
 
     // Alterna o CSS para a Etapa 2
+    removerScript("jsEtapa1"); // Remove o script da etapa 1, se carregado
+
     removerCss("cssEtapa1"); // Remove o CSS da Etapa 1
     
-    removerScript("jsEtapa1"); // Remove o script da etapa 1, se carregado
-    
+    carregarScript("scripts/parte2.js", "jsEtapa2"); // Carrega o script para a etapa 2
+
     carregarCss("styles/tela2.css", "cssEtapa2"); // Carrega o CSS da Etapa 2
-
-    carregarScript("scripts/tela2.js", "jsEtapa2"); // Carrega o script para a etapa 2
-
+    
 
     document.getElementById('etapa1').style.display = 'none';
     document.getElementById('etapa2').style.display = 'block';

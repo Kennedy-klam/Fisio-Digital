@@ -37,7 +37,35 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ficha de Avaliação de Fisioterapia Geriátrica</title>
-    <script src="scripts/gerenciar-telas.js" defer></script>
+    <script id="gerenciar-telas" src="scripts/gerenciar-telas.js" defer></script>
+    <script>
+        function redirecionar(url) {
+            window.location.href = url;
+        }
+    </script>
+    <style>
+        /* Estilos aplicados apenas à tabela com ID #barthelTable */
+        #barthelTable {
+            width: 100%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        #barthelTable th, #barthelTable td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        #barthelTable th {
+            background-color: #DEF7E5;
+            color: #113838;
+        }
+
+        #barthelTable td input[type="radio"] {
+            transform: scale(1.2);
+        }
+    </style>
 </head>
 
 <body>
@@ -931,90 +959,77 @@ if ($result->num_rows > 0) {
                 <p><b>Grau 0:</b> Nenhum movimento é observado ou sentido.</p>
             </div>
 
-            <div class="legend section-title">Escala de Barthel:</div>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th><b>DESCRIÇÃO</b></th>
-                        <th><b>DEPENDENTE (0)</b></th>
-                        <th><b>ASSISTIDO (5)</b></th>
-                        <th><b>INDEPENDENTE (10/15)</b></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Alimentação</td>
-                        <td><input type="checkbox" name="alimentacao" value="0"></td>
-                        <td><input type="checkbox" name="alimentacao" value="5"></td>
-                        <td><input type="checkbox" name="alimentacao" value="10"></td>
-                    </tr>
+            <table id="barthelTable">
+        <tr>
+            <th>Atividade</th>
+            <th>Dependente (0)</th>
+            <th>Assistido (5)</th>
+            <th>Independente (10/15)</th>
+        </tr>
+        <tr>
+            <td>Alimentação</td>
+            <td><input type="radio" name="alimentacao" value="0"></td>
+            <td><input type="radio" name="alimentacao" value="5"></td>
+            <td><input type="radio" name="alimentacao" value="10"></td>
+        </tr>
+        <tr>
+            <td>Banho</td>
+            <td><input type="radio" name="banho" value="0"></td>
+            <td><input type="radio" name="banho" value="5"></td>
+            <td><input type="radio" name="banho" value="10"></td>
+        </tr>
+        <tr>
+            <td>Atividades diárias</td>
+            <td><input type="radio" name="higiene" value="0"></td>
+            <td><input type="radio" name="higiene" value="5"></td>
+            <td><input type="radio" name="higiene" value="10"></td>
+        </tr>
+        <tr>
+            <td>Vestir-se</td>
+            <td><input type="radio" name="vestir" value="0"></td>
+            <td><input type="radio" name="vestir" value="5"></td>
+            <td><input type="radio" name="vestir" value="10"></td>
+        </tr>
+        <tr>
+            <td>Intestino</td>
+            <td><input type="radio" name="urina" value="0"></td>
+            <td><input type="radio" name="urina" value="5"></td>
+            <td><input type="radio" name="urina" value="10"></td>
+        </tr>
+        <tr>
+            <td>Sistema Urinário</td>
+            <td><input type="radio" name="fezes" value="0"></td>
+            <td><input type="radio" name="fezes" value="5"></td>
+            <td><input type="radio" name="fezes" value="10"></td>
+        </tr>
+        <tr>
+            <td>Uso do Banheiro</td>
+            <td><input type="radio" name="sanitario" value="0"></td>
+            <td><input type="radio" name="sanitario" value="5"></td>
+            <td><input type="radio" name="sanitario" value="10"></td>
+        </tr>
+        <tr>
+            <td>Transferência (cama-cadeira)</td>
+            <td><input type="radio" name="transferencia" value="0"></td>
+            <td><input type="radio" name="transferencia" value="5"></td>
+            <td><input type="radio" name="transferencia" value="15"></td>
+        </tr>
+        <tr>
+            <td>Mobilidade em superfícies planas</td>
+            <td><input type="radio" name="deambulacao" value="0"></td>
+            <td><input type="radio" name="deambulacao" value="5"></td>
+            <td><input type="radio" name="deambulacao" value="15"></td>
+        </tr>
+        <tr>
+            <td>Escadas</td>
+            <td><input type="radio" name="escadas" value="0"></td>
+            <td><input type="radio" name="escadas" value="5"></td>
+            <td><input type="radio" name="escadas" value="10"></td>
+        </tr>
+    </table>
 
-                    <tr>
-                        <td>Banho</td>
-                        <td><input type="checkbox" name="banho" value="0"></td>
-                        <td><input type="checkbox" name="banho" value="5"></td>
-                        <td><input type="checkbox" name="banho" value="10"></td>
-                    </tr>
-
-                    <tr>
-                        <td>Atividade Diarias</td>
-                        <td><input type="checkbox" name="atividade" value="0"></td>
-                        <td><input type="checkbox" name="atividade" value="5"></td>
-                        <td><input type="checkbox" name="atividade" value="10"></td>
-                    </tr>
-
-                    <tr>
-                        <td>Vestir-se</td>
-                        <td><input type="checkbox" name="vestir" value="0"></td>
-                        <td><input type="checkbox" name="vestir" value="5"></td>
-                        <td><input type="checkbox" name="vestir" value="10"></td>
-                    </tr>
-
-                    <tr>
-                        <td>Intestino</td>
-                        <td><input type="checkbox" name="intestino" value="0"></td>
-                        <td><input type="checkbox" name="intestino" value="5"></td>
-                        <td><input type="checkbox" name="intestino" value="10"></td>
-                    </tr>
-
-                    <tr>
-                        <td>Sistema Urinario</td>
-                        <td><input type="checkbox" name="urina" value="0"></td>
-                        <td><input type="checkbox" name="urina" value="5"></td>
-                        <td><input type="checkbox" name="urina" value="10"></td>
-                    </tr>
-
-                    <tr>
-                        <td>Uso do Banheiro</td>
-                        <td><input type="checkbox" name="banheiro" value="0"></td>
-                        <td><input type="checkbox" name="banheiro" value="5"></td>
-                        <td><input type="checkbox" name="banheiro" value="10"></td>
-                    </tr>
-
-                    <tr>
-                        <td>Transferência (cama-cadeira)</td>
-                        <td><input type="checkbox" name="transferencia" value="0"></td>
-                        <td><input type="checkbox" name="transferencia" value="5"></td>
-                        <td><input type="checkbox" name="transferencia" value="15"></td>
-                    </tr>
-
-                    <td>Mobilidade em superfícies Planas</td>
-                    <td><input type="checkbox" name="deambulacao" value="0"></td>
-                    <td><input type="checkbox" name="deambulacao" value="5"></td>
-                    <td><input type="checkbox" name="deambulacao" value="15"></td>
-
-                    <tr>
-                        <td>Escadas</td>
-                        <td><input type="checkbox" name="escadas" value="0"></td>
-                        <td><input type="checkbox" name="escadas" value="5"></td>
-                        <td><input type="checkbox" name="escadas" value="10"></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="legend">
-                <h2>Resultado:</h2>
-                <h3 id="resultado2"></h3>
-            </div>
+    <!-- Resultado da pontuação -->
+    <p id="resultadoBarthel" style="text-align: center; font-size: 28px; color: #113838; font-weight: bold;"></p>
 
             <div class="button-container">
                 <button class="styled-button" type="button" id="voltarEtapa1">Voltar</button>
@@ -1023,6 +1038,6 @@ if ($result->num_rows > 0) {
         </div>
         <!-- -----------------------------------------Tela 2------------------------------------------ -->
     </form>
-</body>
 
+</body>
 </html>

@@ -1,3 +1,5 @@
+console.log('O script da tela 1 está carregado!');
+
 function addMed() {
     // Obtendo os valores dos inputs
     const medicamento = document.getElementById('medicamentos').value;

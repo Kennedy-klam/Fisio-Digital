@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    console.log('primeira parte');
     // Seção de "Sim" e "Não" para mostrar/ocultar partes do formulário
     const calcSim = document.getElementById('calc-sim');
     const calcNao = document.getElementById('calc-nao');
@@ -82,6 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 // Função para calcular a nota
 function calcularNota() {
+
+    console.log('segunda parte');
+
     let total = 0;
 
     // Seleciona todas as checkboxes marcadas

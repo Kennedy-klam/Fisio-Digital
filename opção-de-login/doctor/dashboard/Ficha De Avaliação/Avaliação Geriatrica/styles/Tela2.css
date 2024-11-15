@@ -150,26 +150,14 @@ th, td {
     font-size: 22px;
     color: #113838;
 }
-
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.styled-button {
-    background-color: #DEF7E5; 
-    color: #4A7C4A; 
-    padding: 10px 20px; 
-    border: none; 
-    border-radius: 4px; 
-    cursor: pointer; 
-    font-size: 16px; 
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.styled-button:hover {
-    background-color: #D3E9D3; 
-    color: #3A6B3A;
+button{
+    width: 170px;
+    height: 47px;
+    margin-left: 85%;
+    border-radius: 8px;
+    border: 1px solid black;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:#DEF7E5;
+    text-align: center;
 }

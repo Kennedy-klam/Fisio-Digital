@@ -5,56 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escala de Barthel</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #00796b;
-        }
-
-        table {
+        /* Estilos aplicados apenas à tabela com ID #barthelTable */
+        #barthelTable {
             width: 100%;
-            max-width: 800px;
             margin: 20px auto;
             border-collapse: collapse;
         }
 
-        th, td {
+        #barthelTable th, #barthelTable td {
             padding: 12px;
             border: 1px solid #ddd;
             text-align: center;
         }
 
-        th {
+        #barthelTable th {
             background-color: #00796b;
             color: white;
         }
 
-        td input[type="radio"] {
+        #barthelTable td input[type="radio"] {
             transform: scale(1.2);
-        }
-
-        .submit-btn {
-            display: block;
-            width: 200px;
-            margin: 20px auto;
-            padding: 12px;
-            background-color: #00796b;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            font-size: 16px;
-        }
-
-        .submit-btn:hover {
-            background-color: #004d40;
         }
     </style>
 </head>
@@ -62,96 +32,101 @@
 
     <h1>Escala de Barthel</h1>
 
-    <form id="barthelForm">
-        <table>
-            <tr>
-                <th>Atividade</th>
-                <th>Dependente (0)</th>
-                <th>Assistido (5)</th>
-                <th>Independente (10/15)</th>
-            </tr>
-            <tr>
-                <td>Alimentação</td>
-                <td><input type="radio" name="alimentacao" value="0"></td>
-                <td><input type="radio" name="alimentacao" value="5"></td>
-                <td><input type="radio" name="alimentacao" value="10"></td>
-            </tr>
-            <tr>
-                <td>Banho</td>
-                <td><input type="radio" name="banho" value="0"></td>
-                <td><input type="radio" name="banho" value="5"></td>
-                <td><input type="radio" name="banho" value="10"></td>
-            </tr>
-            <tr>
-                <td>Atividades diairias</td>
-                <td><input type="radio" name="higiene" value="0"></td>
-                <td><input type="radio" name="higiene" value="5"></td>
-                <td><input type="radio" name="higiene" value="10"></td>
-            </tr>
-            <tr>
-                <td>Vestir-se</td>
-                <td><input type="radio" name="vestir" value="0"></td>
-                <td><input type="radio" name="vestir" value="5"></td>
-                <td><input type="radio" name="vestir" value="10"></td>
-            </tr>
-            <tr>
-                <td>Intestino</td>
-                <td><input type="radio" name="urina" value="0"></td>
-                <td><input type="radio" name="urina" value="5"></td>
-                <td><input type="radio" name="urina" value="10"></td>
-            </tr>
-            <tr>
-                <td>Sistema Urinário</td>
-                <td><input type="radio" name="fezes" value="0"></td>
-                <td><input type="radio" name="fezes" value="5"></td>
-                <td><input type="radio" name="fezes" value="10"></td>
-            </tr>
-            <tr>
-                <td>Uso do Banheiro</td>
-                <td><input type="radio" name="sanitario" value="0"></td>
-                <td><input type="radio" name="sanitario" value="5"></td>
-                <td><input type="radio" name="sanitario" value="10"></td>
-            </tr>
-            <tr>
-                <td>Transferência (cama-cadeira)</td>
-                <td><input type="radio" name="transferencia" value="0"></td>
-                <td><input type="radio" name="transferencia" value="5"></td>
-                <td><input type="radio" name="transferencia" value="15"></td>
-            </tr>
-            <tr>
-                <td>Mobilidade em superficies planas</td>
-                <td><input type="radio" name="deambulacao" value="0"></td>
-                <td><input type="radio" name="deambulacao" value="5"></td>
-                <td><input type="radio" name="deambulacao" value="15"></td>
-            </tr>
-            <tr>
-                <td>Escadas</td>
-                <td><input type="radio" name="escadas" value="0"></td>
-                <td><input type="radio" name="escadas" value="5"></td>
-                <td><input type="radio" name="escadas" value="10"></td>
-            </tr>
-        </table>
+    <!-- Tabela com ID 'barthelTable' -->
+    <table id="barthelTable">
+        <tr>
+            <th>Atividade</th>
+            <th>Dependente (0)</th>
+            <th>Assistido (5)</th>
+            <th>Independente (10/15)</th>
+        </tr>
+        <tr>
+            <td>Alimentação</td>
+            <td><input type="radio" name="alimentacao" value="0"></td>
+            <td><input type="radio" name="alimentacao" value="5"></td>
+            <td><input type="radio" name="alimentacao" value="10"></td>
+        </tr>
+        <tr>
+            <td>Banho</td>
+            <td><input type="radio" name="banho" value="0"></td>
+            <td><input type="radio" name="banho" value="5"></td>
+            <td><input type="radio" name="banho" value="10"></td>
+        </tr>
+        <tr>
+            <td>Atividades diárias</td>
+            <td><input type="radio" name="higiene" value="0"></td>
+            <td><input type="radio" name="higiene" value="5"></td>
+            <td><input type="radio" name="higiene" value="10"></td>
+        </tr>
+        <tr>
+            <td>Vestir-se</td>
+            <td><input type="radio" name="vestir" value="0"></td>
+            <td><input type="radio" name="vestir" value="5"></td>
+            <td><input type="radio" name="vestir" value="10"></td>
+        </tr>
+        <tr>
+            <td>Intestino</td>
+            <td><input type="radio" name="urina" value="0"></td>
+            <td><input type="radio" name="urina" value="5"></td>
+            <td><input type="radio" name="urina" value="10"></td>
+        </tr>
+        <tr>
+            <td>Sistema Urinário</td>
+            <td><input type="radio" name="fezes" value="0"></td>
+            <td><input type="radio" name="fezes" value="5"></td>
+            <td><input type="radio" name="fezes" value="10"></td>
+        </tr>
+        <tr>
+            <td>Uso do Banheiro</td>
+            <td><input type="radio" name="sanitario" value="0"></td>
+            <td><input type="radio" name="sanitario" value="5"></td>
+            <td><input type="radio" name="sanitario" value="10"></td>
+        </tr>
+        <tr>
+            <td>Transferência (cama-cadeira)</td>
+            <td><input type="radio" name="transferencia" value="0"></td>
+            <td><input type="radio" name="transferencia" value="5"></td>
+            <td><input type="radio" name="transferencia" value="15"></td>
+        </tr>
+        <tr>
+            <td>Mobilidade em superfícies planas</td>
+            <td><input type="radio" name="deambulacao" value="0"></td>
+            <td><input type="radio" name="deambulacao" value="5"></td>
+            <td><input type="radio" name="deambulacao" value="15"></td>
+        </tr>
+        <tr>
+            <td>Escadas</td>
+            <td><input type="radio" name="escadas" value="0"></td>
+            <td><input type="radio" name="escadas" value="5"></td>
+            <td><input type="radio" name="escadas" value="10"></td>
+        </tr>
+    </table>
 
-        <button type="button" class="submit-btn" onclick="calcularBarthel()">Calcular Pontuação</button>
-
-        <p id="resultado" style="text-align: center; font-size: 18px; color: #00796b;"></p>
-    </form>
+    <!-- Resultado da pontuação -->
+    <p id="resultadoBarthel" style="text-align: center; font-size: 18px; color: #00796b;"></p>
 
     <script>
+        // Função para calcular a pontuação total
         function calcularBarthel() {
-            const form = document.forms['barthelForm'];
+            const radios = document.querySelectorAll('input[type="radio"]');
             let total = 0;
 
             // Itera sobre os radio buttons e soma os valores selecionados
-            for (let i = 0; i < form.length; i++) {
-                if (form[i].type === "radio" && form[i].checked) {
-                    total += parseInt(form[i].value);
+            radios.forEach(radio => {
+                if (radio.checked) {
+                    total += parseInt(radio.value);
                 }
-            }
+            });
 
             // Exibe o resultado no parágrafo
-            document.getElementById("resultado").innerText = "Pontuação Total: " + total;
+            document.getElementById("resultadoBarthel").innerText = "Pontuação Total: " + total;
         }
+
+        // Adiciona o evento de mudança em cada radio button
+        const radios = document.querySelectorAll('input[type="radio"]');
+        radios.forEach(radio => {
+            radio.addEventListener('change', calcularBarthel);
+        });
     </script>
 
 </body>

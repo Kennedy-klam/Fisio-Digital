@@ -1,5 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Seção de "Sim" e "Não" para mostrar/ocultar partes do formulário
+console.log('O script da tela 2 está carregado!');
+
+// Função para inicializar toda a lógica da Etapa 2
+function inicializarParte2() {
+    console.log('Inicializando Parte 2...');
+    
+    // Configuração dos eventos de "Sim" e "Não"
     const calcSim = document.getElementById('calc-sim');
     const calcNao = document.getElementById('calc-nao');
     const radioButtons = document.querySelectorAll('input[name="calc"]');
@@ -16,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Função para calcular pontuação com base em checkboxes
+    // Configuração para calcular pontuação com base nos checkboxes
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
@@ -25,6 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    const notesInputs = document.querySelectorAll('.notes-input');
+    notesInputs.forEach(input => {
+        input.addEventListener('input', updateTotalScore);
+    });
+
+    // Funções auxiliares
     function updateNotes(section) {
         const checkboxes = section.querySelectorAll('input[type="checkbox"]');
         const notesField = section.querySelector('.notes-input');
@@ -41,15 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const notesInputs = document.querySelectorAll('.notes-input');
-    notesInputs.forEach(input => {
-        input.addEventListener('input', updateTotalScore);
-    });
-
     function updateTotalScore() {
         let totalScore = 0;
 
-        // Soma as pontuações dos campos de notas (calculadas pela função updateNotes)
         notesInputs.forEach(input => {
             const value = parseInt(input.value, 10);
             if (!isNaN(value)) {
@@ -70,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
             resultado = "Estado cognitivo alterado";
         }
 
-        // Avaliações de depressão
         if (totalScore <= 25.1 && totalScore >= 20) {
             resultado += ", Escore médio para Depressão não-complicada";
         } else if (totalScore <= 19) {
@@ -79,17 +83,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         return resultado;
     }
-});
-// Função para calcular a nota
-function calcularNota() {
+}
+
+// Chama a função manualmente assim que o script é carregado
+inicializarParte2();
+
+
+ // Função para calcular a pontuação total
+ function calcularBarthel() {
+    const radios = document.querySelectorAll('input[type="radio"]');
     let total = 0;
 
-    // Seleciona todas as checkboxes marcadas
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-
-    // Soma os valores das checkboxes selecionadas
-    checkboxes.forEach(checkbox => {
-        total += parseInt(checkbox.value);
+    // Itera sobre os radio buttons e soma os valores selecionados
+    radios.forEach(radio => {
+        if (radio.checked) {
+            total += parseInt(radio.value);
+        }
     });
 
     // Determina a descrição da dependência
@@ -106,27 +115,13 @@ function calcularNota() {
         dependencia = 'Dependência total';
     }
 
-    // Exibe o total e a dependência no elemento de resultado
-    document.getElementById('resultado2').innerText = `${total} pontos - ${dependencia}.`;
+    // Exibe o resultado no parágrafo
+    document.getElementById("resultadoBarthel").innerText = total + " pontos, " + dependencia;
 }
 
-// Função para garantir que apenas uma checkbox por linha seja selecionada
-function selecionarCheckboxesPorLinha(event) {
-    const checkboxesNaLinha = event.target.closest('tr').querySelectorAll('input[type="checkbox"]');
+// Adiciona o evento de mudança em cada radio button
+const radios = document.querySelectorAll('input[type="radio"]');
+radios.forEach(radio => {
+    radio.addEventListener('change', calcularBarthel);
+});
 
-    checkboxesNaLinha.forEach(checkbox => {
-        if (checkbox !== event.target) {
-            checkbox.checked = false; // Desmarca as outras checkboxes na mesma linha
-        }
-    });
-
-    calcularNota(); // Recalcula a nota após a seleção
-}
-
-// Função para adicionar o evento 'change' após o carregamento da página
-window.onload = function() {
-    // Adiciona o evento 'change' a todas as checkboxes
-    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-        checkbox.addEventListener('change', selecionarCheckboxesPorLinha);
-    });
-};
