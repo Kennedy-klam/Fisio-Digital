@@ -53,9 +53,9 @@ $idPaciente = $_GET['idPaciente'];
 // Verifica se o idPaciente foi fornecido
 if (!empty($idPaciente)) {
     // Consulta para pegar os dados do paciente
-    $sql = "SELECT nome, dataNascimento, telefone, profissao, endereco, naturalidade, estadoCivil, sexo 
-            FROM pacientes WHERE idPaciente = ?";
-    $stmt = $conn->prepare($sql);
+    $sql = "SELECT nome, nascimento, telefone, profissao, endereço, naturalidade, estaCivil, sexo 
+            FROM paciente WHERE idPaciente = ?";
+    $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $idPaciente);  // "i" para inteiro (id do paciente)
     $stmt->execute();
     $result = $stmt->get_result();
@@ -65,12 +65,12 @@ if (!empty($idPaciente)) {
         // Pega os dados do paciente
         $row = $result->fetch_assoc();
         $nome = $row['nome'];
-        $dataNascimento = $row['dataNascimento'];
+        $nascimento = $row['nascimento'];
         $telefone = $row['telefone'];
         $profissao = $row['profissao'];
-        $endereco = $row['endereco'];
+        $endereço = $row['endereço'];
         $naturalidade = $row['naturalidade'];
-        $estadoCivil = $row['estadoCivil'];
+        $estaCivil = $row['estaCivil'];
         $sexo = $row['sexo'];
     } else {
         echo "Paciente não encontrado.";
