@@ -27,18 +27,19 @@
                 <h2>Identificação</h2>
                 <br>
                 <div>
-                    <label for="nome">Nome:</label>
-                    <input type="text" class="input-style"> &nbsp &nbsp &nbsp
+                    <label for="nome">Nome:</label> 
+                    <input type="text" class="input-style"> <span style="padding-left: 9%;"></span>
+
                     <label for="dataNascimento">Data de Nascimento:</label>
                     <input type="date" class="input-date" id="dataNascimento">
                 </div>
                 <br>
                 <div>
                     <label for="telefone">Telefone:</label>
-                    <input type="text" class="input-style">&nbsp&nbsp&nbsp
+                    <input type="text" class="input-style"> <span style="padding-left: 8%;"></span>
 
                     <label for="telefone">Profissão:</label>
-                    <input type="text" class="input-style">&nbsp &nbsp
+                    <input type="text" class="input-style"> <span style="padding-left: 8%;"></span>
 
                     <label for="telefone">Endereço Residencial:</label>
                     <input type="text" class="input-style">
@@ -48,9 +49,12 @@
 
                 <div>
                     <label for="nome">Naturalidade:</label>
-                    <input type="text" class="input-style"> &nbsp &nbsp
+                    <input type="text" class="input-style"> <span style="padding-left: 6%;"></span>
                     <label for="dataNascimento">Estado Civil</label>
                     <input type="text" class="input-style">
+
+                    <span style="padding-left: 7%;"></span>
+
                     <label for="nome">Sexo:</label>
                     <input type="text" class="input-style">
 
@@ -299,12 +303,41 @@
         <br>
 
         <h3>Avaliação da Dor:</h3>
-        <br>
-        <!--Imagem depois com scrip DEPOIS-->
-        <div class="image-container">
-            <img src="Imagens/ImagemDor.png" alt="Imagem que mostra a dor em uma escala de 0 a 10" class="central-image">
-        </div>
+        <br><br><br><br><br>
         
+        <div class="scale-container">
+            <!-- Labels acima da escala (LEVE, MODERADA, INTENSA) -->
+            <div class="sections">
+                <div>LEVE</div>
+                <div>MODERADA</div>
+                <div>INTENSA</div>
+            </div>
+    
+            <!-- Números da escala -->
+            <div class="scale-numbers">
+                <span>0</span>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+                <span>8</span>
+                <span>9</span>
+                <span>10</span>
+            </div>
+    
+            <!-- Barra de cores -->
+            <div class="scale">
+                <!-- Marcador de rosto -->
+                <div id="marker" class="marker">
+                    <img src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/slightly-smiling-face_1f642.png" alt="Rosto">
+                </div>
+            </div>
+        </div>
+    
+        <!--Aqui acaba o rosto-->
 
         <br><br>
         <form id="form-dor1">

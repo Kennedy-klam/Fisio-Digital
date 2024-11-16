@@ -191,7 +191,7 @@ select {
     box-sizing: border-box;
 }
 .select1 {
-    width: 50%;
+    width: 30%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -372,3 +372,90 @@ h1,h2,h3{
     margin-left: auto;
     margin-right: auto;
 }
+
+
+/*Aqui está o estilo da parte interativa com os rostos*/
+.scale-container {
+    width: 800px;
+    margin: 0 auto;
+    position: relative;
+    user-select: none;
+}
+
+.scale {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    border-radius: 10px;
+    background: linear-gradient(to right, blue, green, yellow, red);
+    margin-top: 20px;
+}
+
+.scale-numbers {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    top: -40px;
+    color: #113838;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.scale-numbers span {
+    flex: 1;
+    text-align: center;
+}
+
+.marker {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 25px;
+    left: -10000;
+    transform: translateX(-50%);
+    cursor: grab;
+}
+
+.marker img {
+    width: 100%;
+    height: 100%;
+    margin-left: 5px;
+}
+
+.labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.labels div {
+    font-weight: bold;
+    font-size: 18px;
+    flex: 1;
+    text-align: center;
+}
+
+.sections {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: -70px;
+    width: 100%;
+    color: #113838;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.sections div {
+    flex: 1;
+    text-align: center;
+}
+
+/* Acaba aqui*/
+
+.spacer {
+    display: none;
+    width: 52220px; /* Ajuste a altura conforme necessário */
+  }
