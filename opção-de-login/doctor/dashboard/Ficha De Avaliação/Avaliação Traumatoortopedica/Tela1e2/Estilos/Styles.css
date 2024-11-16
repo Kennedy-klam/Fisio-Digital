@@ -421,7 +421,7 @@ h1,h2,h3{
 .marker img {
     width: 100%;
     height: 100%;
-    margin-left: 5px;
+    margin-left: 6px;
 }
 
 .labels {
@@ -455,7 +455,3 @@ h1,h2,h3{
 
 /* Acaba aqui*/
 
-.spacer {
-    display: none;
-    width: 52220px; /* Ajuste a altura conforme necessário */
-  }
