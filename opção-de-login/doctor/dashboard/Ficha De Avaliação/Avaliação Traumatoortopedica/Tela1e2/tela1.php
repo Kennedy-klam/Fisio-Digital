@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'agravantes' => $_POST['agravantes'],
         'atenuantes' => $_POST['atenuantes'],
         'dataAvali' => $_POST['dataAvali'],
-    
+
         // Dados de medicamento (exemplo de campos de medicamentos)
         'medicamento_nome' => $_POST['medicamento_nome'],
         'medicamento_dosagem' => $_POST['medicamento_dosagem'],
@@ -110,30 +110,28 @@ if (!empty($idPaciente)) {
                 <br>
                 <div>
                     <label for="nome">Nome:</label>
-                    <input type="text" class="input-style" name="nome"> &nbsp &nbsp &nbsp
+                    <input type="text" class="input-style" name="nome" value="<?php echo isset($nome) ? $nome : ''; ?>"> &nbsp &nbsp &nbsp
                     <label for="dataNascimento">Data de Nascimento:</label>
-                    <input type="date" class="input-date" id="dataNascimento" name="dataNascimento">
+                    <input type="date" class="input-date" id="dataNascimento" name="dataNascimento" value="<?php echo isset($nascimento) ? $nascimento : ''; ?>">
                 </div>
                 <br>
                 <div>
                     <label for="telefone">Telefone:</label>
-                    <input type="text" class="input-style" name="telefone">&nbsp&nbsp&nbsp
-
+                    <input type="text" class="input-style" name="telefone" value="<?php echo isset($telefone) ? $telefone : ''; ?>"> &nbsp&nbsp&nbsp
                     <label for="profissao">Profissão:</label>
-                    <input type="text" class="input-style" name="profissao">&nbsp &nbsp
-
+                    <input type="text" class="input-style" name="profissao" value="<?php echo isset($profissao) ? $profissao : ''; ?>"> &nbsp &nbsp
                     <label for="endereco">Endereço Residencial:</label>
-                    <input type="text" class="input-style" name="endereco">
+                    <input type="text" class="input-style" name="endereco" value="<?php echo isset($endereço) ? $endereço : ''; ?>">
                 </div>
                 <br>
 
                 <div>
                     <label for="naturalidade">Naturalidade:</label>
-                    <input type="text" class="input-style" name="naturalidade"> &nbsp &nbsp
+                    <input type="text" class="input-style" name="naturalidade" value="<?php echo isset($naturalidade) ? $naturalidade : ''; ?>"> &nbsp &nbsp
                     <label for="estadoCivil">Estado Civil:</label>
-                    <input type="text" class="input-style" name="estadoCivil">
+                    <input type="text" class="input-style" name="estadoCivil" value="<?php echo isset($estaCivil) ? $estaCivil : ''; ?>">
                     <label for="sexo">Sexo:</label>
-                    <input type="text" class="input-style" name="sexo">
+                    <input type="text" class="input-style" name="sexo" value="<?php echo isset($sexo) ? $sexo : ''; ?>">
                 </div>
             </div>
 

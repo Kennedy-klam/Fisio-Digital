@@ -106,7 +106,7 @@ if ($result) {
                             <tbody>";
                     $no = 1;
                     while ($data1 = mysqli_fetch_assoc($ans1)) {
-                        echo "<tr onclick=\"window.location.href='detalhes_paciente.php?idPaciente={$data1['Paciente_idPaciente']}'\" style='cursor: pointer;'>";
+                        echo "<tr onclick=\"window.location.href='../Ficha de Avaliação/Avaliação Traumatoortopedica/Tela1e2/tela1.php?idPaciente={$data1['Paciente_idPaciente']}'\" style='cursor: pointer;'>";
                         echo "<td>{$no}</td>";
                         echo "<td>{$data1['idConsultas']}</td>";
                         echo "<td>" . date("d/m/Y", strtotime($data1['data'])) . "</td>";
@@ -199,7 +199,7 @@ if ($result) {
             <tbody>";
                     $no = 1;
                     while ($data1 = mysqli_fetch_assoc($ans1)) {
-                        echo "<tr onclick=\"window.location.href='detalhes_paciente.php?idPaciente={$data1['Paciente_idPaciente']}'\" style='cursor: pointer;'>";
+                        echo "<tr onclick=\"window.location.href='../Ficha de Avaliação/Avaliação Traumatoortopedica/Tela1e2/tela1.php?idPaciente={$data1['Paciente_idPaciente']}'\" style='cursor: pointer;'>";
                         echo "<td>{$no}</td>";
                         echo "<td>{$data1['idConsultas']}</td>";
                         echo "<td>" . date("d/m/Y", strtotime($data1['data'])) . "</td>";
