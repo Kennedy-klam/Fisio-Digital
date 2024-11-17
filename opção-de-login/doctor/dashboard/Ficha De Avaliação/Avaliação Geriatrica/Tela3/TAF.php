@@ -1,0 +1,199 @@
+<?php
+
+//conectando no banco de dados 
+include ("../../../../../../database/dbConect.php")
+
+//criando a conexão 
+$conn = new mysqli($host, $user, $pass, $banco)
+
+//verificando conexão 
+if($conn -> connect_error){
+    die("Conexão falhou:" .
+    $conn->connect_error);
+}
+
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css?v=1.1">
+  <title>TAF</title>
+  <script>
+    function redirecionar(url) {
+      window.location.href = url;
+    }
+  </script>
+</head>
+
+<body>
+  <form action="../database/T3TAF.php" method="post">
+
+    <div class="container">
+      <h1>Timed Up and Go test (TUGT)</h1>
+      <div class="instrucoes">
+        <p><strong>Intruções:</strong> O paciente ou indivíduo que irá participar do teste de início deve estar sentado em
+          uma cadeira sem braços com as costas reforçadas, usando seus calçados de uso habitual (seu dispositivo auxiliar
+          de marcha caso utilize), Após o comando “VÀ ou VAI”, ele deve se levantar da cadeira e andar em um percurso
+          linear de 3 metros, com passos seguros (pode se acrescentar uma linha ou um objeto como, por exemplo, um cone)
+          para que o idoso o contorne e em seguida retorne em direção à cadeira sentar e novamente, o tempo deste percurso
+          será cronometrado a partir do comando verbal de “vá” e avaliado em seguida quando o paciente retornar à sua
+          posição de início.
+        </p>
+      </div>
+      <div class="tittle">
+        <h1>CRONÔMETRO:</h1>
+      </div>
+      <div class="timer" id="timer">
+        <img src="imagens/cronometro.png" alt="cronometro" class="image">
+        <label id="tempo" class="tempo">00:00</label>
+        <button class="iniciar" onclick="comecar()">INICIAR</button>
+        <button class="terminar" onclick="parar()">FINALIZAR</button>
+        <button class="resetar" onclick="resetar()">REINICIAR</button>
+      </div><br>
+      <div class="resultado" id="res">
+        <label for=""><strong>Resultado:</strong></label>
+        <p id="descricao"></p>
+      </div><br>
+      <h1>TAF(teste de alcance funcional)</h1>
+      <div class="TAF">
+        <p><strong>Procedimentos:</strong>O paciente em posição ortostática, membros inferiores levemente abduzidos,
+          descalço, coluna a mais ereta possível, olhar para o horizonte, braços em extensão a 90° e hemicorpo direito
+          próximo à parede. A partir dessa posição, solicitava-se ao avaliado esticar-se o máximo possível para frente. A
+          excursão do braço desde o inicio até o final é medida por uma fita métrica fixada na parede no sentido
+          horizontal ao lado do paciente, na altura do acrômio. Para a aferição, a extremidade do terceiro metacarpo pode
+          ser utilizada como marcação de partida até o alcance máximo. </p>
+      </div>
+      <h1>Valores normativos do TAF</h1>
+      <table>
+        <tr>
+          <th>Faixa Etária</th>
+          <th>Homens (cm)</th>
+          <th>Mulheres (cm)</th>
+        </tr>
+        <tr>
+          <td>20 - 40 anos</td>
+          <td>42,41</td>
+          <td>37,08</td>
+        </tr>
+        <tr>
+          <td>41 - 69 anos</td>
+          <td>37,84</td>
+          <td>35,05</td>
+        </tr>
+        <tr>
+          <td>70 - 87 anos</td>
+          <td>33,52</td>
+          <td>26,63</td>
+        </tr>
+      </table>
+      <h1>Teste de caminhada de 6 minutos</h1>
+      <div class="tabela">
+        <table class="tabela">
+          <tr>
+            <th></th>
+            <th>0 minutos</th>
+            <th>3 minutos</th>
+            <th>6 minutos</th>
+          </tr>
+          <tr>
+            <td>PA</td>
+            <td><input type="number" name="PA-0"></td>
+            <td><input type="number" name="PA-03"></td>
+            <td><input type="number" name="PA-06"></td>
+          </tr>
+          <tr>
+            <td>FC</td>
+            <td><input type="number" name="FC-0"></td>
+            <td><input type="number" name="FC-03"></td>
+            <td><input type="number" name="FC-06"></td>
+          </tr>
+          <tr>
+            <td>Sat o2</td>
+            <td><input type="number" name="Sat-0"></td>
+            <td><input type="number" name="Sat-03"></td>
+            <td><input type="number" name="Sat-06"></td>
+          </tr>
+          <tr>
+            <td>Fr</td>
+            <td><input type="number" name="Fr-0"></td>
+            <td><input type="number" name="Fr-03"></td>
+            <td><input type="number" name="Fr-06"></td>
+          </tr>
+          <tr>
+            <td>Borg</td>
+            <td><input type="number" name="Borg-0"></td>
+            <td><input type="number" name="Borg-03"></td>
+            <td><input type="number" name="Borg-06"></td>
+          </tr>
+        </table><br>
+      </div>
+      <!--Distância percorrida e prevista-->
+      <div>
+        <label for="distanciaPercorrida">Distância percorrida:</label>
+        <input type="text" id="distanciaPercorrida" name="distanciaPercorrida" class="distancia-percorrida"><br><br>
+        <label for="distanciaPrevista">Distância prevista:</label>
+        <input type="text" id="distanciaPrevista" name="distanciaPrevista" class="distancia-prevista">
+      </div><br>
+      <!-- teste de sentar e levantar -->
+      <div class="teste-sentar-levantar">
+        <h2>TESTE SENTAR E LEVANTAR (30 segundos):</h2>
+        <p>O teste inicia com o idoso sentado em uma cadeira, com as costas encostadas e os pés afastados à largura dos
+          ombros e totalmente apoiados no solo. Os membros superiores devem estar cruzados ao nível dos punhos e contra o
+          peito.</p>  
+        <div>
+          <label for="sentar" class="sentar"><strong>SENTAR:</strong></label>
+          <select class="apoios-sentar" id="sentar">
+            <option value="">APOIOS</option>
+            <option value="5">Sem apoios</option>
+            <option value="4">Com 1 apoio</option>
+            <option value="3">Com 2 apoios</option>
+            <option value="2">Com 3 apoios</option>
+            <option value="1">Com 4 apoios</option>
+            <option value="0">Com mais de 4 apoios ou com ajuda externa</option>
+          </select>
+          <label for="levantar" class="levantar"><strong>LEVANTAR:</strong></label>
+          <select class="apoios-levantar" id="levantar">
+            <option value=""><strong>APOIOS</strong></option>
+            <option value="5">Sem apoios</option>
+            <option value="4">Com 1 apoio</option>
+            <option value="3">Com 2 apoios</option>
+            <option value="2">Com 3 apoios</option>
+            <option value="1">Com 4 apoios</option>
+            <option value="0">Com mais de 4 apoios ou com ajuda externa</option>
+          </select>
+        </div><br>
+        <div>
+          <label><input type="checkbox" name="desequilibrioSentar" class="desequilibrio-sentar" id="desequilibrioSentar">
+            Houve desequilíbrio</label>
+          <label><input type="checkbox" name="desequilibrioLevantar" class="desequilibrio-levantar"
+              id="desequilibrioLevantar">Houve desequilíbrio</label>
+        </div><br>
+        <label class="nota1">Nota:</label>
+        <input type="text" class="nota-teste" id="notaSentar" readonly>
+        <label class="nota2">Nota:</label>
+        <input type="text" class="nota-teste" id="notaLevantar" readonly>
+      </div><br>
+      <button class="botaoCalcular" onclick="calcularNota()">Calcular Nota</button>
+      <!--campos de diagnóstico e objetivos-->
+      <div>
+        <h2>diagnóstico fisioterápeutico:</h2>
+        <textarea class="diagnostico" id="diagnostico" placeholder="Digite aqui:"></textarea>
+      </div>
+      <div>
+        <h2>objetivo:</h2>
+        <textarea class="objetivo" id="objetivo" placeholder="Digite aqui:"></textarea>
+      </div><br>
+      <button class="finalizar" type="button" onclick="redirecionar('../../../dashboard.php')">Finalizar</button>
+    </div>
+  </form>
+  
+  <script src="script.js"></script>
+</body>
+
+</html>
