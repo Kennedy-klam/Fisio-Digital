@@ -191,9 +191,10 @@ if($conn -> connect_error){
       </div><br>
       <button class="finalizar" type="button" onclick="redirecionar('../../../dashboard.php')">Finalizar</button>
     </div>
+    <script src="./script.js"></script>
   </form>
   
-  <script src="script.js"></script>
+  
 </body>
 
 </html>
