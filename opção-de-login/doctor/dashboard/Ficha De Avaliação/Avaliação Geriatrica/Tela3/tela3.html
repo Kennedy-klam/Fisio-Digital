@@ -1,21 +1,3 @@
-<?php
-
-//conectando no banco de dados 
-include ("../../../../../../database/dbConect.php")
-
-//criando a conexão 
-$conn = new mysqli($host, $user, $pass, $banco)
-
-//verificando conexão 
-if($conn -> connect_error){
-    die("Conexão falhou:" .
-    $conn->connect_error);
-}
-
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 

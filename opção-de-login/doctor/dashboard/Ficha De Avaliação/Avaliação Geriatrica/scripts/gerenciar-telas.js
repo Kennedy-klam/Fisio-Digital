@@ -54,7 +54,7 @@ document.getElementById('proximaEtapa1').addEventListener('click', function () {
 
     removerCss("cssEtapa1"); // Remove o CSS da Etapa 1
     
-    carregarScript("scripts/parte2.js", "jsEtapa2"); // Carrega o script para a etapa 2
+    carregarScript("scripts/tela2.js", "jsEtapa2"); // Carrega o script para a etapa 2
 
     carregarCss("styles/tela2.css", "cssEtapa2"); // Carrega o CSS da Etapa 2
     
