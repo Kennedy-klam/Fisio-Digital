@@ -1,82 +1,188 @@
 <?php
+session_start();  // Inicia a sessão para capturar os dados
 include('../../../../conexões/conexao.php');
-session_start();
 
-// Verifica se o formulário foi enviado
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Captura os dados do formulário e os armazena na sessão
-    $_SESSION['dados_formulario'] = [
-        'consultas_idConsultas' => $_POST['Consultas_idConsultas'],
-        'consultas_paciente_idPaciente' => $_POST['Consultas_Paciente_idPaciente'],
-        'diagnostico_clinico' => $_POST['diagnostico_clinico'],
-        'queixa' => $_POST['queixa'],
-        'temperatura' => $_POST['temperatura'],
-        'frequencia_c' => $_POST['frequencia_c'],
-        'frequencia_r' => $_POST['frequencia_r'],
-        'pressao' => $_POST['pressao'],
-        'inspecao' => $_POST['inspecao'],
-        'palpacao' => $_POST['palpacao'],
-        'sensibilidade' => $_POST['sensibilidade'],
-        'reflexo_tricipital_esquerdo' => $_POST['reflexo_tricipital_esquerdo'],
-        'reflexo_patelar_esquerdo' => $_POST['reflexo_patelar_esquerdo'],
-        'reflexo_calcaneo_esquerdo' => $_POST['reflexo_calcaneo_esquerdo'],
-        'reflexo_bicipital_direito' => $_POST['reflexo_bicipital_direito'],
-        'reflexo_tricipital_direito' => $_POST['reflexo_tricipital_direito'],
-        'reflexo_patelar_direito' => $_POST['reflexo_patelar_direito'],
-        'reflexo_calcaneo_direito' => $_POST['reflexo_calcaneo_direito'],
-        'reflexo_bicipital_esquerdo' => $_POST['reflexo_bicipital_esquerdo'],
-        'local_dor' => $_POST['local_dor'],
-        'eva' => $_POST['eva'],
-        'historia_dor' => $_POST['historia_dor'],
-        'frequencia_dor' => $_POST['frequencia_dor'],
-        'caracteristica_dor' => $_POST['caracteristica_dor'],
-        'movimentos_dor' => $_POST['movimentos_dor'],
-        'agravantes' => $_POST['agravantes'],
-        'atenuantes' => $_POST['atenuantes'],
-        'dataAvali' => $_POST['dataAvali'],
-
-        // Dados de medicamento (exemplo de campos de medicamentos)
-        'medicamento_nome' => $_POST['medicamento_nome'],
-        'medicamento_dosagem' => $_POST['medicamento_dosagem'],
-        'medicamento_frequencia' => $_POST['medicamento_frequencia'],
-    ];
+// Verifica se a conexão com o banco está funcionando
+if ($mysqli->connect_error) {
+    die("Erro na conexão com o banco de dados: " . $mysqli->connect_error);
 }
 
-// Redireciona para a próxima página, se necessário
-if (isset($_POST['submit'])) {
-    header("Location: tela2.php"); // Redireciona para a próxima página
+// Verifica se o idPaciente foi passado na URL
+$idPaciente = $_GET['idPaciente'] ?? null;
+
+if (!$idPaciente) {
+    die("ID do paciente não fornecido.");
+}
+
+// 1. Consultar a consulta associada ao paciente
+$sql = "SELECT idConsultas, Paciente_idPaciente FROM consultas WHERE Paciente_idPaciente = ?";
+$stmt = $mysqli->prepare($sql);
+if (!$stmt) {
+    die("Erro ao preparar a consulta de consulta: " . $mysqli->error);
+}
+$stmt->bind_param("i", $idPaciente); // "i" para inteiro (id do paciente)
+if (!$stmt->execute()) {
+    die("Erro ao executar a consulta de consulta: " . $stmt->error);
+}
+$result = $stmt->get_result();
+
+// Verifica se a consulta foi encontrada
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $consultas_idConsultas = $row['idConsultas'];  // ID da consulta
+    $consultas_paciente_idPaciente = $row['Paciente_idPaciente'];  // ID do paciente
+} else {
+    die("Consulta não encontrada para este paciente.");
+}
+
+// Verifica se o formulário foi enviado (POST)
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Sanitização e validação dos dados recebidos
+    $diagnostico_clinico = htmlspecialchars($_POST['diagnostico_clinico'] ?? '');
+    $avaliador = htmlspecialchars($_POST['avaliador'] ?? '');
+    $queixa = htmlspecialchars($_POST['queixa'] ?? '');
+    $historia_doenca_atual = htmlspecialchars($_POST['historia_doenca_atual'] ?? '');
+    $historico_patologico = htmlspecialchars($_POST['historico_patologico'] ?? '');
+    $historia_familiar = htmlspecialchars($_POST['historia_familiar'] ?? '');
+    $historia_pessoal_social = htmlspecialchars($_POST['historia_pessoal_social'] ?? '');
+    $temperatura = htmlspecialchars($_POST['temperatura'] ?? '');
+    $frequencia_c = htmlspecialchars($_POST['frequencia_c'] ?? '');
+    $frequencia_r = htmlspecialchars($_POST['frequencia_r'] ?? '');
+    $pressao = htmlspecialchars($_POST['pressao'] ?? '');
+    $inspecao = htmlspecialchars($_POST['inspecao'] ?? '');
+    $palpacao = htmlspecialchars($_POST['palpacao'] ?? '');
+    $sensibilidade = htmlspecialchars($_POST['sensibilidade'] ?? '');
+    $reflexos_esquerdo = htmlspecialchars($_POST['reflexos_esquerdo'] ?? '');
+    $reflexos_direito = htmlspecialchars($_POST['reflexos_direito'] ?? '');
+    $local_dor = htmlspecialchars($_POST['local_dor'] ?? '');
+    $eva = htmlspecialchars($_POST['eva'] ?? '');
+    $historia_dor = htmlspecialchars($_POST['historia_dor'] ?? '');
+    $frequencia_dor = htmlspecialchars($_POST['frequencia_dor'] ?? '');
+    $caracteristica_dor = htmlspecialchars($_POST['caracteristica_dor'] ?? '');
+    $movimentos_dor = htmlspecialchars($_POST['movimentos_dor'] ?? '');
+    $agravantes = htmlspecialchars($_POST['agravantes'] ?? '');
+    $atenuantes = htmlspecialchars($_POST['atenuantes'] ?? '');
+
+    // Dados para a tabela medicamentos
+    $nome = htmlspecialchars($_POST['nome'] ?? null);
+    $classe = htmlspecialchars($_POST['classe'] ?? null);
+
+    // 2. Salvar os dados na tabela fichatraumatoortopédica1
+    $query1 = "INSERT INTO fichatraumatoortopédica (
+        consultas_idConsultas,
+        consultas_paciente_idPaciente,
+        diagnostico_clinico,
+        avaliador,
+        queixa,
+        historia_doenca_atual,
+        historico_patologico,
+        historia_familiar,
+        historia_pessoal_social,
+        temperatura,
+        frequencia_c,
+        frequencia_r,
+        pressao,
+        inspecao,
+        palpacao,
+        sensibilidade,
+        reflexos_esquerdo,
+        reflexos_direito,
+        local_dor,
+        eva,
+        historia_dor,
+        frequencia_dor,
+        caracteristica_dor,
+        movimentos_dor,
+        agravantes,
+        atenuantes
+    ) VALUES (
+        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+    )";
+
+    $stmt1 = $mysqli->prepare($query1);
+    if (!$stmt1) {
+        die("Erro ao preparar a consulta para fichatraumatoortopédica1: " . $mysqli->error);
+    }
+    $stmt1->bind_param(
+        'iissssssssssssssssssssssss',
+        $consultas_idConsultas,
+        $consultas_paciente_idPaciente,
+        $diagnostico_clinico,
+        $avaliador,
+        $queixa,
+        $historia_doenca_atual,
+        $historico_patologico,
+        $historia_familiar,
+        $historia_pessoal_social,
+        $temperatura,
+        $frequencia_c,
+        $frequencia_r,
+        $pressao,
+        $inspecao,
+        $palpacao,
+        $sensibilidade,
+        $reflexos_esquerdo,
+        $reflexos_direito,
+        $local_dor,
+        $eva,
+        $historia_dor,
+        $frequencia_dor,
+        $caracteristica_dor,
+        $movimentos_dor,
+        $agravantes,
+        $atenuantes
+    );
+
+    if (!$stmt1->execute()) {
+        die("Erro ao inserir na tabela fichatraumatoortopédica1: " . $stmt1->error);
+    }
+
+    // 3. Salvar os medicamentos na tabela medicamentos
+    if ($nome && $classe) {
+        $query2 = "INSERT INTO medicamentos (Paciente_idPaciente, nome, classe) VALUES (?, ?, ?)";
+        $stmt2 = $mysqli->prepare($query2);
+        if (!$stmt2) {
+            die("Erro ao preparar a consulta para medicamentos: " . $mysqli->error);
+        }
+        $stmt2->bind_param('iss', $consultas_paciente_idPaciente, $nome, $classe);
+
+        if (!$stmt2->execute()) {
+            die("Erro ao inserir dados do medicamento: " . $stmt2->error);
+        }
+    }
+
+    // Redireciona para a tela2.php após o sucesso na inserção dos dados
+    header("Location: tela2.php?idPaciente=" . $idPaciente);
     exit;
 }
 
-$idPaciente = $_GET['idPaciente'];
+// Consulta os dados do paciente
+$sqlPaciente = "SELECT nome, nascimento, telefone, profissao, endereço, naturalidade, estaCivil, sexo 
+                FROM paciente WHERE idPaciente = ?";
+$stmtPaciente = $mysqli->prepare($sqlPaciente);
+if (!$stmtPaciente) {
+    die("Erro ao preparar a consulta para paciente: " . $mysqli->error);
+}
+$stmtPaciente->bind_param("i", $idPaciente);
+if (!$stmtPaciente->execute()) {
+    die("Erro ao executar a consulta para paciente: " . $stmtPaciente->error);
+}
+$resultPaciente = $stmtPaciente->get_result();
 
-// Verifica se o idPaciente foi fornecido
-if (!empty($idPaciente)) {
-    // Consulta para pegar os dados do paciente
-    $sql = "SELECT nome, nascimento, telefone, profissao, endereço, naturalidade, estaCivil, sexo 
-            FROM paciente WHERE idPaciente = ?";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $idPaciente);  // "i" para inteiro (id do paciente)
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    // Verifica se o paciente foi encontrado
-    if ($result->num_rows > 0) {
-        // Pega os dados do paciente
-        $row = $result->fetch_assoc();
-        $nome = $row['nome'];
-        $nascimento = $row['nascimento'];
-        $telefone = $row['telefone'];
-        $profissao = $row['profissao'];
-        $endereço = $row['endereço'];
-        $naturalidade = $row['naturalidade'];
-        $estaCivil = $row['estaCivil'];
-        $sexo = $row['sexo'];
-    } else {
-        echo "Paciente não encontrado.";
-    }
+// Verifica se o paciente foi encontrado
+if ($resultPaciente->num_rows > 0) {
+    $rowPaciente = $resultPaciente->fetch_assoc();
+    // Preenche as variáveis com os dados do paciente
+    $nome = $rowPaciente['nome'];
+    $nascimento = $rowPaciente['nascimento'];
+    $telefone = $rowPaciente['telefone'];
+    $profissao = $rowPaciente['profissao'];
+    $endereco = $rowPaciente['endereço'];
+    $naturalidade = $rowPaciente['naturalidade'];
+    $estaCivil = $rowPaciente['estaCivil'];
+    $sexo = $rowPaciente['sexo'];
 } else {
-    echo "ID do paciente não fornecido.";
+    die("Paciente não encontrado.");
 }
 ?>
 
