@@ -45,7 +45,7 @@ $res = mysqli_query($con, $sql);
         }
     }
 
-$mysqli = new mysqli('localhost', 'root', '', 'fisio digital 2.0');
+$mysqli = new mysqli('localhost', 'root', '', 'fisio-digital-v3.3');
 if(isset($_GET['date'])){
     $date = $_GET['date'];
     $stmt = $mysqli->prepare("select * from consultas where data = ?");

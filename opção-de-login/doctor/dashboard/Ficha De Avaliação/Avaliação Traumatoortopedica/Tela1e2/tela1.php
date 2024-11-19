@@ -339,42 +339,72 @@ if (!empty($idPaciente)) {
 
                 <!-- Avaliação da Dor (EVA) -->
                 <h3>Avaliação da Dor:</h3>
-                <br>
-                <div class="image-container">
-                    <img src="Imagens/ImagemDor.png" alt="Imagem que mostra a dor em uma escala de 0 a 10" class="central-image">
+        <br><br><br><br><br>
+        
+        <div class="scale-container">
+            <!-- Labels acima da escala (LEVE, MODERADA, INTENSA) -->
+            <div class="sections">
+                <div>LEVE</div>
+                <div>MODERADA</div>
+                <div>INTENSA</div>
+            </div>
+    
+            <!-- Números da escala -->
+            <div class="scale-numbers">
+                <span>0</span>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+                <span>8</span>
+                <span>9</span>
+                <span>10</span>
+            </div>
+    
+            <!-- Barra de cores -->
+            <div class="scale">
+                <!-- Marcador de rosto -->
+                <div id="marker" class="marker">
+                    <img src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/slightly-smiling-face_1f642.png" alt="Rosto">
                 </div>
+            </div>
+        </div>
+    
+        <!--Aqui acaba o rosto-->
 
-                <br><br>
-                <form id="form-dor1">
-                    <div class="div-esquerda">
-                        <label for="dor1" style="font-weight: bold">Local da Dor:</label>
-                        <input type="text" id="dor1" name="dor" class="custom-input1" placeholder="Digite aqui..." required>
-                        <br><br>
-                        <button class="styled-button" type="button" id="remover-btn1">Remover</button>
-                    </div>
-
-                    <div class="div-direita">
-                        <label for="eva1" style="font-weight: bold">EVA:</label>
-                        <input type="text" id="eva1" name="eva" class="custom-input1" placeholder="Digite aqui..." required>
-                        <br><br>
-                        <button class="styled-button" type="button" id="adicionar-btn1">Adicionar</button>
-                    </div>
-                </form>
-
-                <br>
-
-                <table id="tabela-dor1" class="tableC" border="1">
-                    <thead>
-                        <tr>
-                            <th>Local da Dor</th>
-                            <th>EVA</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- As linhas serão adicionadas dinamicamente aqui -->
-                    </tbody>
-                </table>
-
+        <br><br>
+        <form id="form-dor1">
+            <div class="div-esquerda">
+                <label for="dor1" style="font-weight: bold">Local da Dor:</label>
+                <input type="text" id="dor1" name="dor" class="custom-input1" placeholder="Digite aqui..." required>
+                <br><br>&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
+                <button class="styled-button" type="button" id="remover-btn1">Remover</button>
+            </div>
+            
+            <div class="div-direita">
+                <label for="eva1" style="font-weight: bold">EVA:</label>
+                <input type="text" id="eva1" name="eva" class="custom-input1" placeholder="Digite aqui..." required>
+                <br><br>&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
+                <button class="styled-button" type="button" id="adicionar-btn1">Adicionar</button>
+            </div>
+        </form>
+        
+        <br>
+        
+        <table id="tabela-dor1" class="tableC" border="1">
+            <thead>
+                <tr>
+                    <th>Local da Dor</th>
+                    <th>EVA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- As linhas serão adicionadas dinamicamente aqui -->
+            </tbody>
+        </table>
                 <br><br>
 
                 <!-- Características da Dor -->

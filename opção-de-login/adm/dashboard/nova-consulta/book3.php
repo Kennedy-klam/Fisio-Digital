@@ -53,18 +53,23 @@ if (!isset($_SESSION["idClinica"])) {
     }
     $stmt->close();
 }
-
-// Função para construir o calendário
-function build_calendar($month, $year, $mysqli) {
-    $daysOfWeek = array('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado');
-    $firstDayOfMonth = mktime(0, 0, 0, $month, 1, $year);
-    $numberDays = date('t', $firstDayOfMonth);
-    $dateComponents = getdate($firstDayOfMonth);
-
-    setlocale(LC_TIME, 'pt_BR.utf8', 'pt_BR', 'Portuguese_Brazil');
-    $monthName = ucfirst(strftime('%B', $firstDayOfMonth));
-    $dayOfWeek = $dateComponents['wday'];
-    $datetoday = date('Y-m-d');
+    function build_calendar($month, $year, $mysqli) {
+        $daysOfWeek = array('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado');
+        $firstDayOfMonth = mktime(0, 0, 0, $month, 1, $year);
+        $numberDays = date('t', $firstDayOfMonth);
+        $dateComponents = getdate($firstDayOfMonth);
+        $dateObj = DateTime::createFromFormat('Y-m-d', "$year-$month-01");
+        $monthName = ucfirst($dateObj->format('F')); // Obtém o nome do mês em inglês
+        $monthsInPortuguese = [
+            'January' => 'Janeiro', 'February' => 'Fevereiro', 'March' => 'Março',
+            'April' => 'Abril', 'May' => 'Maio', 'June' => 'Junho',
+            'July' => 'Julho', 'August' => 'Agosto', 'September' => 'Setembro',
+            'October' => 'Outubro', 'November' => 'Novembro', 'December' => 'Dezembro'
+        ];
+        $monthName = $monthsInPortuguese[$monthName] ?? $monthName;
+    
+        $dayOfWeek = $dateComponents['wday'];
+        $datetoday = date('Y-m-d');    
 
     $calendar = "<table class='table table-bordered'>";
     $calendar .= "<center><h2>$monthName $year</h2>";

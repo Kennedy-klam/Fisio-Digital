@@ -110,12 +110,13 @@ function updateMarkerPosition(event) {
 // Atualiza o emoji de acordo com o valor
 function updateMarkerEmoji(value) {
   const emojiURLs = [
-    "https://emojipedia-us.s3.amazonaws.com/source/skype/289/slightly-smiling-face_1f642.png",  // 0
-    "https://emojipedia-us.s3.amazonaws.com/source/skype/289/slightly-smiling-face_1f642.png", // 1-3
-    "https://emojipedia-us.s3.amazonaws.com/source/skype/289/neutral-face_1f610.png", // 4-6
-    "https://emojipedia-us.s3.amazonaws.com/source/skype/289/frowning-face-with-open-mouth_1f626.png", // 7-8
-    "https://emojipedia-us.s3.amazonaws.com/source/skype/289/crying-face_1f622.png", // 9-10
-  ];
+    "https://emojipedia-us.s3.amazonaws.com/source/skype/289/smiling-face_263a.png",  // 0
+    "https://emojipedia-us.s3.amazonaws.com/source/skype/289/slightly-smiling-face_1f642.png", // 1-2
+    "https://emojipedia-us.s3.amazonaws.com/source/skype/289/neutral-face_1f610.png", // 3-4
+    "https://emojipedia-us.s3.amazonaws.com/source/skype/289/frowning-face-with-open-mouth_1f626.png", // 5-6
+    "https://emojipedia-us.s3.amazonaws.com/source/skype/289/crying-face_1f622.png", // 7-8
+    "https://emojipedia-us.s3.amazonaws.com/source/skype/289/loudly-crying-face_1f62d.png"  // 9-10
+];
 
   let emojiIndex = Math.min(Math.floor(value / 2), emojiURLs.length - 1);
   marker.querySelector('img').src = emojiURLs[emojiIndex];
