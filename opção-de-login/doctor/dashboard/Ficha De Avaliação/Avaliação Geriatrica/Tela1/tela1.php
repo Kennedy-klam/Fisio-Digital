@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ficha de Avaliação de Fisioterapia Geriátrica</title>
+    <title>Tela 1 Avaliação Geriátrica</title>
     <link rel="stylesheet" href="Estilos/styles.css">
     <!--versão 1.0-->
     <script>
