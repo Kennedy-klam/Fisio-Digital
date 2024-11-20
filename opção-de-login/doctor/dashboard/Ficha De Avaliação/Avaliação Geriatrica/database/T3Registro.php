@@ -5,12 +5,13 @@ include("../../../../../../database/dbConect.php");
 // Capture os dados do formulário
 $Consultas_idConsultas = 1; // Valor estático
 
+$tugt = $_POST['tugt'] ?? null;
 $nota_sentar = $_POST['nota-sentar'] ?? null;
 $nota_levantar = $_POST['nota-levantar'] ?? null;
 $diag_fisio = $_POST['diag-fisio'] ?? null;
 $objetivo = $_POST['objetivo'] ?? null;
 
-$idFichaAvaliaçãoGeriatrica = 23; // Exemplo de ID, ajuste conforme necessário.
+$idFichaAvaliaçãoGeriatrica = 27; // Exemplo de ID, ajuste conforme necessário.
 
 $pa_0 = $_POST['PA-0'] ?? null;
 $pa_3 = $_POST['PA-3'] ?? null;
@@ -42,16 +43,17 @@ try {
     // Inserir na tabela fichaavaliaçãogeriatrica
     $sql1 = "INSERT INTO fichaavaliaçãogeriatrica (
         Consultas_idConsultas,
+        tugt,
         nota_sentar, 
         nota_levantar, 
         diag_fisio, 
         objetivo
     ) VALUES (
-        ?, ?, ?, ?, ?
+        ?, ?, ?, ?, ?, ?
     )";
 
     $stmt1 = $conn->prepare($sql1);
-    $stmt1->bind_param("iiiss", $Consultas_idConsultas, $nota_sentar, $nota_levantar, $diag_fisio, $objetivo);
+    $stmt1->bind_param("isiiss", $Consultas_idConsultas, $tugt, $nota_sentar, $nota_levantar, $diag_fisio, $objetivo);
 
     if (!$stmt1->execute()) {
         throw new Exception("Erro ao inserir em fichaavaliaçãogeriatrica: " . $stmt1->error);

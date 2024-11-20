@@ -17,7 +17,9 @@ function comecar() {
 }
 
 function parar() {
-    clearInterval(cronometro)
+    clearInterval(cronometro);
+     // Atualiza o campo oculto com o valor do tempo
+     document.getElementById("tugt").value = document.getElementById("tempo").innerText;
 }
 
 function resetar() {
@@ -39,6 +41,7 @@ function mostrarResultado(segundos) {
         descricao = "30 segundos ou mais. ALTO RISCO DE QUEDAS."
     }
     document.getElementById("descricao").innerText = descricao
+   
 }
 
 const botao = document.getElementById('prox-pag')
@@ -71,7 +74,7 @@ function calcularNota(){
         notaLevantar -= 0.5
     }
 
-    document.getElementById('notaSentar').value = notaSentar.toFixed(1)
-    document.getElementById('notaLevantar').value = notaLevantar.toFixed(1)
+    document.getElementById('nota-sentar').value = notaSentar.toFixed(1)
+    document.getElementById('nota-levantar').value = notaLevantar.toFixed(1)
 
 }
