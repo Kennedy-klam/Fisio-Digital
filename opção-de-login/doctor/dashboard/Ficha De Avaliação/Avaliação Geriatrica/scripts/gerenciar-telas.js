@@ -63,11 +63,34 @@ document.getElementById('proximaEtapa1').addEventListener('click', function () {
     document.getElementById('etapa2').style.display = 'block';
 });
 
+
+// Passar para a próxima etapa tela 3
+document.getElementById('proximaEtapa2').addEventListener('click', function () {
+
+    // Alterna o CSS para a Etapa 2
+    removerScript("jsEtapa2"); // Remove o script da etapa 1, se carregado
+
+    removerCss("cssEtapa2"); // Remove o CSS da Etapa 1
+    
+    carregarScript("scripts/tela3.js", "jsEtapa3"); // Carrega o script para a etapa 2
+
+    carregarCss("styles/tela3.css", "cssEtapa3"); // Carrega o CSS da Etapa 2
+    
+
+    document.getElementById('etapa2').style.display = 'none';
+    document.getElementById('etapa3').style.display = 'block';
+});
+
+
 // Voltar para a etapa anterior
 document.getElementById('voltarEtapa1').addEventListener('click', function () {
     
     // Alterna o CSS para a Etapa 1
     removerCss("cssEtapa2"); // Remove o CSS da Etapa 2
+
+    removerCss("cssEtapa3"); // Remove o CSS da Etapa 2
+    
+    removerScript("jsEtapa3");
     
     removerScript("jsEtapa2"); // Remove o script da etapa 2, se carregado
     
@@ -77,6 +100,25 @@ document.getElementById('voltarEtapa1').addEventListener('click', function () {
     
     document.getElementById('etapa2').style.display = 'none';
     document.getElementById('etapa1').style.display = 'block';
+    
+});
+
+
+
+// Voltar para a etapa anterior
+document.getElementById('voltarEtapa2').addEventListener('click', function () {
+    
+    // Alterna o CSS para a Etapa 1
+    removerCss("cssEtapa3"); // Remove o CSS da Etapa 2
+    
+    removerScript("jsEtapa3"); // Remove o script da etapa 2, se carregado
+    
+    carregarCss("styles/tela2.css", "cssEtapa1"); // Carrega o CSS da Etapa 1
+
+    carregarScript("scripts/tela2.js", "jsEtapa1"); // Carrega o script para a etapa 1
+    
+    document.getElementById('etapa3').style.display = 'none';
+    document.getElementById('etapa2').style.display = 'block';
     
 });
 
