@@ -1,7 +1,7 @@
 <?php
 
 // Conexão com o banco de dados
-include("../../../../../../../database/dbConect.php");
+include("../../../../../../database/dbConect.php");
 
 // Verificando se o formulário foi submetido
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

@@ -36,7 +36,7 @@ if ($result->num_rows > 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ficha de Avaliação de Fisioterapia Geriátrica</title>
+    <title>Ficha Avaliação Geriátrica</title>
     <script id="gerenciar-telas" src="scripts/gerenciar-telas.js" defer></script>
     <script>
         function redirecionar(url) {
@@ -69,7 +69,7 @@ if ($result->num_rows > 0) {
 </head>
 
 <body>
-    <form action="database/T1Registro.php" method="post">
+    <form action="database/processar-avaliacao-geriatrica.php" method="post">
 
         <!-- ------------------------------------------Tela 1------------------------------------------- -->
         <div class="etapa" id="etapa1">
@@ -980,9 +980,9 @@ if ($result->num_rows > 0) {
         </tr>
         <tr>
             <td>Atividades diárias</td>
-            <td><input type="radio" name="higiene" value="0"></td>
-            <td><input type="radio" name="higiene" value="5"></td>
-            <td><input type="radio" name="higiene" value="10"></td>
+            <td><input type="radio" name="atividadeb" value="0"></td>
+            <td><input type="radio" name="atividadeb" value="5"></td>
+            <td><input type="radio" name="atividadeb" value="10"></td>
         </tr>
         <tr>
             <td>Vestir-se</td>
@@ -992,21 +992,21 @@ if ($result->num_rows > 0) {
         </tr>
         <tr>
             <td>Intestino</td>
+            <td><input type="radio" name="intestino" value="0"></td>
+            <td><input type="radio" name="intestino" value="5"></td>
+            <td><input type="radio" name="intestino" value="10"></td>
+        </tr>
+        <tr>
+            <td>Sistema Urinário</td>
             <td><input type="radio" name="urina" value="0"></td>
             <td><input type="radio" name="urina" value="5"></td>
             <td><input type="radio" name="urina" value="10"></td>
         </tr>
         <tr>
-            <td>Sistema Urinário</td>
-            <td><input type="radio" name="fezes" value="0"></td>
-            <td><input type="radio" name="fezes" value="5"></td>
-            <td><input type="radio" name="fezes" value="10"></td>
-        </tr>
-        <tr>
             <td>Uso do Banheiro</td>
-            <td><input type="radio" name="sanitario" value="0"></td>
-            <td><input type="radio" name="sanitario" value="5"></td>
-            <td><input type="radio" name="sanitario" value="10"></td>
+            <td><input type="radio" name="banheiro" value="0"></td>
+            <td><input type="radio" name="banheiro" value="5"></td>
+            <td><input type="radio" name="banheiro" value="10"></td>
         </tr>
         <tr>
             <td>Transferência (cama-cadeira)</td>
@@ -1033,7 +1033,7 @@ if ($result->num_rows > 0) {
 
             <div class="button-container">
                 <button class="styled-button" type="button" id="voltarEtapa1">Voltar</button>
-                <button class="styled-button"type="button" id="proximaEtapa1" >Próxima página</button>
+                <button class="styled-button"type="submit">Próxima página</button>
             </div>
         </div>
         <!-- -----------------------------------------Tela 2------------------------------------------ -->
