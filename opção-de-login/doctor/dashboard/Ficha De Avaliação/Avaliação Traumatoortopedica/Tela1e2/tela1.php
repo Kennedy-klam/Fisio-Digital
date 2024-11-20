@@ -197,13 +197,13 @@ if ($resultPaciente->num_rows > 0) {
 </head>
 
 <body>
+<form method="POST" action="">
+<input type="hidden" name="Consultas_Paciente_idPaciente" value="<?php echo $_GET['idPaciente']; ?>">
     <div class="container">
         <h1>Ficha de Avaliação de Fisioterapia</h1>
         <h1>Traumato-Ortopédica e Reumatológica</h1>
         <br>
-
-        <form action="" method="post">
-            <div class="data-estagiario">
+        <div class="data-estagiario">
                 <div>
                     <label for="data">Data da avaliação:</label>
                     <input type="date" id="data" name="data" class="classe1-input">
@@ -244,12 +244,12 @@ if ($resultPaciente->num_rows > 0) {
             <div>
                 <label for="queixa-principal">Diagnóstico Clínico:</label>
                 <br><br>
-                <textarea class="queixa" id="queixa-principal" name="queixa-principal" placeholder="Digite aqui..."></textarea>
+                <textarea class="queixa" id="queixa-principal" name="diagnostico_clinico" placeholder="Digite aqui..."></textarea>
             </div>
 
             <br>
             <label for="estagiario">Avaliador (es):</label>
-            <input type="text" id="estagiario" name="estagiario" class="custom-input">
+            <input type="text" id="estagiario" name="avaliador" class="custom-input">
             <br><br>
 
             <h2>ANAMNESE:</h2>
@@ -257,29 +257,29 @@ if ($resultPaciente->num_rows > 0) {
 
             <div>
                 <label for="queixa-principal">Queixa Principal:</label> <br><br>
-                <textarea class="queixa" id="queixa-principal" name="queixa-principal" placeholder="Digite aqui..."></textarea>
+                <textarea class="queixa" id="queixa-principal" name="queixa" placeholder="Digite aqui..."></textarea>
             </div><br>
 
             <div>
                 <label for="historia-doenca">História da Doença Atual:</label>
                 <br><br>
-                <textarea class="queixa" id="historia-doenca" name="historia-doenca" placeholder="Digite aqui..."></textarea>
+                <textarea class="queixa" id="historia-doenca" name="historia_doenca_atual" placeholder="Digite aqui..."></textarea>
             </div><br>
 
             <div>
                 <label for="historico-patologico">Histórico Patológico / Doenças Associadas:</label> <br><br>
-                <textarea class="queixa" id="historico-patologico" name="historico-patologico" placeholder="Digite aqui..."></textarea>
+                <textarea class="queixa" id="historico-patologico" name="historico_patologico" placeholder="Digite aqui..."></textarea>
             </div><br>
 
             <div>
                 <label for="historia-familiar">História Familiar:</label> <br><br>
-                <textarea class="queixa" id="historia-familiar" name="historia-familiar" placeholder="Digite aqui..."></textarea>
+                <textarea class="queixa" id="historia-familiar" name="historia_familiar" placeholder="Digite aqui..."></textarea>
             </div><br>
 
             <div>
                 <label for="historia-pessoal">História Pessoal e Social:</label>
                 <br><br>
-                <textarea class="queixa" id="historia-pessoal" name="historia-pessoal" placeholder="Digite aqui..."></textarea>
+                <textarea class="queixa" id="historia-pessoal" name="historia_pessoal_social" placeholder="Digite aqui..."></textarea>
             </div>
             <br>
             <!-- Tabela de Medicamentos -->
@@ -289,14 +289,14 @@ if ($resultPaciente->num_rows > 0) {
                 <form id="form-medicamentos">
                     <div class="div-esquerda">
                         <label for="medicamentos" style="font-weight: bold">Nome do Medicamento:</label>
-                        <input type="text" id="medicamentos" name="medicamentos" class="custom-input1" placeholder="Digite aqui..." required>
+                        <input type="text" id="medicamentos" name="nome" class="custom-input1" placeholder="Digite aqui..." required>
                         <br><br>&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
                         <button class="styled-button" type="button" id="remover-btn">Remover</button>
                     </div>
 
                     <div class="div-direita">
                         <label for="como-usa" style="font-weight: bold">Classe Terapêutica:</label>
-                        <input type="text" id="como-usa" name="como-usa" class="custom-input1" placeholder="Digite aqui..." required>
+                        <input type="text" id="como-usa" name="classe" class="custom-input1" placeholder="Digite aqui..." required>
                         <br><br>&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
                         <button class="styled-button" type="button" id="adicionar-btn">Adicionar</button>
                     </div>
@@ -326,34 +326,33 @@ if ($resultPaciente->num_rows > 0) {
                 <input type="text" id="temperatura" name="temperatura" class="custom-input">
 
                 <label for="frequencia-cardiaca">FC:</label>
-                <input type="text" id="frequencia-cardiaca" name="frequencia-cardiaca" class="custom-input">
+                <input type="text" id="frequencia-cardiaca" name="frequencia_c" class="custom-input">
 
                 <label for="frequencia-respiratoria">FR:</label>
-                <input type="text" id="frequencia-respiratoria" name="frequencia-respiratoria" class="custom-input">
+                <input type="text" id="frequencia-respiratoria" name="frequencia_r" class="custom-input">
 
                 <label for="pressao-arterial">PA:</label>
-                <input type="text" id="pressao-arterial" name="pressao-arterial" class="custom-input">
+                <input type="text" id="pressao-arterial" name="pressao" class="custom-input">
             </div>
             <br>
 
             <div>
                 <h3>Inspeção:</h3><br>
-                <textarea class="queixa" id="queixa-inspecao" name="queixa-inspecao" placeholder="Digite aqui..."></textarea>
+                <textarea class="queixa" id="queixa-inspecao" name="inspecao" placeholder="Digite aqui..."></textarea>
             </div>
             <br>
 
             <div>
                 <h3>Palpação:</h3><br>
-                <textarea class="queixa" id="queixa-palpacao" name="queixa-palpacao" placeholder="Digite aqui..."></textarea>
+                <textarea class="queixa" id="queixa-palpacao" name="palpacao" placeholder="Digite aqui..."></textarea>
             </div>
             <br>
 
             <div>
                 <h3>Sensibilidade:</h3><br>
-                <textarea class="queixa" id="queixa-sensibilidade" name="queixa-sensibilidade" placeholder="Digite aqui..."></textarea>
+                <textarea class="queixa" id="queixa-sensibilidade" name="sensibilidade" placeholder="Digite aqui..."></textarea>
             </div>
             <br>
-
             <div>
                 <h3>Reflexos Tendinos Profundos:</h3>
                 <br>
@@ -440,77 +439,74 @@ if ($resultPaciente->num_rows > 0) {
                         </tr>
                     </tbody>
                 </table>
-
                 <br><br>
 
                 <!-- Avaliação da Dor (EVA) -->
                 <h3>Avaliação da Dor:</h3>
-        <br><br><br><br><br>
-        
-        <div class="scale-container">
-            <!-- Labels acima da escala (LEVE, MODERADA, INTENSA) -->
-            <div class="sections">
-                <div>LEVE</div>
-                <div>MODERADA</div>
-                <div>INTENSA</div>
-            </div>
-    
-            <!-- Números da escala -->
-            <div class="scale-numbers">
-                <span>0</span>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
-                <span>6</span>
-                <span>7</span>
-                <span>8</span>
-                <span>9</span>
-                <span>10</span>
-            </div>
-    
-            <!-- Barra de cores -->
-            <div class="scale">
-                <!-- Marcador de rosto -->
-                <div id="marker" class="marker">
-                    <img src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/slightly-smiling-face_1f642.png" alt="Rosto">
-                </div>
-            </div>
-        </div>
-    
-        <!--Aqui acaba o rosto-->
+                <br><br>
 
-        <br><br>
-        <form id="form-dor1">
-            <div class="div-esquerda">
-                <label for="dor1" style="font-weight: bold">Local da Dor:</label>
-                <input type="text" id="dor1" name="dor" class="custom-input1" placeholder="Digite aqui..." required>
-                <br><br>&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
-                <button class="styled-button" type="button" id="remover-btn1">Remover</button>
-            </div>
-            
-            <div class="div-direita">
-                <label for="eva1" style="font-weight: bold">EVA:</label>
-                <input type="text" id="eva1" name="eva" class="custom-input1" placeholder="Digite aqui..." required>
-                <br><br>&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
-                <button class="styled-button" type="button" id="adicionar-btn1">Adicionar</button>
-            </div>
-        </form>
-        
-        <br>
-        
-        <table id="tabela-dor1" class="tableC" border="1">
-            <thead>
-                <tr>
-                    <th>Local da Dor</th>
-                    <th>EVA</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- As linhas serão adicionadas dinamicamente aqui -->
-            </tbody>
-        </table>
+                <div class="scale-container">
+                    <!-- Labels acima da escala (LEVE, MODERADA, INTENSA) -->
+                    <div class="sections">
+                        <div>LEVE</div>
+                        <div>MODERADA</div>
+                        <div>INTENSA</div>
+                    </div>
+
+                    <!-- Números da escala -->
+                    <div class="scale-numbers">
+                        <span>0</span>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                    </div>
+
+                    <!-- Barra de cores -->
+                    <div class="scale">
+                        <!-- Marcador de rosto -->
+                        <div id="marker" class="marker">
+                            <img src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/slightly-smiling-face_1f642.png" alt="Rosto">
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <form id="form-dor1">
+                    <div class="div-esquerda">
+                        <label for="dor1" style="font-weight: bold">Local da Dor:</label>
+                        <input type="text" id="dor1" name="local_dor" class="custom-input1" placeholder="Digite aqui..." required>
+                        <br><br>
+                        <button class="styled-button" type="button" id="remover-btn1">Remover</button>
+                    </div>
+
+                    <div class="div-direita">
+                        <label for="eva1" style="font-weight: bold">EVA:</label>
+                        <input type="text" id="eva1" name="eva" class="custom-input1" placeholder="Digite aqui..." required>
+                        <br><br>
+                        <button class="styled-button" type="button" id="adicionar-btn1">Adicionar</button>
+                    </div>
+                </form>
+
+                <br>
+
+                <table id="tabela-dor1" class="tableC" border="1">
+                    <thead>
+                        <tr>
+                            <th>Local da Dor</th>
+                            <th>EVA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- As linhas serão adicionadas dinamicamente aqui -->
+                    </tbody>
+                </table>
+
                 <br><br>
 
                 <!-- Características da Dor -->
@@ -518,25 +514,25 @@ if ($resultPaciente->num_rows > 0) {
                     <div class="estilodemarcar">
                         <label class="label-bold">História da Dor:</label>
                         <div class="opcoes-dor">
-                            <label><input type="radio" name="historia-dor1" value="Aguda"> Aguda</label>&nbsp
-                            <label><input type="radio" name="historia-dor1" value="Crônica"> Crônica</label>
+                            <label><input type="radio" name="historia_dor" value="Aguda"> Aguda</label>&nbsp
+                            <label><input type="radio" name="historia_dor" value="Crônica"> Crônica</label>
                         </div>
                     </div>
 
                     <div class="estilodemarcar">
                         <label class="label-bold">Frequência:</label>
                         <div class="opcoes-dor">
-                            <label><input type="radio" name="frequencia1" value="Constante"> Constante</label>&nbsp
-                            <label><input type="radio" name="frequencia1" value="Intermitente"> Intermitente</label>
+                            <label><input type="radio" name="frequencia_dor" value="Constante"> Constante</label>&nbsp
+                            <label><input type="radio" name="frequencia_dor" value="Intermitente"> Intermitente</label>
                         </div>
                     </div>
 
                     <div class="estilodemarcar">
                         <label class="label-bold">Característica:</label>
                         <div class="opcoes-dor">
-                            <label><input type="radio" name="caracteristica1" value="Localizada"> Localizada</label>&nbsp
-                            <label><input type="radio" name="caracteristica1" value="Irradiada"> Irradiada</label>&nbsp
-                            <label><input type="radio" name="caracteristica1" value="Difusa"> Difusa</label>&nbsp
+                            <label><input type="radio" name="caracteristica_dor" value="Localizada"> Localizada</label>&nbsp
+                            <label><input type="radio" name="caracteristica_dor" value="Irradiada"> Irradiada</label>&nbsp
+                            <label><input type="radio" name="caracteristica_dor" value="Difusa"> Difusa</label>&nbsp
                         </div>
                     </div>
                 </form>
@@ -548,29 +544,27 @@ if ($resultPaciente->num_rows > 0) {
                 <br><br>
                 <div>
                     <h4>Dor:</h4><br>
-                    <textarea class="queixa" id="queixa-sensibilidade" name="queixa-sensibilidade" placeholder="Digite aqui..."></textarea>
+                    <textarea class="queixa" id="queixa-sensibilidade" name="movimentos_dor" placeholder="Digite aqui..."></textarea>
                 </div>
                 <br>
-
                 <div>
                     <h4>Fatores agravantes:</h4><br>
-                    <textarea class="queixa" id="queixa-sensibilidade" name="queixa-sensibilidade" placeholder="Digite aqui..."></textarea>
+                    <textarea class="queixa" id="queixa-sensibilidade" name="agravantes" placeholder="Digite aqui..."></textarea>
                 </div>
                 <br>
-
                 <div>
                     <h4>Fatores atenuantes:</h4><br>
-                    <textarea class="queixa" id="queixa-sensibilidade" name="queixa-sensibilidade" placeholder="Digite aqui..."></textarea>
+                    <textarea class="queixa" id="queixa-sensibilidade" name="atenuantes" placeholder="Digite aqui..."></textarea>
                 </div>
                 <br>
-
                 <div style="text-align: right;">
-                    <button class="styled-button" type="button" onclick="window.location.href='tela2.html';">Próxima página -></button>
+                    <button class="styled-button" type="submit">Próxima página -></button>
                 </div>
-        </form>
+                </form>
     </div>
 
     <script src="Script/Script.js"></script>
+    
 </body>
 
 </html>
