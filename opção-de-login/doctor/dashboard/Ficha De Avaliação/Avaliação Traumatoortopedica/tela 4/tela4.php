@@ -122,7 +122,7 @@ if ($stmt->execute()) {
 
 $stmt->close();
 }
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">

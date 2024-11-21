@@ -11,7 +11,7 @@ $nota_levantar = $_POST['nota-levantar'] ?? null;
 $diag_fisio = $_POST['diag-fisio'] ?? null;
 $objetivo = $_POST['objetivo'] ?? null;
 
-$idFichaAvaliaçãoGeriatrica = 27; // Exemplo de ID, ajuste conforme necessário.
+
 
 $pa_0 = $_POST['PA-0'] ?? null;
 $pa_3 = $_POST['PA-3'] ?? null;
@@ -59,6 +59,8 @@ try {
         throw new Exception("Erro ao inserir em fichaavaliaçãogeriatrica: " . $stmt1->error);
     }
 
+    $idFichaAvaliaçãoGeriatrica = $conn->insert_id;
+
     // Inserir na tabela TesteCaminhada
     $sql2 = "INSERT INTO TesteCaminhada (
         idFichaAvaliaçãoGeriatrica,
@@ -76,12 +78,23 @@ try {
     $stmt2->bind_param(
         "iiiiiiiiiiiiiiiidd",
         $idFichaAvaliaçãoGeriatrica,
-        $pa_0, $pa_3, $pa_6,
-        $fc_0, $fc_3, $fc_6,
-        $sat_0, $sat_3, $sat_6,
-        $fr_0, $fr_3, $fr_6,
-        $borg_0, $borg_3, $borg_6,
-        $distancia_percorrida, $distancia_prevista
+        $pa_0,
+        $pa_3,
+        $pa_6,
+        $fc_0,
+        $fc_3,
+        $fc_6,
+        $sat_0,
+        $sat_3,
+        $sat_6,
+        $fr_0,
+        $fr_3,
+        $fr_6,
+        $borg_0,
+        $borg_3,
+        $borg_6,
+        $distancia_percorrida,
+        $distancia_prevista
     );
 
     if (!$stmt2->execute()) {
@@ -103,4 +116,3 @@ try {
     $stmt2->close();
     $conn->close();
 }
-?>
