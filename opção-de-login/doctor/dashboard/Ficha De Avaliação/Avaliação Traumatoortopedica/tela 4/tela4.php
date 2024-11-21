@@ -1,10 +1,16 @@
 <?php 
+session_start(); 
 include('../../../../conexões/conexao.php'); 
+
+// Captura o ID da ficha na sessão
+if (isset($_SESSION['idFichaTraumatoOrtopedica'])) {
+    $idFichaTraumatoOrtopedica = $_SESSION['idFichaTraumatoOrtopedica'];
+} else {
+    die("ID da ficha não encontrado.");
+}
 
 if (isset($_POST['submit'])) {
     // Recebe os dados do formulário
-    $consultas_idConsultas = '1';
-    $consultas_paciente_idPaciente = '1';
     $dedo_extensao_C6_C8_D1 = $_POST['dedo_extensao_C6_C8_D1'];
     $dedo_extensao_C6_C8_E1 = $_POST['dedo_extensao_C6_C8_E1'];
     $dedo_flexao_C6_T1_D1 = $_POST['dedo_flexao_C6_T1_D1'];
@@ -65,8 +71,7 @@ if (isset($_POST['submit'])) {
     $pe_extensaoMTF_L4_S1_E1 = $_POST['pe_extensaoMTF_L4_S1_E1'];
 
     $query = "INSERT INTO fichatraumatoortopédica4 (
-        consultas_idConsultas,
-        consultas_paciente_idPaciente,
+        idFichaTraumatoOrtopédica,
         dedo_extensao_C6_C8_D1, dedo_extensao_C6_C8_E1, dedo_flexao_C6_T1_D1, dedo_flexao_C6_T1_E1,
         dedo_flexaoIF_C8_T1_D1, dedo_flexaoIF_C8_T1_E1, dedo_extensao_C6_C7_D1, dedo_extensao_C6_C7_E1,
         dedo_abducao_C6_C7_D1, dedo_abducao_C6_C7_E1, dedo_aducaoP_C8_T1_D1, dedo_aducaoP_C8_T1_E1,
@@ -82,7 +87,7 @@ if (isset($_POST['submit'])) {
         pe_flexaoIFD_L5_S1_D1, pe_flexaoIFD_L5_S1_E1, pe_flexaoIFP_L4_S5_D1, pe_flexaoIFP_L4_S5_E1,
         pe_extensao_L4_S1_D1, pe_extensao_L4_S1_E1, pe_extensaoIF_L4_S1_D1, pe_extensaoIF_L4_S1_E1,
         pe_extensaoMTF_L4_S1_D1, pe_extensaoMTF_L4_S1_E1
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $mysqli->prepare($query);
 
@@ -90,8 +95,8 @@ if (isset($_POST['submit'])) {
         die('Erro ao preparar a consulta: ' . $mysqli->error);
     }
 
-    $stmt->bind_param('iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
-    $consultas_idConsultas, $consultas_paciente_idPaciente, $dedo_extensao_C6_C8_D1, $dedo_extensao_C6_C8_E1, $dedo_flexao_C6_T1_D1, $dedo_flexao_C6_T1_E1,
+    $stmt->bind_param('iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
+    $idFichaTraumatoOrtopedica, $dedo_extensao_C6_C8_D1, $dedo_extensao_C6_C8_E1, $dedo_flexao_C6_T1_D1, $dedo_flexao_C6_T1_E1,
     $dedo_flexaoIF_C8_T1_D1, $dedo_flexaoIF_C8_T1_E1, $dedo_extensao_C6_C7_D1, $dedo_extensao_C6_C7_E1,
     $dedo_abducao_C6_C7_D1, $dedo_abducao_C6_C7_E1, $dedo_aducaoP_C8_T1_D1, $dedo_aducaoP_C8_T1_E1,
     $dedo_oposicao_C6_C7_D1, $dedo_oposicao_C6_C7_E1, $dedo_oposicao_C8_T1_D1, $dedo_oposicao_C8_T1_E1,
@@ -110,7 +115,7 @@ if (isset($_POST['submit'])) {
 
 if ($stmt->execute()) {
     echo "Dados inseridos com sucesso!";
-    header("Location: ../tela5/index.html?idPaciente=" . $idPaciente);
+    header("Location: ../tela5/index.html");
 } else {
     echo "Erro ao inserir os dados: " . $stmt->error;
 }

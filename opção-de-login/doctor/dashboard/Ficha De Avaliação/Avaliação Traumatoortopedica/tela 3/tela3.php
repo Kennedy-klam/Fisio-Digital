@@ -1,10 +1,16 @@
 <?php
+session_start(); 
 include('../../../../conexões/conexao.php'); 
+
+// Captura o ID da ficha na sessão
+if (isset($_SESSION['idFichaTraumatoOrtopedica'])) {
+    $idFichaTraumatoOrtopedica = $_SESSION['idFichaTraumatoOrtopedica'];
+} else {
+    die("ID da ficha não encontrado.");
+}
 
 if (isset($_POST['submit'])) {
     // Recebe os dados do formulário
-    $consultas_idConsultas = '1';
-    $consultas_paciente_idPaciente = '1';
     $escapula_protracao_C5_C7_D1 = $_POST['escapula_protracao_C5_C7_D1'];
     $escapula_protracao_C5_C7_E1 = $_POST['escapula_protracao_C5_C7_E1'];
     $escapula_elevacao_C3_C4_D1 = $_POST['escapula_elevacao_C3_C4_D1'];
@@ -55,8 +61,7 @@ if (isset($_POST['submit'])) {
     $dedo_felxao_C8_T1_E1 = $_POST['dedo_felxao_C8_T1_E1'];
 
 $query = "INSERT INTO fichatraumatoortopédica3 (
-    consultas_idConsultas,
-    consultas_paciente_idPaciente,
+    idFichaTraumatoOrtopédica,
     escapula_protracao_C5_C7_D1,
     escapula_protracao_C5_C7_E1,
     escapula_elevacao_C3_C4_D1,
@@ -105,7 +110,7 @@ $query = "INSERT INTO fichatraumatoortopédica3 (
     dedo_felxao_C7_T1_E1,
     dedo_felxao_C8_T1_D1,
     dedo_felxao_C8_T1_E1
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $mysqli->prepare($query);
 
@@ -115,8 +120,8 @@ if ($stmt === false) {
 
 // Bind de parâmetros
 $stmt->bind_param(
-    'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
-    $consultas_idConsultas, $consultas_paciente_idPaciente, $escapula_protracao_C5_C7_D1, $escapula_protracao_C5_C7_E1, $escapula_elevacao_C3_C4_D1, $escapula_elevacao_C3_C4_E1, 
+    'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
+    $idFichaTraumatoOrtopedica, $escapula_protracao_C5_C7_D1, $escapula_protracao_C5_C7_E1, $escapula_elevacao_C3_C4_D1, $escapula_elevacao_C3_C4_E1, 
     $escapula_retacao_C3_C4_D1, $escapula_retacao_C3_C4_E1, $escapula_depressao_C3_C4_D1, $escapula_depressao_C3_C4_E1, 
     $escapula_retacao_C5_D1, $escapula_retacao_C5_E1, $ombro_flexao_C5_C6_D1, $ombro_flexao_C5_C6_E1, 
     $ombro_extensao_C5_C7_D1, $ombro_extensao_C5_C7_E1, $ombro_abducao_C5_C6_D1, $ombro_abducao_C5_C6_E1, 
@@ -131,7 +136,7 @@ $stmt->bind_param(
 );
 
 if ($stmt->execute()) {
-    header("Location: ../tela 4/tela4.php?idPaciente=" . $idPaciente);
+    header("Location: ../tela 4/tela4.php");
 } else {
     echo "Erro ao inserir os dados: " . $stmt->error;
 }
