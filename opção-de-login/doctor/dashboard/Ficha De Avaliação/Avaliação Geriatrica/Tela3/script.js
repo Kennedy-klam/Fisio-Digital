@@ -78,36 +78,61 @@ function calcularNota(){
     document.getElementById('nota-levantar').value = notaLevantar.toFixed(1)
 
 }
-
-function calcularMedida(){
-    const genero = document.getElementById('genero').value
+async function calcularMedida() {
     const medida = parseFloat(document.getElementById('medidaTaf').value)
     const resultadoSpan = document.getElementById('resultado')
-    //const tolerancia = 3
 
+    //tabela com faixa etária e o valor normativo
     const faixas = [
-        {faixa:'20 - 40 anos', homem: 42.41, mulher: 37.08},
-        {faixa:'41 - 69anos', homem: 37.84, mulher: 35.05},
-        {faixa:'70 - 87 anos', homem: 33.52, mulher: 26.63}
-    ]
+        { faixa: '20 - 40 anos', homem: 42.41, mulher: 37.08, minIdade: 20, maxIdade: 40 },
+        { faixa: '41 - 69 anos', homem: 37.84, mulher: 35.05, minIdade: 41, maxIdade: 69 },
+        { faixa: '70 - 87 anos', homem: 33.52, mulher: 26.63, minIdade: 70, maxIdade: 87 }
+    ];
 
-    let resultado = 'Nenhuma faixa correspondente'
-    let avaliacao = ''
-    
+    try {
+        //simular requisição do banco via API 
+        const resposta = await fetch('httpexemplo')
+        const dadosPaciente = await resposta.json()
 
-    for(const faixa of faixas ){
-        const valorEsperado = genero === "Homem"? faixa.homem : faixa.mulher
-        
- //FALTA ARRUMAR ESSE SCRIPT
-        if(medida === valorEsperado){
-            resultado = `${genero === "Homem" ? 'homem' : 'mulher'}, ${faixa.faixa}`
-            avaliacao = 'Na média!'     
-        }else if(medida < valorEsperado){
-            resultado = `${genero === "Homem" ? 'homem' : 'mulher'}, ${faixa.faixa}`
-            avaliacao = 'Abaixo da média!'
-        }else if(medida > valorEsperado){
-            resultado = `${genero === ""}`
+        //puxando o secsu e a idade
+        const{sexo, idade} = dadosPaciente
+
+        //aqui valida us dadus
+        if(!sexo || !idade || isNaN(idade)){
+            resultadoSpan.textContent = 'Erro: dados inválidos retornados do banco de dados'
+            return
         }
+
+        //determinar a faixa etária correta 
+        const faixaCorrespondente = faixas.find(faixa => idade >= faixa.minIdade && idade <= faixa.maxIdade)
+
+        if(!faixaCorrespondente){
+            resultadoSpan.textContent = 'idade fora das faixas etárias!'
+            return
+        }
+        //determina o valor esperado com base no secsu rsrs
+        const valorEsperado = sexo === "homem" ? faixaCorrespondente.homem : faixaCorrespondente.mulher
+
+        let resultado = ''
+        let avaliacao = ''
+
+        if (medida === valorEsperado){
+            resultado = `${sexo === "homem" ? 'Homem' : 'Mulher'}, ${faixaCorrespondente.faixa}`
+            avaliacao = 'Na média!'
+        } else if (medida < valorEsperado){
+            resultado = `${sexo === "homem" ? 'Homem' : 'Mulher'}, ${faixaCorrespondente.faixa}`;
+            avaliacao = 'Abaixo da média!';
+        } else{
+            resultado = `${sexo === "homem" ? 'Homem' : 'Mulher'}, ${faixaCorrespondente.faixa}`;
+            avaliacao = 'Acima da média!';
+        }
+
+        //exibir o resultado 
+        resultadoSpan.textContent = `${resultado} . ${avaliacao}`
+    }catch(error){
+        //aqui vai trartar eeros na comunicação com o banco
+        resultadoSpan.textContent ='Erro ao conectar com o banco de dados. Verifique a conexão'
+        console.error('ERRO', error)
     }
-    resultadoSpan.textContent = `${resultado} . ${avaliacao}`
 }
+

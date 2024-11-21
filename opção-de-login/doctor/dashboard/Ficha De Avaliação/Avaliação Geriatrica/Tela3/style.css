@@ -133,7 +133,7 @@ input[type="number"] {
   color: #113838;
   
 }
-.medida[type="number"]{
+.medida[type="number"], .idade[type="number"]{
   margin-left: 197px;  /*input do "Valores normativos do TAF"*/
   width: 15%;
   height: 40px;
