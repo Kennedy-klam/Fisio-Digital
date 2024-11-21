@@ -131,8 +131,17 @@ input[type="number"] {
   box-sizing: 0;
   font-size: 30px;
   color: #113838;
+  
 }
-
+.medida[type="number"]{
+  margin-left: 197px;  /*input do "Valores normativos do TAF"*/
+  width: 15%;
+  height: 40px;
+  border: 1px solid #113838 ;
+  box-sizing: 0;
+  font-size: 15px;
+  color: #113838;
+}
 input[type="text"] {
   width: 10%;
   height: 45px;

@@ -78,3 +78,33 @@ function calcularNota(){
     document.getElementById('nota-levantar').value = notaLevantar.toFixed(1)
 
 }
+
+function calcularMedida(){
+    const medida = parseFloat(document.getElementById('medidaTaf').value)
+    const resultadoSpan = document.getElementById('resultado')
+    const tolerancia = 5
+
+    const faixas = [
+        {faixa:'20 - 40 anos', homem: 42.41, mulher: 37.08},
+        {faixa:'41 - 69anos', homem: 37.84, mulher: 35.05},
+        {faixa:'70 - 87 anos', homem: 33.52, mulher: 26.63}
+    ]
+    let resultado = 'Nenhuma faixa correspondente'
+    let menorDiferenca = tolerancia + 5
+
+    for(const faixa of faixas ){
+        const diferencaHomem = Math.abs(medida - faixa.homem)
+        const diferencaMulher = Math.abs(medida - faixa.mulher)
+
+        if(diferencaHomem <= tolerancia && diferencaHomem < menorDiferenca){
+            resultado = `Homem, ${faixa.faixa}`
+            menorDiferenca = diferencaHomem
+            
+        }
+        if (diferencaMulher <= tolerancia && diferencaMulher < menorDiferenca){
+            resultado = `Mulher, ${faixa.faixa}`
+            menorDiferenca = diferencaMulher
+        }
+    }
+    resultadoSpan.textContent = `Resultado: ${resultado}`
+}
