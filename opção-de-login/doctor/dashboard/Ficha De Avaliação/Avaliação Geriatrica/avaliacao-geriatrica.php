@@ -655,7 +655,7 @@ if ($result->num_rows > 0) {
                         <div class="section">
                             <legend>Linguagem (1 ponto):</legend>
                             <div>
-                                Clique <a href="instrucao.html" target="_blank">&nbsp;AQUI &nbsp;</a> e peça ao
+                                Clique <a href="images/instrucao.html" target="_blank">&nbsp;AQUI &nbsp;</a> e peça ao
                                 entrevistado ler
                                 a ordem e executá-la.
                             </div>
@@ -697,7 +697,7 @@ if ($result->num_rows > 0) {
                                 Tremor e rotação podem ser ignorados.
                             </div>
                             <p></p>
-                            <a href="imagens/desenho.jpeg" target="_blank">Clique aqui para ver o desenho</a>
+                            <a href="images/desenho.jpeg" target="_blank">Clique aqui para ver o desenho</a>
                             <div class="notes">
                                 Nota:
                                 <select class="notes-input" name="copDesenho" aria-label="Default select example">
@@ -1059,7 +1059,7 @@ if ($result->num_rows > 0) {
                 <h1>CRONÔMETRO:</h1>
             </div>
             <div class="timer" id="timer">
-                <img src="imagens/cronometro.png" alt="cronometro" class="image">
+                <img src="images/cronometro.png" alt="cronometro" class="image">
                 <label id="tempo" class="tempo">00:00</label>
                 <button class="iniciar" type="button" onclick="comecar()">INICIAR</button>
                 <button class="terminar" type="button" onclick="parar()">FINALIZAR</button>
