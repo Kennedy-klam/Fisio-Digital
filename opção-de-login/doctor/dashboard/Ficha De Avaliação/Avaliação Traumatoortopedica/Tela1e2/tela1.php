@@ -150,11 +150,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             die("Erro ao inserir dados do medicamento: " . $stmt2->error);
         }
     }
-
-    // Redireciona para a tela2.php após o sucesso na inserção dos dados
-    header("Location: tela2.php?idPaciente=" . $idPaciente);
-    exit;
-}
+     // Armazenar dados na sessão para serem acessados em tela2.php
+     $_SESSION['idFichaTraumatoOrtopédica'] = $consultas_idConsultas;
+     $_SESSION['consultas_idConsultas'] = $consultas_idConsultas;
+     $_SESSION['consultas_paciente_idPaciente'] = $consultas_paciente_idPaciente;
+ 
+     // Redireciona para tela2.php
+     header("Location: tela2.php?idPaciente=" . $idPaciente);
+     exit;
+ }
 
 // Consulta os dados do paciente
 $sqlPaciente = "SELECT nome, nascimento, telefone, profissao, endereço, naturalidade, estaCivil, sexo 
@@ -198,7 +202,8 @@ if ($resultPaciente->num_rows > 0) {
 
 <body>
 <form method="POST" action="">
-<input type="hidden" name="Consultas_Paciente_idPaciente" value="<?php echo $_GET['idPaciente']; ?>">
+<input type="hidden" name="consultas_idConsultas" value="<?php echo $consultas_idConsultas; ?>">
+<input type="hidden" name="consultas_paciente_idPaciente" value="<?php echo $consultas_paciente_idPaciente; ?>">
     <div class="container">
         <h1>Ficha de Avaliação de Fisioterapia</h1>
         <h1>Traumato-Ortopédica e Reumatológica</h1>

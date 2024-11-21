@@ -1,4 +1,7 @@
 <?php
+session_start();  // Inicia a sessão para capturar os dados
+include('../../../../conexões/conexao.php');
+
 // Verifica se o idPaciente foi passado na URL
 if (isset($_GET['idPaciente'])) {
     $idPaciente = $_GET['idPaciente'];
@@ -8,6 +11,449 @@ if (isset($_GET['idPaciente'])) {
     echo "ID do paciente não fornecido.";
 }
 
+$idPaciente = $_GET['idPaciente'] ?? null;
+
+if (!$idPaciente) {
+    die("ID do paciente não fornecido.");
+}
+
+
+// 1. Consultar a consulta associada ao paciente
+$sql = "SELECT idConsultas, Paciente_idPaciente FROM consultas WHERE Paciente_idPaciente = ?";
+$stmt = $mysqli->prepare($sql);
+if (!$stmt) {
+    die("Erro ao preparar a consulta de consulta: " . $mysqli->error);
+}
+$stmt->bind_param("i", $idPaciente); // "i" para inteiro (id do paciente)
+if (!$stmt->execute()) {
+    die("Erro ao executar a consulta de consulta: " . $stmt->error);
+}
+$result = $stmt->get_result();
+
+// Verifica se a consulta foi encontrada
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $consultas_idConsultas = $row['idConsultas'];  // ID da consulta
+    $consultas_paciente_idPaciente = $row['Paciente_idPaciente'];  // ID do paciente
+} else {
+    die("Consulta não encontrada para este paciente.");
+}
+
+// Verifica se o formulário foi enviado (POST)
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $consultas_idConsultas = '1';
+    $consultas_paciente_idPaciente = '1';
+    $segmento1 = htmlspecialchars($_POST['segmento1'] ?? '');
+    $pontoRef1 = htmlspecialchars($_POST['pontoRef1'] ?? '');
+    $cm_1 = htmlspecialchars($_POST['cm_1'] ?? '');
+    $esquerda1 = htmlspecialchars($_POST['esquerda1'] ?? '');
+    $direita1 = htmlspecialchars($_POST['direita1'] ?? '');
+    $data1 = htmlspecialchars($_POST['data1'] ?? '');
+    $segmento2 = htmlspecialchars($_POST['segmento2'] ?? '');
+    $pontoRef2 = htmlspecialchars($_POST['pontoRef2'] ?? '');
+    $cm_2 = htmlspecialchars($_POST['cm_2'] ?? '');
+    $data2 = htmlspecialchars($_POST['data2'] ?? '');
+    $esquerdo2 = htmlspecialchars($_POST['esquerdo2'] ?? '');
+    $direito2 = htmlspecialchars($_POST['direito2'] ?? '');
+    $discrepancia_aparente_esquerdo_1 = htmlspecialchars($_POST['discrepancia_aparente_esquerdo_1'] ?? '');
+    $discrepancia_aparente_direito_1 = htmlspecialchars($_POST['discrepancia_aparente_direito_1'] ?? '');
+    $discrepancia_real_esquerdo_1 = htmlspecialchars($_POST['discrepancia_real_esquerdo_1'] ?? '');
+    $discrepancia_real_direito_1 = htmlspecialchars($_POST['discrepancia_real_direito_1'] ?? '');
+    $testeGaleazzi = htmlspecialchars($_POST['testeGaleazzi'] ?? '');
+    $dataGonio = htmlspecialchars($_POST['dataGonio'] ?? '');
+
+    $ombro_flexao_esq = htmlspecialchars($_POST['ombro_flexao_esq'] ?? '');
+    $ombro_flexao_dir = htmlspecialchars($_POST['ombro_flexao_dir'] ?? '');
+    $ombro_extensao_esq = htmlspecialchars($_POST['ombro_extensao_esq'] ?? '');
+    $ombro_extensao_dir = htmlspecialchars($_POST['ombro_extensao_dir'] ?? '');
+    $ombro_aducao_esq = htmlspecialchars($_POST['ombro_aducao_esq'] ?? '');
+    $ombro_aducao_dir = htmlspecialchars($_POST['ombro_aducao_dir'] ?? '');
+    $ombro_abducao_esq = htmlspecialchars($_POST['ombro_abducao_esq'] ?? '');
+    $ombro_abducao_dir = htmlspecialchars($_POST['ombro_abducao_dir'] ?? '');
+    $ombro_rotacao_interna_esq = htmlspecialchars($_POST['ombro_rotacao_interna_esq'] ?? '');
+    $ombro_rotacao_interna_dir = htmlspecialchars($_POST['ombro_rotacao_interna_dir'] ?? '');
+    $ombro_rotacao_externa_esq = htmlspecialchars($_POST['ombro_rotacao_externa_esq'] ?? '');
+    $ombro_rotacao_externa_dir = htmlspecialchars($_POST['ombro_rotacao_externa_dir'] ?? '');
+
+    $cotovelo_flexao_esq = htmlspecialchars($_POST['cotovelo_flexao_esq'] ?? '');
+    $cotovelo_flexao_dir = htmlspecialchars($_POST['cotovelo_flexao_dir'] ?? '');
+    $cotovelo_extensao_esq = htmlspecialchars($_POST['cotovelo_extensao_esq'] ?? '');
+    $cotovelo_extensao_dir = htmlspecialchars($_POST['cotovelo_extensao_dir'] ?? '');
+
+    $radiulnar_pronacao_esq = htmlspecialchars($_POST['radiulnar_pronacao_esq'] ?? '');
+    $radiulnar_pronacao_dir = htmlspecialchars($_POST['radiulnar_pronacao_dir'] ?? '');
+    $radiulnar_supinacao_esq = htmlspecialchars($_POST['radiulnar_supinacao_esq'] ?? '');
+    $radiulnar_supinacao_dir = htmlspecialchars($_POST['radiulnar_supinacao_dir'] ?? '');
+
+    $punho_flexao_esq = htmlspecialchars($_POST['punho_flexao_esq'] ?? '');
+    $punho_flexao_dir = htmlspecialchars($_POST['punho_flexao_dir'] ?? '');
+    $punho_extensao_esq = htmlspecialchars($_POST['punho_extensao_esq'] ?? '');
+    $punho_extensao_dir = htmlspecialchars($_POST['punho_extensao_dir'] ?? '');
+    $punho_desvio_esq = htmlspecialchars($_POST['punho_desvio_esq'] ?? '');
+    $punho_desvio_dir = htmlspecialchars($_POST['punho_desvio_dir'] ?? '');
+    $punho_radial_esq = htmlspecialchars($_POST['punho_radial_esq'] ?? '');
+    $punho_radial_dir = htmlspecialchars($_POST['punho_radial_dir'] ?? '');
+
+    $cmc_polegar_flexao_esq = htmlspecialchars($_POST['cmc_polegar_flexao_esq'] ?? '');
+    $cmc_polegar_flexao_dir = htmlspecialchars($_POST['cmc_polegar_flexao_dir'] ?? '');
+    $cmc_polegar_extensao_esq = htmlspecialchars($_POST['cmc_polegar_extensao_esq'] ?? '');
+    $cmc_polegar_extensao_dir = htmlspecialchars($_POST['cmc_polegar_extensao_dir'] ?? '');
+    $cmc_polegar_abducao_esq = htmlspecialchars($_POST['cmc_polegar_abducao_esq'] ?? '');
+    $cmc_polegar_abducao_dir = htmlspecialchars($_POST['cmc_polegar_abducao_dir'] ?? '');
+
+    $mcf_flexao_esq = htmlspecialchars($_POST['mcf_flexao_esq'] ?? '');
+    $mcf_flexao_dir = htmlspecialchars($_POST['mcf_flexao_dir'] ?? '');
+    $mcf_extensao_esq = htmlspecialchars($_POST['mcf_extensao_esq'] ?? '');
+    $mcf_extensao_dir = htmlspecialchars($_POST['mcf_extensao_dir'] ?? '');
+    $mcf_abducao_esq = htmlspecialchars($_POST['mcf_abducao_esq'] ?? '');
+    $mcf_abducao_dir = htmlspecialchars($_POST['mcf_abducao_dir'] ?? '');
+    $mcf_aducao_esq = htmlspecialchars($_POST['mcf_aducao_esq'] ?? '');
+    $mcf_aducao_dir = htmlspecialchars($_POST['mcf_aducao_dir'] ?? '');
+
+    $interfalangicas_flexao_esq = htmlspecialchars($_POST['interfalangicas_flexao_esq'] ?? '');
+    $interfalangicas_flexao_dir = htmlspecialchars($_POST['interfalangicas_flexao_dir'] ?? '');
+    $interfalangicas_extensao_esq = htmlspecialchars($_POST['interfalangicas_extensao_esq'] ?? '');
+    $interfalangicas_extensao_dir = htmlspecialchars($_POST['interfalangicas_extensao_dir'] ?? '');
+
+    $quadril_flexao_esq = htmlspecialchars($_POST['quadril_flexao_esq'] ?? '');
+    $quadril_flexao_dir = htmlspecialchars($_POST['quadril_flexao_dir'] ?? '');
+    $quadril_extensao_esq = htmlspecialchars($_POST['quadril_extensao_esq'] ?? '');
+    $quadril_extensao_dir = htmlspecialchars($_POST['quadril_extensao_dir'] ?? '');
+    $quadril_abducao_esq = htmlspecialchars($_POST['quadril_abducao_esq'] ?? '');
+    $quadril_abducao_dir = htmlspecialchars($_POST['quadril_abducao_dir'] ?? '');
+    $quadril_aducao_esq = htmlspecialchars($_POST['quadril_aducao_esq'] ?? '');
+    $quadril_aducao_dir = htmlspecialchars($_POST['quadril_aducao_dir'] ?? '');
+    $quadril_rotacao_interna_esq = htmlspecialchars($_POST['quadril_rotacao_interna_esq'] ?? '');
+    $quadril_rotacao_interna_dir = htmlspecialchars($_POST['quadril_rotacao_interna_dir'] ?? '');
+    $quadril_rotacao_externa_esq = htmlspecialchars($_POST['quadril_rotacao_externa_esq'] ?? '');
+    $quadril_rotacao_externa_dir = htmlspecialchars($_POST['quadril_rotacao_externa_dir'] ?? '');
+
+    $joelho_flexao_esq = htmlspecialchars($_POST['joelho_flexao_esq'] ?? '');
+    $joelho_flexao_dir = htmlspecialchars($_POST['joelho_flexao_dir'] ?? '');
+    $joelho_extensao_esq = htmlspecialchars($_POST['joelho_extensao_esq'] ?? '');
+    $joelho_extensao_dir = htmlspecialchars($_POST['joelho_extensao_dir'] ?? '');
+
+    $tornozelo_dorsiflexao_esq = htmlspecialchars($_POST['tornozelo_dorsiflexao_esq'] ?? '');
+    $tornozelo_dorsiflexao_dir = htmlspecialchars($_POST['tornozelo_dorsiflexao_dir'] ?? '');
+    $tornozelo_plantarflexao_esq = htmlspecialchars($_POST['tornozelo_plantarflexao_esq'] ?? '');
+    $tornozelo_plantarflexao_dir = htmlspecialchars($_POST['tornozelo_plantarflexao_dir'] ?? '');
+
+    $subtalar_inversao_esq = htmlspecialchars($_POST['subtalar_inversao_esq'] ?? '');
+    $subtalar_inversao_dir = htmlspecialchars($_POST['subtalar_inversao_dir'] ?? '');
+    $subtalar_aversao_esq = htmlspecialchars($_POST['subtalar_aversao_esq'] ?? '');
+    $subtalar_aversao_dir = htmlspecialchars($_POST['subtalar_aversao_dir'] ?? '');
+
+    $mtf_flexao_i_dedo_esq = htmlspecialchars($_POST['mtf_flexao_i_dedo_esq'] ?? '');
+    $mtf_flexao_i_dedo_dir = htmlspecialchars($_POST['mtf_flexao_i_dedo_dir'] ?? '');
+    $mtf_il_v_dedo_esq = htmlspecialchars($_POST['mtf_il_v_dedo_esq'] ?? '');
+    $mtf_il_v_dedo_dir = htmlspecialchars($_POST['mtf_il_v_dedo_dir'] ?? '');
+    $mtf_extensao_i_dedo_esq = htmlspecialchars($_POST['mtf_extensao_i_dedo_esq'] ?? '');
+    $mtf_extensao_i_dedo_dir = htmlspecialchars($_POST['mtf_extensao_i_dedo_dir'] ?? '');
+    $mtf_il_v_dedo_2_esq = htmlspecialchars($_POST['mtf_il_v_dedo_2_esq'] ?? '');
+    $mtf_il_v_dedo_2_dir = htmlspecialchars($_POST['mtf_il_v_dedo_2_dir'] ?? '');
+    $if_flexao_if_i_dedo_esq = htmlspecialchars($_POST['if_flexao_if_i_dedo_esq'] ?? '');
+    $if_flexao_if_i_dedo_dir = htmlspecialchars($_POST['if_flexao_if_i_dedo_dir'] ?? '');
+    $ifp_ii_v_dedo_esq = htmlspecialchars($_POST['ifp_ii_v_dedo_esq'] ?? '');
+    $ifp_ii_v_dedo_dir = htmlspecialchars($_POST['ifp_ii_v_dedo_dir'] ?? '');
+    $ifd_ii_v_dedo_esq = htmlspecialchars($_POST['ifd_ii_v_dedo_esq'] ?? '');
+    $ifd_ii_v_dedo_dir = htmlspecialchars($_POST['ifd_ii_v_dedo_dir'] ?? '');
+
+    $col_cervical_flexao_esq = htmlspecialchars($_POST['col_cervical_flexao_esq'] ?? '');
+    $col_cervical_flexao_dir = htmlspecialchars($_POST['col_cervical_flexao_dir'] ?? '');
+    $col_cervical_extensao_esq = htmlspecialchars($_POST['col_cervical_extensao_esq'] ?? '');
+    $col_cervical_extensao_dir = htmlspecialchars($_POST['col_cervical_extensao_dir'] ?? '');
+    $col_cervical_flexao_lateral_esq = htmlspecialchars($_POST['col_cervical_flexao_lateral_esq'] ?? '');
+    $col_cervical_flexao_lateral_dir = htmlspecialchars($_POST['col_cervical_flexao_lateral_dir'] ?? '');
+    $col_cervical_rotacao_esq = htmlspecialchars($_POST['col_cervical_rotacao_esq'] ?? '');
+    $col_cervical_rotacao_dir = htmlspecialchars($_POST['col_cervical_rotacao_dir'] ?? '');
+
+    $col_lombar_flexao_esq = htmlspecialchars($_POST['col_lombar_flexao_esq'] ?? '');
+    $col_lombar_flexao_dir = htmlspecialchars($_POST['col_lombar_flexao_dir'] ?? '');
+    $col_lombar_extensao_esq = htmlspecialchars($_POST['col_lombar_extensao_esq'] ?? '');
+    $col_lombar_extensao_dir = htmlspecialchars($_POST['col_lombar_extensao_dir'] ?? '');
+    $col_lombar_flexao_lateral_esq = htmlspecialchars($_POST['col_lombar_flexao_lateral_esq'] ?? '');
+    $col_lombar_flexao_lateral_dir = htmlspecialchars($_POST['col_lombar_flexao_lateral_dir'] ?? '');
+    $col_lombar_rotacao_esq = htmlspecialchars($_POST['col_lombar_rotacao_esq'] ?? '');
+    $col_lombar_rotacao_dir = htmlspecialchars($_POST['col_lombar_rotacao_dir'] ?? '');
+
+    $med_valgo_joelhos_esq = htmlspecialchars($_POST['med_valgo_joelhos_esq'] ?? '');
+    $med_valgo_joelhos_dir = htmlspecialchars($_POST['med_valgo_joelhos_dir'] ?? '');
+    $med_varo_joelhos_esq = htmlspecialchars($_POST['med_varo_joelhos_esq'] ?? '');
+    $med_varo_joelhos_dir = htmlspecialchars($_POST['med_varo_joelhos_dir'] ?? '');
+    $med_recurvado_joelhos_esq = htmlspecialchars($_POST['med_recurvado_joelhos_esq'] ?? '');
+    $med_recurvado_joelhos_dir = htmlspecialchars($_POST['med_recurvado_joelhos_dir'] ?? '');
+    $med_valgo_cotovelo_esq = htmlspecialchars($_POST['med_valgo_cotovelo_esq'] ?? '');
+    $med_valgo_cotovelo_dir = htmlspecialchars($_POST['med_valgo_cotovelo_dir'] ?? '');
+    $med_varo_cotovelo_esq = htmlspecialchars($_POST['med_varo_cotovelo_esq'] ?? '');
+    $med_varo_cotovelo_dir = htmlspecialchars($_POST['med_varo_cotovelo_dir'] ?? '');
+    $med_valgo_retrope_esq = htmlspecialchars($_POST['med_valgo_retrope_esq'] ?? '');
+    $med_valgo_retrope_dir = htmlspecialchars($_POST['med_valgo_retrope_dir'] ?? '');
+    $med_varo_retrope_esq = htmlspecialchars($_POST['med_varo_retrope_esq'] ?? '');
+    $med_varo_retrope_dir = htmlspecialchars($_POST['med_varo_retrope_dir'] ?? '');
+    $med_hallux_valgo_esq = htmlspecialchars($_POST['med_hallux_valgo_esq'] ?? '');
+    $med_hallux_valgo_dir = htmlspecialchars($_POST['med_hallux_valgo_dir'] ?? '');
+
+    $flex_indice_schober_esq = htmlspecialchars($_POST['flex_indice_schober_esq'] ?? '');
+    $flex_indice_schober_dir = htmlspecialchars($_POST['flex_indice_schober_dir'] ?? '');
+    $flex_indice_stibor_esq = htmlspecialchars($_POST['flex_indice_stibor_esq'] ?? '');
+    $flex_indice_stibor_dir = htmlspecialchars($_POST['flex_indice_stibor_dir'] ?? '');
+    $flex_iii_dedo_solo_anterior_esq = htmlspecialchars($_POST['flex_iii_dedo_solo_anterior_esq'] ?? '');
+    $flex_iii_dedo_solo_anterior_dir = htmlspecialchars($_POST['flex_iii_dedo_solo_anterior_dir'] ?? '');
+
+    $teste_thomas_1 = htmlspecialchars($_POST['teste_thomas_1'] ?? '');
+    $opcao1 = htmlspecialchars($_POST['opcao1'] ?? '');
+    $teste_thomas_2 = htmlspecialchars($_POST['teste_thomas_2'] ?? '');
+    $opcao2 = htmlspecialchars($_POST['opcao2'] ?? '');
+    $teste_thomas_modificado_1 = htmlspecialchars($_POST['teste_thomas_modificado_1'] ?? '');
+    $opcao3 = htmlspecialchars($_POST['opcao3'] ?? '');
+    $teste_thomas_modificado_2 = htmlspecialchars($_POST['teste_thomas_modificado_2'] ?? '');
+    $opcao4 = htmlspecialchars($_POST['opcao4'] ?? '');
+    $teste_ober_1 = htmlspecialchars($_POST['teste_ober_1'] ?? '');
+    $opcao5 = htmlspecialchars($_POST['opcao5'] ?? '');
+    $teste_ober_2 = htmlspecialchars($_POST['teste_ober_2'] ?? '');
+    $opcao6 = htmlspecialchars($_POST['opcao6'] ?? '');
+    $teste_ely_1 = htmlspecialchars($_POST['teste_ely_1'] ?? '');
+    $opcao7 = htmlspecialchars($_POST['opcao7'] ?? '');
+    $teste_ely_2 = htmlspecialchars($_POST['teste_ely_2'] ?? '');
+    $opcao8 = htmlspecialchars($_POST['opcao8'] ?? '');
+    $teste_angulo_popliteo_1 = htmlspecialchars($_POST['teste_angulo_popliteo_1'] ?? '');
+    $opcao9 = htmlspecialchars($_POST['opcao9'] ?? '');
+    $teste_angulo_popliteo_2 = htmlspecialchars($_POST['teste_angulo_popliteo_2'] ?? '');
+    $opcao10 = htmlspecialchars($_POST['opcao10'] ?? '');
+    $outros = htmlspecialchars($_POST['outros'] ?? '');
+    
+        // Sua consulta INSERT com os valores fixos
+        $query1 = "INSERT INTO fichatraumatoortopédica2 (
+            consultas_idConsultas,
+            consultas_paciente_idPaciente,
+            segmento1,
+            pontoRef1,
+            cm_1,
+            esquerda1,
+            direita1,
+            data1,
+            segmento2,
+            pontoRef2,
+            cm_2,
+            data2,
+            esquerdo2,
+            direito2,
+            discrepancia_aparente_esquerdo_1,
+            discrepancia_aparente_direito_1,
+            discrepancia_real_esquerdo_1,
+            discrepancia_real_direito_1,
+            testeGaleazzi,
+            dataGonio,
+            ombro_flexao_esq,
+            ombro_flexao_dir,
+            ombro_extensao_esq,
+            ombro_extensao_dir,
+            ombro_aducao_esq,
+            ombro_aducao_dir,
+            ombro_abducao_esq,
+            ombro_abducao_dir,
+            ombro_rotacao_interna_esq,
+            ombro_rotacao_interna_dir,
+            ombro_rotacao_externa_esq,
+            ombro_rotacao_externa_dir,
+            cotovelo_flexao_esq,
+            cotovelo_flexao_dir,
+            cotovelo_extensao_esq,
+            cotovelo_extensao_dir,
+            radiulnar_pronacao_esq,
+            radiulnar_pronacao_dir,
+            radiulnar_supinacao_esq,
+            radiulnar_supinacao_dir,
+            punho_flexao_esq,
+            punho_flexao_dir,
+            punho_extensao_esq,
+            punho_extensao_dir,
+            punho_desvio_esq,
+            punho_desvio_dir,
+            punho_radial_esq,
+            punho_radial_dir,
+            cmc_polegar_flexao_esq,
+            cmc_polegar_flexao_dir,
+            cmc_polegar_extensao_esq,
+            cmc_polegar_extensao_dir,
+            cmc_polegar_abducao_esq,
+            cmc_polegar_abducao_dir,
+            mcf_flexao_esq,
+            mcf_flexao_dir,
+            mcf_extensao_esq,
+            mcf_extensao_dir,
+            mcf_abducao_esq,
+            mcf_abducao_dir,
+            mcf_aducao_esq,
+            mcf_aducao_dir,
+            interfalangicas_flexao_esq,
+            interfalangicas_flexao_dir,
+            interfalangicas_extensao_esq,
+            interfalangicas_extensao_dir,
+            quadril_flexao_esq,
+            quadril_flexao_dir,
+            quadril_extensao_esq,
+            quadril_extensao_dir,
+            quadril_abducao_esq,
+            quadril_abducao_dir,
+            quadril_aducao_esq,
+            quadril_aducao_dir,
+            quadril_rotacao_interna_esq,
+            quadril_rotacao_interna_dir,
+            quadril_rotacao_externa_esq,
+            quadril_rotacao_externa_dir,
+            joelho_flexao_esq,
+            joelho_flexao_dir,
+            joelho_extensao_esq,
+            joelho_extensao_dir,
+            tornozelo_dorsiflexao_esq,
+            tornozelo_dorsiflexao_dir,
+            tornozelo_plantarflexao_esq,
+            tornozelo_plantarflexao_dir,
+            subtalar_inversao_esq,
+            subtalar_inversao_dir,
+            subtalar_aversao_esq,
+            subtalar_aversao_dir,
+            mtf_flexao_i_dedo_esq,
+            mtf_flexao_i_dedo_dir,
+            mtf_il_v_dedo_esq,
+            mtf_il_v_dedo_dir,
+            mtf_extensao_i_dedo_esq,
+            mtf_extensao_i_dedo_dir,
+            mtf_il_v_dedo_2_esq,
+            mtf_il_v_dedo_2_dir,
+            if_flexao_if_i_dedo_esq,
+            if_flexao_if_i_dedo_dir,
+            ifp_ii_v_dedo_esq,
+            ifp_ii_v_dedo_dir,
+            ifd_ii_v_dedo_esq,
+            ifd_ii_v_dedo_dir,
+            col_cervical_flexao_esq,
+            col_cervical_flexao_dir,
+            col_cervical_extensao_esq,
+            col_cervical_extensao_dir,
+            col_cervical_flexao_lateral_esq,
+            col_cervical_flexao_lateral_dir,
+            col_cervical_rotacao_esq,
+            col_cervical_rotacao_dir,
+            col_lombar_flexao_esq,
+            col_lombar_flexao_dir,
+            col_lombar_extensao_esq,
+            col_lombar_extensao_dir,
+            col_lombar_flexao_lateral_esq,
+            col_lombar_flexao_lateral_dir,
+            col_lombar_rotacao_esq,
+            col_lombar_rotacao_dir,
+            med_valgo_joelhos_esq,
+            med_valgo_joelhos_dir,
+            med_varo_joelhos_esq,
+            med_varo_joelhos_dir,
+            med_recurvado_joelhos_esq,
+            med_recurvado_joelhos_dir,
+            med_valgo_cotovelo_esq,
+            med_valgo_cotovelo_dir,
+            med_varo_cotovelo_esq,
+            med_varo_cotovelo_dir,
+            med_valgo_retrope_esq,
+            med_valgo_retrope_dir,
+            med_varo_retrope_esq,
+            med_varo_retrope_dir,
+            med_hallux_valgo_esq,
+            med_hallux_valgo_dir,
+            flex_indice_schober_esq,
+            flex_indice_schober_dir,
+            flex_indice_stibor_esq,
+            flex_indice_stibor_dir,
+            flex_iii_dedo_solo_anterior_esq,
+            flex_iii_dedo_solo_anterior_dir,
+            teste_thomas_1,
+            opcao1,
+            teste_thomas_2,
+            opcao2,
+            teste_thomas_modificado_1,
+            opcao3,
+            teste_thomas_modificado_2,
+            opcao4,
+            teste_ober_1,
+            opcao5,
+            teste_ober_2,
+            opcao6,
+            teste_ely_1,
+            opcao7,
+            teste_ely_2,
+            opcao8,
+            teste_angulo_popliteo_1,
+            opcao9,
+            teste_angulo_popliteo_2,
+            opcao10,
+            outros
+        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        
+        // Preparar a consulta
+        $stmt1 = $mysqli->prepare($query1);
+        if (!$stmt1) {
+            die("Erro ao preparar a consulta: " . $mysqli->error);
+        }
+    
+        // Bind de parâmetros
+        $stmt1->bind_param(
+            'iisssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', 
+            $consultas_idConsultas, $consultas_paciente_idPaciente, 
+            $segmento1, $pontoRef1, $cm_1, $esquerda1, $direita1, $data1, $segmento2, 
+            $pontoRef2, $cm_2, $data2, $esquerdo2, $direito2, $discrepancia_aparente_esquerdo_1, 
+            $discrepancia_aparente_direito_1, $discrepancia_real_esquerdo_1, $discrepancia_real_direito_1, 
+            $testeGaleazzi, $dataGonio, $ombro_flexao_esq, $ombro_flexao_dir, $ombro_extensao_esq,
+            $ombro_extensao_dir, $ombro_aducao_esq, $ombro_aducao_dir,
+            $ombro_abducao_esq, $ombro_abducao_dir, $ombro_rotacao_interna_esq,
+            $ombro_rotacao_interna_dir, $ombro_rotacao_externa_esq, $ombro_rotacao_externa_dir,
+            $cotovelo_flexao_esq, $cotovelo_flexao_dir, $cotovelo_extensao_esq,
+            $cotovelo_extensao_dir, $radiulnar_pronacao_esq, $radiulnar_pronacao_dir,
+            $radiulnar_supinacao_esq, $radiulnar_supinacao_dir, $punho_flexao_esq,
+            $punho_flexao_dir, $punho_extensao_esq, $punho_extensao_dir, $punho_desvio_esq,
+            $punho_desvio_dir, $punho_radial_esq, $punho_radial_dir, $cmc_polegar_flexao_esq,
+            $cmc_polegar_flexao_dir, $cmc_polegar_extensao_esq, $cmc_polegar_extensao_dir,
+            $cmc_polegar_abducao_esq, $cmc_polegar_abducao_dir, $mcf_flexao_esq,
+            $mcf_flexao_dir, $mcf_extensao_esq, $mcf_extensao_dir, $mcf_abducao_esq,
+            $mcf_abducao_dir, $mcf_aducao_esq, $mcf_aducao_dir, $interfalangicas_flexao_esq,
+            $interfalangicas_flexao_dir, $interfalangicas_extensao_esq, $interfalangicas_extensao_dir,
+            $quadril_flexao_esq, $quadril_flexao_dir, $quadril_extensao_esq, $quadril_extensao_dir,
+            $quadril_abducao_esq, $quadril_abducao_dir, $quadril_aducao_esq, $quadril_aducao_dir,
+            $quadril_rotacao_interna_esq, $quadril_rotacao_interna_dir, $quadril_rotacao_externa_esq,
+            $quadril_rotacao_externa_dir, $joelho_flexao_esq, $joelho_flexao_dir,
+            $joelho_extensao_esq, $joelho_extensao_dir, $tornozelo_dorsiflexao_esq,
+            $tornozelo_dorsiflexao_dir, $tornozelo_plantarflexao_esq, $tornozelo_plantarflexao_dir,
+            $subtalar_inversao_esq, $subtalar_inversao_dir, $subtalar_aversao_esq, $subtalar_aversao_dir,
+            $mtf_flexao_i_dedo_esq, $mtf_flexao_i_dedo_dir, $mtf_il_v_dedo_esq, $mtf_il_v_dedo_dir,
+            $mtf_extensao_i_dedo_esq, $mtf_extensao_i_dedo_dir, $mtf_il_v_dedo_2_esq, $mtf_il_v_dedo_2_dir,
+            $if_flexao_if_i_dedo_esq, $if_flexao_if_i_dedo_dir, $ifp_ii_v_dedo_esq, $ifp_ii_v_dedo_dir,
+            $ifd_ii_v_dedo_esq, $ifd_ii_v_dedo_dir, $col_cervical_flexao_esq, $col_cervical_flexao_dir,
+            $col_cervical_extensao_esq, $col_cervical_extensao_dir, $col_cervical_flexao_lateral_esq,
+            $col_cervical_flexao_lateral_dir, $col_cervical_rotacao_esq, $col_cervical_rotacao_dir,
+            $col_lombar_flexao_esq, $col_lombar_flexao_dir, $col_lombar_extensao_esq, $col_lombar_extensao_dir,
+            $col_lombar_flexao_lateral_esq, $col_lombar_flexao_lateral_dir, $col_lombar_rotacao_esq,
+            $col_lombar_rotacao_dir, $med_valgo_joelhos_esq, $med_valgo_joelhos_dir, $med_varo_joelhos_esq,
+            $med_varo_joelhos_dir, $med_recurvado_joelhos_esq, $med_recurvado_joelhos_dir, $med_valgo_cotovelo_esq,
+            $med_valgo_cotovelo_dir, $med_varo_cotovelo_esq, $med_varo_cotovelo_dir, $med_valgo_retrope_esq,
+            $med_valgo_retrope_dir, $med_varo_retrope_esq, $med_varo_retrope_dir, $med_hallux_valgo_esq,
+            $med_hallux_valgo_dir, $flex_indice_schober_esq, $flex_indice_schober_dir, $flex_indice_stibor_esq,
+            $flex_indice_stibor_dir, $flex_iii_dedo_solo_anterior_esq, $flex_iii_dedo_solo_anterior_dir,
+            $teste_thomas_1, $opcao1, $teste_thomas_2, $opcao2, $teste_thomas_modificado_1,
+            $opcao3, $teste_thomas_modificado_2, $opcao4, $teste_ober_1, $opcao5, $teste_ober_2,
+            $opcao6, $teste_ely_1, $opcao7, $teste_ely_2, $opcao8, $teste_angulo_popliteo_1,
+            $opcao9, $teste_angulo_popliteo_2, $opcao10, $outros
+        );
+        
+        
+        // Execute a consulta
+        $stmt1->execute();
+        if ($stmt1->affected_rows > 0) {
+            echo "Registro inserido com sucesso!";
+        } else {
+            echo "Erro ao inserir o registro.";
+        }
+        
+        $stmt1->close();
+    }
 
 ?>
 
@@ -24,6 +470,8 @@ if (isset($_GET['idPaciente'])) {
 
 <body>
     <form action="" method="POST">
+    <input type="hidden" name="consultas_idConsultas" value="1">
+    <input type="hidden" name="consultas_paciente_idPaciente" value="1">
         <div class="container">
             <h3>Perimetria</h3>
             <table class="tableS" border="1">
@@ -133,10 +581,6 @@ if (isset($_GET['idPaciente'])) {
                         <th>Direito</th>
                     </tr>
                 </thead>
-                iscrepancia_aparente_esquerdo_1	varchar(45)	utf8mb4_0900_ai_ci		Sim	NULL			Alterar Alterar	Eliminar Eliminar	
-	15	discrepancia_aparente_direito_1	varchar(45)	utf8mb4_0900_ai_ci		Sim	NULL			Alterar Alterar	Eliminar Eliminar	
-	16	discrepancia_real_esquerdo_1	varchar(45)	utf8mb4_0900_ai_ci		Sim	NULL			Alterar Alterar	Eliminar Eliminar	
-	17	discrepancia_real_direito_1
                 <tbody>
                     <tr>
                         <td><input type="text" name="discrepancia_aparente_esquerdo_1" class="input-style1"></td>
@@ -679,6 +1123,7 @@ if (isset($_GET['idPaciente'])) {
                     </tr>
                 </tbody>
             </table>
+            <br><br>
             <h3>Teste de comprimento</h3>
             <br>
             <div>
@@ -816,7 +1261,7 @@ if (isset($_GET['idPaciente'])) {
             <br>
         </div>
         <div style="text-align: right;">
-            <button class="styled-button" type="button">Próxima página -></button>
+            <button class="styled-button" type="submit">Próxima página -></button>
         </div>
         </div>
     </form>
