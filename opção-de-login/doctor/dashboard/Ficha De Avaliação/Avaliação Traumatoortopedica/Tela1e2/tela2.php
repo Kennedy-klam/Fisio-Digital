@@ -410,7 +410,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Execute a consulta
         $stmt1->execute();
         if ($stmt1->affected_rows > 0) {
-            echo "Registro inserido com sucesso!";
+            header("Location: ../tela 3/tela3.php?idPaciente=" . $idPaciente);
         } else {
             echo "Erro ao inserir o registro.";
         }

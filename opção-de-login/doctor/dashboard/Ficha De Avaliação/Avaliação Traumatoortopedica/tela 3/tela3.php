@@ -131,7 +131,6 @@ $stmt->bind_param(
 );
 
 if ($stmt->execute()) {
-    echo "Dados inseridos com sucesso!";
     header("Location: ../tela 4/tela4.php?idPaciente=" . $idPaciente);
 } else {
     echo "Erro ao inserir os dados: " . $stmt->error;
