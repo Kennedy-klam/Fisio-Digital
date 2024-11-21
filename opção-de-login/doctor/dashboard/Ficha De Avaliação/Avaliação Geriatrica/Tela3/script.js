@@ -80,31 +80,34 @@ function calcularNota(){
 }
 
 function calcularMedida(){
+    const genero = document.getElementById('genero').value
     const medida = parseFloat(document.getElementById('medidaTaf').value)
     const resultadoSpan = document.getElementById('resultado')
-    const tolerancia = 5
+    //const tolerancia = 3
 
     const faixas = [
         {faixa:'20 - 40 anos', homem: 42.41, mulher: 37.08},
         {faixa:'41 - 69anos', homem: 37.84, mulher: 35.05},
         {faixa:'70 - 87 anos', homem: 33.52, mulher: 26.63}
     ]
+
     let resultado = 'Nenhuma faixa correspondente'
-    let menorDiferenca = tolerancia + 5
+    let avaliacao = ''
+    
 
     for(const faixa of faixas ){
-        const diferencaHomem = Math.abs(medida - faixa.homem)
-        const diferencaMulher = Math.abs(medida - faixa.mulher)
+        const valorEsperado = genero === "Homem"? faixa.homem : faixa.mulher
+        
 
-        if(diferencaHomem <= tolerancia && diferencaHomem < menorDiferenca){
-            resultado = `Homem, ${faixa.faixa}`
-            menorDiferenca = diferencaHomem
-            
-        }
-        if (diferencaMulher <= tolerancia && diferencaMulher < menorDiferenca){
-            resultado = `Mulher, ${faixa.faixa}`
-            menorDiferenca = diferencaMulher
+        if(medida === valorEsperado){
+            resultado = `${genero === "Homem" ? 'homem' : 'mulher'}, ${faixa.faixa}`
+            avaliacao = 'Na média!'     
+        }else if(medida < valorEsperado){
+            resultado = `${genero === "Homem" ? 'homem' : 'mulher'}, ${faixa.faixa}`
+            avaliacao = 'Abaixo da média!'
+        }else if(medida > valorEsperado){
+            resultado = `${genero === ""}`
         }
     }
-    resultadoSpan.textContent = `Resultado: ${resultado}`
+    resultadoSpan.textContent = `${resultado} . ${avaliacao}`
 }

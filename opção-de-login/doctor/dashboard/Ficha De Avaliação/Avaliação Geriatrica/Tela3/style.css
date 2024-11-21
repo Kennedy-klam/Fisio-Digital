@@ -259,8 +259,10 @@ input[type="radio"]:checked::after {
  
 }
 
-
-
 label[for="distanciaPrevista"]{
   margin-right: 16px;
+}
+.selecionaGenero{
+  margin-left:197px;
+  margin-right: 1px;
 }
