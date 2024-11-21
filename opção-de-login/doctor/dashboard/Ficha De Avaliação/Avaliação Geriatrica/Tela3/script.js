@@ -98,7 +98,7 @@ function calcularMedida(){
     for(const faixa of faixas ){
         const valorEsperado = genero === "Homem"? faixa.homem : faixa.mulher
         
-
+ //FALTA ARRUMAR ESSE SCRIPT
         if(medida === valorEsperado){
             resultado = `${genero === "Homem" ? 'homem' : 'mulher'}, ${faixa.faixa}`
             avaliacao = 'Na média!'     
