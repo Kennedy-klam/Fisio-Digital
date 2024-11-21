@@ -35,6 +35,8 @@ if ($result->num_rows > 0) {
     die("Consulta não encontrada para este paciente.");
 }
 
+$idFichaTraumatoOrtopedica = $_SESSION['idFichaTraumatoOrtopedica'] ?? null;
+
 // Verifica se o formulário foi enviado (POST)
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Sanitização e validação dos dados recebidos
@@ -66,6 +68,69 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Dados para a tabela medicamentos
     $nome = htmlspecialchars($_POST['nome'] ?? null);
     $classe = htmlspecialchars($_POST['classe'] ?? null);
+
+    if ($idFichaTraumatoOrtopedica) {
+        // Atualizar os dados na ficha existente
+        $query1 = "UPDATE fichatraumatoortopédica SET
+            diagnostico_clinico = ?, 
+            avaliador = ?, 
+            queixa = ?, 
+            historia_doenca_atual = ?, 
+            historico_patologico = ?, 
+            historia_familiar = ?, 
+            historia_pessoal_social = ?, 
+            temperatura = ?, 
+            frequencia_c = ?, 
+            frequencia_r = ?, 
+            pressao = ?, 
+            inspecao = ?, 
+            palpacao = ?, 
+            sensibilidade = ?, 
+            reflexos_esquerdo = ?, 
+            reflexos_direito = ?, 
+            local_dor = ?, 
+            eva = ?, 
+            historia_dor = ?, 
+            frequencia_dor = ?, 
+            caracteristica_dor = ?, 
+            movimentos_dor = ?, 
+            agravantes = ?, 
+            atenuantes = ?
+            WHERE idFichaTraumatoOrtopédica = ?";
+
+        $stmt1 = $mysqli->prepare($query1);
+        if (!$stmt1) {
+            die("Erro ao preparar a consulta para fichatraumatoortopédica1: " . $mysqli->error);
+        }
+        $stmt1->bind_param(
+            'ssssssssssssssssssssssssi',
+            $diagnostico_clinico,
+            $avaliador,
+            $queixa,
+            $historia_doenca_atual,
+            $historico_patologico,
+            $historia_familiar,
+            $historia_pessoal_social,
+            $temperatura,
+            $frequencia_c,
+            $frequencia_r,
+            $pressao,
+            $inspecao,
+            $palpacao,
+            $sensibilidade,
+            $reflexos_esquerdo,
+            $reflexos_direito,
+            $local_dor,
+            $eva,
+            $historia_dor,
+            $frequencia_dor,
+            $caracteristica_dor,
+            $movimentos_dor,
+            $agravantes,
+            $atenuantes,
+            $idFichaTraumatoOrtopedica
+        );
+    } else {
 
     // 2. Salvar os dados na tabela fichatraumatoortopédica1
     $query1 = "INSERT INTO fichatraumatoortopédica (
@@ -132,16 +197,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $agravantes,
         $atenuantes
     );
+    }
 
     if (!$stmt1->execute()) {
         die("Erro ao inserir na tabela fichatraumatoortopédica1: " . $stmt1->error);
     }
 
-     // Obtém o ID da ficha recém-criada
-     $idFichaTraumatoOrtopedica = $stmt1->insert_id;
-
-     // Salva o ID na sessão para acesso em outras telas
-     $_SESSION['idFichaTraumatoOrtopedica'] = $idFichaTraumatoOrtopedica; 
+    if (!$idFichaTraumatoOrtopedica) {
+        $idFichaTraumatoOrtopedica = $stmt1->insert_id;
+        $_SESSION['idFichaTraumatoOrtopedica'] = $idFichaTraumatoOrtopedica;
+    }
 
     // 3. Salvar os medicamentos na tabela medicamentos
     if ($nome && $classe) {
