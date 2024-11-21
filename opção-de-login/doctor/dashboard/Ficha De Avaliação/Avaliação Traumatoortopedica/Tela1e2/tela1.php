@@ -137,6 +137,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Erro ao inserir na tabela fichatraumatoortopédica1: " . $stmt1->error);
     }
 
+     // Obtém o ID da ficha recém-criada
+     $idFichaTraumatoOrtopedica = $stmt1->insert_id;
+
+     // Salva o ID na sessão para acesso em outras telas
+     $_SESSION['idFichaTraumatoOrtopedica'] = $idFichaTraumatoOrtopedica; 
+
     // 3. Salvar os medicamentos na tabela medicamentos
     if ($nome && $classe) {
         $query2 = "INSERT INTO medicamentos (Paciente_idPaciente, nome, classe) VALUES (?, ?, ?)";
@@ -150,10 +156,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             die("Erro ao inserir dados do medicamento: " . $stmt2->error);
         }
     }
-     // Armazenar dados na sessão para serem acessados em tela2.php
-     $_SESSION['idFichaTraumatoOrtopédica'] = $consultas_idConsultas;
-     $_SESSION['consultas_idConsultas'] = $consultas_idConsultas;
-     $_SESSION['consultas_paciente_idPaciente'] = $consultas_paciente_idPaciente;
  
      // Redireciona para tela2.php
      header("Location: tela2.php?idPaciente=" . $idPaciente);
