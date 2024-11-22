@@ -70,7 +70,67 @@ if (isset($_POST['submit'])) {
     $pe_extensaoMTF_L4_S1_D1 = $_POST['pe_extensaoMTF_L4_S1_D1'];
     $pe_extensaoMTF_L4_S1_E1 = $_POST['pe_extensaoMTF_L4_S1_E1'];
 
-    $query = "INSERT INTO fichatraumatoortopédica4 (
+    // Verifica se já existe uma ficha com o ID informado
+    $query_check = "SELECT * FROM fichatraumatoortopédica4 WHERE idFichaTraumatoOrtopédica = ?";
+    $stmt_check = $mysqli->prepare($query_check);
+    if ($stmt_check === false) {
+        die('Erro ao preparar a consulta de verificação: ' . $mysqli->error);
+    }
+    $stmt_check->bind_param('i', $idFichaTraumatoOrtopedica);
+    $stmt_check->execute();
+    $result_check = $stmt_check->get_result();
+
+    // Se a ficha já existir, realiza a atualização
+    if ($result_check->num_rows > 0) {
+        $query_update = "UPDATE fichatraumatoortopédica4 SET
+         dedo_extensao_C6_C8_D1 = ?, dedo_extensao_C6_C8_E1 = ?, dedo_flexao_C6_T1_D1 = ?, dedo_flexao_C6_T1_E1 = ?,
+        dedo_flexaoIF_C8_T1_D1 = ?, dedo_flexaoIF_C8_T1_E1 = ?, dedo_extensao_C6_C7_D1 = ?, dedo_extensao_C6_C7_E1 = ?,
+        dedo_abducao_C6_C7_D1 = ?, dedo_abducao_C6_C7_E1 = ?, dedo_aducaoP_C8_T1_D1 = ?, dedo_aducaoP_C8_T1_E1 = ?,
+        dedo_oposicao_C6_C7_D1 = ?, dedo_oposicao_C6_C7_E1 = ?, dedo_oposicao_C8_T1_D1 = ?, dedo_oposicao_C8_T1_E1 = ?,
+        quadril_flexao_L2_L3_D1 = ?, quadril_flexao_L2_L3_E1 = ?, quadril_flexao_L4_S1_D1 = ?, quadril_flexao_L4_S1_E1 = ?,
+        quadril_F_Re_A_L2_L3_D1 = ?, quadril_F_Re_A_L2_L3_E1 = ?, quadril_extensao_L5_S2_D1 = ?, quadril_extensao_L5_S2_E1 = ?,
+        quadril_abducao_L4_S1_D1 = ?, quadril_abducao_L4_S1_E1 = ?, quadril_aducao_L3_S2_D1 = ?, quadril_aducao_L3_S2_E1 = ?,
+        quadril_rotacaoI_L4_S1_D1 = ?, quadril_rotacaoI_L4_S1_E1 = ?, quadril_rotacaoE_L3_S2_D1 = ?, quadril_rotacaoE_L3_S2_E1 = ?,
+        joelho_extensao_L2_L4_D1 = ?, joelho_extensao_L2_L4_E1 = ?, Joelho_flexao_L5_S2_D1 = ?, Joelho_flexao_L5_S2_E1 = ?,
+        tornozelo_dorsi_L4_S1_D1 = ?, tornozelo_dorsi_L4_S1_E1 = ?, tornozelo_flexaoP_S1_S2_D1 = ?, tornozelo_flexaoP_S1_S2_E1 = ?,
+        tornozelo_inversao_L5_S1_D1 = ?, tornozelo_inversao_L5_S1_E1 = ?, tornozelo_eversao_L4_S1_D1 = ?, tornozelo_eversao_L4_S1_E1 = ?,
+        pe_flexaoMTF_L4_S1_D1 = ?, pe_flexaoMTF_L4_S1_E1 = ?, pe_flexaoIF_L5_S2_D1 = ?, pe_flexaoIF_L5_S2_E1 = ?,
+        pe_flexaoIFD_L5_S1_D1 = ?, pe_flexaoIFD_L5_S1_E1 = ?, pe_flexaoIFP_L4_S5_D1 = ?, pe_flexaoIFP_L4_S5_E1 = ?,
+        pe_extensao_L4_S1_D1 = ?, pe_extensao_L4_S1_E1 = ?, pe_extensaoIF_L4_S1_D1 = ?, pe_extensaoIF_L4_S1_E1 = ?,
+        pe_extensaoMTF_L4_S1_D1 = ?, pe_extensaoMTF_L4_S1_E1 = ? WHERE idFichaTraumatoOrtopédica = ?";
+
+        $stmt_update = $mysqli->prepare($query_update);
+        if ($stmt_update === false) {
+            die('Erro ao preparar a consulta de atualização: ' . $mysqli->error);
+        }
+
+        $stmt_update->bind_param('iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
+        $dedo_extensao_C6_C8_D1, $dedo_extensao_C6_C8_E1, $dedo_flexao_C6_T1_D1, $dedo_flexao_C6_T1_E1,
+        $dedo_flexaoIF_C8_T1_D1, $dedo_flexaoIF_C8_T1_E1, $dedo_extensao_C6_C7_D1, $dedo_extensao_C6_C7_E1,
+        $dedo_abducao_C6_C7_D1, $dedo_abducao_C6_C7_E1, $dedo_aducaoP_C8_T1_D1, $dedo_aducaoP_C8_T1_E1,
+        $dedo_oposicao_C6_C7_D1, $dedo_oposicao_C6_C7_E1, $dedo_oposicao_C8_T1_D1, $dedo_oposicao_C8_T1_E1,
+        $quadril_flexao_L2_L3_D1, $quadril_flexao_L2_L3_E1, $quadril_flexao_L4_S1_D1, $quadril_flexao_L4_S1_E1,
+        $quadril_F_Re_A_L2_L3_D1, $quadril_F_Re_A_L2_L3_E1, $quadril_extensao_L5_S2_D1, $quadril_extensao_L5_S2_E1,
+        $quadril_abducao_L4_S1_D1, $quadril_abducao_L4_S1_E1, $quadril_aducao_L3_S2_D1, $quadril_aducao_L3_S2_E1,
+        $quadril_rotacaoI_L4_S1_D1, $quadril_rotacaoI_L4_S1_E1, $quadril_rotacaoE_L3_S2_D1, $quadril_rotacaoE_L3_S2_E1,
+        $joelho_extensao_L2_L4_D1, $joelho_extensao_L2_L4_E1, $Joelho_flexao_L5_S2_D1, $Joelho_flexao_L5_S2_E1,
+        $tornozelo_dorsi_L4_S1_D1, $tornozelo_dorsi_L4_S1_E1, $tornozelo_flexaoP_S1_S2_D1, $tornozelo_flexaoP_S1_S2_E1,
+        $tornozelo_inversao_L5_S1_D1, $tornozelo_inversao_L5_S1_E1, $tornozelo_eversao_L4_S1_D1, $tornozelo_eversao_L4_S1_E1,
+        $pe_flexaoMTF_L4_S1_D1, $pe_flexaoMTF_L4_S1_E1, $pe_flexaoIF_L5_S2_D1, $pe_flexaoIF_L5_S2_E1,
+        $pe_flexaoIFD_L5_S1_D1, $pe_flexaoIFD_L5_S1_E1, $pe_flexaoIFP_L4_S5_D1, $pe_flexaoIFP_L4_S5_E1,
+        $pe_extensao_L4_S1_D1, $pe_extensao_L4_S1_E1, $pe_extensaoIF_L4_S1_D1, $pe_extensaoIF_L4_S1_E1,
+        $pe_extensaoMTF_L4_S1_D1, $pe_extensaoMTF_L4_S1_E1, $idFichaTraumatoOrtopedica 
+    );
+    
+    if ($stmt_update->execute()) {
+        header("Location: ../tela5/tela5.php");
+    } else {
+        echo "Erro ao atualizar os dados: " . $stmt_update->error;
+    }
+    $stmt_update->close();
+} else {
+    // Se não existir, insere os dados como um novo registro
+    $query_insert = "INSERT INTO fichatraumatoortopédica4 (
         idFichaTraumatoOrtopédica,
         dedo_extensao_C6_C8_D1, dedo_extensao_C6_C8_E1, dedo_flexao_C6_T1_D1, dedo_flexao_C6_T1_E1,
         dedo_flexaoIF_C8_T1_D1, dedo_flexaoIF_C8_T1_E1, dedo_extensao_C6_C7_D1, dedo_extensao_C6_C7_E1,
@@ -89,13 +149,12 @@ if (isset($_POST['submit'])) {
         pe_extensaoMTF_L4_S1_D1, pe_extensaoMTF_L4_S1_E1
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    $stmt = $mysqli->prepare($query);
+$stmt_insert = $mysqli->prepare($query_insert);
+if ($stmt_insert === false) {
+    die('Erro ao preparar a consulta de inserção: ' . $mysqli->error);
+}
 
-    if ($stmt === false) {
-        die('Erro ao preparar a consulta: ' . $mysqli->error);
-    }
-
-    $stmt->bind_param('iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
+    $stmt_insert->bind_param('iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii',
     $idFichaTraumatoOrtopedica, $dedo_extensao_C6_C8_D1, $dedo_extensao_C6_C8_E1, $dedo_flexao_C6_T1_D1, $dedo_flexao_C6_T1_E1,
     $dedo_flexaoIF_C8_T1_D1, $dedo_flexaoIF_C8_T1_E1, $dedo_extensao_C6_C7_D1, $dedo_extensao_C6_C7_E1,
     $dedo_abducao_C6_C7_D1, $dedo_abducao_C6_C7_E1, $dedo_aducaoP_C8_T1_D1, $dedo_aducaoP_C8_T1_E1,
@@ -113,14 +172,14 @@ if (isset($_POST['submit'])) {
     $pe_extensaoMTF_L4_S1_D1, $pe_extensaoMTF_L4_S1_E1
 );
 
-if ($stmt->execute()) {
-    echo "Dados inseridos com sucesso!";
-    header("Location: ../tela5/index.html");
-} else {
-    echo "Erro ao inserir os dados: " . $stmt->error;
-}
-
-$stmt->close();
+        if ($stmt_insert->execute()) {
+            header("Location: ../tela5/tela5.php");
+        } else {
+            echo "Erro ao inserir os dados: " . $stmt_insert->error;
+        }
+        $stmt_insert->close();
+    }
+    $stmt_check->close();
 }
 ?>
 
