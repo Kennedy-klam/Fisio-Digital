@@ -10,6 +10,10 @@ if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
+// Recupera os medicamentos cadastrados
+$sqlMedicamentos = "SELECT * FROM Medicamentos";
+$resultMedicamentos = $conn->query($sqlMedicamentos);
+
 
 // ID do paciente que queremos buscar
 $paciente_id = 1;  // Exemplo estático, sera dinâmico
@@ -242,55 +246,38 @@ if ($result->num_rows > 0) {
         <br>
 
         <!--Tabela-->
-        <div>
-            <h2>Medicamentos</h2>
-            <br>
-            <div id="medicamento-form">
 
-                <div class="campo">
-                    <br>
-                    <label for="medicamentos">Medicamentos:</label>
-                    <input type="text" id="medicamentos" name="medicamentos"
-                        placeholder="Digite aqui...">
-                </div>
-
-                <div class="campo">
-                    <br>
-                    <label for="como-usa">Como usa:</label>
-                    <input type="text" id="como-usa" name="como-usa"
-                        placeholder="Digite aqui...">
-                </div>
-
-                <div class="campo">
-                    <br>
-                    <label for="tempo-uso">Tempo de Uso:</label>
-                    <input type="text" id="tempo-uso" name="tempo-uso"
-                        placeholder="Digite aqui...">
-                </div>
-
-                <br>
-                <div>
-                    <button class="styled-button" type="button"
-                        id="adicionar-btn">Adicionar </button>
-                </div>
-            </div>
-            <br>
-
-            <h2>Tabela de Medicamentos</h2>
-            <table id="tabela-medicamentos">
+        <div class="container">
+            <h1>Medicamentos Cadastrados</h1>
+            <table>
                 <thead>
                     <tr>
-                        <th>Medicamento</th>
-                        <th>Como Usa</th>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Uso</th>
                         <th>Tempo de Uso</th>
-                        <th>Remover Medicamento</th>
+                        <th>Classe</th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- As linhas serão adicionadas dinamicamente aqui -->
+                    <?php while ($row = $resultMedicamentos->fetch_assoc()) { ?>
+                        <tr>
+                            <td><?php echo $row['idMedicamentos']; ?></td>
+                            <td><?php echo $row['nome']; ?></td>
+                            <td><?php echo $row['uso']; ?></td>
+                            <td><?php echo $row['tempUso']; ?></td>
+                            <td><?php echo $row['classe']; ?></td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
+
+        <div class="button-container">
+            <a href="Medicamentos/gerenciar-medicamentos.php" target="_blank" class="styled-button" style="text-decoration: none">Gerenciar Medicamentos</a>
+        </div>
+
 
         <br> <br>
 
@@ -464,6 +451,7 @@ if ($result->num_rows > 0) {
 
     <!--O script ficou aqui porque não estava sendo carregado-->
     <script src="Script/script.js"></script>
+
 </body>
 
 </html>
