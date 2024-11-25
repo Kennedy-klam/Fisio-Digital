@@ -2,9 +2,6 @@
 session_start();  // Inicia a sessão para capturar os dados
 include('../../../../conexões/conexao.php');
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 // Verifica se a conexão com o banco está funcionando
 if ($mysqli->connect_error) {
     die("Erro na conexão com o banco de dados: " . $mysqli->connect_error);
