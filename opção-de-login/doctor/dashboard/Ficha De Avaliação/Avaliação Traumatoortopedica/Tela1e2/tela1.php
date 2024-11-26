@@ -7,11 +7,15 @@ if ($mysqli->connect_error) {
     die("Erro na conexão com o banco de dados: " . $mysqli->connect_error);
 }
 
-// Verifica se o idPaciente foi passado na URL
 $idPaciente = $_GET['idPaciente'] ?? null;
+$idConsulta = $_GET['idConsulta'] ?? null;
 
-if (!$idPaciente) {
-    die("ID do paciente não fornecido.");
+var_dump($idPaciente);
+var_dump($idConsulta);
+
+if (!$idPaciente || !$idConsulta) {
+    echo "Erro: ID do paciente ou da consulta não foi recebido!";
+    die();
 }
 
 // 1. Consultar a consulta associada ao paciente
@@ -96,14 +100,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             movimentos_dor = ?, 
             agravantes = ?, 
             atenuantes = ?
-            WHERE idFichaTraumatoOrtopédica = ?";
+            WHERE idFichaTraumatoOrtopédica = ? AND Consultas_idConsultas = ? AND Consultas_Paciente_idPaciente = ?";
 
         $stmt1 = $mysqli->prepare($query1);
         if (!$stmt1) {
             die("Erro ao preparar a consulta para fichatraumatoortopédica1: " . $mysqli->error);
         }
         $stmt1->bind_param(
-            'ssssssssssssssssssssssssi',
+            'ssssssssssssssssssssssssiii',
             $diagnostico_clinico,
             $avaliador,
             $queixa,
@@ -128,7 +132,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $movimentos_dor,
             $agravantes,
             $atenuantes,
-            $idFichaTraumatoOrtopedica
+            $idFichaTraumatoOrtopedica,
+            $idConsulta,
+            $idPaciente
         );
     } else {
 
@@ -161,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         agravantes,
         atenuantes
     ) VALUES (
-        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
     )";
 
     $stmt1 = $mysqli->prepare($query1);
@@ -170,8 +176,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     $stmt1->bind_param(
         'iissssssssssssssssssssssss',
-        $consultas_idConsultas,
-        $consultas_paciente_idPaciente,
+        $idConsulta,
+        $idPaciente,
         $diagnostico_clinico,
         $avaliador,
         $queixa,
