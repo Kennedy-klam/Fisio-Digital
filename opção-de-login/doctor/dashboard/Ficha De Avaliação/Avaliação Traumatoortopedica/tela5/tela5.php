@@ -2,12 +2,14 @@
 session_start();
 include('../../../../conexões/conexao.php');
 
-// Captura o ID da ficha na sessão
 if (isset($_SESSION['idFichaTraumatoOrtopedica'])) {
     $idFichaTraumatoOrtopedica = $_SESSION['idFichaTraumatoOrtopedica'];
+    echo "ID da ficha: " . $idFichaTraumatoOrtopedica; // Debugging
 } else {
     die("ID da ficha não encontrado.");
 }
+
+var_dump($idFichaTraumatoOrtopedica);
 
 if (isset($_POST['submit'])) {
     // Coletando os dados do formulário
@@ -334,7 +336,7 @@ if ($result_check->num_rows > 0) {
 
         $stmt_insert->bind_param(
             'iiiiiiiiiiiiiiiiiiiiiiiiissssiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', // 140 campos inteiros
-            $idFichaTraumatoOrtopédica,
+            $idFichaTraumatoOrtopedica,
             $trapezio_descendente_D1, $trapezio_descendente_D2, $trapezio_descendente_E1, $trapezio_descendente_E2, 
             $esternocleidomastoideo_D1, $esternocleidomastoideo_D2, $esternocleidomastoideo_E1, $esternocleidomastoideo_E2, 
             $eretor_espinha_D1, $eretor_espinha_D2, $eretor_espinha_E1, $eretor_espinha_E2, 
