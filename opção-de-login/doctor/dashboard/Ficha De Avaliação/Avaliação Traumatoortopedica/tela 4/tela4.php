@@ -123,7 +123,7 @@ if (isset($_POST['submit'])) {
     );
     
     if ($stmt_update->execute()) {
-      
+        header("Location: ../tela5/tela5.php");
     } else {
         echo "Erro ao atualizar os dados: " . $stmt_update->error;
     }
@@ -173,7 +173,7 @@ if ($stmt_insert === false) {
 );
 
         if ($stmt_insert->execute()) {
-           
+            header("Location: ../tela5/tela5.php");
         } else {
             echo "Erro ao inserir os dados: " . $stmt_insert->error;
         }
