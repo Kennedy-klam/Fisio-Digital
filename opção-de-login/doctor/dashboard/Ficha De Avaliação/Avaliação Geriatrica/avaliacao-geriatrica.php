@@ -38,6 +38,10 @@ if ($result->num_rows > 0) {
     die("Consulta não encontrada para este paciente.");
 }
 
+// Recupera os medicamentos cadastrados
+$sqlMedicamentos = "SELECT * FROM Medicamentos";
+$resultMedicamentos = $conn->query($sqlMedicamentos);
+
 // Agora, consulta os dados do paciente
 $sqlPaciente = "SELECT nome, nascimento, sexo, estaCivil, celular FROM paciente WHERE idPaciente = ?";
 $stmtPaciente = $conn->prepare($sqlPaciente);
@@ -296,38 +300,37 @@ if ($resultPaciente->num_rows > 0) {
             <br>
 
             <!--Tabela-->
-            <div>
-                <h2>Medicamentos</h2>
-                <br>
-                <div id="medicamento-form">
 
-                    <div class="campo">
-                        <br>
-                        <label for="medicamentos">Medicamentos:</label>
-                        <input type="text" id="medicamentos" name="medicamentos"
-                            placeholder="Digite aqui...">
-                    </div>
+            <div class="container">
+            <h1>Medicamentos Cadastrados</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Uso</th>
+                        <th>Tempo de Uso</th>
+                        <th>Classe</th>
 
-                    <div class="campo">
-                        <br>
-                        <label for="como-usa">Como usa:</label>
-                        <input type="text" id="como-usa" name="como-usa"
-                            placeholder="Digite aqui...">
-                    </div>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while ($row = $resultMedicamentos->fetch_assoc()) { ?>
+                        <tr>
+                            <td><?php echo $row['idMedicamentos']; ?></td>
+                            <td><?php echo $row['nome']; ?></td>
+                            <td><?php echo $row['uso']; ?></td>
+                            <td><?php echo $row['tempUso']; ?></td>
+                            <td><?php echo $row['classe']; ?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
 
-                    <div class="campo">
-                        <br>
-                        <label for="tempo-uso">Tempo de Uso:</label>
-                        <input type="text" id="tempo-uso" name="tempo-uso"
-                            placeholder="Digite aqui...">
-                    </div>
-
-                    <br>
-                    <div>
-                        <button class="styled-button" type="button"
-                            id="adicionar-btn">Adicionar </button>
-                    </div>
-                </div>
+        <div class="button-container">
+            <a href="Medicamentos/gerenciar-medicamentos.php" target="_blank" class="styled-button" style="text-decoration: none">Gerenciar Medicamentos</a>
+        </div>
                 <br>
 
                 <h2>Tabela de Medicamentos</h2>
