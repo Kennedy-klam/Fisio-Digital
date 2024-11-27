@@ -76,70 +76,92 @@ if ($result) {
         <h2 class="pt-3 pb-3">Menu de Consultas</h2>
     </div>
 
-    <!-- Consultas Hoje -->
-    <div class="app">
-        <div class="today">
-            <div class="title">
-                <h3 class='text-center'>CONSULTAS HOJE</h3>
-            </div>
-            <div class="appt">
-                <?php
-                $today = date("Y-m-d");
-                $qry1 = "SELECT a.*, p.nome AS paciente_nome 
-                 FROM `consultas` a
-                 JOIN `paciente` p ON a.Paciente_idPaciente = p.idPaciente
-                 WHERE a.Doutor_idDoutor = '$doctorid' AND a.data = '$today';";
-                $ans1 = mysqli_query($con, $qry1);
-
-                if ($ans1 && mysqli_num_rows($ans1) > 0) {
-                    echo "<table class='table table-hover table-adjusted'>
-                            <thead>
-                                <tr>
-                                    <th>NÚMERO</th>
-                                    <th>ID DA CONSULTA</th>
-                                    <th>DATA</th>
-                                    <th>NOME DO PACIENTE</th>
-                                    <th>HORÁRIO</th>
-                                    <th>DESCRIÇÃO</th>
-                                </tr>
-                            </thead>
-                            <tbody>";
-                    $no = 1;
-                    while ($data1 = mysqli_fetch_assoc($ans1)) {
-                        echo "<tr onclick=\"window.location.href='../Ficha de Avaliação/Avaliação Traumatoortopedica/Tela1e2/tela1.php?idPaciente={$data1['Paciente_idPaciente']}'\" style='cursor: pointer;'>";
-                        echo "<td>{$no}</td>";
-                        echo "<td>{$data1['idConsultas']}</td>";
-                        echo "<td>" . date("d/m/Y", strtotime($data1['data'])) . "</td>";
-                        echo "<td>{$data1['paciente_nome']}</td>";
-                        echo "<td>{$data1['horario']}</td>";
-                        echo "<td>{$data1['descrição']}</td>";
-                        echo "</tr>";
-                        $no++;
-                    }
-                    echo "</tbody></table>";
-                }
-                 else {
-                    echo "<div class='text-center no-appointments'>Sem consultas hoje</div>";
-                }
-                ?>
-            </div>
+<!-- Consultas Hoje -->
+<div class="app">
+    <div class="today">
+        <div class="title">
+            <h3 class='text-center'>CONSULTAS HOJE</h3>
         </div>
+        <div class="appt">
+            <?php
+            $today = date("Y-m-d");
+            // Consulta as consultas de hoje
+            $qry1 = "SELECT a.*, p.nome AS paciente_nome 
+                     FROM `consultas` a
+                     JOIN `paciente` p ON a.Paciente_idPaciente = p.idPaciente
+                     WHERE a.Doutor_idDoutor = '$doctorid' AND a.data = '$today';";
+            $ans1 = mysqli_query($con, $qry1);
 
-        <!-- Consultas Futuras -->
-        <div class="future">
-            <div class="title">
-                <h3 class='text-center'>CONSULTAS FUTURAS</h3>
-            </div>
-            <div class="appt">
-                <?php
-                $qry1 = "SELECT a.*, p.nome AS paciente_nome 
+            // Consulta a especialidade do doutor
+            $qryEspecialidade = "SELECT especialidade FROM doutor WHERE idDoutor = '$doctorid'";
+            $ansEspecialidade = mysqli_query($con, $qryEspecialidade);
+            $especialidade = mysqli_fetch_assoc($ansEspecialidade)['especialidade'];
+
+            if ($ans1 && mysqli_num_rows($ans1) > 0) {
+                echo "<table class='table table-hover table-adjusted'>
+                        <thead>
+                            <tr>
+                                <th>NÚMERO</th>
+                                <th>ID DA CONSULTA</th>
+                                <th>DATA</th>
+                                <th>NOME DO PACIENTE</th>
+                                <th>HORÁRIO</th>
+                                <th>DESCRIÇÃO</th>
+                            </tr>
+                        </thead>
+                        <tbody>";
+                $no = 1;
+                while ($data1 = mysqli_fetch_assoc($ans1)) {
+                    // Define o link de acordo com a especialidade
+                    if (strtolower($especialidade) === 'geriátrica') {
+                        $link = "../Ficha de Avaliação/Avaliação Geriatrica/avaliacao-geriatrica.php?idPaciente={$data1['Paciente_idPaciente']}&idConsulta={$data1['idConsultas']}";
+                    } elseif (strtolower($especialidade) === 'traumato ortopédica') {
+                        $link = "../Ficha de Avaliação/Avaliação Traumatoortopedica/Tela1e2/tela1.php?idPaciente={$data1['Paciente_idPaciente']}&idConsulta={$data1['idConsultas']}";
+                    } else {
+                        $link = "#"; // Caso a especialidade não seja nem geriátrica nem traumato ortopédica
+                    }
+
+                    // Exibe a linha da tabela com o link de redirecionamento
+                    echo "<tr onclick=\"window.location.href='{$link}'\" style='cursor: pointer;'>";
+                    echo "<td>{$no}</td>";
+                    echo "<td>{$data1['idConsultas']}</td>";
+                    echo "<td>" . date("d/m/Y", strtotime($data1['data'])) . "</td>";
+                    echo "<td>{$data1['paciente_nome']}</td>";
+                    echo "<td>{$data1['horario']}</td>";
+                    echo "<td>{$data1['descrição']}</td>";
+                    echo "</tr>";
+                    $no++;
+                }
+                echo "</tbody></table>";
+            } else {
+                echo "<div class='text-center no-appointments'>Sem consultas hoje</div>";
+            }
+            ?>
+        </div>
+    </div>
+</div>
+
+<!-- Consultas Futuras -->
+<div class="future">
+    <div class="title">
+        <h3 class='text-center'>CONSULTAS FUTURAS</h3>
+    </div>
+    <div class="appt">
+        <?php
+        // Recupera as consultas futuras
+        $qry1 = "SELECT a.*, p.nome AS paciente_nome 
                  FROM `consultas` a
                  JOIN `paciente` p ON a.Paciente_idPaciente = p.idPaciente
                  WHERE a.Doutor_idDoutor = '$doctorid' AND a.data > '$today';";
-                $ans1 = mysqli_query($con, $qry1);
+        $ans1 = mysqli_query($con, $qry1);
 
-                if ($ans1 && mysqli_num_rows($ans1) > 0) {
-                    echo "<table class='table table-hover table-adjusted'>
+        // Recupera a especialidade do doutor
+        $qryEspecialidade = "SELECT especialidade FROM doutor WHERE idDoutor = '$doctorid'";
+        $ansEspecialidade = mysqli_query($con, $qryEspecialidade);
+        $especialidade = mysqli_fetch_assoc($ansEspecialidade)['especialidade'];
+
+        if ($ans1 && mysqli_num_rows($ans1) > 0) {
+            echo "<table class='table table-hover table-adjusted'>
             <thead>
                 <tr>
                     <th>NÚMERO</th>
@@ -151,25 +173,35 @@ if ($result) {
                 </tr>
             </thead>
             <tbody>";
-                    $no = 1;
-                    while ($data1 = mysqli_fetch_assoc($ans1)) {
-                        echo "<tr onclick=\"window.location.href='../Ficha de Avaliação/Avaliação Traumatoortopedica/Tela1e2/tela1.php?idPaciente={$data1['Paciente_idPaciente']}'\" style='cursor: pointer;'>";
-                        echo "<td>{$no}</td>";
-                        echo "<td>{$data1['idConsultas']}</td>";
-                        echo "<td>" . date("d/m/Y", strtotime($data1['data'])) . "</td>";
-                        echo "<td>{$data1['paciente_nome']}</td>";
-                        echo "<td>{$data1['horario']}</td>";
-                        echo "<td>{$data1['descrição']}</td>";
-                        echo "</tr>";
-                        $no++;
-                    }
-                    echo "</tbody></table>";
+            $no = 1;
+            while ($data1 = mysqli_fetch_assoc($ans1)) {
+                // Define o link de acordo com a especialidade
+                if (strtolower($especialidade) === 'geriátrica') {
+                    $link = "../Ficha de Avaliação/Avaliação Geriatrica/avaliacao-geriatrica.php?idPaciente={$data1['Paciente_idPaciente']}&idConsulta={$data1['idConsultas']}";
+                } elseif (strtolower($especialidade) === 'traumato ortopédica') {
+                    $link = "../Ficha de Avaliação/Avaliação Traumatoortopedica/Tela1e2/tela1.php?idPaciente={$data1['Paciente_idPaciente']}&idConsulta={$data1['idConsultas']}";
                 } else {
-                    echo "<div class='text-center no-appointments'>Sem consultas futuras</div>";
+                    $link = "#"; // Caso a especialidade não seja nem geriátrica nem traumato ortopédica
                 }
-                ?>
-            </div>
-        </div>
+
+                // Exibe a linha da tabela com o link de redirecionamento
+                echo "<tr onclick=\"window.location.href='{$link}'\" style='cursor: pointer;'>";
+                echo "<td>{$no}</td>";
+                echo "<td>{$data1['idConsultas']}</td>";
+                echo "<td>" . date("d/m/Y", strtotime($data1['data'])) . "</td>";
+                echo "<td>{$data1['paciente_nome']}</td>";
+                echo "<td>{$data1['horario']}</td>";
+                echo "<td>{$data1['descrição']}</td>";
+                echo "</tr>";
+                $no++;
+            }
+            echo "</tbody></table>";
+        } else {
+            echo "<div class='text-center no-appointments'>Sem consultas futuras</div>";
+        }
+        ?>
+    </div>
+</div>
 
         <!-- Consultas Passadas -->
         <div class="past">
@@ -178,11 +210,17 @@ if ($result) {
             </div>
             <div class="appt">
                 <?php
+                // Recupera as consultas passadas
                 $qry1 = "SELECT a.*, p.nome AS paciente_nome 
                  FROM `consultas` a
                  JOIN `paciente` p ON a.Paciente_idPaciente = p.idPaciente
                  WHERE a.Doutor_idDoutor = '$doctorid' AND a.data < '$today';";
                 $ans1 = mysqli_query($con, $qry1);
+
+                // Recupera a especialidade do doutor
+                $qryEspecialidade = "SELECT especialidade FROM doutor WHERE idDoutor = '$doctorid'";
+                $ansEspecialidade = mysqli_query($con, $qryEspecialidade);
+                $especialidade = mysqli_fetch_assoc($ansEspecialidade)['especialidade'];
 
                 if ($ans1 && mysqli_num_rows($ans1) > 0) {
                     echo "<table class='table table-hover table-adjusted'>
@@ -199,7 +237,17 @@ if ($result) {
             <tbody>";
                     $no = 1;
                     while ($data1 = mysqli_fetch_assoc($ans1)) {
-                        echo "<tr onclick=\"window.location.href='../Ficha de Avaliação/Avaliação Geriatrica/avaliacao-geriatrica.php?idPaciente={$data1['Paciente_idPaciente']}&idConsulta={$data1['idConsultas']}'\" style='cursor: pointer;'>";
+                        // Define o link de acordo com a especialidade
+                        if (strtolower($especialidade) === 'geriátrica') {
+                            $link = "../Ficha de Avaliação/Avaliação Geriatrica/avaliacao-geriatrica.php?idPaciente={$data1['Paciente_idPaciente']}&idConsulta={$data1['idConsultas']}";
+                        } elseif (strtolower($especialidade) === 'traumato ortopédica') {
+                            $link = "../Ficha de Avaliação/Avaliação Traumatoortopedica/Tela1e2/tela1.php?idPaciente={$data1['Paciente_idPaciente']}&idConsulta={$data1['idConsultas']}";
+                        } else {
+                            $link = "#"; // Caso a especialidade não seja nem geriátrica nem traumato ortopédica
+                        }
+
+                        // Exibe a linha da tabela com o link de redirecionamento
+                        echo "<tr onclick=\"window.location.href='{$link}'\" style='cursor: pointer;'>";
                         echo "<td>{$no}</td>";
                         echo "<td>{$data1['idConsultas']}</td>";
                         echo "<td>" . date("d/m/Y", strtotime($data1['data'])) . "</td>";
