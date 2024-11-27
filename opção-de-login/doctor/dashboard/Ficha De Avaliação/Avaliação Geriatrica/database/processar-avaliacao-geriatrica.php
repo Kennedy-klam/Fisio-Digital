@@ -249,8 +249,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Confirmar a transação
         $conn->commit();
-        echo "Dados inseridos com sucesso!";
-        //header("Location: sucesso.html");
+        echo "<script>
+        alert('Formulário salvo com sucesso!');
+        setTimeout(function() {
+            window.location.href = '../../../consultas-marcadas/appointment.php';
+        }, 1000);
+    </script>";
         exit;
     } catch (Exception $e) {
         // Reverter a transação em caso de erro
