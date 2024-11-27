@@ -2,14 +2,12 @@
 session_start();
 include('../../../../conexões/conexao.php');
 
+// Captura o ID da ficha na sessão
 if (isset($_SESSION['idFichaTraumatoOrtopedica'])) {
     $idFichaTraumatoOrtopedica = $_SESSION['idFichaTraumatoOrtopedica'];
-    echo "ID da ficha: " . $idFichaTraumatoOrtopedica; // Debugging
 } else {
     die("ID da ficha não encontrado.");
 }
-
-var_dump($idFichaTraumatoOrtopedica);
 
 if (isset($_POST['submit'])) {
     // Coletando os dados do formulário
