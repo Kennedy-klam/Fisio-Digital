@@ -85,7 +85,9 @@ Uma contribuição essencial para o desenvolvimento da Fisio Digital foi a colab
 
 ## Conclusão
 O projeto destaca a importância da tecnologia como aliada na melhoria da qualidade e eficiência do atendimento, tanto para pacientes quanto para profissionais de saúde. 
+
 Apesar de algumas limitações, como a ausência de funcionalidades mais avançadas e a falta de testes em larga escala, a Fisio Digital já começa a se mostrar capaz de agregar eficiência ao setor de fisioterapia e melhorar a experiência dos usuários.
+
 Por fim, o desenvolvimento deste projeto está proporcionando à equipe a oportunidade de aplicar conhecimentos técnicos em um contexto real, contribuindo para o aprendizado e crescimento profissional dos integrantes. Com base nos resultados obtidos, acredito que a Fisio Digital tem potencial para evoluir e impactar ainda mais positivamente.
 
 
