@@ -302,51 +302,34 @@ if ($resultPaciente->num_rows > 0) {
             <!--Tabela-->
 
             <div class="container">
-            <h1>Medicamentos Cadastrados</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Uso</th>
-                        <th>Tempo de Uso</th>
-                        <th>Classe</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while ($row = $resultMedicamentos->fetch_assoc()) { ?>
-                        <tr>
-                            <td><?php echo $row['idMedicamentos']; ?></td>
-                            <td><?php echo $row['nome']; ?></td>
-                            <td><?php echo $row['uso']; ?></td>
-                            <td><?php echo $row['tempUso']; ?></td>
-                            <td><?php echo $row['classe']; ?></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="button-container">
-            <a href="Medicamentos/gerenciar-medicamentos.php" target="_blank" class="styled-button" style="text-decoration: none">Gerenciar Medicamentos</a>
-        </div>
-                <br>
-
-                <h2>Tabela de Medicamentos</h2>
-                <table id="tabela-medicamentos">
+                <h1>Medicamentos Cadastrados</h1>
+                <table>
                     <thead>
                         <tr>
-                            <th>Medicamento</th>
-                            <th>Como Usa</th>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Uso</th>
                             <th>Tempo de Uso</th>
-                            <th>Remover Medicamento</th>
+                            <th>Classe</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- As linhas serão adicionadas dinamicamente aqui -->
+                        <?php while ($row = $resultMedicamentos->fetch_assoc()) { ?>
+                            <tr>
+                                <td><?php echo $row['idMedicamentos']; ?></td>
+                                <td><?php echo $row['nome']; ?></td>
+                                <td><?php echo $row['uso']; ?></td>
+                                <td><?php echo $row['tempUso']; ?></td>
+                                <td><?php echo $row['classe']; ?></td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
+            </div>
+
+            <div class="button-container">
+                <a href="Medicamentos/gerenciar-medicamentos.php" target="_blank" class="styled-button" style="text-decoration: none">Gerenciar Medicamentos</a>
             </div>
 
             <br> <br>
