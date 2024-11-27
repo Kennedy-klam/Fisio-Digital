@@ -8,7 +8,7 @@ O projeto está sendo desenvolvido por uma equipe de 5 pessoas, seguindo a metod
 * **Kennedy Leandro Amaral Marques** - Scrum Master, Product Owner e Desenvolvedor Full Stack:
 Atua como facilitador do processo Scrum, prioriza o backlog do produto e contribui no desenvolvimento tanto no front-end quanto no back-end.  
 
-*	**Laysa Bittencourt Assunção** – Desenvolvedora Full Stack e Designe:
+*	**Laysa Bittencourt Assunção** – Desenvolvedora Full Stack e Design:
 Responsável por projetar a interface visual do sistema e colaborar no desenvolvimento das funcionalidades no front-end e back-end.
 
 *	**Samuel Monteiro Ferreira** - Desenvolvedor Full Stack:
