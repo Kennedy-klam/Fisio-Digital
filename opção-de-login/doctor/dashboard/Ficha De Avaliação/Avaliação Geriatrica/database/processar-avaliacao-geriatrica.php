@@ -1,73 +1,82 @@
 <?php
-
+session_start(); // Inicia a sessão
 // Conexão com o banco de dados
 include("../../../../../../database/dbConect.php");
+
+// Acessar os IDs armazenados na sessão
+$idPaciente = $_SESSION['idPaciente'] ?? null;
+$idConsulta = $_SESSION['idConsulta'] ?? null;
+
+// Verifica se os IDs estão presentes na sessão
+if (!$idPaciente || !$idConsulta) {
+    echo "Erro: ID do paciente ou da consulta não está disponível na sessão!";
+    die();
+}
 
 // Verificando se o formulário foi submetido
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Capturando os valores do formulário
-    $Consultas_idConsultas = 1; // Valor estático
-    $escolaridade = $_POST['escolaridade'];
-    $renda = $_POST['renda'];
-    $profissao = $_POST['profissao'];
-    $local_residencia = $_POST['local-residencia'];
-    $mora_com = $_POST['mora-com'];
-    $atividade_fisica = $_POST['atividade'];
-    $quantos_dias = $_POST['quantos-dias'];
-    $frequencia_sair = $_POST['frequencia'];
-    $atividade_social = $_POST['atividade-social'];
-    $doencas = $_POST['doencas'];
-    $outras_doencas = $_POST['outras-doencas'];
-    $queixa_principal = $_POST['queixa-principal'];
-    $visao = $_POST['visao'];
-    $audicao = $_POST['audicao'];
-    $continencia_urinaria = $_POST['continencia-urinaria'];
-    $data_urinaria = $_POST['data'];
-    $continencia_fecal = $_POST['continencia-fecal'];
-    $data_fecal = $_POST['data-fecal'];
-    $sono = $_POST['sono'];
-    $ortese = $_POST['ortese'];
-    $proteste = $_POST['proteste'];
-    $queda = $_POST['queda'];
-    $queda_quantas = $_POST['queda-quantas'];
-    $fuma = $_POST['Fuma'];
-    $tempo_fumar = $_POST['tempo-fumar'];
-    $etilista = $_POST['etilista'];
-    $tempo_etilista = $_POST['tempo-etilista'];
+    $escolaridade = $_POST['escolaridade'] ?? null;
+    $renda = $_POST['renda'] ?? null;
+    $profissao = $_POST['profissao'] ?? null;
+    $local_residencia = $_POST['local-residencia'] ?? null;
+    $mora_com = $_POST['mora-com'] ?? null;
+    $atividade_fisica = $_POST['atividade'] ?? null;
+    $quantos_dias = $_POST['quantos-dias'] ?? null;
+    $frequencia_sair = $_POST['frequencia'] ?? null;
+    $atividade_social = $_POST['atividade-social'] ?? null;
+    $doencas = $_POST['doencas'] ?? null;
+    $outras_doencas = $_POST['outras-doencas'] ?? null;
+    $queixa_principal = $_POST['queixa-principal'] ?? null;
+    $visao = $_POST['visao'] ?? null;
+    $audicao = $_POST['audicao'] ?? null;
+    $continencia_urinaria = $_POST['continencia-urinaria'] ?? null;
+    $data_urinaria = $_POST['data'] ?? null;
+    $continencia_fecal = $_POST['continencia-fecal'] ?? null;
+    $data_fecal = $_POST['data-fecal'] ?? null;
+    $sono = $_POST['sono'] ?? null;
+    $ortese = $_POST['ortese'] ?? null;
+    $proteste = $_POST['proteste'] ?? null;
+    $queda = $_POST['queda'] ?? null;
+    $queda_quantas = $_POST['queda-quantas'] ?? null;
+    $fuma = $_POST['Fuma'] ?? null;
+    $tempo_fumar = $_POST['tempo-fumar'] ?? null;
+    $etilista = $_POST['etilista'] ?? null;
+    $tempo_etilista = $_POST['tempo-etilista'] ?? null;
     // tela 2
-    $orientacao_temporal = $_POST['tempo'];
-    $orientacao_local = $_POST['local'];
-    $repita_palavras = $_POST['reptPalav'];
-    $calculo = $_POST['calculo'];
-    $memorizacao = $_POST['memoria'];
-    $linguagem_objetos = $_POST['nomObj'];
-    $linguagem_frase = $_POST['reptFase'];
-    $linguagem_instrucoes = $_POST['ordem'];
-    $linguagem_leitura = $_POST['lerOrdem'];
-    $linguagem_escrita = $_POST['escrevFase'];
-    $linguagem_copiar = $_POST['copDesenho'];
-    $abombrod = $_POST['abombrod'];
-    $abombroe = $_POST['abombroe'];
-    $flexcotovelod = $_POST['flexcotovelod'];
-    $flexcotoveloe = $_POST['flexcotoveloe'];
-    $extpunhod = $_POST['extpunhod'];
-    $extpunhoe = $_POST['extpunhoe'];
-    $flexquadrild = $_POST['flexquadrild'];
-    $flexquadrile = $_POST['flexquadrile'];
-    $extjoelhod = $_POST['extjoelhod'];
-    $extjoelhoe = $_POST['extjoelhoe'];
-    $dflextornozelod = $_POST['dflextornozelod'];
-    $dflextornozeloe = $_POST['dflextornozeloe'];
-    $alimentacao = $_POST['alimentacao'];
-    $banho = $_POST['banho'];
-    $atividade_diaria = $_POST['atividadeb'];
-    $vestir = $_POST['vestir'];
-    $intestino = $_POST['intestino'];
-    $sistema_urinario = $_POST['urina'];
-    $uso_banheiro = $_POST['banheiro'];
-    $transferencia = $_POST['transferencia'];
-    $mobilidade = $_POST['deambulacao'];
-    $escadas = $_POST['escadas'];
+    $orientacao_temporal = $_POST['tempo'] ?? null;
+    $orientacao_local = $_POST['local'] ?? null;
+    $repita_palavras = $_POST['reptPalav'] ?? null;
+    $calculo = $_POST['calculo'] ?? null;
+    $memorizacao = $_POST['memoria'] ?? null;
+    $linguagem_objetos = $_POST['nomObj'] ?? null;
+    $linguagem_frase = $_POST['reptFase'] ?? null;
+    $linguagem_instrucoes = $_POST['ordem'] ?? null;
+    $linguagem_leitura = $_POST['lerOrdem'] ?? null;
+    $linguagem_escrita = $_POST['escrevFase'] ?? null;
+    $linguagem_copiar = $_POST['copDesenho'] ?? null;
+    $abombrod = $_POST['abombrod'] ?? null;
+    $abombroe = $_POST['abombroe'] ?? null;
+    $flexcotovelod = $_POST['flexcotovelod'] ?? null;
+    $flexcotoveloe = $_POST['flexcotoveloe'] ?? null;
+    $extpunhod = $_POST['extpunhod'] ?? null;
+    $extpunhoe = $_POST['extpunhoe'] ?? null;
+    $flexquadrild = $_POST['flexquadrild'] ?? null;
+    $flexquadrile = $_POST['flexquadrile'] ?? null;
+    $extjoelhod = $_POST['extjoelhod'] ?? null;
+    $extjoelhoe = $_POST['extjoelhoe'] ?? null;
+    $dflextornozelod = $_POST['dflextornozelod'] ?? null;
+    $dflextornozeloe = $_POST['dflextornozeloe'] ?? null;
+    $alimentacao = $_POST['alimentacao'] ?? null;
+    $banho = $_POST['banho'] ?? null;
+    $atividade_diaria = $_POST['atividadeb'] ?? null;
+    $vestir = $_POST['vestir'] ?? null;
+    $intestino = $_POST['intestino'] ?? null;
+    $sistema_urinario = $_POST['urina'] ?? null;
+    $uso_banheiro = $_POST['banheiro'] ?? null;
+    $transferencia = $_POST['transferencia'] ?? null;
+    $mobilidade = $_POST['deambulacao'] ?? null;
+    $escadas = $_POST['escadas'] ?? null;
     // tela 3
     $tugt = $_POST['tugt'] ?? null;
     $nota_sentar = $_POST['nota-sentar'] ?? null;
@@ -99,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // Inserir na tabela fichaavaliaçãogeriatrica
         $sql1 = "INSERT INTO fichaavaliaçãogeriatrica (
-            Consultas_idConsultas, Escolaridade, Renda, profissao, Residencia, moraCom, AtividadeFisica,
+            consultas_idConsultas, consultas_paciente_idPaciente, Escolaridade, Renda, profissao, Residencia, moraCom, AtividadeFisica,
             quantos_dias, FrequenciaSaida, AtivSocial, Doenças, outras_doencas, 
             QueixaPrincipal, visao, audicao, contUrin,
             dataUrin, contFecal, dataFecal, sono, ortese, protese,
@@ -116,13 +125,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             diag_fisio, 
             objetivo
         ) VALUES (
-        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
         )";
 
         $stmt1 = $conn->prepare($sql1);
         $stmt1->bind_param(
-        "issssssssssssssssssssssssssssssssssssssssssssssssssiiiiiiiiiisiiss",
-        $Consultas_idConsultas,
+        "iissssssssssssssssssssssssssssssssssssssssssssssssssiiiiiiiiiisiiss",
+        $idConsulta,
+        $idPaciente,
         $escolaridade,
         $renda,
         $profissao,

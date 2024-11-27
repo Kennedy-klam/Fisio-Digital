@@ -10,9 +10,6 @@ if ($mysqli->connect_error) {
 $idPaciente = $_GET['idPaciente'] ?? null;
 $idConsulta = $_GET['idConsulta'] ?? null;
 
-var_dump($idPaciente);
-var_dump($idConsulta);
-
 if (!$idPaciente || !$idConsulta) {
     echo "Erro: ID do paciente ou da consulta não foi recebido!";
     die();

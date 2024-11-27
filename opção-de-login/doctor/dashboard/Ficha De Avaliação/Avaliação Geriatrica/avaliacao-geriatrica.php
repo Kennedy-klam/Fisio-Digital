@@ -1,34 +1,70 @@
 <?php
 // Conectando ao banco de dados
+session_start();
 include("../../../../../database/dbConect.php");
 
-// ID do paciente que queremos buscar
-$paciente_id = 2;  // Exemplo estático, sera dinâmico
+if ($conn->connect_error) {
+    die("Erro na conexão com o banco de dados: " . $mysqli->connect_error);
+}
 
-// Buscando os dados do usuário
-$sql = "SELECT nome, nascimento, sexo, estaCivil, celular FROM paciente WHERE idPaciente = $paciente_id";
-$result = $conn->query($sql);
+$idPaciente = $_GET['idPaciente'] ?? null;
+$idConsulta = $_GET['idConsulta'] ?? null;
+
+if (!$idPaciente || !$idConsulta) {
+    echo "Erro: ID do paciente ou da consulta não foi recebido!";
+    die();
+}
+
+$_SESSION['idPaciente'] = $idPaciente;
+$_SESSION['idConsulta'] = $idConsulta;
+
+// Verifica se a consulta foi encontrada
+$sqlConsulta = "SELECT idConsultas, Paciente_idPaciente FROM consultas WHERE idConsultas = ?";
+$stmtConsulta = $conn->prepare($sqlConsulta);
+if (!$stmtConsulta) {
+    die("Erro ao preparar a consulta para consultas: " . $conn->error);
+}
+
+$stmtConsulta->bind_param("i", $idConsulta);  // "i" para inteiro
+$stmtConsulta->execute();
+$result = $stmtConsulta->get_result();  // Aqui obtemos o resultado da consulta
 
 if ($result->num_rows > 0) {
-    // Os dados do usuário existem, pegamos a linha
+    // Se a consulta for encontrada, pegamos os dados
     $row = $result->fetch_assoc();
-    $nome = $row["nome"];
-    $dataNascimento = $row["nascimento"];
-    $sexo = $row["sexo"];
-    $estadoCivil = $row["estaCivil"];
-    $telefone = $row["celular"];
+    $consultas_idConsultas = $row['idConsultas'];  // ID da consulta
+    $consultas_paciente_idPaciente = $row['Paciente_idPaciente'];  // ID do paciente
+} else {
+    die("Consulta não encontrada para este paciente.");
+}
+
+// Agora, consulta os dados do paciente
+$sqlPaciente = "SELECT nome, nascimento, sexo, estaCivil, celular FROM paciente WHERE idPaciente = ?";
+$stmtPaciente = $conn->prepare($sqlPaciente);
+if (!$stmtPaciente) {
+    die("Erro ao preparar a consulta para paciente: " . $conn->error);
+}
+$stmtPaciente->bind_param("i", $idPaciente);  // "i" para inteiro
+$stmtPaciente->execute();
+$resultPaciente = $stmtPaciente->get_result();
+
+if ($resultPaciente->num_rows > 0) {
+    // Se o paciente for encontrado, pegamos os dados
+    $rowPaciente = $resultPaciente->fetch_assoc();
+    $nome = $rowPaciente["nome"];
+    $dataNascimento = $rowPaciente["nascimento"];
+    $sexo = $rowPaciente["sexo"];
+    $estadoCivil = $rowPaciente["estaCivil"];
+    $telefone = $rowPaciente["celular"];
 
     // Calculando a idade
     $hoje = new DateTime();
     $nascimento = new DateTime($dataNascimento);
     $idade = $hoje->diff($nascimento)->y;
 } else {
-    echo "Nenhum dado encontrado para esse usuário.";
-    exit();
+    die("Paciente não encontrado.");
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="pt-BR">
