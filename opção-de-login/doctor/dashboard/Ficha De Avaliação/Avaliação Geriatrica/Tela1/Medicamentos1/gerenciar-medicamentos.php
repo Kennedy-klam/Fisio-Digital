@@ -1,5 +1,5 @@
 <?php
-include '../../../../../../../database/dbConect.php';
+include '../../../../../../database/dbConect.php';
 
 // Inicializa variável de mensagem
 $mensagem = "";

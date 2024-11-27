@@ -1,5 +1,13 @@
 <?php
+session_start();
 include '../../../../../../database/dbConect.php';
+
+$idPaciente = $_SESSION['idPaciente'] ?? null;
+
+if (!$idPaciente) {
+    echo "Erro: ID do paciente não está disponível na sessão!";
+    die();
+}
 
 // Inicializa variável de mensagem
 $mensagem = "";
@@ -10,17 +18,36 @@ $result = $conn->query($sql);
 
 // Adicionar medicamento
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-medicamento'])) {
-    $nome = $conn->real_escape_string($_POST['nome']);
-    $descricao = $conn->real_escape_string($_POST['uso']);
-    $tempUso = $conn->real_escape_string($_POST['tempUso']);
-    $classe = $conn->real_escape_string($_POST['classe']);
+    // Verificar se o paciente existe na tabela 'paciente'
+    $sqlPaciente = "SELECT idPaciente FROM paciente WHERE idPaciente = ?";
+    $stmtPaciente = $conn->prepare($sqlPaciente);
+    $stmtPaciente->bind_param("i", $idPaciente);
+    $stmtPaciente->execute();
+    $resultPaciente = $stmtPaciente->get_result();
 
-    $insert_sql = "INSERT INTO Medicamentos (Paciente_idPaciente, nome, uso, tempUso, classe) VALUES (1, '$nome', '$descricao', '$tempUso', '$classe')";
-    if ($conn->query($insert_sql) === TRUE) {
-        $mensagem = "Medicamento adicionado com sucesso.";
+    if ($resultPaciente->num_rows === 0) {
+        $mensagem = "Erro: O paciente com ID {$idPaciente} não foi encontrado na tabela de pacientes.";
     } else {
-        $mensagem = "Erro ao adicionar medicamento: " . $conn->error;
+        // Se o paciente existe, podemos prosseguir com a inserção
+        $nome = $conn->real_escape_string($_POST['nome']);
+        $descricao = $conn->real_escape_string($_POST['uso']);
+        $tempUso = $conn->real_escape_string($_POST['tempUso']);
+        $classe = $conn->real_escape_string($_POST['classe']);
+
+        // Query para inserir o medicamento
+        $insert_sql = "INSERT INTO Medicamentos (Paciente_idPaciente, nome, uso, tempUso, classe) 
+                        VALUES (?, ?, ?, ?, ?)";
+        $stmtInsert = $conn->prepare($insert_sql);
+        $stmtInsert->bind_param("issss", $idPaciente, $nome, $descricao, $tempUso, $classe);
+
+        if ($stmtInsert->execute()) {
+            $mensagem = "Medicamento adicionado com sucesso.";
+        } else {
+            $mensagem = "Erro ao adicionar medicamento: " . $stmtInsert->error;
+        }
+        $stmtInsert->close();
     }
+
     // Redireciona para recarregar a página
     header("Location: " . $_SERVER['PHP_SELF']);
     exit;
@@ -29,18 +56,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-medicamento'])) {
 // Remover medicamento
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove-medicamento'])) {
     $remove_id = $conn->real_escape_string($_POST['idMedicamentos']);
-    $delete_sql = "DELETE FROM Medicamentos WHERE idMedicamentos = $remove_id";
-    if ($conn->query($delete_sql) === TRUE) {
+    $delete_sql = "DELETE FROM Medicamentos WHERE idMedicamentos = ?";
+    $stmtDelete = $conn->prepare($delete_sql);
+    $stmtDelete->bind_param("i", $remove_id);
+
+    if ($stmtDelete->execute()) {
         $mensagem = "Medicamento removido com sucesso.";
     } else {
-        $mensagem = "Erro ao remover medicamento: " . $conn->error;
+        $mensagem = "Erro ao remover medicamento: " . $stmtDelete->error;
     }
+    $stmtDelete->close();
+
     // Redireciona para recarregar a página
     header("Location: " . $_SERVER['PHP_SELF']);
     exit;
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
