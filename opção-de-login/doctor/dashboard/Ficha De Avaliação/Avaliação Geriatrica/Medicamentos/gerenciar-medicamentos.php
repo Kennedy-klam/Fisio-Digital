@@ -13,7 +13,7 @@ if (!$idPaciente) {
 $mensagem = "";
 
 // Recupera os medicamentos cadastrados
-$sql = "SELECT * FROM Medicamentos";
+$sql = "SELECT * FROM Medicamentos WHERE Paciente_idPaciente = $idPaciente";
 $result = $conn->query($sql);
 
 // Adicionar medicamento

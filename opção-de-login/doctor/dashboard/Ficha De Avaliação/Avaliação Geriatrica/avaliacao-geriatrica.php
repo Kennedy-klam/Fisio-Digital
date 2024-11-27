@@ -39,7 +39,7 @@ if ($result->num_rows > 0) {
 }
 
 // Recupera os medicamentos cadastrados
-$sqlMedicamentos = "SELECT * FROM Medicamentos";
+$sqlMedicamentos = "SELECT * FROM Medicamentos WHERE Paciente_idPaciente = $idPaciente";
 $resultMedicamentos = $conn->query($sqlMedicamentos);
 
 // Agora, consulta os dados do paciente
