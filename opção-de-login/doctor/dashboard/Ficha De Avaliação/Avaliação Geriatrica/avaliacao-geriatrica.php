@@ -82,6 +82,83 @@ if ($resultPaciente->num_rows > 0) {
         function redirecionar(url) {
             window.location.href = url;
         }
+
+        // ----------------------------- Resultado TAF ------------------------------------- 
+        function avaliarResultado() {
+            // Captura os valores do formulário
+            const resultado = parseFloat(document.getElementById("medidaTaf").value);
+            const sexo = document.getElementById("sexo").value.toLowerCase(); // Converte para minúsculas para evitar erros
+            const idade = parseInt(document.getElementById("idade").value);
+            const resultadoSpan = document.getElementById("resultadoSpan");
+
+            // Validação básica
+            if (isNaN(resultado) || isNaN(idade) || !sexo) {
+                resultadoSpan.textContent = "Por favor, preencha todos os campos corretamente!";
+                resultadoSpan.style.color = "red";
+                return;
+            }
+
+            // Lógica para sexo masculino
+            if (sexo === 'masculino') {
+                if (idade <= 40) {
+                    if (resultado > 42.40) {
+                        resultadoSpan.textContent = "Normal";
+                        resultadoSpan.style.color = "green";
+                    } else {
+                        resultadoSpan.textContent = "Abaixo do esperado";
+                        resultadoSpan.style.color = "red";
+                    }
+                } else if (idade >= 41 && idade <= 69) {
+                    if (resultado > 37.83) {
+                        resultadoSpan.textContent = "Normal";
+                        resultadoSpan.style.color = "green";
+                    } else {
+                        resultadoSpan.textContent = "Abaixo do esperado";
+                        resultadoSpan.style.color = "red";
+                    }
+                } else {
+                    if (resultado >= 33.52) {
+                        resultadoSpan.textContent = "Normal";
+                        resultadoSpan.style.color = "green";
+                    } else {
+                        resultadoSpan.textContent = "Abaixo do esperado";
+                        resultadoSpan.style.color = "red";
+                    }
+                }
+            }
+            // Lógica para sexo feminino
+            else if (sexo === 'feminino') {
+                if (idade <= 40) {
+                    if (resultado >= 37.08) {
+                        resultadoSpan.textContent = "Normal";
+                        resultadoSpan.style.color = "green";
+                    } else {
+                        resultadoSpan.textContent = "Abaixo do esperado";
+                        resultadoSpan.style.color = "red";
+                    }
+                } else if (idade >= 41 && idade <= 69) {
+                    if (resultado >= 35.05) {
+                        resultadoSpan.textContent = "Normal";
+                        resultadoSpan.style.color = "green";
+                    } else {
+                        resultadoSpan.textContent = "Abaixo do esperado";
+                        resultadoSpan.style.color = "red";
+                    }
+                } else {
+                    if (resultado >= 26.63) {
+                        resultadoSpan.textContent = "Normal";
+                        resultadoSpan.style.color = "green";
+                    } else {
+                        resultadoSpan.textContent = "Abaixo do esperado";
+                        resultadoSpan.style.color = "red";
+                    }
+                }
+            } else {
+                resultadoSpan.textContent = "Sexo inválido. Use 'masculino' ou 'feminino'.";
+                resultadoSpan.style.color = "red";
+            }
+        }
+        // ----------------------------- Resultado TAF ------------------------------------- 
     </script>
     <style>
         /* Estilos aplicados apenas à tabela com ID #barthelTable */
@@ -105,6 +182,18 @@ if ($resultPaciente->num_rows > 0) {
 
         #barthelTable td input[type="radio"] {
             transform: scale(1.2);
+        }
+
+        .medida[type="number"],
+        .idade[type="number"] {
+            margin-left: 197px;
+            /*input do "Valores normativos do TAF"*/
+            width: 15%;
+            height: 40px;
+            border: 1px solid #113838;
+            box-sizing: 0;
+            font-size: 15px;
+            color: #113838;
         }
     </style>
 </head>
@@ -1126,7 +1215,16 @@ if ($resultPaciente->num_rows > 0) {
                     <td>33,52</td>
                     <td>26,63</td>
                 </tr>
-            </table>
+            </table><br><br>
+
+
+
+            <input type="number" class="medida" name="medida_Taf" id="medidaTaf" placeholder="Digite a medida em (cm)">
+            <button class="botaoCalcular" type="button" onclick="avaliarResultado()">Resultado</button>
+            <span id="resultadoSpan" name="resultado_Medida"></span><br>
+
+
+
             <h1>Teste de caminhada de 6 minutos</h1>
             <div class="tabela">
                 <table class="tabela">
@@ -1230,7 +1328,6 @@ if ($resultPaciente->num_rows > 0) {
             <button class="finalizar" type="submit">Finalizar</button>
         </div>
     </form>
-
 </body>
 
 </html>

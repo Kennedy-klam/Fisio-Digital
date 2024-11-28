@@ -1,257 +1,263 @@
 body {
-    font-size: 16px;
-    color: #113838;
-    font-family: Arial, sans-serif;
-    margin: 30px;
-    padding: 0;
-    background: #f4f4f4;
-  
+  font-size: 16px;
+  color: #113838;
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  padding: 0;
+  background: #f4f4f4;
+
+}
+
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+h1 {
+  color: #113838;
+  margin-left: 2%;
+}
+
+.tittle {
+  text-align: center;
+  font-size: 14px;
+  margin-right: 8%;
+}
+
+.instrucoes,
+.resultado {
+  margin-bottom: 20px;
+
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 8%;
+  font-weight: bold;
+}
+
+.tempo {
+  font-size: 60px;
+}
+
+button {
+  padding: 15px 35px;
+  border: none;
+  background-color: #DEF7E5;
+  color: #113838;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.botaoCalcular {
+  margin-left: 0%;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 35px;
+}
+
+.resetar,
+.iniciar,
+.terminar {
+  /* botões do timer*/
+  padding: 30px 40px;
+}
+
+/* @keyframes girar{ animação para a imagem do cronômetro
+  from{
+    transform: rotate(0deg);
   }
-  
-  .container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
+  to{
+    transform: rotate(360deg);
   }
+} */
+
+.image {
+  width: 117px;
+  height: 117px;
+  top: -40px;
+  left: 2770px;
+  animation: girar 3s linear infinite;
+}
+
+.finalizar {
+  /*botão finalizar*/
+  margin-left: 85%;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 35px;
+}
+
+button:hover {
+  /*interatividade nos botões*/
+  background-color: #DEF7E5;
+  box-shadow: 0px 5px 10px #113838;
+}
+
+table {
+  border-collapse: collapse;
+  width: 70%;
+  margin-left: 14%;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+  background-color: white;
+}
+
+th {
+  background-color: #DEF7E5;
+  color: black;
+}
+
+input[type="number"] {
+  /*estilização dos inputs dentro da tabela*/
+  width: 100%;
+  height: 40px;
+  border: none;
+  box-sizing: 0;
+  font-size: 30px;
+  color: #113838;
   
-  h1 {
-    color: #113838;
-    margin-left: 2%;
-  }
-  
-  .tittle {
-    text-align: center;
-    font-size: 14px;
-    margin-right: 8%;
-  }
-  
-  .instrucoes,
-  .resultado {
-    margin-bottom: 20px;
-  
-  }
-  
-  .timer {
-    display: flex;
-    align-items: center;
-    gap: 8%;
-    font-weight: bold;
-  }
-  
-  .tempo {
-    font-size: 60px;
-  }
-  
-  button {
-    padding: 15px 35px;
-    border: none;
-    background-color: #DEF7E5;
-    color: #113838;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .botaoCalcular {
-    margin-left: 0%;
-    border-radius: 5px;
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-bottom: 35px;
-  }
-  
-  .resetar,
-  .iniciar,
-  .terminar {
-    /* botões do timer*/
-    padding: 30px 40px;
-  }
-  
-  /* @keyframes girar{ animação para a imagem do cronômetro
-    from{
-      transform: rotate(0deg);
-    }
-    to{
-      transform: rotate(360deg);
-    }
-  } */
-  
-  .image {
-    width: 117px;
-    height: 117px;
-    top: -40px;
-    left: 2770px;
-    animation: girar 3s linear infinite;
-  }
-  
-  .finalizar {
-    /*botão finalizar*/
-    margin-left: 85%;
-    border-radius: 5px;
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-bottom: 35px;
-  }
-  
-  button:hover {
-    /*interatividade nos botões*/
-    background-color: #DEF7E5;
-    box-shadow: 0px 5px 10px #113838;
-  }
-  
-  table {
-    border-collapse: collapse;
-    width: 70%;
-    margin-left: 14%;
-  }
-  
-  th,
-  td {
-    text-align: center;
-    padding: 8px;
-    border: 1px solid #ddd;
-  }
-  
-  tr:nth-child(even) {
-    background-color: white;
-  }
-  
-  th {
-    background-color: #DEF7E5;
-    color: black;
-  }
-  
-  input[type="number"] {
-    /*estilização dos inputs dentro da tabela*/
-    width: 100%;
-    height: 40px;
-    border: none;
-    box-sizing: 0;
-    font-size: 30px;
-    color: #113838;
-  }
-  
-  input[type="text"] {
-    width: 10%;
-    height: 45px;
-    border: 20%;
-    box-sizing: 0;
-    font-size: 30px;
-    color: #113838;
-  
-  }
-  
-  input {
-    /* Checkbox e radio */
-    margin-right: 5px; 
-    top: 6px;
-    left: 4px;
-  }
-  
-  input[type="checkbox"],
-  input[type="radio"] {
-    appearance: none;
-    /* Remove o estilo padrão do checkbox */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #333;
-    border-radius: 50%;
-    /* Faz o checkbox ficar redondo */
-    outline: none;
-    cursor: pointer;
-    position: relative;
-  }
-  
-  /* Estilo para o estado marcado do checkbox */
-  input[type="checkbox"]:checked,
-  input[type="radio"]:checked {
-    background-color: #DEF7E5;
-    border: 2px solid #113838;
-  
-  
-  }
-  
-  input[type="checkbox"]:checked::after,
-  input[type="radio"]:checked::after {
-    content: '';
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 17px;
-    height: 17px;
-    background-color: #113838;
-    border-radius: 50%;
-  }
-  
-  .diagnostico,
-  .objetivo {
-    margin-left: 12%;
-    width: 765px;
-    height: 209px;
-    top: 1703px;
-    left: 2761px;
-    border-radius: 5px;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    resize: none;
-  }
-  
-  .apoios-sentar,
-  .apoios-levantar {
-    margin-left: 2%;
-    padding: 10px 0%;
-    border: none;
-    background-color: white;
-    color: #113838;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 13px;
-  }
-  
-  .sentar,
-  .levantar {
-    margin-left: 7%;
-  }
-  
-  .teste-sentar-levantar {
-    padding: 1%;
-    border-radius: 5px;
-    background-color: #DEF7E5;
-    gap: 5%;
-  }
-  
-  .desequilibrio-levantar {
-    margin-left: 22%;
-  }
-  
-  .desequilibrio-sentar {
-    margin-left: 8%;
-  }
-  
-  .nota1 {
-    margin-left: 8%;
-  }
-  
-  .nota2 {
-    margin-left: 22%;
-  }
-  
-  .nota-teste,
-  .distancia-prevista,
-  .distancia-percorrida {
-    font-size: 4px;
-    border: 1px solid #113838;
-    border-radius: 5px;
-    text-align: center;
-   
-  }
-  
-  
-  
-  label[for="distanciaPrevista"]{
-    margin-right: 16px;
-  }
+}
+
+
+input[type="text"] {
+  width: 10%;
+  height: 45px;
+  border: 20%;
+  box-sizing: 0;
+  font-size: 30px;
+  color: #113838;
+
+}
+
+input {
+  /* Checkbox e radio */
+  margin-right: 5px; 
+  top: 6px;
+  left: 4px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none;
+  /* Remove o estilo padrão do checkbox */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  /* Faz o checkbox ficar redondo */
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Estilo para o estado marcado do checkbox */
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  background-color: #DEF7E5;
+  border: 2px solid #113838;
+
+
+}
+
+input[type="checkbox"]:checked::after,
+input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 17px;
+  height: 17px;
+  background-color: #113838;
+  border-radius: 50%;
+}
+
+.diagnostico,
+.objetivo {
+  margin-left: 12%;
+  width: 765px;
+  height: 209px;
+  top: 1703px;
+  left: 2761px;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  resize: none;
+}
+
+.apoios-sentar,
+.apoios-levantar {
+  margin-left: 2%;
+  padding: 10px 0%;
+  border: none;
+  background-color: white;
+  color: #113838;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.sentar,
+.levantar {
+  margin-left: 7%;
+}
+
+.teste-sentar-levantar {
+  padding: 1%;
+  border-radius: 5px;
+  background-color: #DEF7E5;
+  gap: 5%;
+}
+
+.desequilibrio-levantar {
+  margin-left: 22%;
+}
+
+.desequilibrio-sentar {
+  margin-left: 8%;
+}
+
+.nota1 {
+  margin-left: 8%;
+}
+
+.nota2 {
+  margin-left: 22%;
+}
+
+.nota-teste,
+.distancia-prevista,
+.distancia-percorrida {
+  font-size: 4px;
+  border: 1px solid #113838;
+  border-radius: 5px;
+  text-align: center;
+ 
+}
+
+label[for="distanciaPrevista"]{
+  margin-right: 16px;
+}
+.selecionaGenero{
+  margin-left:197px;
+  margin-right: 1px;
+}

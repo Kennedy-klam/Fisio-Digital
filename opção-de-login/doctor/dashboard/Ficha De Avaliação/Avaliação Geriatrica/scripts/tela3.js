@@ -78,3 +78,5 @@ function calcularNota(){
     document.getElementById('nota-levantar').value = notaLevantar.toFixed(1)
 
 }
+
+

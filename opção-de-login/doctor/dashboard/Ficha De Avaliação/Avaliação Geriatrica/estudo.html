@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação de Resultado</title>
+    <script>
+        function avaliarResultado() {
+            // Captura os valores do formulário
+            const resultado = parseFloat(document.getElementById("medidaTaf").value);
+            const sexo = document.getElementById("sexo").value.toLowerCase(); // Converte para minúsculas para evitar erros
+            const idade = parseInt(document.getElementById("idade").value);
+            const resultadoSpan = document.getElementById("resultadoSpan");
+
+            // Validação básica
+            if (isNaN(resultado) || isNaN(idade) || !sexo) {
+                resultadoSpan.textContent = "Por favor, preencha todos os campos corretamente!";
+                resultadoSpan.style.color = "red";
+                return;
+            }
+
+            // Lógica para sexo masculino
+            if (sexo === 'masculino') {
+                if (idade <= 40) {
+                    if (resultado > 42.40) {
+                        resultadoSpan.textContent = "Normal";
+                        resultadoSpan.style.color = "green";
+                    } else {
+                        resultadoSpan.textContent = "Abaixo do esperado";
+                        resultadoSpan.style.color = "orange";
+                    }
+                } else if (idade >= 41 && idade <= 69) {
+                    if (resultado > 37.83) {
+                        resultadoSpan.textContent = "Normal";
+                        resultadoSpan.style.color = "green";
+                    } else {
+                        resultadoSpan.textContent = "Abaixo do esperado";
+                        resultadoSpan.style.color = "orange";
+                    }
+                } else {
+                    if (resultado >= 33.52) {
+                        resultadoSpan.textContent = "Normal";
+                        resultadoSpan.style.color = "green";
+                    } else {
+                        resultadoSpan.textContent = "Abaixo do esperado";
+                        resultadoSpan.style.color = "orange";
+                    }
+                }
+            }
+            // Lógica para sexo feminino
+            else if (sexo === 'feminino') {
+                if (idade <= 40) {
+                    if (resultado > 37.08) {
+                        resultadoSpan.textContent = "Normal";
+                        resultadoSpan.style.color = "green";
+                    } else {
+                        resultadoSpan.textContent = "Abaixo do esperado";
+                        resultadoSpan.style.color = "orange";
+                    }
+                } else if (idade >= 41 && idade <= 69) {
+                    if (resultado > 35.05) {
+                        resultadoSpan.textContent = "Normal";
+                        resultadoSpan.style.color = "green";
+                    } else {
+                        resultadoSpan.textContent = "Abaixo do esperado";
+                        resultadoSpan.style.color = "orange";
+                    }
+                } else {
+                    if (resultado >= 26.63) {
+                        resultadoSpan.textContent = "Normal";
+                        resultadoSpan.style.color = "green";
+                    } else {
+                        resultadoSpan.textContent = "Abaixo do esperado";
+                        resultadoSpan.style.color = "orange";
+                    }
+                }
+            } else {
+                resultadoSpan.textContent = "Sexo inválido. Use 'masculino' ou 'feminino'.";
+                resultadoSpan.style.color = "red";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Avaliação de Resultado</h1>
+    <label for="resultadoInput">Resultado:</label>
+    <input type="number" id="resultadoInput" placeholder="Digite o resultado"><br><br>
+
+    <label for="sexoInput">Sexo (masculino/feminino):</label>
+    <input type="text" id="sexoInput" placeholder="Digite o sexo"><br><br>
+
+    <label for="idadeInput">Idade:</label>
+    <input type="number" id="idadeInput" placeholder="Digite a idade"><br><br>
+
+    <button onclick="avaliarResultado()">Calcular</button>
+
+    <p>Resultado: <span id="resultadoSpan"></span></p>
+</body>
+</html>
